@@ -1,4 +1,83 @@
 = Entities, Relations, Attributes
 
-[placeholder]
-TypeQL data model concepts. 
+TypeDB implements the Polymorphic Entity-Relation-Attribute (PERA) data model.
+A TypeDB schema defines a hierarchy of these types, and how they interact with each other through interface-types.
+
+== In the schema
+
+*Entity* types are standalone types, whose instances can be created independent of other types, i.e., without reference to other instances.
+E.g. A `person` exists, regardless of whether they are involved in friendships or have a name.
+
+Syntax:
+`entity person;`
+
+*Relation* types define one-or-more associated "role" types. An instance of a relation must reference other instances which "play" these roles.
+E.g. An `employment` relation derives its identity from the that it relates an `employer` and an `employee`.
+
+Syntax:
+`relation employment, relates employer, relates employee;`
+
+
+*Attribute*s are types which hold a value. An instance of an attribute type is identified by its value.
+E.g. An `age` 10.
+An attribute type must specify the primitive `value-type` of the values it will hold
+
+Syntax: `attribute age, value integer;`
+
+
+=== Owning attributes & playing roles
+
+Entity & relation types may be defined to "own" an attribute type.
+E.g. A `person` may own an attribute `birth-date`, or an `employment` may own a `start-date`;
+Syntax: `person owns age;`
+
+Entity & relation types may be defined to "play" a role defined by a relation.
+E.g. The entity type `company` may play the  `employer` role of an `employment` relation.
+
+Syntax:
+`company plays employment:employer;`
+
+
+Note: The types involved when declaring an `owns` or `plays` must already have been defined.
+
+
+=== Polymorphism
+
+Polymorphism in TypeDB comes is realised in two ways:
+
+==== Interfaces
+* trait-like *interfaces* allow multiple types to "implement" the interface.
+e.g. In the following schema snippet, the `employer` role in the `employment` relation can be played by a `company` or an `charity`.
+
+```
+define
+  relation employment,
+    relates employer,
+    relates employee;
+
+  entity company sub organisation,
+    plays employment:employer;
+  entity charity sub organisation,
+    plays employment:employer;
+```
+Note:
+Here, the role `employer` is the interface declared by the `employment` type; and the types `company` and `charity` implement the interface.
+The `relates` keyword is used to define a new interface - the `employer` role - on the `employment` relation type.
+The `plays` keyword is used to define that the type - `company` or `charity` - implements that interface.
+
+==== Subtyping
+A single-inheritance *subtyping* system allows types to specialize an existing type.
+An instance of the subtype at any interface or function argument that accepts an instance of its super-type.
+E.g., in the following schema snippet, entities of type `company` or `charity` can play the `employer` in an `employment`, although it is their supertype `organisation` which is defined to play the role.
+```
+define
+  relation employment,
+    relates employer,
+    relates employee;
+
+  entity organisation sub profile,
+    plays employment:employer;
+  entity company sub organisation;
+  entity charity sub organisation;
+```
+
