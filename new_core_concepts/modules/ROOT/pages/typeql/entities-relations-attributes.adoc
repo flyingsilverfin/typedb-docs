@@ -15,23 +15,22 @@ entity person;
 ----
 
 === Relation
-Relations are types with one-or-more associated "role" types.
-An instance of a relation "depends" on instances of other types which "play" these roles.
+Relations are types which define one-or-more associated "role" types.
+The relation "depends" on other types in the schema to "play" these roles.
 
 E.g. An `employment` relation exists to relate an `employer` to an `employee`.
-An `employment` instance cannot exist without the other instances which play these roles.
+An `employment` instance cannot exist without the other instances which play these roles,
+hence the idea that `employment` "depends" on the participating player types.
 [,typeql]
 ----
 relation employment, relates employer, relates employee;
 ----
 
 === Attribute
-Attributes are types which hold a value.
+Attributes are types which hold a value. An attribute type must specify the primitive `value-type` of the values it will hold
 An instance of an attribute type is identified by its value.
 
-E.g. An `age` 10.
-
-An attribute type must specify the primitive `value-type` of the values it will hold
+E.g. Any instance which has an age of 10 will refer to the same instance of the `age` attribute type.
 
 [,typeql]
 ----
