@@ -6,7 +6,7 @@ A TypeDB schema defines a hierarchy of these types, and how they interact with e
 
 === Entity
 
-Entity types are standalone types, whose instances can be created independent of other types, i.e., without reference to other instances.
+Entities are standalone types, which exist independent of other types.
 
 E.g. A `person` exists, regardless of whether they are involved in friendships or have a name.
 [,typeql]
@@ -15,16 +15,19 @@ entity person;
 ----
 
 === Relation
-Relation types define one-or-more associated "role" types. An instance of a relation must reference other instances which "play" these roles.
+Relations are types with one-or-more associated "role" types.
+An instance of a relation "depends" on instances of other types which "play" these roles.
 
-E.g. An `employment` relation derives its identity from the that it relates an `employer` and an `employee`.
+E.g. An `employment` relation exists to relate an `employer` to an `employee`.
+An `employment` instance cannot exist without the other instances which play these roles.
 [,typeql]
 ----
 relation employment, relates employer, relates employee;
 ----
 
 === Attribute
-Attributes are types which hold a value. An instance of an attribute type is identified by its value.
+Attributes are types which hold a value.
+An instance of an attribute type is identified by its value.
 
 E.g. An `age` 10.
 
