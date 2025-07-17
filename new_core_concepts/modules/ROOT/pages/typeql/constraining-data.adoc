@@ -41,10 +41,8 @@ Since all positions of are specialisations of `player`, it is enforced that a fo
 whatever may be the distribution across the positions.
 Additionally, the `@card(1)` ensures a team has exactly one `goal-keeper`.
 
-The easiest way to reason about the effects of multiple constraints that apply to the same interface is
-to apply them separately and ensure each of them is satisfied.
-
-For the sake of the example, let's restrict our `football-team` to the more common distribution across positions.
+When an interface has multiple constraints (declared and/or inherited), all of them must be satisfied.
+For example, let's restrict our `football-team` to the more common distribution across positions.
 [,typeql]
 ----
 relation football-team sub sports-team,
