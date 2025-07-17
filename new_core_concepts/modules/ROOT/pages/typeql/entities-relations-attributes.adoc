@@ -89,7 +89,8 @@ Attribute types always declare an implicit interface. A type can be defined to i
 === Subtyping
 A single-inheritance *subtyping* system allows types to specialize an existing type.
 An instance of the subtype may be used at any interface or function argument that accepts an instance of its super-type.
-E.g., in the following schema snippet, entities of type `company` or `charity` can play the `employer` in an `employment`, although it is their supertype `organisation` which is defined to play the role.
+
+In the following schema snippet, entities of type `company` or `charity` can play the `employer` in an `employment`, although it is their supertype `organisation` which is defined to play the role.
 
 [,typeql]
 ----
@@ -103,12 +104,13 @@ define
   entity company sub organisation;
   entity charity sub organisation;
 ----
+Thus, a subtype must inherit the implementation of any interface its supertype implements.
 
-Thus, a subtype inherits the implementation of any interface its supertype implements.
+==== Inheriting & specialising interfaces
+A subtype also inherits any interfaces defined by its supertype.
+It may optionally "specialise" an inherited interface by defining a subtype of that interface.
 
-=== Inheriting & specialising interfaces
-Further, a subtype inherits any interfaces defined by its supertype. It may optionally "specialise" an inherited interface by defining a subtype of that interface.
-In the schema snippet below, `content-engagement` inherits the `content` role from `interaction` as-is, and "specialises" the inherited `subject` role into the `author` role.
+In the following schema snippet, `content-engagement` inherits the `content` role from `interaction` as-is, and "specialises" the inherited `subject` role into the `author` role.
 
 [,typeql]
 ----
