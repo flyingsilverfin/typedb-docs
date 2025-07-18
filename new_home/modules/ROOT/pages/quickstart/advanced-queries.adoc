@@ -12,102 +12,16 @@ In the previous sections you:
 . Created a database and defined a schema
 . Loaded some data using simple write and more complex read-write queries
 
-In this page we'll look at a few other types of clauses, and how clause chaining can be generalised into query _pipelines_.
-We'll then also meet _functions_, which are re-usable pieces of queries that can even do things like recursion.
+In this page, we'll look at another useful query operation and how chaining can be generalized into query _pipelines_.
+We'll then introduce _functions_, which are reusable chunks of queries that can even perform recursion.
 
-Finally, we'll meet the `fetch` clause, which lets you format your data into JSON and look up additional information for each answer before returning them.
+Finally, we'll cover the `fetch` clause, which lets you format your data as JSON and look up additional information before returning results.
 
+== Reduce
 
-== Delete & Reduce
+The `reduce` operation works by collapsing the answers provided by a query using an aggregation operation, such as `count` or `sum`.
 
-Let's look at two more useful clauses: `delete`, `reduce`.
-
-=== Delete
-
-We know how to create data and read data, but what if we want to remove data?
-
-Deletion uses a different syntax from insertion and matching in order to specifically pinpoint what data to delete.
-
-[tabs]
-====
-Studio::
-+
---
-
-Let's delete the user with username "candice001":
-
-[,typeql]
-----
-#!test[write, db=quickstart]
-include::./advanced-queries.adoc[tag=delete1]
-----
-
-Easy enough! What if we wanted to delete an owned attribute?
-
-We need a variable to hold the username, then we can remove it - let's remove the start-date of the friendship between "alice1925" and "bob78":
-
-[,typeql]
-----
-#!test[write, db=quickstart]
-include::./advanced-queries.adoc[tag=delete2]
-----
-
-Notice how deletes specify "what" to delete, and "where" to delete that from.
-
---
-Console::
-+
---
-
-Let's delete the user with username "candice001":
-
-////
-[,typeql]
-----
-# tag::delete1[]
-match
-$user isa user, has username "candice001";
-delete $user;
-# end::delete1[]
-----
-////
-[,typeql]
-----
-#!test[write, db=quickstart]
-include::./advanced-queries.adoc[tag=delete1]
-----
-
-Easy enough! What if we wanted to delete an owned attribute?
-
-We need a variable to hold the username, then we can remove it - let's remove the start-date of the friendship between "alice1925" and "bob78":
-////
-[,typeql]
-----
-# tag::delete2[]
-match
-$u0 isa user, has username "alice1925";
-$u1 isa user, has username "bob78";
-$friendship isa friendship ($u0, $u1),
-  has start-date $start-date;
-delete
-$start-date of $friendship;
-# end::delete2[]
-----
-////
-[,typeql]
-----
-#!test[write, db=quickstart]
-include::./advanced-queries.adoc[tag=delete2]
-----
-
-Notice how deletes specify "what" to delete, and "where" to delete that from.
-
---
-====
-
-=== Reduce
-
-The `reduce` clause works by collapsing the answers provided by a query using an aggregation operation, such as `count` or `sum`.
+We call `reduce` an **operator** rather than a **clause**, since it does not read or write to the database state—it only transforms the answers it receives.
 
 [tabs]
 ====
@@ -131,9 +45,9 @@ $count | 5
 ------------
 ----
 
-Notice that the user variable `$user` has been consumed by the `reduce` and we created a new variable `$count`!
+Notice that the user variable `$user` has been consumed by `reduce`, and a new variable `$count` has been created.
 
-Reductions can also use `groupby` to apply an aggregation within a grouping:
+Reductions can also use `groupby` to aggregate within groups:
 
 [,typeql]
 ----
@@ -169,7 +83,7 @@ $username    | isa username deltaonenine
 Here we see the number of friends for each user, grouped by unique pairs of (user, username).
 Of course, we know that each user has a unique username!
 
-Notice that the variables in the grouping have not been consumed by the `reduce` clause and are returned in the results.
+Notice that the variables in the grouping are not consumed by `reduce` and are returned in the results.
 
 --
 Console::
@@ -199,6 +113,10 @@ We see the following result:
 $count | 5
 ------------
 ----
+
+Notice that the user variable `$user` has been consumed by `reduce`, and a new variable `$count` has been created.
+
+Reductions can also use `groupby` to aggregate within groups:
 
 ////
 [,typeql]
@@ -245,18 +163,14 @@ $username    | isa username deltaonenine
 Here we see the number of friends for each user, grouped by unique pairs of (user, username).
 Of course, we know that each user has a unique username!
 
-Notice that the variables in the grouping have not been consumed by the `reduce` clause and are returned in the results.
+Notice that the variables in the grouping are not consumed by `reduce` and are returned in the results.
 
 --
 
 ====
 
-If this feels familiar, that's probably because you've met `reduce` operations in programming languages!
-Often these are applied to collections of data, such as lists, or structures like iterators or streams.
-
-**A good mental model of TypeQL queries is that any clause produces a stream of answers, which is either returned or processed by the next clause.**
-
-This is a very powerful tool for composing queries, as we'll see next!
+If this feels familiar, it's because you've likely encountered list, iterator, or stream `reduce` operations in programming languages.
+Keep that idea in mind as we move forward.
 
 == Chaining clauses into pipelines
 
@@ -270,7 +184,7 @@ Conceptually, this requires three steps:
 . Find all users that aren't friends with the most popular user
 . Make those users friends with the most popular user
 
-We can build this query, one part at a time, by chaining together query clauses into one extended _query pipeline_.
+We can build this query step by step by chaining together query pieces into an extended _query pipeline_.
 
 Let's start with the first step:
 
@@ -280,15 +194,23 @@ Studio::
 +
 --
 
-To solve this, we'll build on top of the `reduce` query we wrote previously:
-the most popular user is the one with the highest number of friends - we'll sort the `reduce` results by number of friends, and limit to the first answer.
+We'll build on top of the `reduce` query we wrote previously.
+The most popular user is the one with the highest number of friends, so we'll sort the previous `reduce` results by number of friends, and limit to the first answer.
 
-Let's meet two new operations: `sort` and `limit`.
-We call these query stream **operators** as opposed to clauses since they only manipulate the answer that stream from the previous clause.
+We can do that with two new operators: `sort` and `limit`.
 
-At this point we can construct a query **pipeline**, made up of **clauses** and **operators**.
-We can generically refer to clauses and operators as **stages** in the pipeline:
-a pipeline is made up stages, which are either clauses or operators.
+`sort` and `limit` are stream operators like `reduce`, since they manipulate answer stream provided by the previous clause.
+They are probably also familiar to you since most query languages have some sort of Iterator or Stream construct, 
+which you can sort and limit! So you can see that TypeQL queries are really similar to Streams in programming languages.
+
+We generally say that we construct query stream **pipelines** using query **stages**, 
+and each stage is either a **clause** (if it reads or writes to the database), or a stream **operator** (if it only manipulates the stream).
+
+**A good mental model of TypeQL queries is that any stage produces a stream of answers. 
+Any stage can be chained onto any other kind of stage to manipulate the stream, or read and write to the database.**
+
+This is a very powerful idea for composing queries, as we'll see next! 
+Let's go back to our example:
 
 [,typeql]
 ----
@@ -306,22 +228,30 @@ $username    | isa username deltaonenine
 ------------------
 ----
 
-Perfect! We've identified the most popular user.
+With this query pipeline, we've identified the most popular user using a `match` clause, and the `reduce`, `sort`, and `limit` operators!
 
 --
 Console::
 +
 --
 
-To solve this, we'll build on top of the `reduce` query we wrote previously:
-the most popular user is the one with the highest number of friends - we'll sort the `reduce` results by number of friends, and limit to the first answer.
+We'll build on top of the `reduce` query we wrote previously.
+The most popular user is the one with the highest number of friends, so we'll sort the previous `reduce` results by number of friends, and limit to the first answer.
 
-Let's meet two new operations: `sort` and `limit`.
-We call these query stream **operators** as opposed to clauses since they only manipulate the answer that stream from the previous clause.
+We can do that with two new operators: `sort` and `limit`.
 
-At this point we can construct a query **pipeline**, made up of **clauses** and **operators**.
-We can generically refer to clauses and operators as **stages** in the pipeline:
-a pipeline is made up stages, which are either clauses or operators.
+`sort` and `limit` are stream operators like `reduce`, since they manipulate answer stream provided by the previous clause.
+They are probably also familiar to you since most query languages have some sort of Iterator or Stream construct, 
+which you can sort and limit! So you can see that TypeQL queries are really similar to Streams in programming languages.
+
+We generally say that we construct query stream **pipelines** using query **stages**, 
+and each stage is either a **clause** (if it reads or writes to the database), or a stream **operator** (if it only manipulates the stream).
+
+**A good mental model of TypeQL queries is that any stage produces a stream of answers. 
+Any stage can be chained onto any other kind of stage to manipulate the stream, or read and write to the database.**
+
+This is a very powerful idea for composing queries, as we'll see next! 
+Let's go back to our example:
 
 ////
 [,typeql]
@@ -351,12 +281,13 @@ $username    | isa username deltaonenine
 ------------------
 ----
 
-Perfect! We've identified the most popular user.
+With this query pipeline, we've identified the most popular user using a `match` clause, and the `reduce`, `sort`, and `limit` operators!
 
 --
 ====
 
-Next we'll add another clause to find users that aren't friends with this user:
+Next we need to find users that aren't friends with this user. 
+This requires another `match` clause, which can use answers provided by the previous stage:
 
 [tabs]
 ====
@@ -364,7 +295,7 @@ Studio::
 +
 --
 
-This time we use a `not` statement to filter out users that are already friends with the most popular user,
+We need `not` statements to filter out users that are already friends with the most popular user,
 and also to eliminate the most-popular user from appearing again:
 
 [,typeql]
@@ -389,14 +320,14 @@ $username    | isa username deltaonenine
 ------------------
 ----
 
-We're almost there! We just need to add a stage to create friendship between the most popular user and the users we found.
+At the end of this pipeline, we have a stream where each answer contains the most popular user and a different user who isn't friends with them yet.
 
 --
 Console::
 +
 --
 
-This time we use a `not` statement to filter out users that are already friends with the most popular user,
+We need `not` statements to filter out users that are already friends with the most popular user,
 and also to eliminate the most-popular user from appearing again:
 
 ////
@@ -440,7 +371,7 @@ $username    | isa username deltaonenine
 ------------------
 ----
 
-We're almost there! We just need to add a stage to create friendship between the most popular user and the users we found.
+At the end of this pipeline, we have a stream where each answer contains the most popular user and a different user who isn't friends with them yet.
 
 --
 ====
@@ -460,7 +391,7 @@ Studio::
 include::./advanced-queries.adoc[tag=pipeline3]
 ----
 
-After you've executed the query once, every user will be friends with the most popular user!
+After you execute the query once, every user will be friends with the most popular user.
 
 --
 Console::
@@ -494,28 +425,27 @@ friendship ($other-user, $user);
 include::./advanced-queries.adoc[tag=pipeline3]
 ----
 
-After you've executed the query once, every user will be friends with the most popular user!
+After you execute the query once, every user will be friends with the most popular user.
 
 --
 ====
 
-Fantastic! We've got a singe query that will: identify the most popular user,
-identify all users that aren't friends with the most popular user,
-and create friendships between the most popular user and the users we found.
+Fantastic! We've written a single query that identifies the most popular user, finds all users who aren't friends with them, and creates the necessary friendships.
 
-Pipelines are a very powerful tool for composing queries. They are easy to read and understand,
-since the data flow is explicit in the order of the query stages.
+Pipelines are a very powerful tool for composing queries. 
+They help eliminate round trips to the server, since even complex operations can be performed within the database. 
 
+They are also easy to read and understand, since the data flow is explicit in the order of the query stages.
 At the same time, query pipelines are very easy to debug: truncate your pipeline at any point
-and inspect the intermediate results by executing the truncated query.
+and inspect intermediate results by executing the truncated query.
 
 == Functions
 
-In the query we just wrote, we might want to re-use the "find the most popular user" part of the query pipeline.
+In the query we just wrote, we might want to reuse the "find the most popular user" part of the pipeline.
 
 We can do this by declaring a function, which can be committed to the database as part of the schema.
 
-Note that functions can contain full query pipelines, but cannot have side effects (eg. must be read-only).
+Note that functions can contain full query pipelines, but cannot have side effects (e.g., they must be read-only).
 
 [tabs]
 ====
@@ -532,7 +462,7 @@ include::./advanced-queries.adoc[tag=function1]
 This function returns the first user and username using the same logic as the long pipeline we just wrote,
 with a tiebreaker on the username if there are multiple "most popular users".
 
-Don't forget to commit so the function becomes available outside the transaction!
+Don't forget to commit so the function becomes available outside the transaction.
 
 --
 Console::
@@ -566,7 +496,8 @@ include::./advanced-queries.adoc[tag=function1]
 This function returns the first user and username using the same logic as the long pipeline we just wrote,
 with a tiebreaker on the username if there are multiple "most popular users".
 
-Don't forget to commit so the function becomes available outside the transaction!
+Don't forget to commit so the function becomes available outside the transaction.
+
 --
 ====
 
@@ -586,7 +517,7 @@ Studio::
 include::./advanced-queries.adoc[tag=function_pipeline1]
 ----
 
-This query is now very short, since we've re-used the logic from the function to find the most popular user!
+This query is now much shorter, since we've reused the logic from the function to find the most popular user!
 
 --
 Console::
@@ -611,24 +542,22 @@ friendship ($other-user, $most-popular-user);
 include::./advanced-queries.adoc[tag=function_pipeline1]
 ----
 
-This query is now very short, since we've re-used the logic from the function to find the most popular user!
+This query is now much shorter, since we've reused the logic from the function to find the most popular user!
 
 --
 ====
 
-Congratulations!
-You're now ready to write sophisticated yet modular queries!
+Congratulations! You're now ready to write sophisticated, modular queries.
 
-One last topic, which makes incorporating TypeDB into your applications easier:
-formatting TypeDB answers into JSON, and incorporating additional data into JSON responses.
+One last topic: formatting TypeDB answers as JSON and incorporating additional data into JSON responses.
 
 == Fetch
 
 TypeQL features one special clause: `fetch`.
 This clause can only be used at the end of a pipeline.
 
-Fetch converts a standard TypeDB answer into a JSON document. You can use it to organize the data into a specific structure,
-look up additional attributes, and even execute subqueries and nest their answers into the JSON document.
+Fetch converts a standard TypeDB answer into a JSON document. 
+You can use it to organize data into a specific structure, look up additional attributes, and even execute subqueries and nest their answers.
 
 The `fetch` clause structure is designed to look exactly like the JSON document it will return, let's take a look:
 
@@ -679,8 +608,7 @@ This query now returns a sequence of JSON documents:
 }
 ----
 
-The fetch clause lets you lay out precisely the JSON document you need for your application,
-and makes it easy to retrieve additional data like (possibly absent) attributes or answers from subqueries.
+The fetch clause lets you lay out the exact JSON document you need for your application, making it easy to retrieve additional data such as optional attributes or answers from subqueries.
 
 --
 Console::
@@ -717,8 +645,7 @@ fetch {
 include::./advanced-queries.adoc[tag=fetch1]
 ----
 
-The fetch clause lets you lay out precisely the JSON document you need for your application,
-and makes it easy to retrieve additional data like (possibly absent) attributes or answers from subqueries.
+The fetch clause lets you lay out the exact JSON document you need for your application, making it easy to retrieve additional data such as optional attributes or answers from subqueries.
 
 --
 ====
@@ -726,4 +653,4 @@ and makes it easy to retrieve additional data like (possibly absent) attributes 
 == What next?
 There is much more to explore in the world of TypeDB, including building custom query logic using disjunctions and negations, the deep exploration of data connection using functional recursion, and more.
 
-This is the beginning of your journey, and we’d like to be here for you should you have any question - so do not hesitate to reach out!
+This is just the beginning of your journey. If you have any questions, don't hesitate to reach out!
