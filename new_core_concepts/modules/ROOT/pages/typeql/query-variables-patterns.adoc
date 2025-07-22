@@ -1,4 +1,245 @@
 = Query Variables and Patterns
 
-[placeholder]
-TypeQL query variables and patterns.
+TypeQL is a declarative language -
+Its focuses on describing the schema, data or query through *patterns* - rather than describing how to perform the query.
+A pattern is a conjunction of any number of:
+
+* constraints
+* negated patterns
+* optional patterns
+* disjunctions of patterns
+
+
+== Constraints
+The unit of a pattern is a *constraint* between one or more *concepts*.
+A *concept* refers to either: A type, an instance of a type, or a value.
+
+Constraints can be written with the concepts specified, as we do when defining the schema:
+[,typeql]
+----
+define
+    entity person;      # 'person' is an entity type.
+    attribute name;     # 'name' is an attribute type.
+    name value string;  # 'name' holds string values.
+    person owns name;   # 'person' instances can own 'name' instances
+----
+
+Or the constraints may contain variables, as we do when querying the database:
+[,typeql]
+----
+match entity $e owns $a;
+----
+A *match* query matches the pattern against the database.
+It returns an answer mapping variables to concepts for *each and every* match.
+Here, an answer maps `$e` to an entity-type, and `$a` to an attribute-type owned by that type.
+
+Since *instances* cannot be specified directly,
+they must be specified by variables and bound via pattern-matching.
+[,typeql]
+----
+match
+  # $n is a 'name' with value "John"
+  $n isa name; $n == "John";
+
+  # $p is a `person`, who has the attribute $n
+  $p isa person; $p has $n;
+
+  # $e is an 'employment', where '$p' plays the 'employee' role
+  $e isa employment; $e links (employee: $p);
+----
+
+[NOTE]
+====
+Variables are also bound to concepts when they are inserted by an `isa` constraint.
+See xref:{page-version}@new_core_concepts::typeql/schema-vs-data.adoc[]
+====
+
+=== Other constraints
+
+== Variable categories
+TODO
+
+
+== Disjunctions, negations & optionals
+We use the following data as our running example:
+[,typeql]
+----
+insert
+    $james isa person, has name "James", has username "@james";
+    $typedb isa company, has name "TypeDB", has username "@typedb";
+    $emp isa employment, links (employer: $typedb, employee: $james);
+
+    $john isa person, has name "John", has username "@john";
+    $sky-high isa school, has name "Sky High School", has username "@sky-high";
+    $edu isa education, links (institute: $sky-high, attendee: $john);
+
+    $jeff isa person, has name "Jeff", has username "@jeff";
+
+    $shut-shop isa company, has name "Shut Shop", has username "@shut-shop";
+----
+
+=== Disjunctions
+Patterns can be combined in a disjunction using the `or` keyword.
+An answer to any pattern in the disjunction is an answer to the disjunction.
+
+Only variables that are present in every pattern in the disjunction,
+or are present outside the disjunction, are returned in the answer of the disjunction.
+
+Variables which are present in only some of the patterns AND not used outside the disjunction
+are considered "local" to the pattern, and are not returned.
+
+
+----
+match
+$p isa person, has name $p-name;
+{
+    $emp isa employment, links (employer: $company, employee: $p);
+    $company has name $org-name;
+} or
+{
+    $edu isa education, links (institute: $institute, attendee: $p);
+    $institute has name $org-name;
+};
+----
+
+Here, `$emp, $company, $edu, $institute` are local to their patterns.
+`$p` occurs outside the disjunction.
+`$org-name` is present in every-branch and returned by the disjunction.
+
+The query returns:
+[,]
+----
+    ---------------
+    $p        | isa person, iid 0x1e00030000000000000004
+    $p-name   | isa name John
+    $org-name | isa name Sky High School
+    ---------------
+    $p        | isa person, iid 0x1e00030000000000000005
+    $p-name   | isa name James
+    $org-name | isa name TypeDB
+    ---------------
+Finished. Total rows: 2
+----
+
+[NOTE]
+====
+TODO: Disjoint variable usage
+====
+
+=== Negations
+A pattern is negated by wrapping it in a `not` block.
+An answer satisfies the negation iff it cannot be an answer to the negated pattern.
+This resembles "negation as failure" idea from logic programming.
+
+Variables that are present only inside the negation are considered local to the negation.
+Any variable that is present both outside and inside the negation is considered input to the negation.
+[,typeql]
+----
+match
+    $p isa person, has name $p-name;
+    not {
+        $e isa employment, links (employer: $c, employee: $p);
+    };
+----
+Here, we find persons who are not involved in any `employment` relation with an `employer`.
+`$p` is an input to the negation. `$e, $c` are local.
+The query returns any person who is not involved in any employment.
+
+The query returns:
+----
+   -------------
+    $p-name | isa name Jeff
+    $p      | isa person, iid 0x1e00030000000000000007
+   -------------
+    $p      | isa person, iid 0x1e00030000000000000004
+    $p-name | isa name John
+   -------------
+Finished. Total rows: 2
+----
+
+As a second example, consider the query below:
+[,typeql]
+----
+match
+    $p isa person, has name $p-name;
+    $c isa company, has name $c-name;
+    not {
+        $e isa employment, links (employer: $c, employee: $p);
+    };
+----
+Here, `$c` is also an input variable.
+This query finds pairs of `person` & `company` such that the person does not work at the company.
+
+----
+   -------------
+    $p      | isa person, iid 0x1e00030000000000000004
+    $p-name | isa name John
+    $c      | isa company, iid 0x1e00050000000000000002
+    $c-name | isa name TypeDB
+   -------------
+    $p      | isa person, iid 0x1e00030000000000000007
+    $p-name | isa name Jeff
+    $c      | isa company, iid 0x1e00050000000000000002
+    $c-name | isa name TypeDB
+   -------------
+    $p      | isa person, iid 0x1e00030000000000000004
+    $p-name | isa name John
+    $c      | isa company, iid 0x1e00050000000000000003
+    $c-name | isa name Shut Shop
+   -------------
+    $p      | isa person, iid 0x1e00030000000000000005
+    $p-name | isa name James
+    $c      | isa company, iid 0x1e00050000000000000003
+    $c-name | isa name Shut Shop
+   -------------
+    $p      | isa person, iid 0x1e00030000000000000007
+    $p-name | isa name Jeff
+    $c      | isa company, iid 0x1e00050000000000000003
+    $c-name | isa name Shut Shop
+   -------------
+Finished. Total rows: 5
+----
+
+=== Optionals
+A pattern is made optional by wrapping it in a `try` block.
+A variable that occurs only inside a `try` block is an optional variable.
+The other variables can be considered input to the pattern.
+
+If an optional pattern does match the data, it returns an answer per match.
+If it has no matches, it produces a single answer with every optional variable will be bound to `None`.
+[,typeql]
+----
+match
+    $p isa person, has name $p-name;
+    try {
+        $e isa employment, links (employer: $c, employee: $p);
+        $c has name $c-name;
+    };
+----
+Here, `$e, $c, $c-name` are optional variables.
+`$p` is input to the optional pattern.
+
+The query returns:
+[,typeql]
+----
+   -------------
+    $p      | isa person, iid 0x1e00030000000000000005
+    $p-name | isa name James
+    $e      | isa employment, iid 0x1f00090000000000000002
+    $c      | isa company, iid 0x1e00050000000000000002
+    $c-name | isa name TypeDB
+   -------------
+    $p      | isa person, iid 0x1e00030000000000000004
+    $p-name | isa name John
+    $e      |
+    $c      |
+    $c-name |
+   -------------
+    $p      | isa person, iid 0x1e00030000000000000007
+    $p-name | isa name Jeff
+    $e      |
+    $c      |
+    $c-name |
+   -------------
+Finished. Total rows: 3
+----

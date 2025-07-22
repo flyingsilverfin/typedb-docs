@@ -1,4 +1,98 @@
-= Schema vs Data
+= Schema & Data
 
-[placeholder]
-TypeQL schema vs data concepts. 
+As seen in the xref:{page-version}@new_core_concepts::typeql/entities-relations-attributes.adoc[] page, a TypeDB schema defines
+the hierarchy of types, their associated interfaces and implementations.
+TypeDB provides semantic integrity guarantees by ensuring the inserted data conforms to the schema
+through type-checking and insert-time validation.
+
+====
+TODO: Highlight the difference between types & instances
+====
+
+== Inserting data
+TypeQL uses the same patterns to describe the data being inserted as it does to query data.
+The difference is that a `match` query matches the patterns against the data and bind the variables to the matching concepts,
+whereas an insert query specifies the concepts to bind to the variables, and creates those patterns in the database.
+
+New instances are inserted using an `isa` constraint specifying the type.
+To insert an attribute, its value must also be specified.
+
+[,typeql]
+----
+insert
+    $person isa person;
+    $employment isa employment;
+    $age isa age 10;
+----
+
+Inserting a new instance will fail if the type is abstract. In the case of attributes,
+the value must also be of the value-type specified by the attribute,
+and satisfy all value constraints defined on the type.
+
+Unlike entities, relations & attributes are not standalone types.
+We will see how to create ownerships for attributes & link role-players to relations.
+
+=== Inserting ownerships
+
+Unless declared to be `@independent`, attributes which are not involved in any ownerships will be cleaned up at the end of a transaction.
+An ownership between is inserted using a `has` constraint:
+[,typeql]
+----
+insert
+    $person isa person;
+    $age isa age 10;
+    $person has $age;
+----
+
+Or in one line:
+[,typeql]
+----
+insert $person isa person, has age 10;
+----
+
+This insert succeeds only if the type `person` "owns" the type `age` in the schema.
+i.e. the constraint `person owns age;` was defined in the schema,
+or `person` inherits `owns age` from its supertype.
+
+=== Linking role-players
+
+Similarly, relations without any role-players will be cleaned up at the end of the transaction.
+The related players are typically "linked" when the relation is created:
+[,typeql]
+----
+insert
+    $company isa company;
+    $person isa person;
+    $employment isa employment;
+    $employment links (employer: $company);
+    $employment links (person: $person);
+----
+
+We can combine the `isa` and links constraints on `$employment`:
+[,typeql]
+----
+insert
+    ...
+    $employment isa employment,
+        links (employer: $company, employee: $person);
+----
+
+Inserting `$employment links (employer: $company);` succeeds only if
+the type `company` plays the `employer` role defined by the `employment` relation.
+Similarly, the type `person` must play the `employment:employee` role
+for `$employment links (person: $person);` to be inserted.
+
+
+== TODO: Decide if the following sections are relevant:
+
+== Commit-time validation & schema migrations
+Most constraints are validated when the data is mutated, giving strong integrity guarantees at all times.
+However, to remain flexible enough to allow more elaborate mutations which can't be expressed in a single query,
+TypeDB defers validating certain constraints (such as cardinality) to commit-time.
+This is especially relevant in the context of schema migrations, which we see next.
+The committed state of the database will always be consistent fully with the schema.
+
+=== Schema mutations with data in-place
+TypeDB's approach to schema mutations is to choose a path that modifies the database
+in a way that the data remains consistent with the schema at all times.
+To illustrate, consider
