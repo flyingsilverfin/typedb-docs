@@ -1,0 +1,36 @@
+= Get started
+
+Get up and running with TypeDB.
+
+[cols-2]
+--
+.xref:{page-version}@new_home::get_started/overview.adoc[]
+[.clickable]
+****
+Overview of the Get Started guide.
+****
+
+.xref:{page-version}@new_home::get_started/setup.adoc[]
+[.clickable]
+****
+Set up your TypeDB environment.
+****
+
+.xref:{page-version}@new_home::get_started/schema.adoc[]
+[.clickable]
+****
+Create your first TypeDB database and define a schema.
+****
+
+.xref:{page-version}@new_home::get_started/data.adoc[]
+[.clickable]
+****
+Learn to write TypeQL queries for writing and reading data.
+****
+
+.xref:{page-version}@new_home::get_started/query-composition.adoc[]
+[.clickable]
+****
+Combine simple queries into query pipelines and functions.
+****
+-- 

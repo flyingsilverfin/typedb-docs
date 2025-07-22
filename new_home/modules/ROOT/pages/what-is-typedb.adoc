@@ -10,7 +10,7 @@ TypeDB is also excellent for cybersecurity, financial services, supply chain man
 TypeDB ships with its own query language, **TypeQL**, which allows you to define sophisticated data models and write simple yet highly expressive queries.
 TypeQL is designed to read and write like natural English, making it easy to discuss, model, and evolve data collaboratively.
 
-TypeDB integrates with pre-built tools: the web-based xref:{page-version}@new_home::get-typedb/web-studio.adoc[TypeDB Studio] and the command-line xref:{page-version}@new_home::get-typedb/console-cli.adoc[TypeDB Console].
+TypeDB integrates with pre-built tools: the web-based xref:{page-version}@new_home::install/web-studio.adoc[TypeDB Studio] and the command-line xref:{page-version}@new_home::install/console-cli.adoc[TypeDB Console].
 It can also be used programmatically with performant **gRPC-based drivers** in various languages, or directly via its **HTTP API**.
 
 TypeDB is **open-source** and available as a free Community Edition, or in https://cloud.typedb.com[TypeDB Cloud], where upgrades, backups, and security are fully managed.
@@ -84,6 +84,6 @@ Transactions are used to both read and write data, or even make changes to your 
 
 == What's Next
 
-Read more about why developers xref:{page-version}@new_home::introduction/why-typedb.adoc[choose TypeDB] (and some more features!), or jump straight into our xref:{page-version}@new_home::quickstart/setup.adoc[quickstart].
+Read more about why developers xref:{page-version}@new_home::why-typedb.adoc[choose TypeDB] (and some more features!), or jump straight into our xref:{page-version}@new_home::get_started/setup.adoc[Get started guide].
 
 If you're trying to learn TypeDB from the ground up or figure out how to best navigate these docs, we recommend reading our xref:{page-version}@new_home::learning_journey.adoc[learning journey].
