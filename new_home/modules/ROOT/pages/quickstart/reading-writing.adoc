@@ -261,25 +261,26 @@ We get back the following sets of values:
 
 [source]
 ----
---------
-$n | isa username "alice1925"
-$x | isa user, iid 0x1e00000000000000000003
---------
-$n | isa username "bob78"
-$x | isa user, iid 0x1e00000000000000000004
---------
-$n | isa username "candice001"
-$x | isa user, iid 0x1e00000000000000000005
---------
-$n | isa username "deltaonenine"
-$x | isa user, iid 0x1e00000000000000000006
---------
-$n | isa username "ecclestone"
-$x | isa user, iid 0x1e00000000000000000007
---------
-$n | isa username "fizzbuzz"
-$x | isa user, iid 0x1e00000000000000000008
---------
+
+ --------
+ $n | isa username "alice1925"
+ $x | isa user, iid 0x1e00000000000000000003
+ --------
+ $n | isa username "bob78"
+ $x | isa user, iid 0x1e00000000000000000004
+ --------
+ $n | isa username "candice001"
+ $x | isa user, iid 0x1e00000000000000000005
+ --------
+ $n | isa username "deltaonenine"
+ $x | isa user, iid 0x1e00000000000000000006
+ --------
+ $n | isa username "ecclestone"
+ $x | isa user, iid 0x1e00000000000000000007
+ --------
+ $n | isa username "fizzbuzz"
+ $x | isa user, iid 0x1e00000000000000000008
+ --------
 ----
 
 [NOTE]
@@ -299,14 +300,14 @@ include::./reading-writing.adoc[tag=match2]
 Which returns:
 [source]
 ----
----------------------
-$other-friend   | isa user, iid 0x1e00000000000000000006
-$other-username | isa username "deltaonenine"
-$u              | isa user, iid 0x1e00000000000000000007
----------------------
+ ---------------------
+ $other-friend   | isa user, iid 0x1e00000000000000000006
+ $other-username | isa username "deltaonenine"
+ $u              | isa user, iid 0x1e00000000000000000007
+ ---------------------
 ----
---
 
+--
 Console::
 +
 --
@@ -389,11 +390,10 @@ $other-username | isa username "deltaonenine"
 $u              | isa user, iid 0x1e00000000000000000007
 ---------------------
 ----
---
 
 We can `close` the transaction since we won't be using it anymore.
 Closing transactions is good practice since they consume resources on the server.
-
+--
 ====
 
 As you can see, reading data using `match` clauses is easy:
