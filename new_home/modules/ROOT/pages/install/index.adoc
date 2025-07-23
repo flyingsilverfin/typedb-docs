@@ -25,7 +25,7 @@ Install TypeDB Community Edition (CE).
 .xref:{page-version}@new_home::install/web-studio.adoc[Web Studio]
 [.clickable]
 ****
-Use the installation-freeTypeDB Web Studio.
+Use the installation-free TypeDB Web Studio.
 ****
 
 .xref:{page-version}@new_home::install/console-cli.adoc[Console CLI]

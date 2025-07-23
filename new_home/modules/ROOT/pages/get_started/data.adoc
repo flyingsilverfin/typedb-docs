@@ -19,6 +19,43 @@ The most basic writes in TypeDB are pure insertions: they insert a complete bund
 
 Let's create some entities and attributes with pure insertions.
 
+////
+[,typeql]
+----
+# tag::insert1[]
+insert $u isa user;
+# end::insert1[]
+
+# tag::insert4[]
+insert
+$u0 isa user, has username "ziggy";
+$u1 isa user, has username "ziggy";
+# end::insert4[]
+
+# tag::successful-inserts[]
+# tag::insert2[]
+insert $u0 isa user, has username "alice";
+# end::insert2[]
+
+# tag::insert3[]
+insert
+$u1 isa user, has username "bob";
+$u2 isa user;
+$u2 has username "charlene";  # can split `isa` and `has` across different statements
+# end::insert3[]
+
+# tag::insert5[]
+insert
+$u3 isa user, has username "delta";
+$u4 isa user, has username "echo";
+$u5 isa user, has username "fizzbuzz";
+friendship (friend: $u3, friend: $u4);
+friendship (friend: $u3, friend: $u5);
+# end::insert5[]
+# end::successful-inserts[]
+----
+////
+
 [tabs]
 ====
 Studio::
@@ -70,14 +107,7 @@ Console::
 --
 
 To begin, let us try insert a user with the following `insert` query:
-////
-[,typeql]
-----
-# tag::insert1[]
-insert $x isa user;
-# end::insert1[]
-----
-////
+
 [,typeql]
 ----
 #!test[write, db=get-started, fail_at=commit]
@@ -89,14 +119,6 @@ Submitting `commit` **will fail** - an example of TypeDB enforcing data constrai
 We are trying to insert a `user` without a username here, but we declared usernames to be a _key_ attribute earlier when we defined `user owns username @key`.
 
 The following passes TypeDB's validation and `commit`s just fine:
-////
-[,typeql]
-----
-# tag::insert2[]
-insert $x isa user, has username "alice1925";
-# end::insert2[]
-----
-////
 [,typeql]
 ----
 #!test[write, db=get-started]
@@ -104,17 +126,6 @@ include::./data.adoc[tag=insert2]
 ----
 
 This query inserts two users at the same time:
-////
-[,typeql]
-----
-# tag::insert3[]
-insert
-$x isa user, has username "bob78";
-$y isa user;
-$y has username "candice001";  # can split `isa` and `has` across different statements
-# end::insert3[]
-----
-////
 [,typeql]
 ----
 #!test[write, db=get-started]
@@ -125,16 +136,6 @@ This query inserts two users at the same time.
 Time to commit your queries again to safely persist your changes: type `commit` and press kbd:[Enter].
 
 Finally, since we set usernames to be a `@key` attribute of our users, we would - rightfully - expect the following query to fail:
-////
-[,typeql]
-----
-# tag::insert4[]
-insert
-$x isa user, has username "qwerty0";
-$y isa user, has username "qwerty0";
-# end::insert4[]
-----
-////
 [,typeql]
 ----
 #!test[write, db=get-started, fail_at=runtime]
@@ -153,7 +154,7 @@ So far so good!
 
 === Complete relations
 
-Now we've seen how to create entities and attributes - shat about inserting relations?
+Now we've seen how to create entities and attributes - what about inserting relations?
 Well, relations that are created at the same time as the connected role players are as easy as entities and attributes!
 
 [tabs]
@@ -167,7 +168,7 @@ That's where variables come into play!
 
 [Note]
 -----
-Recall that each friendship takes _exactly two_ friends as specified in the schema; feel free to experiment though, and see what error messages TypeDB will give you when trying to insert triple friendships.
+Recall that each friendship takes exactly two friends as specified in the schema; feel free to experiment though, and see what error messages TypeDB will give you when trying to insert triple friendships.
 -----
 
 [,typeql]
@@ -192,24 +193,11 @@ That's where variables come into play!
 
 [Note]
 -----
-Recall that each friendship takes _exactly two_ friends as specified in the schema; feel free to experiment though, and see what error messages TypeDB will give you when trying to insert triple friendships.
+Recall that each friendship takes exactly two friends as specified in the schema; feel free to experiment though, and see what error messages TypeDB will give you when trying to insert triple friendships.
 -----
 
 Using a new `write` transaction, run:
 
-////
-[,typeql]
-----
-# tag::insert5[]
-insert
-$x isa user, has username "deltaonenine";
-$y isa user, has username "ecclestone";
-$z isa user, has username "fizzbuzz";
-friendship (friend: $x, friend: $y);
-friendship (friend: $x, friend: $z);
-# end::insert5[]
-----
-////
 [,typeql]
 ----
 #!test[write, db=get-started]
@@ -261,26 +249,7 @@ We get back the following sets of values:
 
 [source]
 ----
-
- --------
- $n | isa username "alice1925"
- $x | isa user, iid 0x1e00000000000000000003
- --------
- $n | isa username "bob78"
- $x | isa user, iid 0x1e00000000000000000004
- --------
- $n | isa username "candice001"
- $x | isa user, iid 0x1e00000000000000000005
- --------
- $n | isa username "deltaonenine"
- $x | isa user, iid 0x1e00000000000000000006
- --------
- $n | isa username "ecclestone"
- $x | isa user, iid 0x1e00000000000000000007
- --------
- $n | isa username "fizzbuzz"
- $x | isa user, iid 0x1e00000000000000000008
- --------
+include::./data.adoc[tag=match1_result]
 ----
 
 [NOTE]
@@ -300,11 +269,7 @@ include::./data.adoc[tag=match2]
 Which returns:
 [source]
 ----
- ---------------------
- $other-friend   | isa user, iid 0x1e00000000000000000006
- $other-username | isa username "deltaonenine"
- $u              | isa user, iid 0x1e00000000000000000007
- ---------------------
+include::./data.adoc[tag=match2_result]
 ----
 
 --
@@ -318,8 +283,30 @@ Open a read transaction using `transaction read get-started`, and execute the fo
 [,typeql]
 ----
 # tag::match1[]
-match $x isa user, has username $n;
+match $u isa user, has username $n;
 # end::match1[]
+
+# tag::match1_result[]
+--------
+$n | isa username "alice"
+$x | isa user, iid 0x1e00000000000000000003
+--------
+$n | isa username "bob"
+$x | isa user, iid 0x1e00000000000000000004
+--------
+$n | isa username "charlene"
+$x | isa user, iid 0x1e00000000000000000005
+--------
+$n | isa username "delta"
+$x | isa user, iid 0x1e00000000000000000006
+--------
+$n | isa username "echo"
+$x | isa user, iid 0x1e00000000000000000007
+--------
+$n | isa username "fizzbuzz"
+$x | isa user, iid 0x1e00000000000000000008
+--------
+# end::match1_result[]
 ----
 ////
 [,typeql]
@@ -334,25 +321,7 @@ We get back the following answers:
 
 [source]
 ----
---------
-$n | isa username "alice1925"
-$x | isa user, iid 0x1e00000000000000000003
---------
-$n | isa username "bob78"
-$x | isa user, iid 0x1e00000000000000000004
---------
-$n | isa username "candice001"
-$x | isa user, iid 0x1e00000000000000000005
---------
-$n | isa username "deltaonenine"
-$x | isa user, iid 0x1e00000000000000000006
---------
-$n | isa username "ecclestone"
-$x | isa user, iid 0x1e00000000000000000007
---------
-$n | isa username "fizzbuzz"
-$x | isa user, iid 0x1e00000000000000000008
---------
+include::./data.adoc[tag=match1_result]
 ----
 
 [NOTE]
@@ -369,10 +338,18 @@ We can make this more specific and interesting, for instance looking up the frie
 ----
 # tag::match2[]
 match
-$u isa user, has username "ecclestone";
+$user isa user, has username "echo";
 $other-friend isa user, has username $other-username;
-friendship ($u, $other-friend);
+friendship ($user, $other-friend);
 # end::match2[]
+
+# tag::match2_result[]
+---------------------
+$other-friend   | isa user, iid 0x1e00000000000000000006
+$other-username | isa username "delta"
+$user           | isa user, iid 0x1e00000000000000000007
+---------------------
+# end::match2_result[]
 ----
 ////
 [,typeql]
@@ -384,11 +361,7 @@ include::./data.adoc[tag=match2]
 Which returns:
 [source]
 ----
----------------------
-$other-friend   | isa user, iid 0x1e00000000000000000006
-$other-username | isa username "deltaonenine"
-$u              | isa user, iid 0x1e00000000000000000007
----------------------
+include::./data.adoc[tag=match2_result]
 ----
 
 We can `close` the transaction since we won't be using it anymore.
@@ -444,10 +417,10 @@ Console::
 ----
 # tag::match-insert1[]
 match
-$u0 isa user, has username "alice1925";
-$u1 isa user, has username "bob78";
+$x isa user, has username "alice";
+$y isa user, has username "bob";
 insert
-friendship (friend: $u0, friend: $u1), has start-date 2015-01-01T00:00:00;
+friendship (friend: $x, friend: $y), has start-date 2015-01-01T00:00:00;
 # end::match-insert1[]
 ----
 ////
@@ -470,6 +443,16 @@ all other operations require a `match` clause to find existing data to work with
 This applies to clauses like `delete` and `update` as well.
 
 You can read more about other clause types in the applicable xref:{page-version}@new_core_concepts::typeql/query-clauses.adoc[Concepts page].
+
+Here's the full set of queries you've used to write data into TypeDB:
+[,typeql]
+----
+#!test[write, db=get-started]
+include::./data.adoc[tag=successful-inserts]
+
+include::./data.adoc[tag=match-insert1]
+----
+
 
 Fantastic - we've covered the basics of TypeQL!
 You've seen how to manage databases and transactions, define schemas, and read and write data into TypeDB!

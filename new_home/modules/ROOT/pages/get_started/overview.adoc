@@ -1,12 +1,15 @@
 = Overview
 
-This section features a guide to getting started with TypeDB.
-It is intended to give a quick rundown of the main interactions you'll have with TypeDB.
+This section features a step-by-step guide to getting started with TypeDB using a simple social-network
+that includes people, friendships, employments, and organizations.
+
+It is intended to give a quick rundown of the main interactions you'll have with TypeDB,
+such as database management, schema definition, data loading, and composing multi-step queries.
 
 == Mini-guide
 
-The following steps serve both as an outline of the main steps of using TypeDB,
-and a quick outline of the main Get started guide.
+The following outline serves both as an example of the main things you'll do with TypeDB,
+and a quick outline of the following Get Started guide - if you just want to speed through right here you can, though we recommend following the full guide!
 
 . xref:{page-version}@new_home::get_started/setup.adoc[]
 .. Sign up & launch a free TypeDB instance on https://cloud.typedb.com[TypeDB Cloud account].
@@ -14,7 +17,7 @@ and a quick outline of the main Get started guide.
 
 . xref:{page-version}@new_home::get_started/schema.adoc[]
 .. Create a database called `get_started`.
-.. Execute the schema definition query
+.. Execute a query to create the social network schema using a schema transaction:
 +
 [,typeql]
 ----
@@ -22,9 +25,17 @@ include::{page-version}@new_home::get_started/schema.adoc[tag=full_define]
 ----
 
 . xref:{page-version}@new_home::get_started/data.adoc[]
+.. Run a series of pure inserts using a write transaction:
 +
-TODO
+[,typeql]
+----
+include::{page-version}@new_home::get_started/data.adoc[tag=successful-inserts]
+----
+.. Run a read-write query:
++
+[,typeql]
+----
+include::{page-version}@new_home::get_started/data.adoc[tag=match-insert1]
+----
 
-. xref:{page-version}@new_home::get_started/query-composition.adoc[]
-+
-Learn how to write aggregations, compose query pipelines, and create functions.
+. Use your loaded schema and data to write aggregation queries, compose query pipelines, and create functions in xref:{page-version}@new_home::get_started/query-composition.adoc[]

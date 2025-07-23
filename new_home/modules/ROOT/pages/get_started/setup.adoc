@@ -4,6 +4,8 @@
 :summary: Start running TypeDB and open TypeDB Studio
 :tabs-sync-option:
 
+First, set up a TypeDB Cloud instance and open TypeDB Studio (or Console if you prefer) to interact with TypeDB.
+
 [#create_cluster]
 == Create a free cluster
 

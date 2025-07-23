@@ -43,9 +43,7 @@ include::./query-composition.adoc[tag=reduce1]
 We see the following result:
 [source]
 ----
-------------
-$count | 5
-------------
+include::./query-composition.adoc[tag=reduce1_result]
 ----
 
 Notice that the user variable `$user` has been consumed by `reduce`, and a new variable `$count` has been created.
@@ -62,27 +60,7 @@ Returning:
 
 [source]
 ----
-------------------
-$num-friends | 1
-$user        | isa user, iid 0x1e00000000000000000004
-$username    | isa username "ecclestone"
-------------------
-$num-friends | 1
-$user        | isa user, iid 0x1e00000000000000000000
-$username    | isa username "alice1925"
-------------------
-$num-friends | 1
-$user        | isa user, iid 0x1e00000000000000000005
-$username    | isa username "fizzbuzz"
-------------------
-$num-friends | 2
-$user        | isa user, iid 0x1e00000000000000000003
-$username    | isa username "deltaonenine"
-------------------
-$num-friends | 1
-$user        | isa user, iid 0x1e00000000000000000001
-$username    | isa username "bob78"
-------------------
+include::./query-composition.adoc[tag=reduce2_result]
 ----
 
 Here we see the number of friends for each user, grouped by unique pairs of (user, username).
@@ -105,6 +83,12 @@ match
 $user isa user;
 reduce $count = count;
 # end::reduce1[]
+
+# tag::reduce1_result[]
+------------
+$count | 6
+------------
+# end::reduce1_result[]
 ----
 ////
 [,typeql]
@@ -116,9 +100,7 @@ include::./query-composition.adoc[tag=reduce1]
 We see the following result:
 [source]
 ----
-------------
-$count | 5
-------------
+include::./query-composition.adoc[tag=reduce1_result]
 ----
 
 Notice that the user variable `$user` has been consumed by `reduce`, and a new variable `$count` has been created.
@@ -134,6 +116,30 @@ $user isa user, has username $username;
 friendship ($user, $friend);
 reduce $num-friends = count groupby $user, $username;
 # end::reduce2[]
+
+tag::reduce2_result[]
+------------------------------
+$num-friends | 1
+$user        | isa user, iid 0x1e00000000000000000004
+$username    | isa username "echo"
+------------------
+$num-friends | 1
+$user        | isa user, iid 0x1e00000000000000000000
+$username    | isa username "alice"
+------------------
+$num-friends | 1
+$user        | isa user, iid 0x1e00000000000000000005
+$username    | isa username "fizzbuzz"
+------------------
+$num-friends | 2
+$user        | isa user, iid 0x1e00000000000000000003
+$username    | isa username "delta"
+------------------
+$num-friends | 1
+$user        | isa user, iid 0x1e00000000000000000001
+$username    | isa username "bob"
+------------------
+# end::reduce2_result[]
 ----
 ////
 [,typeql]
@@ -146,27 +152,7 @@ Returning:
 
 [source]
 ----
-------------------
-$num-friends | 1
-$user        | isa user, iid 0x1e00000000000000000004
-$username    | isa username "ecclestone"
-------------------
-$num-friends | 1
-$user        | isa user, iid 0x1e00000000000000000000
-$username    | isa username "alice1925"
-------------------
-$num-friends | 1
-$user        | isa user, iid 0x1e00000000000000000005
-$username    | isa username "fizzbuzz"
-------------------
-$num-friends | 2
-$user        | isa user, iid 0x1e00000000000000000003
-$username    | isa username "deltaonenine"
-------------------
-$num-friends | 1
-$user        | isa user, iid 0x1e00000000000000000001
-$username    | isa username "bob78"
-------------------
+include::./query-composition.adoc[tag=reduce2_result]
 ----
 
 Here we see the number of friends for each user, grouped by unique pairs of (user, username).
@@ -230,11 +216,7 @@ include::./query-composition.adoc[tag=pipeline1]
 Which returns:
 [source]
 ----
-------------------
-$num-friends | 2
-$user        | isa user, iid 0x1e00000000000000000006
-$username    | isa username deltaonenine
-------------------
+include::./query-composition.adoc[tag=pipeline1_result]
 ----
 
 With this query pipeline, we've identified the most popular user using a `match` clause, and the `reduce`, `sort`, and `limit` operators!
@@ -273,6 +255,14 @@ reduce $num-friends = count groupby $user, $username;
 sort $num-friends desc;
 limit 1;
 # end::pipeline1[]
+
+# tag::pipeline1_result[]
+------------------
+$num-friends | 2
+$user        | isa user, iid 0x1e00000000000000000006
+$username    | isa username delta
+------------------
+# end::pipeline1_result[]
 ----
 ////
 [,typeql]
@@ -283,11 +273,7 @@ include::./query-composition.adoc[tag=pipeline1]
 Which returns:
 [source]
 ----
-------------------
-$num-friends | 2
-$user        | isa user, iid 0x1e00000000000000000006
-$username    | isa username deltaonenine
-------------------
+include::./query-composition.adoc[tag=pipeline1_result]
 ----
 
 With this query pipeline, we've identified the most popular user using a `match` clause, and the `reduce`, `sort`, and `limit` operators!
@@ -295,8 +281,11 @@ With this query pipeline, we've identified the most popular user using a `match`
 --
 ====
 
-Next we need to find users that aren't friends with this user. 
-This requires another `match` clause, which can use answers provided by the previous stage:
+We'll first simplify a bit by eliminating the `num-friends` value from each answer to avoid confusion.
+This is achieved by using `select` to include only the `user` and `username` answers.
+
+Next we need to find users that aren't friends with this user.
+For this we'll use another `match` clause, which can use answers provided by the previous stage:
 
 [tabs]
 ====
@@ -316,17 +305,7 @@ include::./query-composition.adoc[tag=pipeline2]
 This returns:
 [source]
 ----
-------------------
-$num-friends | 2
-$other-user  | isa user, iid 0x1e00000000000000000001
-$user        | isa user, iid 0x1e00000000000000000006
-$username    | isa username deltaonenine
-------------------
-$num-friends | 2
-$other-user  | isa user, iid 0x1e00000000000000000002
-$user        | isa user, iid 0x1e00000000000000000006
-$username    | isa username deltaonenine
-------------------
+include::./query-composition.adoc[tag=pipeline2_result]
 ----
 
 At the end of this pipeline, we have a stream where each answer contains the most popular user and a different user who isn't friends with them yet.
@@ -350,12 +329,32 @@ reduce $num-friends = count groupby $user, $username;
 
 sort $num-friends desc;
 limit 1;
+select $user, $username;
 
 match
-$other-user isa user;
+$other-user isa user, has username $other-username;
 not { $user is $other-user; };
 not { friendship ($user, $other-user); };
 # end::pipeline2[]
+
+# tag::pipeline2_result[]
+---------------------
+$other-user     | isa user, iid 0x1e00000000000000000001
+$other-username | isa username "alice"
+$user           | isa user, iid 0x1e00000000000000000006
+$username       | isa username "delta"
+---------------------
+$other-user     | isa user, iid 0x1e00000000000000000002
+$other-username | isa username "bob"
+$user           | isa user, iid 0x1e00000000000000000006
+$username       | isa username "delta"
+---------------------
+$other-user     | isa user, iid 0x1e00000000000000000003
+$other-username | isa username "charlene"
+$user           | isa user, iid 0x1e00000000000000000006
+$username       | isa username "delta"
+---------------------
+# end::pipeline2_result[]
 ----
 ////
 [,typeql]
@@ -367,17 +366,7 @@ include::./query-composition.adoc[tag=pipeline2]
 This returns:
 [source]
 ----
-------------------
-$num-friends | 2
-$other-user  | isa user, iid 0x1e00000000000000000001
-$user        | isa user, iid 0x1e00000000000000000006
-$username    | isa username deltaonenine
-------------------
-$num-friends | 2
-$other-user  | isa user, iid 0x1e00000000000000000002
-$user        | isa user, iid 0x1e00000000000000000006
-$username    | isa username deltaonenine
-------------------
+include::./query-composition.adoc[tag=pipeline2_result]
 ----
 
 At the end of this pipeline, we have a stream where each answer contains the most popular user and a different user who isn't friends with them yet.
@@ -415,11 +404,13 @@ match
 $user isa user, has username $username;
 friendship ($user, $friend);
 reduce $num-friends = count groupby $user, $username;
+
 sort $num-friends desc;
 limit 1;
+select $user, $username;
 
 match
-$other-user isa user;
+$other-user isa user, has username $other-username;
 not { $user is $other-user; };
 not { friendship ($user, $other-user); };
 
@@ -528,6 +519,13 @@ include::./query-composition.adoc[tag=function_pipeline1]
 
 This query is now much shorter, since we've reused the logic from the function to find the most popular user!
 
+We correctly find every user is friends with the user `delta`:
+
+[source]
+-----
+include::./query-composition.adoc[tag=function_pipeline1_result]
+-----
+
 --
 Console::
 +
@@ -543,6 +541,35 @@ $other-user isa user, has username $username;
 not { $most-popular-user is $other-user; };
 friendship ($other-user, $most-popular-user);
 # end::function_pipeline1[]
+
+# tag::function_pipeline1_result[]
+----------------------------
+$most-popular-user     | isa user, iid 0x1e00000000000000000006
+$most-popular-username | isa username "deltaonenine"
+$other-user            | isa user, iid 0x1e00000000000000000007
+$username              | isa username "ecclestone"
+----------------------------
+$most-popular-user     | isa user, iid 0x1e00000000000000000006
+$most-popular-username | isa username "deltaonenine"
+$other-user            | isa user, iid 0x1e00000000000000000008
+$username              | isa username "fizzbuzz"
+----------------------------
+$most-popular-user     | isa user, iid 0x1e00000000000000000006
+$most-popular-username | isa username "deltaonenine"
+$other-user            | isa user, iid 0x1e00000000000000000001
+$username              | isa username "alice1925"
+----------------------------
+$most-popular-user     | isa user, iid 0x1e00000000000000000006
+$most-popular-username | isa username "deltaonenine"
+$other-user            | isa user, iid 0x1e00000000000000000002
+$username              | isa username "bob78"
+----------------------------
+$most-popular-user     | isa user, iid 0x1e00000000000000000006
+$most-popular-username | isa username "deltaonenine"
+$other-user            | isa user, iid 0x1e00000000000000000003
+$username              | isa username "candice001"
+----------------------------
+# end::function_pipeline1_result[]
 ----
 ////
 [,typeql]
@@ -553,12 +580,20 @@ include::./query-composition.adoc[tag=function_pipeline1]
 
 This query is now much shorter, since we've reused the logic from the function to find the most popular user!
 
+We correctly find every user is friends with the user `delta`:
+
+[source]
+-----
+include::./query-composition.adoc[tag=function_pipeline1_result]
+-----
+
 --
 ====
 
 Congratulations! You're now ready to write sophisticated, modular queries.
 
-One last topic: formatting TypeDB answers as JSON and incorporating additional data into JSON responses.
+We'll cover one last incredibly useful feature:
+formatting TypeDB answers as JSON and incorporating additional data into JSON responses.
 
 == Fetch
 
@@ -569,7 +604,6 @@ Fetch converts a standard TypeDB answer into a JSON document.
 You can use it to organize data into a specific structure, look up additional attributes, and even execute subqueries and nest their answers.
 
 The `fetch` clause structure is designed to look exactly like the JSON document it will return, let's take a look:
-
 
 [tabs]
 ====
@@ -590,30 +624,31 @@ This query now returns a sequence of JSON documents:
   "friends": [
     {
       "friend": "bob78"
+    },
+    {
+      "friend": "deltaonenine"
     }
   ],
   "username": "alice1925"
 }
-
 {
   "friends": [
     {
       "friend": "alice1925"
-    }
-  ],
-  "username": "bob78",
-}
-
-{
-  "friends": [
-    {
-      "friend": "ecclestone"
     },
     {
-      "friend": "fizzbuzz"
+      "friend": "deltaonenine"
     }
   ],
-  "username": "deltaonenine"
+  "username": "bob78"
+}
+{
+  "username": "candice001",
+  "friends": [
+    {
+      "friend": "deltaonenine"
+    }
+  ]
 }
 ----
 

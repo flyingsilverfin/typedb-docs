@@ -4,6 +4,8 @@
 :summary: Create a database and initialize the schema
 :tabs-sync-option:
 
+Now we'll use the previously created server to create a database and initialize the schema.
+
 [#create_database]
 == Database management 101
 
