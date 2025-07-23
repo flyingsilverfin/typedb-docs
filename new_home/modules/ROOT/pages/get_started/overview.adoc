@@ -1,7 +1,8 @@
 = Overview
 
 This section features a step-by-step guide to getting started with TypeDB using a simple social-network
-that includes people, friendships, employments, and organizations.
+that includes people, friendships, employments, and organizations. You won't need to install anything - 
+run TypeDB server in the cloud for free, and interact with it via the web-based TypeDB Studio
 
 It is intended to give a quick rundown of the main interactions you'll have with TypeDB,
 such as database management, schema definition, data loading, and composing multi-step queries.

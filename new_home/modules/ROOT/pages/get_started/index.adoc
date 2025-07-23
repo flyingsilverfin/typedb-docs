@@ -1,6 +1,6 @@
 = Get started
 
-Get up and running with TypeDB.
+Get up and running with TypeDB without installing a thing.
 
 [cols-2]
 --

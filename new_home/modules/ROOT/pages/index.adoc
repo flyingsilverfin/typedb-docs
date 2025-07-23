@@ -19,7 +19,7 @@ Discover the benefits and use cases for TypeDB.
 .xref:{page-version}@new_home::get_started/index.adoc[]
 [.clickable]
 ****
-Get up and running with TypeDB, from setup to queries.
+Get up and running with TypeDB, from setup to queries, without installing a thing.
 ****
 
 .xref:{page-version}@new_home::install/index.adoc[]
