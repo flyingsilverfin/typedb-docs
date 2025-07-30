@@ -1,0 +1,9 @@
+= Glossary
+
+This page lists out terms reused across pages in this section,
+and links to the heading where they are introduced.
+
+* xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-concept[Concept]: An umbrella term for a type, instance or value.
+* xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-concept[Constraint]: A
+* xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-pattern[Pattern]: A set of constraints describing the data to match or insert.
+* xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-constraint[Variable]: A placeholder for a concept in a pattern.

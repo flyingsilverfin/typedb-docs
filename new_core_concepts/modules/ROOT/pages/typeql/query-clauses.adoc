@@ -1,1 +1,42 @@
-= Query Clauses
+= Query Clauses & Pipelining
+
+In addition to the `match` clause for pattern matching, TypeQL has a number of other clauses
+supporting operations expected of a modern database - sorting, aggregation, offset & limit, etc.
+
+This page provides an overview of the available clauses before describing how they can be combined into a pipeline.
+
+== Query clauses
+Each query clause accepts a stream of answers (mappings of variables to concepts), and outputs a stream of answers.
+This section will focus on their behaviour in the context of a pipeline. Their behaviour
+
+=== match
+xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-match[Match clauses] read data by pattern-matching.
+
+=== insert
+xref:{page-version}@new_core_concepts::typeql/schema-vs-data.adoc#_inserting_data[Insert clauses]
+can create new concepts by themselves, but rely on preceding clauses
+for reading existing concepts to add new constraints to. An insert clause will execute & insert the specified pattern for *every* input row .
+It extends the row with the newly inserted concepts (if any).
+
+=== delete
+TODO: Move the longer explanation to schema-vs-data ideally.
+
+The data-deletion mechanism. Delete clauses cannot read data by themselves and
+are typically used with a match-clause to bind the concepts to delete (or to delete the constraints involving them)
+[,typeql]
+----
+match $x isa person, has name "John";
+delete $x;
+----
+[,typeql]
+----
+match $p isa person, has name $n; $n == "John";
+delete has $n of $p;
+----
+
+=== put
+A put clause
+
+== Query pipeline
+A pipeline is a number of query-clauses stacked end-to-end,
+with a stream of answers flowing through them.

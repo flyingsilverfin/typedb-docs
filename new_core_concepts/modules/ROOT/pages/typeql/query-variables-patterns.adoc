@@ -2,7 +2,7 @@
 
 TypeQL is a declarative language -
 Its focuses on describing the schema, data or query through *patterns* - rather than describing how to perform the query.
-A pattern is a conjunction of any number of:
+A [[definition-pattern]]*pattern* is a conjunction of any number of:
 
 * constraints
 * negated patterns
@@ -11,8 +11,8 @@ A pattern is a conjunction of any number of:
 
 
 == Constraints
-The unit of a pattern is a *constraint* between one or more *concepts*.
-A *concept* refers to either: A type, an instance of a type, or a value.
+The unit of a pattern is a [[definition-constraint]]*constraint* between one or more *concepts*.
+A [[definition-concept]]*concept* refers to either: A type, an instance of a type, or a value.
 
 Constraints can be written with the concepts specified, as we do when defining the schema:
 [,typeql]
@@ -24,13 +24,14 @@ define
     person owns name;   # 'person' instances can own 'name' instances
 ----
 
-Or the constraints may contain variables, as we do when querying the database:
+Or the constraints may contain [[definition-variable]]*variables* as placeholders for concepts,
+as we do when querying the database:
 [,typeql]
 ----
 match entity $e owns $a;
 ----
-A *match* query matches the pattern against the database.
-It returns an answer mapping variables to concepts for *each and every* match.
+A [[definition-match]]*match* query matches the pattern against the database.
+It returns an [[definition-answer]]*answer* mapping variables to concepts for [.underline]#each and every# match.
 Here, an answer maps `$e` to an entity-type, and `$a` to an attribute-type owned by that type.
 
 Since *instances* cannot be specified directly,
@@ -53,11 +54,6 @@ match
 Variables are also bound to concepts when they are inserted by an `isa` constraint.
 See xref:{page-version}@new_core_concepts::typeql/schema-vs-data.adoc[]
 ====
-
-=== Other constraints
-
-== Variable categories
-TODO
 
 
 == Disjunctions, negations & optionals
@@ -243,3 +239,37 @@ The query returns:
    -------------
 Finished. Total rows: 3
 ----
+
+== Reference
+* Constraints: xref:{page-version}@typeql::statements/index.adoc[typeql/statements]
+* Disjunctions, Negations, optionals: xref:{page-version}@typeql::statements/index.adoc[typeql/patterns]
+
+TODO: Decide if we want this section. I should probably introduce the ideas of type-inference.
+
+=== Variable categories
+Each constraint expects each of its concepts to be of a certain *category*.
+For example, `<left> owns <right>` expects `<left>` to be an entity-type or a relation-type,
+and the `<right>` to be an attribute-type.
+We
+
+[,typeql]
+----
+<EntityType> sub <EntityType>
+<RelationType> sub <RelationType>
+<AttributeType> sub <AttributeType>
+<EntityType|RelationType> owns <AttributeType>
+<RelationType> relates <RoleType>
+<EntityType|RelationType> plays <RoleType>
+<EntityType|RelationType|AttributeType> label <label>
+
+<Entity> isa <EntityType>
+<Relation> isa <RelationType>
+<Attribute> isa <AttributeType>
+<Entity|Relation> has <Attribute>
+<Relation> links (<RoleType>: <Entity|Relation>)
+
+<Attribute|Value> <COMPARATOR> <Attribute|Value>
+let <Value> = <Expression<Attribute|Value>>
+let <Instance|Value> in <FUNCTION>(<Instance|Value>, ...)
+----
+

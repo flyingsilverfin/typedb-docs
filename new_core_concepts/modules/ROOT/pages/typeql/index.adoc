@@ -1,5 +1,12 @@
 = TypeQL
 
+* TODO: How to use this chapter. Cover:
+  - we avoid being exhaustive to focus on the ideas
+  - Read the references at the end for a thorough overview.
+
+* TODO: Update the titles and description to reflect the final layout & contents.
+* TODO: Why do we have an index and an overview?
+
 Explore the TypeQL language and its core concepts.
 
 [cols-2]
