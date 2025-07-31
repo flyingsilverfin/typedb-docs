@@ -1,4 +1,0 @@
-= Web app
-
-[placeholder]
-A web application example powered by TypeDB. 
