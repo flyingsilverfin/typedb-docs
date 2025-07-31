@@ -12,19 +12,10 @@ A [[definition-pattern]]*pattern* is a conjunction of any number of:
 
 == Constraints
 The unit of a pattern is a [[definition-constraint]]*constraint* between one or more *concepts*.
-A [[definition-concept]]*concept* refers to either: A type, an instance of a type, or a value.
+A [[definition-concept]]*concept* is a type, an instance of a type, or a value.
 
-Constraints can be written with the concepts specified, as we do when defining the schema:
-[,typeql]
-----
-define
-    entity person;      # 'person' is an entity type.
-    attribute name;     # 'name' is an attribute type.
-    name value string;  # 'name' holds string values.
-    person owns name;   # 'person' instances can own 'name' instances
-----
 
-Or the constraints may contain [[definition-variable]]*variables* as placeholders for concepts,
+Or, we can use [[definition-variable]]*variables* as placeholders for concepts,
 as we do when querying the database:
 [,typeql]
 ----
@@ -32,10 +23,11 @@ match entity $e owns $a;
 ----
 A [[definition-match]]*match* query matches the pattern against the database.
 It returns an [[definition-answer]]*answer* mapping variables to concepts for [.underline]#each and every# match.
-Here, an answer maps `$e` to an entity-type, and `$a` to an attribute-type owned by that type.
+For the above query, each answer maps `$e` to an entity-type, and `$a` to an attribute-type owned by that type.
 
 Since *instances* cannot be specified directly,
-they must be specified by variables and bound via pattern-matching.
+constraints involving them always have variables which are then bound via pattern-matching.
+Attributes are easily bound through their type and value.
 [,typeql]
 ----
 match
@@ -55,8 +47,46 @@ Variables are also bound to concepts when they are inserted by an `isa` constrai
 See xref:{page-version}@new_core_concepts::typeql/schema-vs-data.adoc[]
 ====
 
+=== insert & define
+
+TypeQL uses the same patterns to describe the data being inserted as it does to query data.
+The difference is that a `match` clause matches the patterns against the database and binds the variables to the matching concepts,
+whereas an `insert` clause specifies the concepts to bind to the variables, and creates those patterns in the database.
+
+`define` clauses may not involve variables - all concepts in the constraints must be specified directly:
+[,typeql]
+----
+define
+    entity person;      # 'person' is an entity type.
+    attribute name;     # 'name' is an attribute type.
+    name value string;  # 'name' holds string values.
+    person owns name;   # 'person' instances can own 'name' instances
+----
+
+==  Variables
+Before we discuss combining constraints, we
 
 == Disjunctions, negations & optionals
+This section discusses the meaning of disjunctive, negated, and optional patterns.
+It also discusses visibility of variables present in each of these sub-patterns.
+It helps to start with a quick overview of variable visiblity rules:
+
+===
+Variable names are unique within a pipeline (except when `select` clauses are used)
+Conceptually
+
+Further, TypeDB requires that a
+
+
+[NOTE]
+====
+A `select` statement will free up all names except those of the selected variables.
+This is an exception to the uniqueness of variables roles within a pipeline.
+====
+
+* an answer only contains variables which are guaranteed to be bound by the query - i.e. present in ALL execution paths of the query.
+
+
 We use the following data as our running example:
 [,typeql]
 ----
@@ -78,12 +108,8 @@ insert
 Patterns can be combined in a disjunction using the `or` keyword.
 An answer to any pattern in the disjunction is an answer to the disjunction.
 
-Only variables that are present in every pattern in the disjunction,
-or are present outside the disjunction, are returned in the answer of the disjunction.
-
-Variables which are present in only some of the patterns AND not used outside the disjunction
-are considered "local" to the pattern, and are not returned.
-
+Variables which are present in only some of the branches of a disjunction
+(and not present outside the disjunction) are considered "local" to the pattern, and not included in the answer.
 
 ----
 match
@@ -124,8 +150,8 @@ TODO: Disjoint variable usage
 
 === Negations
 A pattern is negated by wrapping it in a `not` block.
-An answer satisfies the negation iff it cannot be an answer to the negated pattern.
-This resembles "negation as failure" idea from logic programming.
+An answer satisfies the negation iff it cannot be (part of) an answer to the negated pattern.
+This resembles the "negation as failure" idea from logic programming.
 
 Variables that are present only inside the negation are considered local to the negation.
 Any variable that is present both outside and inside the negation is considered input to the negation.
@@ -202,7 +228,7 @@ A variable that occurs only inside a `try` block is an optional variable.
 The other variables can be considered input to the pattern.
 
 If an optional pattern does match the data, it returns an answer per match.
-If it has no matches, it produces a single answer with every optional variable will be bound to `None`.
+If it has no matches, it produces a single answer with every optional variable bound to `None`.
 [,typeql]
 ----
 match

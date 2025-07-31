@@ -133,7 +133,7 @@ relation content-engagement @abstract,
 An attribute type inherits and implicitly specialises the interface of its supertype.
 ====
 
-// TODO:
+// TODO: delete this?
 // ==== Specialising interface implementations
 // When a type implements a specialisation of an interface, the inherited implementation (if any) is hidden.
 //
