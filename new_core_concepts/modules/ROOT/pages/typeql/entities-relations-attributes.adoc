@@ -123,7 +123,8 @@ define
 relation interaction @abstract,
     relates subject,
     relates content;
-relation content-engagement @abstract, sub interaction,
+relation content-engagement @abstract,
+    sub interaction,
     relates author as subject;
 ----
 
