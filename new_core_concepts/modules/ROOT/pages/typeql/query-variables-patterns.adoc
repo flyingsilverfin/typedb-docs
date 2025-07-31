@@ -1,7 +1,8 @@
 = Query Variables and Patterns
 
 TypeQL is a declarative language -
-Its focuses on describing the schema, data or query through *patterns* - rather than describing how to perform the query.
+Its focuses on describing the schema, data or query through *patterns*,
+rather than specifying how to perform the query.
 A [[definition-pattern]]*pattern* is a conjunction of any number of:
 
 * constraints
@@ -14,23 +15,34 @@ A [[definition-pattern]]*pattern* is a conjunction of any number of:
 The unit of a pattern is a [[definition-constraint]]*constraint* between one or more *concepts*.
 A [[definition-concept]]*concept* is a type, an instance of a type, or a value.
 
-
-Or, we can use [[definition-variable]]*variables* as placeholders for concepts,
-as we do when querying the database:
+The concepts can be specified directly, as we do when defining the schema:
 [,typeql]
 ----
-match entity $e owns $a;
+define
+    entity person;      # 'person' is an entity type.
+    attribute name;     # 'name' is an attribute type.
+    name value string;  # 'name' holds string values.
+    person owns name;   # 'person' instances can own 'name' instances
 ----
-A [[definition-match]]*match* query matches the pattern against the database.
-It returns an [[definition-answer]]*answer* mapping variables to concepts for [.underline]#each and every# match.
-For the above query, each answer maps `$e` to an entity-type, and `$a` to an attribute-type owned by that type.
+
+Or, we can use [[definition-variable]]*variables* as placeholders for concepts,
+and query the database for concepts which "match" the pattern.
+[,typeql]
+----
+match               # Find $e and $n such that:
+    entity $e;        # $e is an entity type.
+    attribute $n;     # $n is an attribute type.
+    $n value string;  # $n holds string values.
+    $e owns $n;       # $e instances can own instances of '$n'
+----
+
 
 Since *instances* cannot be specified directly,
 constraints involving them always have variables which are then bound via pattern-matching.
 Attributes are easily bound through their type and value.
 [,typeql]
 ----
-match
+match   # match $n, $p, $e to concepts such that:
   # $n is a 'name' with value "John"
   $n isa name; $n == "John";
 
@@ -41,26 +53,36 @@ match
   $e isa employment; $e links (employee: $p);
 ----
 
+== Pattern matching & inserts
+What does it mean for a pattern to "match" a database?
+A pattern is [[definition-match]]"*match*"ed against the database to find.
+It returns an [[definition-answer]]*answer* mapping variables to concepts for [.underline]#each and every# match.
+For the above query, each answer maps `$e` to an entity-type, and `$a` to an attribute-type owned by that type.
+
 [NOTE]
 ====
 Variables are also bound to concepts when they are inserted by an `isa` constraint.
 See xref:{page-version}@new_core_concepts::typeql/schema-vs-data.adoc[]
 ====
 
-=== insert & define
+=== Insert
 
 TypeQL uses the same patterns to describe the data being inserted as it does to query data.
 The difference is that a `match` clause matches the patterns against the database and binds the variables to the matching concepts,
 whereas an `insert` clause specifies the concepts to bind to the variables, and creates those patterns in the database.
 
-`define` clauses may not involve variables - all concepts in the constraints must be specified directly:
+Notice the above query & comments fit naturally:
 [,typeql]
 ----
-define
-    entity person;      # 'person' is an entity type.
-    attribute name;     # 'name' is an attribute type.
-    name value string;  # 'name' holds string values.
-    person owns name;   # 'person' instances can own 'name' instances
+insert # Insert the concepts $n, $p, $e such that:
+  # $n is a 'name' with value "John"
+  $n isa name; $n == "John";
+
+  # $p is a `person`, who has the attribute $n
+  $p isa person; $p has $n;
+
+  # $e is an 'employment', where '$p' plays the 'employee' role
+  $e isa employment; $e links (employee: $p);
 ----
 
 ==  Variables
