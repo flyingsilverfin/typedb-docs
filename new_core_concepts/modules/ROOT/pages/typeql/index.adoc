@@ -1,13 +1,8 @@
 = TypeQL
 
-* TODO: How to use this chapter. Cover:
-  - we avoid being exhaustive to focus on the ideas
-  - Read the references at the end for a thorough overview.
-
-* TODO: Update the titles and description to reflect the final layout & contents.
-* TODO: Why do we have an index and an overview?
-
-Explore the TypeQL language and its core concepts.
+This guide aims to develop an intuitive understanding of TypeQL.
+It provides an overview of the language, leaving the details to the TypeQL reference,
+with relevant sections linked at the end of each page.
 
 [cols-2]
 --
@@ -20,48 +15,52 @@ TypeQL overview.
 .xref:{page-version}@new_core_concepts::typeql/entities-relations-attributes.adoc[]
 [.clickable]
 ****
-The TypeQL data model using entities, relations, and attributes.
+A gentle introduction to the PERA data model - Entities, relations, attributes
+// TODO: Or: Introduces the TypeQL data model - entities, relations, and attributes -
+and what it means to "own" attributes, and "play" roles in relations
 ****
 
 .xref:{page-version}@new_core_concepts::typeql/constraining-data.adoc[]
 [.clickable]
 ****
-Constraining data using TypeQL.
+Covers advanced typing constraints available in TypeQL
+Cardinality constraints & restrictions on the values of attribute value
 ****
 
 .xref:{page-version}@new_core_concepts::typeql/schema-vs-data.adoc[]
 [.clickable]
 ****
-TypeQL schema vs data concepts.
+A schema is the blueprint of a database. How does TypeDB ensure the data conforms to it?
 ****
 
 .xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc[]
 [.clickable]
 ****
-TypeQL query variables and patterns.
+Builds up the syntax and semantics of the TypeQL language - from constraints & variables to patterns.
 ****
 
 .xref:{page-version}@new_core_concepts::typeql/query-clauses.adoc[]
 [.clickable]
 ****
-TypeQL query clauses.
+Shows how various TypeQL clauses can be chained to form complex query & data modification pipelines.
 ****
 
 .xref:{page-version}@new_core_concepts::typeql/query-chaining.adoc[]
 [.clickable]
 ****
-Chaining TypeQL query clauses and queries.
+(TODO: Combine with clauses)
+// Chaining TypeQL query clauses and queries.
 ****
 
 .xref:{page-version}@new_core_concepts::typeql/queries-as-functions.adoc[]
 [.clickable]
 ****
-TypeQL queries as functions.
+TypeQL functions bring the familiar abstraction from programming languages to databases
 ****
 
 .xref:{page-version}@new_core_concepts::typeql/best-practices.adoc[]
 [.clickable]
 ****
-Best practices for using TypeQL.
+Best practices to get the most out of TypeQL's expressivity and TypeDB's safety guarantees
 ****
 -- 
