@@ -15,8 +15,8 @@ entity person;
 ----
 
 === Relation
-Relations are types which define one-or-more associated "role" types.
-The relation "depends" on other types in the schema to "play" these roles.
+Relations are types which define one-or-more associated interface types called "role".
+The relation "depends" on other types in the schema to implement these interfaces by "playing" these roles.
 
 E.g. An `employment` relation exists to relate an `employer` to an `employee`.
 An `employment` instance cannot exist without the other instances which play these roles,
@@ -32,14 +32,22 @@ An instance of an attribute type is identified by its value.
 
 E.g. Any instance which has an age of 10 will refer to the same instance of the `age` attribute type.
 
+[NOTE]
+====
+An attribute declares an implicit ownership interface.
+A type can be defined to implement this interface using the `owns` keyword.
+====
+
 [,typeql]
 ----
-attribute age, value integer;`
+attribute age, value integer;
 ----
 
 == Owning attributes & playing roles
 
 Entity & relation types may be defined to "own" attribute types.
+Unlike attributes, which are identified by their values - there is no direct way to reference an entity.
+Hence, entities (or relations) are referenced through their attributes.
 
 E.g. A `person` may own an attribute `birth-date`, or an `employment` may own a `start-date`;
 [,typeql]
@@ -58,10 +66,12 @@ company plays employment:employer;
 
 == Polymorphism
 
-Polymorphism in TypeDB comes is realised in two ways:
+Polymorphism in TypeDB is realised in two ways:
 
 === Interfaces
-Multiple types may "implement" the same interface. In the following schema snippet, the `employer` role in the `employment` relation can be played by a `company` or an `charity`.
+Multiple types may "implement" the same interface - i.e. play the same role, or own the same attribute.
+
+In the following schema snippet, the `employer` role in the `employment` relation can be played by a `company` or an `charity`.
 
 [,typeql]
 ----
@@ -79,11 +89,6 @@ define
 Here, the role `employer` is the interface declared by the `employment` type. The `company` and `charity` types implement the interface.
 The `relates` keyword is used to define the new role-type interface.
 The `plays` keyword is used to implement a role-type interface.
-
-[NOTE]
-====
-Attribute types always declare an implicit interface. A type can be defined to implement this interface using the `owns` keyword.
-====
 
 === Subtyping
 TypeDB follows a single-inheritance *subtyping* system which allows types to specialize an existing type.
