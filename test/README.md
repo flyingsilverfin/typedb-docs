@@ -80,24 +80,24 @@ See examples in `./tests/` for how to write testable examples in `.adoc` files.
 
 ## Running tests
 
-### Multi-file run
+### Directory run
 
 ```bash
-python -m code_test.main <lang>     
+python -m test.main <lang> <directory>
 ```
 
 ### Single file run
 
 ```bash
-python -m code_test.main <lang> <file-name>    
+python -m test.main <lang> <file>    
 ```
 
 ## Development
 
 ### Type checking
 
-Type check with `mypy code_test/main.py` (need to install `mypy`)
+Type check with `mypy test/main.py` (need to install `mypy`)
 
 ### Modules
 
-The folder name (`code_test`) is the python module's name, so renaming the folder requires renaming `import` statements in the code as well (IntelliJ's refactoring might be able to handle it).
+The folder name (`test`) is the python module's name, so renaming the folder requires renaming `import` statements in the code as well (IntelliJ's refactoring might be able to handle it).
