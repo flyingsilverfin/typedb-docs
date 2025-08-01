@@ -22,7 +22,7 @@ person owns email @card(0..);
 ----
 
 === Cardinality constraints on specialisation
-Cardinality constraints declared on an interface applies to all instances of that interface (including specialisations).
+Cardinality constraints declared on a connection apply to all instances of that connection (including specialisations).
 e.g.
 [,typeql]
 ----

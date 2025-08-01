@@ -4,11 +4,13 @@ This guide aims to develop an intuitive understanding of TypeQL.
 It provides an overview of the language, leaving the details to the TypeQL reference,
 with relevant sections linked at the end of each page.
 
+
 [cols-2]
 --
 .xref:{page-version}@new_core_concepts::typeql/overview.adoc[]
 [.clickable]
 ****
+// TODO: Hands off  goes in here?
 TypeQL overview.
 ****
 
@@ -63,4 +65,11 @@ TypeQL functions bring the familiar abstraction from programming languages to da
 ****
 Best practices to get the most out of TypeQL's expressivity and TypeDB's safety guarantees
 ****
--- 
+--
+
+.xref:{page-version}@new_core_concepts::typeql/glossary.adoc[]
+[.clickable]
+****
+Short definitions of terms used throughout the guide, with links to the section which introduces them.
+****
+--

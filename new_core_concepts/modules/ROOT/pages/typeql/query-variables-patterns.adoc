@@ -15,7 +15,7 @@ A [[definition-pattern]]*pattern* is a conjunction of any number of:
 The unit of a pattern is a [[definition-constraint]]*constraint* between one or more *concepts*.
 A [[definition-concept]]*concept* is a type, an instance of a type, or a value.
 
-The concepts can be specified directly, as we do when defining the schema:
+The concepts in a constraint can be specified directly, as we do when defining the schema:
 [,typeql]
 ----
 define
@@ -39,7 +39,7 @@ match               # Find $e and $n such that:
 
 Since *instances* cannot be specified directly,
 constraints involving them always have variables which are then bound via pattern-matching.
-Attributes are easily bound through their type and value.
+Attributes are easily specified through constraints on their type and value.
 [,typeql]
 ----
 match   # match $n, $p, $e to concepts such that:
@@ -54,16 +54,20 @@ match   # match $n, $p, $e to concepts such that:
 ----
 
 == Pattern matching & inserts
-What does it mean for a pattern to "match" a database?
-A pattern is [[definition-match]]"*match*"ed against the database to find.
-It returns an [[definition-answer]]*answer* mapping variables to concepts for [.underline]#each and every# match.
-For the above query, each answer maps `$e` to an entity-type, and `$a` to an attribute-type owned by that type.
+What does it mean to [[definition-match]]"*match*" a pattern?
+A simple pattern is a conjunction of constraints, usually involving variables.
+Put simply, a pattern is satisfied if each variable can be mapped to some concept
+so every constraint holds true in the database.
 
-[NOTE]
-====
-Variables are also bound to concepts when they are inserted by an `isa` constraint.
-See xref:{page-version}@new_core_concepts::typeql/schema-vs-data.adoc[]
-====
+Each such mapping from variables to concepts is an [[definition-answer]]*answer* to the pattern.
+For the query above, each answer maps `$e` to an entity-type, and `$a` to an attribute-type owned by that type.
+TypeDB will return all such mappings which satisfy the pattern.
+
+// TODO: Do we want to break it down like this:
+//  * All constraints on or between types are satisfied
+//  * Each instance (& link) satisfies the typing constraints on it.
+//  * Every instance, attribute ownership and relation-player link is in the database.
+
 
 === Insert
 
@@ -85,19 +89,24 @@ insert # Insert the concepts $n, $p, $e such that:
   $e isa employment; $e links (employee: $p);
 ----
 
+[NOTE]
+====
+Variables are also bound to concepts when they are inserted by an `isa` constraint.
+See xref:{page-version}@new_core_concepts::typeql/schema-vs-data.adoc[]
+====
+
 ==  Variables
-Before we discuss combining constraints, we
+Before we discuss combining constraints, we need a quick overview of the current variable visibility rules:
+
+Variable names are unique within a pipeline (except when `select` clauses are used).
+Conceptually an answer  is in
+
+Further, TypeDB requires that a
+
 
 == Disjunctions, negations & optionals
 This section discusses the meaning of disjunctive, negated, and optional patterns.
 It also discusses visibility of variables present in each of these sub-patterns.
-It helps to start with a quick overview of variable visiblity rules:
-
-===
-Variable names are unique within a pipeline (except when `select` clauses are used)
-Conceptually
-
-Further, TypeDB requires that a
 
 
 [NOTE]

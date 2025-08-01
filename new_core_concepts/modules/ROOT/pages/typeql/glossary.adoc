@@ -3,7 +3,10 @@
 This page lists out terms reused across pages in this section,
 and links to the heading where they are introduced.
 
-* xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-concept[Concept]: An umbrella term for a type, instance or value.
-* xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-concept[Constraint]: A
+* xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-concept[Concept]: An umbrella term for a type, an instance of a type or value.
+* xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-concept[Constraint]: An atomic sentence of the TypeQL language. Broadly, there are two kinds of constraints
+- The schema is a collection of "constraints" on and between types - E.g.: what types (and/or range) of values can a certain attribute type hold? What attributes can an entity/relation own, and what roles can it play?
+- The pattern in a match clause consists of "constraints" between variables that the concepts matched must satisfy.
 * xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-pattern[Pattern]: A set of constraints describing the data to match or insert.
+* TODO: specialisation
 * xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-constraint[Variable]: A placeholder for a concept in a pattern.
