@@ -2,11 +2,10 @@
 
 As seen in the xref:{page-version}@new_core_concepts::typeql/entities-relations-attributes.adoc[] page, a TypeDB schema defines
 a hierarchy of types, their associated interfaces and interfaces they implement.
-TypeDB guarantees semantic integrity by ensuring the data conforms to the schema through type-checking and validation on writes.
 
-====
-TODO: Highlight the difference between types & instances
-====
+__Data__ is created by instantiating types from the schema. As a result, it's impossible to create data not conforming to the types declared to the schema. Connections made between instances are also checked against the `owns`, `plays`, and `relates` in the schema to ensure it conforms to the permitted expressions of data.
+
+As a result, TypeDB always guarantees semantic integrity of the database through type-checking and validation of data against the schema during writes.
 
 == Inserting data
 The TypeQL `insert` clause is used to insert new instances, the attributes owned by these instances, and the relations linking them.
@@ -18,9 +17,9 @@ To insert an attribute, its value must also be specified.
 [,typeql]
 ----
 insert
-    $person isa person;
-    $employment isa employment;
-    $age isa age 10;
+  $person isa person;
+  $employment isa employment;
+  $age isa age 10;
 ----
 
 Inserting a new instance will fail if the type is abstract. In the case of attributes,
@@ -36,9 +35,9 @@ An ownership between an entity (or relation) and an attribute is inserted using 
 [,typeql]
 ----
 insert
-    $person isa person;
-    $age isa age 10;
-    $person has $age;
+  $person isa person;
+  $age isa age 10;
+  $person has $age;
 ----
 
 Or in one line:
@@ -63,20 +62,28 @@ these links between the relation are role-players are typically inserted along w
 [,typeql]
 ----
 insert
-    $company isa company;
-    $person isa person;
-    $employment isa employment;
-    $employment links (employer: $company);
-    $employment links (person: $person);
+  $company isa company;
+  $person isa person;
+  $employment isa employment;
+  $employment links (employer: $company);
+  $employment links (person: $person);
 ----
 
 The `isa` and `links` can be written together:
 [,typeql]
 ----
 insert
-    ...
-    $employment isa employment,
-        links (employer: $company, employee: $person);
+  # ...
+  $employment isa employment,
+    links (employer: $company, employee: $person);
+----
+
+There's an even shorter version if you prefer:
+[,typeq]
+----
+insert
+  # ...
+  $employment isa employment (employer: $company, employee: $person);
 ----
 
 Inserting `$employment links (employer: $company)` succeeds only if
