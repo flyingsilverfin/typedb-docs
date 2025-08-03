@@ -12,3 +12,7 @@
 * xref:{page-version}@new_reference::cloud-http-api.adoc[]
 
 include::{page-version}@new_reference::partial$typeql/nav.adoc[]
+
+* xref:{page-version}@new_reference::typedb-2-vs-3/index.adoc[]
+** xref:{page-version}@new_reference::typedb-2-vs-3/diff.adoc[]
+** xref:{page-version}@new_reference::typedb-2-vs-3/process.adoc[]

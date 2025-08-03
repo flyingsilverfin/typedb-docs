@@ -33,4 +33,10 @@ HTTP API reference for TypeDB Cloud.
 ****
 Complete TypeQL language reference.
 ****
--- 
+
+.xref:{page-version}@new_reference::typedb-2-vs-3/index.adoc[]
+[.clickable]
+****
+Comparison and migration from TypeDB 2.x to 3.x.
+****
+--

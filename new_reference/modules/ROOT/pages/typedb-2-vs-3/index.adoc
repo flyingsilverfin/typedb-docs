@@ -1,0 +1,20 @@
+= TypeDB 2.x vs TypeDB 3.x
+
+TypeDB 3.x is a major leap forward, offering significantly improved performance and introducing a wide range of changes across almost every aspect of the database.
+
+These pages outline the key changes and upgrade instructions to make your migration from an older version of TypeDB as smooth as possible.
+
+[cols-2]
+--
+.xref:{page-version}@new_reference::typedb-2-vs-3/diff.adoc[]
+[.clickable]
+****
+Explore main changes between the two major versions of TypeDB.
+****
+
+.xref:{page-version}@new_reference::typedb-2-vs-3/process.adoc[]
+[.clickable]
+****
+Upgrade TypeDB 2.x to TypeDB 3.x following a step-by-step guide.
+****
+--

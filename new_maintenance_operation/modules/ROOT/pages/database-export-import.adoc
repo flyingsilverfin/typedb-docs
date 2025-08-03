@@ -10,7 +10,7 @@ Exported binary data is designed to be identical across any version of TypeDB. T
 ====
 This feature is introduced in TypeDB 3.4.0. If you want to export or import a database from earlier versions of TypeDB 3.x, simply update your server and client and follow this manual.
 
-You can import your databases exported from TypeDB 2.x following xref:{page-version}@manual::migration/2_to_3/process.adoc[this guide].
+You can import your databases exported from TypeDB 2.x following xref:{page-version}@new_reference::typedb-2-vs-3/process.adoc[this guide].
 ====
 
 == Understanding export and import
@@ -22,7 +22,7 @@ TypeDB database can be represented as two files:
 2. A binary file with its data.
 
 An exported database can be imported into another version of TypeDB using these two files.
-This is the best tool you can use to migrate a database between two incompatible versions of TypeDB (e.g., a migration xref:{page-version}@manual::migration/2_to_3/process.adoc[from TypeDB 2.x to TypeDB 3.x]).
+This is the best tool you can use to migrate a database between two incompatible versions of TypeDB (e.g., a migration xref:{page-version}@new_reference::typedb-2-vs-3/process.adoc[from TypeDB 2.x to TypeDB 3.x]).
 
 Both operations are performed through the network, but the server and the client can be used on the same host.
 
@@ -96,6 +96,6 @@ Follow this checklist if any errors occur:
 * Ensure that you use xref:{page-version}@new_tools::console.adoc#version-compatibility[compatible] TypeDB Server and TypeDB Console.
 * Ensure that the correct file paths were specified for the operations.
 * If you import a TypeDB 2.x database, some errors may be expected.
-Check out xref:{page-version}@manual::migration/2_to_3/process.adoc[this page] for a detailed guide.
+Check out xref:{page-version}@new_reference::typedb-2-vs-3/process.adoc[this page] for a detailed guide.
 
 If any errors persist, please join one of our communities and ask for assistance.
