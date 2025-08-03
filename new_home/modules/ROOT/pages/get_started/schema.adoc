@@ -9,7 +9,21 @@
 
 In the previous section we've created our TypeDB server instance and connected TypeDB Studio (or Console).
 
-Now we'll use the server to create a database and initialize the schema.
+Now we'll use the server to create a database and initialize the schema. A TypeDB schema defines what data is permitted to be written to your database. Schemas are one of the key aspects of TypeDB: they allow the database to validate inserted data, check queries for validity, and perform query optimization. TypeDB's schemas are intuitive and built with higher-level building blocks compared to relational, document, or graph databases.
+
+== TypeDB's data model at a glance
+
+Let's have a quick look at TypeDB's data model. In TypeDB, data is stored in *types*, which can be either:
+
+* *entity* types (e.g., a type of all the ``user``'s in your app)
+* *relation* types (e.g., all the ``friendship``'s of users)
+* *attribute* types (e.g., the ``username``'s of ``user``'s, or the ``start_date``'s of ``friendship``'s)
+
+Stored data objects are called *instances* of types, and instances may connect to other instances. This simple mechanism of "`connecting`" underpins the distinction of entity, relation, and attribute types above.
+
+For example, to create a relation instance we must reference multiple other entities or relations, which we call the relation's *role players*. Similarly, to create attribute instance we will reference a single entity or relation instances, which we call the attribute's *owner*. Makes sense, right?
+
+TypeDB's data model is conceptually simple, but at the same time extremely systematic and flexible. This is what enables TypeDB's type system to unify concepts from relational, document, and graph DBMSs, and blend them with ideas from modern strongly typed programming languages.
 
 [#create_database]
 == Database management 101
@@ -116,29 +130,13 @@ Finally, commit the transaction by typing:
 commit
 ----
 
-Alternatively, you could use the command `close` to discard your changes and close the transaction.
---
-====
-
 [NOTE]
-====
+=====
 A quick *tip* if you are using Console for this course. Queries on this page can be turned into runnable *Console scripts* by clicking the "`hidden lines`" button (image:{page-version}@new_home::/svg/eye.svg[width=24]).
 These scripts can then be *pasted* directly into the server-level interface of Console, and run end-to-end simply by pressing kbd[Enter].
+=====
+--
 ====
-
-== TypeDB's data model at a glance
-
-Before we continue creating the database schema, let's have a quick look at TypeDB's data model. In TypeDB, data is stored in *types*, which can be either:
-
-* *entity* types (e.g., a type of all the ``user``'s in your app)
-* *relation* types (e.g., all the ``friendship``'s of users)
-* *attribute* types (e.g., the ``username``'s of ``user``'s, or the ``start_date``'s of ``friendship``'s)
-
-Stored data objects are called *instances* of types, and instances may reference other instances. This simple mechanism of "`referencing`" underpins the distinction of entity, relation, and attribute types above.
-
-For example, to create a relation instance we must reference multiple other entities or relations, which we call the relation's *role players*. Similarly, to create attribute instance we will reference a single entity or relation instances, which we call the attribute's *owner*. Makes sense, right?
-
-TypeDB's data model is conceptually simple, but at the same time extremely systematic and flexible. This is what enables TypeDB's type system to unify concepts from *relational*, *document*, and *graph* DBMSs, and blend them with a modern typed programming paradigm.
 
 == Defining your schema
 
@@ -201,10 +199,10 @@ Finally, commit the transaction by typing `commit` and press kbd[Enter]. You hav
 
 Let us dissect the second query in a bit more detail.
 
-* In the first line of the query we introduce the relation type `friendship` with a `friend` *role* (in _programmer lingo_: think of a role as a *trait* that other types can implement). In the same line, we also declare that each friendship requires _exactly two friends_ when created (`card` is short for "`cardinality`", and is a first example of an *annotation*. Annotations make schema statements much more specific - but more on that in a moment).
-* In the second line, we then define that users *can play* the role of friends in friendships (in _programmer lingo_: the type `user` *implements* the "`friend-role`" trait).
+* In the first line of the query we introduce the relation type `friendship` with a `friend` *role* (in _programmer lingo_: think of a role as a *interface* that other types can implement). In the same line, we also declare that each friendship requires _exactly two friends_ when created (`card` is short for "`cardinality`", and is a first example of an *annotation*. Annotations make schema statements much more specific - but more on that in a moment).
+* In the second line, we then define that users *can play* the role of friends in friendships (in _programmer lingo_: the type `user` *implements* the "`friend-role`" interface).
 
-It's worth pointing out that roles are only one of two kinds of traits that types may implement, the other being *ownership*: for example, in our first query above we defined that the `user` type "`implements the username owner trait`". These traits make our life very easy as we'll see, especially when dealing with type hierarchies!
+It's worth pointing out that roles are only one of two kinds of interfaces that types may implement, the other being *ownership*: for example, in our first query above we defined that the `user` type "`implements the username owner interface`". These interfaces make our life very easy as we'll see, especially when dealing with type hierarchies!
 
 Let's write a few more definition queries to get a feel of database schemas in TypeDB.
 
@@ -224,7 +222,7 @@ For example:
 include::./schema.adoc[tag=define3]
 ----
 
-This defines a `start-date` attribute and then declares each friendship may own a `start_date` (i.e., the type `friendship` implements the "`start-date owner`" trait). The definition is followed by a `@card` annotation, which specifies that friendships own _between_ zero or one start dates. In fact, this is the default cardinality, so you don't actually need `@card` here at all.
+This defines a `start-date` attribute and then declares each friendship may own a `start_date` (i.e., the type `friendship` implements the "`start-date owner`" interface). The definition is followed by a `@card` annotation, which specifies that friendships own _between_ zero or one start dates. In fact, this is the default cardinality, so you don't actually need `@card` here at all.
 
 The next query illustrates usage of "`unbounded`" cardinality together with another useful annotation, `@key`. This specifies that the `username` of a `user` should uniquely identify a user, i.e., it is a _key attribute_.
 
@@ -233,7 +231,7 @@ The next query illustrates usage of "`unbounded`" cardinality together with anot
 include::./schema.adoc[tag=define4]
 ----
 
-Importantly, different types may own the same attributes; and, similarly, different types may play the same role of a relation type. This flexibility of connecting types is a central feature of data modeling with TypeDB. Run the next query to define an `organization` type which shares many of the traits of `user`:
+Importantly, different types may own the same attributes; and, similarly, different types may play the same role of a relation type. This flexibility of connecting types is a central feature of data modeling with TypeDB. Run the next query to define an `organization` type which shares many of the interfaces of `user`:
 
 [,typeql]
 ----
@@ -268,7 +266,7 @@ friendship owns start-date @card(0..1);
 include::./schema.adoc[tag=define3]
 ----
 
-This defines a `start-date` attribute and then declares each friendship may own a `start_date` (i.e., the type `friendship` implements the "`start-date owner`" trait). The definition is followed by a `@card` annotation, which specifies that friendships own _between_ zero or one start dates. In fact, this is the default cardinality, so you don't actually need `@card` here at all.
+This defines a `start-date` attribute and then declares each friendship may own a `start_date` (i.e., the type `friendship` implements the "`start-date owner`" interface). The definition is followed by a `@card` annotation, which specifies that friendships own _between_ zero or one start dates. In fact, this is the default cardinality, so you don't actually need `@card` here at all.
 
 The next query illustrates usage of "`unbounded`" cardinality together with another useful annotation, `@key`. This specifies that the `username` of a `user` should uniquely identify a user, i.e., it is a _key attribute_.
 
@@ -289,7 +287,7 @@ user owns username @key;
 include::./schema.adoc[tag=define4]
 ----
 
-Importantly, different types may own the same attributes; and, similarly, different types may play the same role of a relation type. This flexibility of connecting types is a central feature of data modeling with TypeDB. Run the next query to define an `organization` type which shares many of the traits of `user`:
+Importantly, different types may own the same attributes; and, similarly, different types may play the same role of a relation type. This flexibility of connecting types is a central feature of data modeling with TypeDB. Run the next query to define an `organization` type which shares many of the interfaces of `user`:
 
 ////
 [,typeql]
@@ -325,14 +323,14 @@ Let's define two types that specialize our earlier `organization` type: namely, 
 ----
 include::./schema.adoc[tag=define6]
 ----
-Note that we haven't defined any traits for companies and universities; indeed, all traits of the supertype `organization` are automatically *inherited*! That doesn't stop from defining new traits for our subtypes, of course:
+Note that we haven't defined any interfaces for companies and universities; indeed, all interfaces of the supertype `organization` are automatically *inherited*! That doesn't stop from defining new interfaces for our subtypes, of course:
 
 [,typeql]
 ----
 include::./schema.adoc[tag=define7]
 ----
 
-Of course, you would be able to give the new subtypes additional traits that are not inherited from the supertype as well!
+Of course, you would be able to give the new subtypes additional interfaces that are not inherited from the supertype as well!
 
 --
 
@@ -355,7 +353,7 @@ entity university sub organization;
 #!test[schema]
 include::./schema.adoc[tag=define6]
 ----
-Note that we haven't defined any traits for companies and universities; indeed, all traits of the supertype `organization` are automatically *inherited*! That doesn't stop from defining new traits for our subtypes, of course:
+Note that we haven't defined any interfaces for companies and universities; indeed, all interfaces of the supertype `organization` are automatically *inherited*! That doesn't stop from defining new interfaces for our subtypes, of course:
 ////
 [,typeql]
 ----
@@ -374,7 +372,7 @@ user plays enrolment:student;
 include::./schema.adoc[tag=define7]
 ----
 
-Of course, you would be able to give the new subtypes additional traits that are not inherited from the supertype as well!
+Of course, you would be able to give the new subtypes additional interfaces that are not inherited from the supertype as well!
 
 Don't forget to commit the transaction by typing `commit` and pressing kbd[Enter].
 
@@ -383,8 +381,7 @@ Don't forget to commit the transaction by typing `commit` and pressing kbd[Enter
 
 TypeDB's type system re-thinks data models from first principles: it modularizes schemas into their "atomic" components. For example, you can add or remove roles and ownerships at any point in time, or edit specific annotations.
 This makes it easy to migrate and combine data, and programmatically re-structure your database if necessary.
-There is much more to explore. You can check out the xref:{page-version}@new_core_concepts::typeql/index.adoc[TypeQL Concepts] section for specific details,
-but in the meantime let's summarize!
+There is much more to explore. You can check out the xref:{page-version}@new_core_concepts::typeql/index.adoc[TypeQL Concepts] section for specific details.
 
 Here's your entire schema so you can see it in one go:
 
