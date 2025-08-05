@@ -4,7 +4,7 @@ Welcome to the world of TypeDB, a new kind of database designed to help you mode
 
 TypeDB is a **strongly-typed, polymorphic, and general-purpose transactional database**. We'll explain what that means in a bit!
 
-It's well-suited for agentic AI systems and applications that require a deep understanding of rich, interconnected data and built-in guardrails.
+It is well-suited for agentic AI systems and applications that require a deep understanding of rich, interconnected data and built-in guardrails.
 TypeDB is also excellent for cybersecurity, financial services, supply chain management, research, and other domains with complex data.
 
 TypeDB ships with its own query language, **TypeQL**, which allows you to define sophisticated data models and write simple yet highly expressive queries.

@@ -16,7 +16,7 @@ Addressing setup issues.
 .xref:{page-version}@maintenance_operation::troubleshooting/connection.adoc[]
 [.clickable]
 ****
-Resolve connection issues.
+Resolving connection issues.
 ****
 
 .xref:{page-version}@maintenance_operation::troubleshooting/stopping-queries.adoc[]

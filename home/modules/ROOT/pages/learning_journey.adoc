@@ -3,9 +3,9 @@
 Welcome to our guide on how to best leverage these docs for learning TypeDB and TypeQL. 
 It is designed to take you from being a beginner to an advanced user through a structured learning journey.
 
-But don't feel the need to stick to our flow! 
+But do not feel the need to stick to our flow! 
 Jump between sections based on your immediate needs and come back to fill in gaps as you grow more experienced with TypeDB.
-Most pages in this documentation can be used with few pre-requisites and should be easy to understand independently.
+Most pages in this documentation can be used with few prerequisites and should be easy to understand independently.
 
 == Step 1: TypeDB basics
 
@@ -16,7 +16,7 @@ Most pages in this documentation can be used with few pre-requisites and should 
 
 Choose your installation method based on your needs at the xref:{page-version}@home::install/index.adoc[Install page].
 
-You might also want to pop into the xref:{page-version}@tools::index.adoc[Tools] to read a bit more about TypeDB Studio and Console.
+You might also want to pop into the xref:{page-version}@tools::index.adoc[Tools] section to read a bit more about TypeDB Studio and Console.
 
 == Step 3: Get started guide
 
@@ -30,7 +30,7 @@ Explore some pre-built xref:{page-version}@examples::index.adoc[examples].
 These include simple end-to-end examples of a traditional frontend & backend & database, a web app & database stack,
 and also specific TypeDB schemas and queries applied to industry use-cases.
 
-As you go through those examples we recommend having the Core Concepts open (see next section).
+As you go through those examples, we recommend having the Core Concepts open (see next section).
 
 Some developers like to start with Concepts first, then look at examples, in which case
 skip to the next section and come back to the examples afterward!
@@ -84,6 +84,6 @@ For example, you might want to integrate TypeDB Cloud into your deployment pipel
 == Tips
 
 * **Start Small**: Begin with the get-started guide to see immediate results
-* **Join the Community**: Engage with other TypeDB users for support and insights on https://discord.com/invite/typedb[our Discord server]. We're very active and welcoming to new members and love to hear about your project!
-* **Contribute**: If you see any issues, or have ideas for how TypeDB can be even better, feel free to reach out or file an issue on https://github.com/typedb/typedb[Github]
+* **Join the Community**: Engage with other TypeDB users for support and insights on https://discord.com/invite/typedb[our Discord server]. We're very active and welcoming to new members and love to hear about your projects!
+* **Contribute**: If you see any issues, or have ideas for how TypeDB can be even better, feel free to reach out or file an issue on https://github.com/typedb/typedb[GitHub]
 

@@ -4,17 +4,17 @@
 :keywords: start, learn, typedb, typeql, cloud, tutorial, quickstart, get-started, console, studio, database, create, insert, query, overview
 :test-typeql: linear
 
-This section features a step-by-step guide to getting started with TypeDB using a simple social-network
-that includes people, friendships, employments, and organizations. You won't need to install anything - 
-run TypeDB server in the cloud for free, and interact with it via the web-based TypeDB Studio
+This section features a step-by-step guide to getting started with TypeDB using a simple social network
+that includes people, friendships, employments, and organizations. You will not need to install anything - 
+run TypeDB server in the cloud for free, and interact with it via the web-based TypeDB Studio.
 
 It is intended to give a quick rundown of the main interactions you'll have with TypeDB,
 such as database management, schema definition, data loading, and composing multi-step queries.
 
 == Mini-guide
 
-The following outline serves both as an example of the main things you'll do with TypeDB,
-and a quick outline of the following Get Started guide - if you just want to speed through right here you can, though we recommend following the full guide!
+The following outline serves both as an example of the main things you'll do with TypeDB
+and a quick outline of the following Get Started guide - if you just want to speed through right here, you can, though we recommend following the full guide!
 
 . xref:{page-version}@home::get_started/setup.adoc[]
 .. Sign up & launch a free TypeDB instance on https://cloud.typedb.com[TypeDB Cloud account,window=_blank].

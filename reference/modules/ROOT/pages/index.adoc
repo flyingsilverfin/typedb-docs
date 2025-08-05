@@ -7,7 +7,7 @@ Complete reference documentation.
 .xref:{page-version}@reference::typedb-grpc-drivers/index.adoc[]
 [.clickable]
 ****
-GRPC drivers for TypeDB server.
+gRPC drivers for TypeDB server.
 ****
 
 .xref:{page-version}@reference::typedb-http-api.adoc[]
