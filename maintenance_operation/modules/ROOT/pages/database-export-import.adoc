@@ -27,7 +27,7 @@ This is the best tool you can use to migrate a database between two incompatible
 Both operations are performed through the network, but the server and the client can be used on the same host.
 
 Examples below use xref:{page-version}@home::install/console-cli.adoc[TypeDB Console] as the most accessible client for these operations.
-Please check the xref:{page-version}@reference::typedb-grpc-drivers/index.html[gRPC Drivers API] to explore available programmatic commands.
+Please check the xref:{page-version}@reference::typedb-grpc-drivers/index.adoc[gRPC Drivers API] to explore available programmatic commands.
 
 [#_export]
 == Export

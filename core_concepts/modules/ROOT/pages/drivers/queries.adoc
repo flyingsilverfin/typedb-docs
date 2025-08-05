@@ -88,10 +88,10 @@ A successful query's response is a `QueryAnswer`, which expands to any of the fo
 
 Check out the full answer api in your language's reference page:
 
-- xref::{page-version}@reference$typedb-grpc-drivers/python.adoc#_QueryAnswer[Python gRPC driver]
-- xref::{page-version}@reference$typedb-grpc-drivers/java.adoc#_QueryAnswer[Java gRPC driver]
-- xref::{page-version}@reference$typedb-grpc-drivers/rust.adoc#_QueryAnswer#_enum_QueryAnswer[Rust gRPC driver]
-- xref::{page-version}@reference$typedb-http-drivers/typescript.adoc#_Answer[HTTP Typescript library]
+- xref:{page-version}@reference::typedb-grpc-drivers/python.adoc#_QueryAnswer[Python gRPC driver]
+- xref:{page-version}@reference::typedb-grpc-drivers/java.adoc#_QueryAnswer[Java gRPC driver]
+- xref:{page-version}@reference::typedb-grpc-drivers/rust.adoc#_enum_QueryAnswer[Rust gRPC driver]
+- xref:{page-version}@reference::typedb-http-drivers/typescript.adoc#_Answer[HTTP Typescript library]
 
 === Concept rows
 

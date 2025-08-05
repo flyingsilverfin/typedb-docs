@@ -34,7 +34,7 @@ Set up in-flight encryption for self-managed TypeDB servers.
 Export and import TypeDB databases.
 ****
 
-.xref:{page-version}@maintenance_operation::troubleshooting.adoc[]
+.xref:{page-version}@maintenance_operation::troubleshooting/index.adoc[]
 [.clickable]
 ****
 Troubleshoot TypeDB issues.
