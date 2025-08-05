@@ -12,7 +12,7 @@ https://cloud.typedb.com/sign-up.
 scroll to the API tokens section, and click "Generate API Token".
 
 2. Give your API token a descriptive name, and appropriate access to your chosen space.
-See the xref:{page-version}@new_reference::cloud-http-api.adoc#accesslevels[API reference] for detailed access level info.
+See the xref:{page-version}@reference::cloud-http-api.adoc#accesslevels[API reference] for detailed access level info.
 
 3. Generate your API token and copy the displayed client ID and client secret for later use when authenticating.
 
@@ -168,7 +168,7 @@ you can explore TypeDB Cloud further, either through further API use or back on 
 Head back to TypeDB Cloud to keep exploring there.
 ****
 
-.xref:{page-version}@new_reference::cloud-http-api.adoc[]
+.xref:{page-version}@reference::cloud-http-api.adoc[]
 [.clickable]
 ****
 View the API reference for more detail on what you can do with it.

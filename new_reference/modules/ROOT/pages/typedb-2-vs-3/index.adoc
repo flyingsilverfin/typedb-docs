@@ -6,13 +6,13 @@ These pages outline the key changes and upgrade instructions to make your migrat
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typedb-2-vs-3/diff.adoc[]
+.xref:{page-version}@reference::typedb-2-vs-3/diff.adoc[]
 [.clickable]
 ****
 Explore main changes between the two major versions of TypeDB.
 ****
 
-.xref:{page-version}@new_reference::typedb-2-vs-3/process.adoc[]
+.xref:{page-version}@reference::typedb-2-vs-3/process.adoc[]
 [.clickable]
 ****
 Upgrade TypeDB 2.x to TypeDB 3.x following a step-by-step guide.

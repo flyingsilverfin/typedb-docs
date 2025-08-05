@@ -42,7 +42,7 @@ Possible causes:
 
 Response format:
 
-include::{page-version}@new_reference::partial$cloud-api/error-response.json.adoc[]
+include::{page-version}@reference::partial$cloud-api/error-response.json.adoc[]
 ====
 
 *Example request:*
@@ -119,13 +119,13 @@ It will be able to perform the actions within that space as described below:
 | Required access          | *write* to `team/TEAM_ID/spaces/SPACE_ID`
 | Method                   | `POST`
 | URL                      | `/api/team/TEAM_ID/spaces/SPACE_ID/clusters/deploy`
-| Request body             | include::{page-version}@new_reference::partial$cloud-api/cluster-deploy.json.adoc[]
+| Request body             | include::{page-version}@reference::partial$cloud-api/cluster-deploy.json.adoc[]
 | Request headers          | `Authorization: Bearer ACCESS_TOKEN`
 |===
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,409,500"]
+include::{page-version}@reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,409,500"]
 
 [NOTE]
 ====
@@ -381,7 +381,7 @@ Must be `disabled` for free clusters.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,500"]
+include::{page-version}@reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,500"]
 
 *Example request:*
 
@@ -466,7 +466,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$cloud-api/response-details.adoc[tags="200-list,400,401,403,404,500"]
+include::{page-version}@reference::partial$cloud-api/response-details.adoc[tags="200-list,400,401,403,404,500"]
 
 *Example request:*
 
@@ -565,7 +565,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 | Required access          | *write* to `team/TEAM_ID/spaces/SPACE_ID`
 | Method                   | `PATCH`
 | URL                      | `/api/team/TEAM_ID/spaces/SPACE_ID/clusters/CLUSTER_ID`
-| Request body             | include::{page-version}@new_reference::partial$cloud-api/cluster-update.json.adoc[]
+| Request body             | include::{page-version}@reference::partial$cloud-api/cluster-update.json.adoc[]
 | Request headers          | `Authorization: Bearer ACCESS_TOKEN`
 |===
 
@@ -577,7 +577,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,500"]
+include::{page-version}@reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,500"]
 
 *Example request:*
 
@@ -691,7 +691,7 @@ Request Body::
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,500"]
+include::{page-version}@reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,500"]
 
 *Example request:*
 
@@ -778,7 +778,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,500"]
+include::{page-version}@reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,500"]
 
 *Example request:*
 
@@ -865,7 +865,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,500"]
+include::{page-version}@reference::partial$cloud-api/response-details.adoc[tags="200-single,400,401,403,404,500"]
 
 *Example request:*
 

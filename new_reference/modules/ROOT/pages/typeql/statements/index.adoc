@@ -1,5 +1,5 @@
 = Statements
-:page-aliases: {page-version}@new_reference::typeql/statements/overview.adoc
+:page-aliases: {page-version}@reference::typeql/statements/overview.adoc
 
 This reference covers the usage of statements in TypeQL.
 
@@ -11,7 +11,7 @@ Statements in TypeQL always end with a semicolon.
 A simple statement is the smallest pattern that can be in a TypeQL query.
 
 Most simple statements have two or three parts: `<PREDICATE> <SUBJECT>`, `<SUBJECT> <PREDICATE>` or `<SUBJECT> <PREDICATE> <OBJECT>`, where `<PREDICATE>` is a TypeQL keyword.
-However, there can be other more complex statements like xref:{page-version}@new_reference::typeql/statements/let-in.adoc[].
+However, there can be other more complex statements like xref:{page-version}@reference::typeql/statements/let-in.adoc[].
 
 [#_composite_statements]
 == Composite statements
@@ -25,15 +25,15 @@ A composite statement starts with a single subject, and multiple comma-separated
 .Composite statement example
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entity-user]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entity-user]
 ----
 
-The above example combines simple xref:{page-version}@new_reference::typeql/statements/entity.adoc[`entity`], xref:{page-version}@new_reference::typeql/statements/sub.adoc[`sub`], xref:{page-version}@new_reference::typeql/statements/owns.adoc[`owns`], and xref:{page-version}@new_reference::typeql/statements/plays.adoc[`plays`] statements to the same result without repeating the subject:
+The above example combines simple xref:{page-version}@reference::typeql/statements/entity.adoc[`entity`], xref:{page-version}@reference::typeql/statements/sub.adoc[`sub`], xref:{page-version}@reference::typeql/statements/owns.adoc[`owns`], and xref:{page-version}@reference::typeql/statements/plays.adoc[`plays`] statements to the same result without repeating the subject:
 
 .Equal simple statements example
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entity-user-breakdown]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entity-user-breakdown]
 ----
 ====
 
@@ -55,7 +55,7 @@ Definition statements do not contain variables. Most definition statements can a
 
 [cols-1]
 --
-.xref:{page-version}@new_reference::typeql/statements/entity.adoc[]
+.xref:{page-version}@reference::typeql/statements/entity.adoc[]
 [.clickable]
 ****
 Used to define a new entity type.
@@ -66,13 +66,13 @@ Used to define a new entity type.
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typeql/statements/relation.adoc[]
+.xref:{page-version}@reference::typeql/statements/relation.adoc[]
 [.clickable]
 ****
 Used to define a new relation type.
 ****
 
-.xref:{page-version}@new_reference::typeql/statements/relates.adoc[]
+.xref:{page-version}@reference::typeql/statements/relates.adoc[]
 [.clickable]
 ****
 Used to define a new role for a relation type.
@@ -83,13 +83,13 @@ Used to define a new role for a relation type.
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typeql/statements/attribute.adoc[]
+.xref:{page-version}@reference::typeql/statements/attribute.adoc[]
 [.clickable]
 ****
 Used to define a new attribute type.
 ****
 
-.xref:{page-version}@new_reference::typeql/statements/value.adoc[]
+.xref:{page-version}@reference::typeql/statements/value.adoc[]
 [.clickable]
 ****
 Used to define the value type of an attribute type.
@@ -100,7 +100,7 @@ Used to define the value type of an attribute type.
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typeql/statements/struct.adoc[]
+.xref:{page-version}@reference::typeql/statements/struct.adoc[]
 [.clickable]
 ****
 Coming soon
@@ -111,13 +111,13 @@ Coming soon
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typeql/statements/plays.adoc[]
+.xref:{page-version}@reference::typeql/statements/plays.adoc[]
 [.clickable]
 ****
 Used to define a new role player for a role.
 ****
 
-.xref:{page-version}@new_reference::typeql/statements/owns.adoc[]
+.xref:{page-version}@reference::typeql/statements/owns.adoc[]
 [.clickable]
 ****
 Used to define a new owner of an attribute type.
@@ -128,7 +128,7 @@ Used to define a new owner of an attribute type.
 
 [cols-1]
 --
-.xref:{page-version}@new_reference::typeql/statements/alias.adoc[]
+.xref:{page-version}@reference::typeql/statements/alias.adoc[]
 [.clickable]
 ****
 Used to define an alias label for a type.
@@ -139,7 +139,7 @@ Used to define an alias label for a type.
 
 [cols-1]
 --
-.xref:{page-version}@new_reference::typeql/statements/fun.adoc[]
+.xref:{page-version}@reference::typeql/statements/fun.adoc[]
 [.clickable]
 ****
 Used to define a function.
@@ -150,7 +150,7 @@ Used to define a function.
 
 [cols-1]
 --
-.xref:{page-version}@new_reference::typeql/statements/alias.adoc[]
+.xref:{page-version}@reference::typeql/statements/alias.adoc[]
 [.clickable]
 ****
 Used to define an alias label for a type.
@@ -165,19 +165,19 @@ Pattern statements are statements that contain variables. Most definition statem
 
 [cols-3]
 --
-.xref:{page-version}@new_reference::typeql/statements/isa.adoc[]
+.xref:{page-version}@reference::typeql/statements/isa.adoc[]
 [.clickable]
 ****
 Used to specify the type of a data instance.
 ****
 
-.xref:{page-version}@new_reference::typeql/statements/links.adoc[]
+.xref:{page-version}@reference::typeql/statements/links.adoc[]
 [.clickable]
 ****
 Used to specify the role players in a relation.
 ****
 
-.xref:{page-version}@new_reference::typeql/statements/has.adoc[]
+.xref:{page-version}@reference::typeql/statements/has.adoc[]
 [.clickable]
 ****
 Used to specify an attribute of an entity or relation.
@@ -189,13 +189,13 @@ Used to specify an attribute of an entity or relation.
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typeql/statements/let-eq.adoc[]
+.xref:{page-version}@reference::typeql/statements/let-eq.adoc[]
 [.clickable]
 ****
 Used to assign the result of an expression to a variable.
 ****
 
-.xref:{page-version}@new_reference::typeql/statements/let-in.adoc[]
+.xref:{page-version}@reference::typeql/statements/let-in.adoc[]
 [.clickable]
 ****
 Used to assign a stream or list element to a variable.
@@ -206,19 +206,19 @@ Used to assign a stream or list element to a variable.
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typeql/statements/is.adoc[]
+.xref:{page-version}@reference::typeql/statements/is.adoc[]
 [.clickable]
 ****
 Used to specify that two variables represent the same data instance.
 ****
 
-.xref:{page-version}@new_reference::typeql/statements/contains.adoc[]
+.xref:{page-version}@reference::typeql/statements/contains.adoc[]
 [.clickable]
 ****
 Used to specify that a stream or list contains a data instance.
 ****
 
-.xref:{page-version}@new_reference::typeql/statements/like.adoc[]
+.xref:{page-version}@reference::typeql/statements/like.adoc[]
 [.clickable]
 ****
 Used to specify that a string matches a specified regex pattern
@@ -229,13 +229,13 @@ Used to specify that a string matches a specified regex pattern
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typeql/statements/label.adoc[]
+.xref:{page-version}@reference::typeql/statements/label.adoc[]
 [.clickable]
 ****
 Used to identify a type by its label.
 ****
 
-.xref:{page-version}@new_reference::typeql/statements/iid.adoc[]
+.xref:{page-version}@reference::typeql/statements/iid.adoc[]
 [.clickable]
 ****
 Used to identify a data instance by its internal ID.

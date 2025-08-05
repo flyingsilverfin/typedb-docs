@@ -1,5 +1,5 @@
 = Disjunctions
-:page-aliases: {page-version}@new_reference::typeql/patterns/disjunction.adoc
+:page-aliases: {page-version}@reference::typeql/patterns/disjunction.adoc
 
 Disjunctive patterns can be used in `match` stages. They allow queries to match several cases (or "`branches`") of patterns in parallel.
 
@@ -35,7 +35,7 @@ or {
 
 Disjunctions may appear in `match` stages, where they behave as follows.
 
-* *Optionality*. An output variable whose xref:{page-version}@new_reference::typeql/patterns/index.adoc[scope] is the branch of a disjunction becomes an xref:{page-version}@new_reference::typeql/data_model.adoc[optional] variable. This means the variable may be left empty `()` in the output of the match stage. For example:
+* *Optionality*. An output variable whose xref:{page-version}@reference::typeql/patterns/index.adoc[scope] is the branch of a disjunction becomes an xref:{page-version}@reference::typeql/data_model.adoc[optional] variable. This means the variable may be left empty `()` in the output of the match stage. For example:
 +
 --
 [,typeql]
@@ -95,7 +95,7 @@ where each row satisfies both branches at the same time.
 
 == Validation
 
-Recall that each variable must have a xref:{page-version}@new_reference::typeql/patterns/index.adoc[unique scope]. Therefore, the following pattern would be invalid.
+Recall that each variable must have a xref:{page-version}@reference::typeql/patterns/index.adoc[unique scope]. Therefore, the following pattern would be invalid.
 [,typeql]
 ----
 match
@@ -116,7 +116,7 @@ match
   $x isa user, has username "john_1";
   { $x has phone $p; } or { not { $x has phone $np; }; };
 ----
-Note that `$p` and `$np` have different variable names to ensure the xref:{page-version}@new_reference::typeql/patterns/index.adoc[unique scope principle].
+Note that `$p` and `$np` have different variable names to ensure the xref:{page-version}@reference::typeql/patterns/index.adoc[unique scope principle].
 --
 
 1. Retrieve friends and friends of friends of a user;

@@ -1,5 +1,5 @@
 = Sort operator
-:page-aliases: {page-version}@new_reference::typeql/modifiers/sorting.adoc
+:page-aliases: {page-version}@reference::typeql/modifiers/sorting.adoc
 
 The sort operator sorts the input stream based on the variables and their sort order.
 

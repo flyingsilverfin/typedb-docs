@@ -1,5 +1,5 @@
 = `@unique` annotation
-:page-aliases: {page-version}@new_reference::typeql/statements/unique.adoc
+:page-aliases: {page-version}@reference::typeql/statements/unique.adoc
 
 The `@unique` annotation is used
 // tag::overview[]
@@ -28,7 +28,7 @@ For example, the following statement defines that every `user` should have a uni
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_annotations.tql[tags=define-keyword;phone-attribute;unique]
+include::{page-version}@reference::example$tql/schema_annotations.tql[tags=define-keyword;phone-attribute;unique]
 ----
 
 With this constraint, no instance of `user` can share the same `phone` value.
@@ -40,7 +40,7 @@ The `unique` constraint would also affect the following schema extension:
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_annotations.tql[tags=define-keyword;phone-sub-attributes;unique-sub-entity]
+include::{page-version}@reference::example$tql/schema_annotations.tql[tags=define-keyword;phone-sub-attributes;unique-sub-entity]
 ----
 
 With the `unique` constraint on the `phone`, there is a protection ensuring that:
@@ -53,7 +53,7 @@ If there is a need to restrict uniqueness within subtypes (e.g., allowing `uk-us
 
 == Limitations
 
-Cannot be used with the xref:{page-version}@new_reference::typeql/annotations/key.adoc[`@key` annotation] as they both produce the `unique` constraint.
+Cannot be used with the xref:{page-version}@reference::typeql/annotations/key.adoc[`@key` annotation] as they both produce the `unique` constraint.
 
 See <<_value_types>> for the list of supported value types.
 

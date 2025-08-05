@@ -18,7 +18,7 @@ In the previous sections we've:
 [,typeql]
 ----
 #!test[schema]
-include::{page-version}@new_home::page$get_started/schema.adoc[tag=full_define]
+include::{page-version}@home::page$get_started/schema.adoc[tag=full_define]
 ----
 ====
 . xref:get_started/data.adoc[Loaded some data] using a insert and match-insert queries:
@@ -28,25 +28,25 @@ include::{page-version}@new_home::page$get_started/schema.adoc[tag=full_define]
 [,typeql]
 ----
 #!test[write]
-include::{page-version}@new_home::page$get_started/data.adoc[tag=insert2]
+include::{page-version}@home::page$get_started/data.adoc[tag=insert2]
 ----
 
 [,typeql]
 ----
 #!test[write]
-include::{page-version}@new_home::page$get_started/data.adoc[tag=insert3]
+include::{page-version}@home::page$get_started/data.adoc[tag=insert3]
 ----
 
 [,typeql]
 ----
 #!test[write]
-include::{page-version}@new_home::page$get_started/data.adoc[tag=insert5]
+include::{page-version}@home::page$get_started/data.adoc[tag=insert5]
 ----
 
 [,typeql]
 ----
 #!test[write, count=1]
-include::{page-version}@new_home::page$get_started/data.adoc[tag=match-insert1]
+include::{page-version}@home::page$get_started/data.adoc[tag=match-insert1]
 ----
 ====
 

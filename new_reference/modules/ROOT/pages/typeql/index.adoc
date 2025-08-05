@@ -1,7 +1,7 @@
 = TypeQL language guide
-:page-aliases: {page-version}@new_reference::typeql/concepts/concept-variables.adoc, {page-version}@new_reference::typeql/concepts/data-instances.adoc, {page-version}@new_reference::typeql/concepts/overview.adoc, {page-version}@new_reference::typeql/overview.adoc, {page-version}@new_reference::typeql/concepts/types.adoc
+:page-aliases: {page-version}@reference::typeql/concepts/concept-variables.adoc, {page-version}@reference::typeql/concepts/data-instances.adoc, {page-version}@reference::typeql/concepts/overview.adoc, {page-version}@reference::typeql/overview.adoc, {page-version}@reference::typeql/concepts/types.adoc
 
-This page gives an overview of the TypeQL query language. For an overview of the data model on which TypeQL queries are built see xref:{page-version}@new_reference::typeql/data_model.adoc[here].
+This page gives an overview of the TypeQL query language. For an overview of the data model on which TypeQL queries are built see xref:{page-version}@reference::typeql/data_model.adoc[here].
 
 [[queries]]
 == Queries and functions
@@ -39,13 +39,13 @@ read stages
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typeql/schema/index.adoc[]
+.xref:{page-version}@reference::typeql/schema/index.adoc[]
 [.clickable]
 ****
 Reference for Define, Undefine, and Redefine queries for schema manipulation.
 ****
 
-.xref:{page-version}@new_reference::typeql/pipelines/index.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/index.adoc[]
 [.clickable]
 ****
 Reference for building data pipelines, including all read and write pipeline stages.
@@ -54,7 +54,7 @@ Reference for building data pipelines, including all read and write pipeline sta
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typeql/functions/index.adoc[]
+.xref:{page-version}@reference::typeql/functions/index.adoc[]
 [.clickable]
 ****
 Reference for writing all types of functions.
@@ -76,7 +76,7 @@ A _key distinction_ between stages and their statements is whether statements co
 * Statements without variables are called *definitions*.
 * Statements with variables are called (elementary) *patterns*.
 
-Patterns can be combined into larger patterns by xref:{page-version}@new_reference::typeql/patterns/index.adoc[*pattern operations*], such as *conjunction* ("`chaining`"), *disjunction* ("`branching`"), *negation* ("`exclusion`"), etc.
+Patterns can be combined into larger patterns by xref:{page-version}@reference::typeql/patterns/index.adoc[*pattern operations*], such as *conjunction* ("`chaining`"), *disjunction* ("`branching`"), *negation* ("`exclusion`"), etc.
 
 === Definition vs pattern statements
 
@@ -127,19 +127,19 @@ The semantics of many statements can be further modified with the use of *annota
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typeql/patterns/index.adoc[]
+.xref:{page-version}@reference::typeql/patterns/index.adoc[]
 [.clickable]
 ****
 Reference for query pattern construction using logical operations and optionals.
 ****
 
-.xref:{page-version}@new_reference::typeql/statements/index.adoc[]
+.xref:{page-version}@reference::typeql/statements/index.adoc[]
 [.clickable]
 ****
 Reference for all individual TypeQL statements, covering schema and data.
 ****
 
-.xref:{page-version}@new_reference::typeql/annotations/index.adoc[]
+.xref:{page-version}@reference::typeql/annotations/index.adoc[]
 [.clickable]
 ****
 Annotations modify the semantics of specific TypeQL statements.
@@ -152,13 +152,13 @@ TypeQL supports various build in operators to manipulate and combine data types,
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typeql/expressions/index.adoc[]
+.xref:{page-version}@reference::typeql/expressions/index.adoc[]
 [.clickable]
 ****
 Reference for supported operators and expressions.
 ****
 
-.xref:{page-version}@new_reference::typeql/values/index.adoc[]
+.xref:{page-version}@reference::typeql/values/index.adoc[]
 [.clickable]
 ****
 Reference for different value type.
@@ -167,4 +167,4 @@ Reference for different value type.
 
 == Index and glossary
 
-For a complete list of TypeQL keywords used at various levels of query construction, consult the xref:{page-version}@new_reference::typeql/keywords.adoc[keyword glossary].
+For a complete list of TypeQL keywords used at various levels of query construction, consult the xref:{page-version}@reference::typeql/keywords.adoc[keyword glossary].

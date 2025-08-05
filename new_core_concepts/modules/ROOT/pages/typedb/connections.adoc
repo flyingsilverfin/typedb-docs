@@ -3,7 +3,7 @@
 == Overview
 
 To interact with a TypeDB database, a client application must first establish a connection to the server. This is typically done using a
-xref:{page-version}@new_core_concepts::drivers/index.adoc[TypeDB driver] for your chosen programming language (e.g., Python, Java, Rust, Node.js) or through a tool like the TypeDB Console or TypeDB Studio.
+xref:{page-version}@core_concepts::drivers/index.adoc[TypeDB driver] for your chosen programming language (e.g., Python, Java, Rust, Node.js) or through a tool like the TypeDB Console or TypeDB Studio.
 
 A connection requires the server's address (host and port) and valid user credentials. For production environments, a secure connection using
 TLS is strongly recommended.
@@ -48,9 +48,9 @@ You will be prompted for a password.
 
 === Connecting your application
 
-For programmatic access using gRPC, use one of the TypeDB xref:{page-version}@new_core_concepts::drivers/connections.adoc[driver to connect] via the network API.
+For programmatic access using gRPC, use one of the TypeDB xref:{page-version}@core_concepts::drivers/connections.adoc[driver to connect] via the network API.
 
 All TypeDB Drivers follow the same API as closely as possible, so moving between languages is simple.
 
-Some languages also have a helper driver library that abstracts away usage of the HTTP API. See the references pages for xref:{page-version}@new_reference::typedb-grpc-drivers/index.adoc[gRPC drivers] or the xref:{page-version}@new_reference::typedb-http-drivers/index.adoc[HTTP helper libraries]. You can also always use the xref:{page-version}@new_reference::typedb-http-api.adoc[raw HTTP api].
+Some languages also have a helper driver library that abstracts away usage of the HTTP API. See the references pages for xref:{page-version}@reference::typedb-grpc-drivers/index.adoc[gRPC drivers] or the xref:{page-version}@reference::typedb-http-drivers/index.adoc[HTTP helper libraries]. You can also always use the xref:{page-version}@reference::typedb-http-api.adoc[raw HTTP api].
 

@@ -4,19 +4,19 @@ TypeQL is the declarative, strongly-typed, and intuitive query language used by 
 
 This guide aims to develop an intuitive understanding of TypeQL.
 It provides an overview of the language - focusing on explaining the core concepts,
-and leaving the details to the xref:{page-version}@new_reference::typeql/index.adoc[TypeQL reference].
+and leaving the details to the xref:{page-version}@reference::typeql/index.adoc[TypeQL reference].
 The relevant sections of the reference are linked at the end of each page.
 
 [cols-2]
 --
 // TODO: Unless we have a lot to write, I'm tempted to just use this page.
-// .xref:{page-version}@new_core_concepts::typeql/overview.adoc[]
+// .xref:{page-version}@core_concepts::typeql/overview.adoc[]
 // [.clickable]
 // ****
 // TypeQL overview.
 // ****
 
-.xref:{page-version}@new_core_concepts::typeql/entities-relations-attributes.adoc[]
+.xref:{page-version}@core_concepts::typeql/entities-relations-attributes.adoc[]
 [.clickable]
 ****
 A gentle introduction to the PERA data model - Entities, relations, attributes
@@ -24,44 +24,44 @@ A gentle introduction to the PERA data model - Entities, relations, attributes
 and what it means to "own" attributes, and "play" roles in relations.
 ****
 
-.xref:{page-version}@new_core_concepts::typeql/constraining-data.adoc[]
+.xref:{page-version}@core_concepts::typeql/constraining-data.adoc[]
 [.clickable]
 ****
 Covers advanced typing constraints available in TypeQL: cardinality & restrictions on the attribute values.
 ****
 
-.xref:{page-version}@new_core_concepts::typeql/schema-data.adoc[]
+.xref:{page-version}@core_concepts::typeql/schema-data.adoc[]
 [.clickable]
 ****
 A schema is the blueprint of a database. How does TypeDB ensure the data conforms to it?
 ****
 
-.xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc[]
+.xref:{page-version}@core_concepts::typeql/query-variables-patterns.adoc[]
 [.clickable]
 ****
 Builds up the syntax and semantics of the TypeQL language - from constraints & variables to patterns.
 ****
 
-.xref:{page-version}@new_core_concepts::typeql/query-clauses.adoc[]
+.xref:{page-version}@core_concepts::typeql/query-clauses.adoc[]
 [.clickable]
 ****
 Shows how various TypeQL clauses can be chained to form complex query & data modification pipelines.
 ****
 
-.xref:{page-version}@new_core_concepts::typeql/queries-as-functions.adoc[]
+.xref:{page-version}@core_concepts::typeql/queries-as-functions.adoc[]
 [.clickable]
 ****
 TypeQL functions bring the familiar abstraction from programming languages to databases.
 ****
 
 // TODO:
-// .xref:{page-version}@new_core_concepts::typeql/best-practices.adoc[]
+// .xref:{page-version}@core_concepts::typeql/best-practices.adoc[]
 // [.clickable]
 // ****
 // Best practices to get the most out of TypeQL's expressivity and TypeDB's safety guarantees
 // ****
 
-.xref:{page-version}@new_core_concepts::typeql/glossary.adoc[]
+.xref:{page-version}@core_concepts::typeql/glossary.adoc[]
 [.clickable]
 ****
 Short definitions of terms used throughout the guide, with links to the section which introduces them.

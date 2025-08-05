@@ -7,31 +7,31 @@ If you cannot find a solution, do not hesitate to send us a message on https://d
 
 [cols-2]
 --
-.xref:{page-version}@new_maintenance_operation::troubleshooting/installation.adoc[]
+.xref:{page-version}@maintenance_operation::troubleshooting/installation.adoc[]
 [.clickable]
 ****
 Addressing setup issues.
 ****
 
-.xref:{page-version}@new_maintenance_operation::troubleshooting/connection.adoc[]
+.xref:{page-version}@maintenance_operation::troubleshooting/connection.adoc[]
 [.clickable]
 ****
 Resolve connection issues.
 ****
 
-.xref:{page-version}@new_maintenance_operation::troubleshooting/stopping-queries.adoc[]
+.xref:{page-version}@maintenance_operation::troubleshooting/stopping-queries.adoc[]
 [.clickable]
 ****
 Query takes too long.
 ****
 
-.xref:{page-version}@new_maintenance_operation::troubleshooting/optimizing-queries.adoc[]
+.xref:{page-version}@maintenance_operation::troubleshooting/optimizing-queries.adoc[]
 [.clickable]
 ****
 Optimize your queries for the best performance.
 ****
 
-.xref:{page-version}@new_maintenance_operation::troubleshooting/debugging-queries.adoc[]
+.xref:{page-version}@maintenance_operation::troubleshooting/debugging-queries.adoc[]
 [.clickable]
 ****
 Tips for query debugging.

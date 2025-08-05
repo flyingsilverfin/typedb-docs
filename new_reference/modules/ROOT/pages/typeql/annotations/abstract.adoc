@@ -1,5 +1,5 @@
 = `@abstract` annotation
-:page-aliases: {page-version}@new_reference::typeql/statements/abstract.adoc
+:page-aliases: {page-version}@reference::typeql/statements/abstract.adoc
 
 The `@abstract` annotation is used
 // tag::overview[]
@@ -26,7 +26,7 @@ Thus, a concrete subtype is required for instances creation, and an abstract typ
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_annotations.tql[tags=define-keyword;abstract-entity;]
+include::{page-version}@reference::example$tql/schema_annotations.tql[tags=define-keyword;abstract-entity;]
 ----
 
 === Subtyping
@@ -37,7 +37,7 @@ However, it is possible to define an abstract subtype of an abstract type.
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_annotations.tql[tags=define-keyword;abstract-attribute]
+include::{page-version}@reference::example$tql/schema_annotations.tql[tags=define-keyword;abstract-attribute]
 ----
 
 It is impossible to define an abstract subtype of a concrete type.
@@ -57,5 +57,5 @@ A concrete sub role type can be defined using **specialization** (keyword `as`).
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_annotations.tql[tags=define-keyword;abstract-relation]
+include::{page-version}@reference::example$tql/schema_annotations.tql[tags=define-keyword;abstract-relation]
 ----

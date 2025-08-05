@@ -1,6 +1,6 @@
 = Stream functions
 
-Stream functions are xref:{page-version}@new_reference::typeql/functions/index.adoc#fun_types[function types] which return zero or more output rows.
+Stream functions are xref:{page-version}@reference::typeql/functions/index.adoc#fun_types[function types] which return zero or more output rows.
 
 == Syntax
 
@@ -31,19 +31,19 @@ The following examples illustrate simple usages of functions for retrieving a st
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=fun-stream-scalar-return-type]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=fun-stream-scalar-return-type]
 ----
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=fun-stream-scalar-return-value]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=fun-stream-scalar-return-value]
 ----
 
 To retrieve the results of such functions calls, the following read query can be used:
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/read_statements_functions.tql[tags=fun-stream-scalar-return-type]
+include::{page-version}@reference::example$tql/read_statements_functions.tql[tags=fun-stream-scalar-return-type]
 ----
 
 === Tuple functions
@@ -55,12 +55,12 @@ Tuples can contain any combinations of scalar returned values.
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=fun-stream-tuple-return-type]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=fun-stream-tuple-return-type]
 ----
 
 To retrieve the results of such functions calls, the following read query can be used:
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/read_statements_functions.tql[tags=fun-stream-tuple-return-type]
+include::{page-version}@reference::example$tql/read_statements_functions.tql[tags=fun-stream-tuple-return-type]
 ----

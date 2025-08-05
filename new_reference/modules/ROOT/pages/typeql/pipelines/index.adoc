@@ -1,5 +1,5 @@
 = Data pipelines
-:page-aliases: {page-version}@new_reference::typeql/modifiers/overview.adoc, {page-version}@new_reference::typeql/queries/overview.adoc
+:page-aliases: {page-version}@reference::typeql/modifiers/overview.adoc, {page-version}@reference::typeql/queries/overview.adoc
 
 // TODO: this page should say something about how stages combine
 // and give examples of how inputs and outputs are passed
@@ -16,37 +16,37 @@ This reference covers the usage of data pipelines in TypeQL. Data pipeline read 
 
 [cols-3]
 --
-.xref:{page-version}@new_reference::typeql/pipelines/match.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/match.adoc[]
 [.clickable]
 ****
 Used to match existing data instances in the database.
 ****
 
-.xref:{page-version}@new_reference::typeql/pipelines/fetch.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/fetch.adoc[]
 [.clickable]
 ****
 Used to format the output of a data pipeline into JSON.
 ****
 
-.xref:{page-version}@new_reference::typeql/pipelines/insert.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/insert.adoc[]
 [.clickable]
 ****
 Used to add new data instances into the database.
 ****
 
-.xref:{page-version}@new_reference::typeql/pipelines/delete.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/delete.adoc[]
 [.clickable]
 ****
 Used to remove existing data instances from the database.
 ****
 
-.xref:{page-version}@new_reference::typeql/pipelines/update.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/update.adoc[]
 [.clickable]
 ****
 Used to modify existing data instances in the database.
 ****
 
-.xref:{page-version}@new_reference::typeql/pipelines/put.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/put.adoc[]
 [.clickable]
 ****
 Used to add new data instances to the database if they do not already exist.
@@ -57,37 +57,37 @@ Used to add new data instances to the database if they do not already exist.
 
 [cols-3]
 --
-.xref:{page-version}@new_reference::typeql/pipelines/select.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/select.adoc[]
 [.clickable]
 ****
 Used to keep specified variables for each element of the data stream and remove the rest.
 ****
 
-.xref:{page-version}@new_reference::typeql/pipelines/require.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/require.adoc[]
 [.clickable]
 ****
 Used to remove elements from the data stream that do not contain specified optional variables.
 ****
 
-.xref:{page-version}@new_reference::typeql/pipelines/sort.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/sort.adoc[]
 [.clickable]
 ****
 Used to order the elements of the data stream based on the value of specified variables.
 ****
 
-.xref:{page-version}@new_reference::typeql/pipelines/limit.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/limit.adoc[]
 [.clickable]
 ****
 Used to keep a specified number of elements of the data stream and remove the rest.
 ****
 
-.xref:{page-version}@new_reference::typeql/pipelines/offset.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/offset.adoc[]
 [.clickable]
 ****
 Used to remove a specified number of elements from the data stream.
 ****
 
-.xref:{page-version}@new_reference::typeql/pipelines/reduce.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/reduce.adoc[]
 [.clickable]
 ****
 Used to perform reduction operations on the data stream according to specified groupings.
@@ -98,7 +98,7 @@ Used to perform reduction operations on the data stream according to specified g
 
 [cols-1]
 --
-.xref:{page-version}@new_reference::typeql/pipelines/with.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/with.adoc[]
 [.clickable]
 ****
 Used to define functions on an ad-hoc basis for use in the data pipeline.

@@ -34,10 +34,10 @@ We recommend leveraging automatic resource management, such as Python's `with` s
 ----
 #!test
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_setup.py[tag=import_and_constants]
+include::{page-version}@core_concepts::example$driver/python_driver_setup.py[tag=import_and_constants]
 
-include::{page-version}@new_core_concepts::example$driver/python_driver_setup.py[tag=driver_create]
-include::{page-version}@new_core_concepts::example$driver/python_driver_setup.py[tag=database_create]
+include::{page-version}@core_concepts::example$driver/python_driver_setup.py[tag=driver_create]
+include::{page-version}@core_concepts::example$driver/python_driver_setup.py[tag=database_create]
         pass
 #}}
 
@@ -106,9 +106,9 @@ Driver options configure connection behavior and encryption.
 
 See the reference for your language:
 
-* xref:{page-version}@new_reference::typedb-grpc-drivers/python.adoc#_DriverOptions[Python gRPC driver options]
-* xref:{page-version}@new_reference::typedb-grpc-drivers/java.adoc#_DriverOptions[Java gRPC driver options]
-* xref:{page-version}@new_reference::typedb-grpc-drivers/rust.adoc#_DriverOptions[Rust gRPC driver options]
+* xref:{page-version}@reference::typedb-grpc-drivers/python.adoc#_DriverOptions[Python gRPC driver options]
+* xref:{page-version}@reference::typedb-grpc-drivers/java.adoc#_DriverOptions[Java gRPC driver options]
+* xref:{page-version}@reference::typedb-grpc-drivers/rust.adoc#_DriverOptions[Rust gRPC driver options]
 
 TypeDB Cloud instances always use TLS and use known certificates, so you just have to make sure TLS encryption is enabled - no need to provide your own certificate.
 
@@ -120,7 +120,7 @@ If you are unsure about how to deal with this possibility, we recommend using Ty
 
 == Next steps
 
-* **xref:{page-version}@new_core_concepts::drivers/authentication.adoc[Authentication]** - Learn about user management and security
-* **xref:{page-version}@new_core_concepts::drivers/transactions.adoc[Transactions]** - Understand how to manage database transactions  
-* **xref:{page-version}@new_core_concepts::drivers/queries.adoc[Queries]** - Master query execution and result handling
-* **xref:{page-version}@new_core_concepts::drivers/best-practices.adoc[Best Practices]** - Learn connection management and other best practices
+* **xref:{page-version}@core_concepts::drivers/authentication.adoc[Authentication]** - Learn about user management and security
+* **xref:{page-version}@core_concepts::drivers/transactions.adoc[Transactions]** - Understand how to manage database transactions
+* **xref:{page-version}@core_concepts::drivers/queries.adoc[Queries]** - Master query execution and result handling
+* **xref:{page-version}@core_concepts::drivers/best-practices.adoc[Best Practices]** - Learn connection management and other best practices

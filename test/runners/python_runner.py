@@ -27,13 +27,13 @@ class PythonRunner(BaseRunner):
         # logger.info(f"Source:\n{source_code}")
 
         old_stdout = sys.stdout
-        new_stdout = io.StringIO()
-        sys.stdout = new_stdout
+        stdout = io.StringIO()
+        sys.stdout = stdout
 
         # allow the exec'ed code to define functions and access them within the test
         execution_scope = {}
         exec(source_code, execution_scope)
-        output = new_stdout.getvalue()
+        output = stdout.getvalue()
         sys.stdout = old_stdout
         # logger.info(f"Output:\n{output}")
         self.after_run_test(parsed_test)

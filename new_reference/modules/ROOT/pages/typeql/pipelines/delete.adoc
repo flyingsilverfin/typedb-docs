@@ -1,5 +1,5 @@
 = Delete stage
-:page-aliases: {page-version}@new_reference::typeql/queries/delete.adoc
+:page-aliases: {page-version}@reference::typeql/queries/delete.adoc
 
 A delete stage deletes data from the database. Deletable data includes instances of types, ownerships of attributes, and role players of
 relations.
@@ -16,8 +16,8 @@ delete ( <variable> | has <variable> of <variable> | links ( <variable> [ , ... 
 == Behavior
 
 * Bare variables delete the instances they refer to from the database. 
-* xref:{page-version}@new_reference::typeql/statements/has.adoc[Delete has statements] delete ownerships of attributes.
-* xref:{page-version}@new_reference::typeql/statements/links.adoc[Delete links statements] delete role players from relations.
+* xref:{page-version}@reference::typeql/statements/has.adoc[Delete has statements] delete ownerships of attributes.
+* xref:{page-version}@reference::typeql/statements/links.adoc[Delete links statements] delete role players from relations.
 
 == Execution
 

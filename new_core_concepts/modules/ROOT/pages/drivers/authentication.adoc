@@ -19,7 +19,7 @@ Every TypeDB driver connection requires valid user credentials:
 ----
 #!test
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_setup.py[tag=import]
+include::{page-version}@core_concepts::example$driver/python_driver_setup.py[tag=import]
 #}}
 from typedb.driver import Credentials
 
@@ -27,8 +27,8 @@ from typedb.driver import Credentials
 credentials = Credentials("admin", "password")
 
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_setup.py[tag=constants_address]
-include::{page-version}@new_core_concepts::example$driver/python_driver_setup.py[tag=constants_options]
+include::{page-version}@core_concepts::example$driver/python_driver_setup.py[tag=constants_address]
+include::{page-version}@core_concepts::example$driver/python_driver_setup.py[tag=constants_options]
 #}}
 
 driver = TypeDB.driver(address, credentials, options)
@@ -51,10 +51,10 @@ Always change default passwords before deploying to production environments.
 
 The HTTP endpoint uses token-based authentication instead of direct credentials.
 
-Note that if you are using an official xref:{page-version}@new_reference::typedb-http-drivers/index.adoc[TypeDB HTTP Driver],
+Note that if you are using an official xref:{page-version}@reference::typedb-http-drivers/index.adoc[TypeDB HTTP Driver],
 this process is handled by the library.
 
-For the full reference, see the xref:{page-version}@new_reference::typedb-http-api.adoc[TypeDB HTTP API] documentation.
+For the full reference, see the xref:{page-version}@reference::typedb-http-api.adoc[TypeDB HTTP API] documentation.
 
 === Token acquisition
 
@@ -103,14 +103,14 @@ Python::
 [,python]
 ----
 #!test[reset-after]
-include::{page-version}@new_core_concepts::example$driver/python_driver_setup.py[tag=import_and_constants]
+include::{page-version}@core_concepts::example$driver/python_driver_setup.py[tag=import_and_constants]
 
 with TypeDB.driver(address, credentials, options) as driver:
     driver.users.create("demo_user", "test_password")
 
-new_user_credentials = Credentials("demo_user", "test_password")
-with TypeDB.driver(address, new_user_credentials, options) as driver:
-    driver.users.get_current_user().update_password("new_password")
+user_credentials = Credentials("demo_user", "test_password")
+with TypeDB.driver(address, user_credentials, options) as driver:
+    driver.users.get_current_user().update_password("password")
     print("Demo user updated password successfully")
 
 with TypeDB.driver(address, credentials, options) as driver:

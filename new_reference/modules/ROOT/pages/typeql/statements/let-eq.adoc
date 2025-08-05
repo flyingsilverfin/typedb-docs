@@ -1,5 +1,5 @@
 = `let ... =` statement
-:page-aliases: {page-version}@new_reference::typeql/statements/value-assignment.adoc, {page-version}@new_reference::typeql/values/value-variables.adoc
+:page-aliases: {page-version}@reference::typeql/statements/value-assignment.adoc, {page-version}@reference::typeql/values/value-variables.adoc
 
 The statement `let <VAR> = <EXPRESSION>` assigns the result of a single valued expression `<EXPRESSION>` to the variable `<VAR>`.
 

@@ -1,5 +1,5 @@
 = Limit operator
-:page-aliases: {page-version}@new_reference::typeql/modifiers/pagination.adoc
+:page-aliases: {page-version}@reference::typeql/modifiers/pagination.adoc
 
 The limit operator stops producing rows after the specified row limit has been reached.
 

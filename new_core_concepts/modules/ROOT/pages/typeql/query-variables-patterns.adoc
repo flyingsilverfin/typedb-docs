@@ -117,7 +117,7 @@ insert
 [NOTE]
 ====
 Variables are also bound to concepts when they are inserted by an `isa` constraint.
-See xref:{page-version}@new_core_concepts::typeql/schema-data.adoc[].
+See xref:{page-version}@core_concepts::typeql/schema-data.adoc[].
 ====
 
 == A quick note on variables
@@ -127,7 +127,7 @@ every usage of a variable with a certain name refers to the same variable.
 In the following sections, the term [[definition-local-variable]]"local" is used to mean
 a variable is bound in that pattern but not in its parent.
 This contrasts with the usage in programming languages where it refers to the scope of a variable name.
-As mentioned above, the scope of variable names in TypeQL is the xref:{page-version}@new_core_concepts::typeql/query-clauses.adoc[pipeline].
+As mentioned above, the scope of variable names in TypeQL is the xref:{page-version}@core_concepts::typeql/query-clauses.adoc[pipeline].
 
 == Disjunctions, negations & optionals
 
@@ -490,7 +490,7 @@ From these, it can be seen that a variable is either:
 This is a workaround to the uniqueness requirement on variables names within a pipeline.
 
 == Reference
-* xref:{page-version}@new_reference::typeql/statements/index.adoc[Constraints]
-* xref:{page-version}@new_reference::typeql/statements/index.adoc[TypeQL Patterns]
-* xref:{page-version}@new_reference::typeql/data_model.adoc#modes[Variable modes]
+* xref:{page-version}@reference::typeql/statements/index.adoc[Constraints]
+* xref:{page-version}@reference::typeql/statements/index.adoc[TypeQL Patterns]
+* xref:{page-version}@reference::typeql/data_model.adoc#modes[Variable modes]
 // TODO: I should probably introduce the ideas of type-inference.

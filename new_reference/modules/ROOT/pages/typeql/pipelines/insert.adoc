@@ -1,5 +1,5 @@
 = Insert stage
-:page-aliases: {page-version}@new_reference::typeql/queries/insert.adoc
+:page-aliases: {page-version}@reference::typeql/queries/insert.adoc
 
 An insert stage inserts new data into the database.
 Insertable data includes instances of types, ownerships of attributes, and role players of relations.
@@ -18,11 +18,11 @@ insert <insert-statement> [ <insert-statement> ... ]
 
 == Behavior
 
-* xref:{page-version}@new_reference::typeql/statements/isa.adoc[Isa statements] insert new instances of specified types.
+* xref:{page-version}@reference::typeql/statements/isa.adoc[Isa statements] insert new instances of specified types.
 Each variable introduced in the insert clause must be accompanied by an explicit `isa` statement.
-* xref:{page-version}@new_reference::typeql/statements/has.adoc[Has statements] insert new ownerships of attributes.
+* xref:{page-version}@reference::typeql/statements/has.adoc[Has statements] insert new ownerships of attributes.
 If an attribute is provided by value, the attribute type is mandatory.
-* xref:{page-version}@new_reference::typeql/statements/links.adoc[Links statements] insert new role players for relations.
+* xref:{page-version}@reference::typeql/statements/links.adoc[Links statements] insert new role players for relations.
 Role tags can be omitted if there is only a single role the role player can play.
 
 == Execution
@@ -38,14 +38,14 @@ The output is then a stream of input rows extended with the newly inserted value
 
 Attempting to insert the following fail immediately and terminate the transaction:
 
-* an instance of an xref:{page-version}@new_reference::typeql/annotations/abstract.adoc[abstract] type,
+* an instance of an xref:{page-version}@reference::typeql/annotations/abstract.adoc[abstract] type,
 * an ownership or a role player that does not conform to the schema (a player of a relation that cannot relate a role with the specified role name, a player of a type that cannot play the specified role type, an ownership for the owner that cannot own an attribute of the specified type),
-* an instance of an attribute type with a value that violates a constraint annotation (xref:{page-version}@new_reference::typeql/annotations/range.adoc[`@range`], xref:{page-version}@new_reference::typeql/annotations/regex.adoc[`@regex`],
-xref:{page-version}@new_reference::typeql/annotations/values.adoc[`@values`]),
-* an ownership that violates a constraint annotation (xref:{page-version}@new_reference::typeql/annotations/distinct.adoc[`@distinct`], xref:{page-version}@new_reference::typeql/annotations/key.adoc[`@key`],
-xref:{page-version}@new_reference::typeql/annotations/unique.adoc[`@unique`]).
+* an instance of an attribute type with a value that violates a constraint annotation (xref:{page-version}@reference::typeql/annotations/range.adoc[`@range`], xref:{page-version}@reference::typeql/annotations/regex.adoc[`@regex`],
+xref:{page-version}@reference::typeql/annotations/values.adoc[`@values`]),
+* an ownership that violates a constraint annotation (xref:{page-version}@reference::typeql/annotations/distinct.adoc[`@distinct`], xref:{page-version}@reference::typeql/annotations/key.adoc[`@key`],
+xref:{page-version}@reference::typeql/annotations/unique.adoc[`@unique`]).
 
-NOTE: xref:{page-version}@new_reference::typeql/annotations/card.adoc[Cardinality annotations] are not enforced until the transaction is committed.
+NOTE: xref:{page-version}@reference::typeql/annotations/card.adoc[Cardinality annotations] are not enforced until the transaction is committed.
 
 == Examples
 

@@ -1,6 +1,6 @@
 = Schema & Data
 
-As seen in the xref:{page-version}@new_core_concepts::typeql/entities-relations-attributes.adoc[] page, a TypeDB schema defines
+As seen in the xref:{page-version}@core_concepts::typeql/entities-relations-attributes.adoc[] page, a TypeDB schema defines
 a hierarchy of types, their associated interfaces and interfaces they implement.
 
 __Data__ is created by instantiating types from the schema. Hence, it is impossible to create data not conforming to the types declared in the schema.

@@ -45,21 +45,21 @@ For example, the following definition specifies that an instance of the `page` t
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_annotations.tql[tags=define-keyword;card-owns-13]
+include::{page-version}@reference::example$tql/schema_annotations.tql[tags=define-keyword;card-owns-13]
 ----
 
 At the same time, the `page` type can play the `posting:page` role an unlimited number of times:
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_annotations.tql[tags=define-keyword;card-plays-0inf]
+include::{page-version}@reference::example$tql/schema_annotations.tql[tags=define-keyword;card-plays-0inf]
 ----
 
 However, an instance of the `posting` relation type can have up to a thousand `page` instances:
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_annotations.tql[tags=define-keyword;card-relates-01k]
+include::{page-version}@reference::example$tql/schema_annotations.tql[tags=define-keyword;card-relates-01k]
 ----
 
 [#subtyping]
@@ -75,7 +75,7 @@ For example, the following query defines that:
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_annotations.tql[tags=define-keyword;card-owns-13;profile-sub-page;user-owns-name;name-subattributes]
+include::{page-version}@reference::example$tql/schema_annotations.tql[tags=define-keyword;card-owns-13;profile-sub-page;user-owns-name;name-subattributes]
 ----
 
 Valid statements based on this schema include:
@@ -87,7 +87,7 @@ Valid statements based on this schema include:
 
 == Limitations
 
-Cannot be used with the xref:{page-version}@new_reference::typeql/annotations/key.adoc[`@key` annotation] as they both produce `cardinality` constraints.
+Cannot be used with the xref:{page-version}@reference::typeql/annotations/key.adoc[`@key` annotation] as they both produce `cardinality` constraints.
 
 [#_references]
 == References

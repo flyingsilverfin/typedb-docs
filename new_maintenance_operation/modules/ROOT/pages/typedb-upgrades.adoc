@@ -3,7 +3,7 @@
 There are two mechanisms in which data can be preserved during a server version upgrade:
 
 * If the new version has the same data format as the old one, it should be done by reusing or copying the data directory.
-* Otherwise, it should be done by using the xref:{page-version}@new_maintenance_operation::database-export-import.adoc[] tool, which would take care of migrating the data into the new format.
+* Otherwise, it should be done by using the xref:{page-version}@maintenance_operation::database-export-import.adoc[] tool, which would take care of migrating the data into the new format.
 
 == Preserve data by copying the directory
 
@@ -15,4 +15,4 @@ Alternatively, just start the new server making sure it uses the same
 [#_export_and_import]
 == Preserve data using the export/import tool
 
-See the page on xref:{page-version}@new_maintenance_operation::database-export-import.adoc[].
+See the page on xref:{page-version}@maintenance_operation::database-export-import.adoc[].

@@ -12,7 +12,7 @@ how they can be chained to form complex query & data modification pipelines.
 
 == Query clauses
 === match
-xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc#definition-match[Match clauses] read data by pattern-matching.
+xref:{page-version}@core_concepts::typeql/query-variables-patterns.adoc#definition-match[Match clauses] read data by pattern-matching.
 They return a stream mapping variables to matching concepts.
 [,typeql]
 ----
@@ -32,7 +32,7 @@ match $x isa person, has name "James";
 person instances which own BOTH the name "John" and "James".
 
 === insert
-xref:{page-version}@new_core_concepts::typeql/schema-data.adoc#_inserting_data[Insert clauses]
+xref:{page-version}@core_concepts::typeql/schema-data.adoc#_inserting_data[Insert clauses]
 can create new concepts by themselves, but rely on preceding clauses
 for reading existing concepts to add new connections to.
 An insert clause will execute & insert the specified pattern for *every* input row .
@@ -181,6 +181,6 @@ multiple updates to the same connection will result in only the last applied upd
 This means it is dependent on the order of incoming rows.
 
 == References
-* xref:{page-version}@new_reference::typeql/data_model.adoc#_data_pipelines[The Pipeline query model]
-* xref:{page-version}@new_reference::typeql/pipelines/index.adoc[Clauses]
+* xref:{page-version}@reference::typeql/data_model.adoc#_data_pipelines[The Pipeline query model]
+* xref:{page-version}@reference::typeql/pipelines/index.adoc[Clauses]
 

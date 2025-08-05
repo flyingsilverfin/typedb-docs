@@ -68,5 +68,5 @@ define
     relates employee;
 ----
 
-For more information on defining a schema and the TypeDB data model, refer to the xref:{page-version}@new_core_concepts::typeql/entities-relations-attributes.adoc[]
+For more information on defining a schema and the TypeDB data model, refer to the xref:{page-version}@core_concepts::typeql/entities-relations-attributes.adoc[]
 documentation.

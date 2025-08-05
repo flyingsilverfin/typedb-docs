@@ -92,25 +92,25 @@ However, only one definition of a specific kind of annotation can exist for a ty
 
 [cols-3]
 --
-.xref:{page-version}@new_reference::typeql/annotations/card.adoc[]
+.xref:{page-version}@reference::typeql/annotations/card.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/annotations/card.adoc[tags=overview]
+include::{page-version}@reference::typeql/annotations/card.adoc[tags=overview]
 ****
 
-.xref:{page-version}@new_reference::typeql/annotations/cascade.adoc[]
+.xref:{page-version}@reference::typeql/annotations/cascade.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/annotations/cascade.adoc[tags=overview]
+include::{page-version}@reference::typeql/annotations/cascade.adoc[tags=overview]
 ****
 
-.xref:{page-version}@new_reference::typeql/annotations/independent.adoc[]
+.xref:{page-version}@reference::typeql/annotations/independent.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/annotations/independent.adoc[tags=overview]
+include::{page-version}@reference::typeql/annotations/independent.adoc[tags=overview]
 ****
 --
 
@@ -118,32 +118,32 @@ include::{page-version}@new_reference::typeql/annotations/independent.adoc[tags=
 
 [cols-3]
 --
-.xref:{page-version}@new_reference::typeql/annotations/abstract.adoc[]
+.xref:{page-version}@reference::typeql/annotations/abstract.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/annotations/abstract.adoc[tags=overview]
+include::{page-version}@reference::typeql/annotations/abstract.adoc[tags=overview]
 ****
 
-.xref:{page-version}@new_reference::typeql/annotations/key.adoc[]
+.xref:{page-version}@reference::typeql/annotations/key.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/annotations/key.adoc[tags=overview]
+include::{page-version}@reference::typeql/annotations/key.adoc[tags=overview]
 ****
 
-.xref:{page-version}@new_reference::typeql/annotations/subkey.adoc[]
+.xref:{page-version}@reference::typeql/annotations/subkey.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/annotations/subkey.adoc[tags=overview]
+include::{page-version}@reference::typeql/annotations/subkey.adoc[tags=overview]
 ****
 
-.xref:{page-version}@new_reference::typeql/annotations/unique.adoc[]
+.xref:{page-version}@reference::typeql/annotations/unique.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/annotations/unique.adoc[tags=overview]
+include::{page-version}@reference::typeql/annotations/unique.adoc[tags=overview]
 ****
 --
 
@@ -151,31 +151,31 @@ include::{page-version}@new_reference::typeql/annotations/unique.adoc[tags=overv
 
 [cols-3]
 --
-.xref:{page-version}@new_reference::typeql/annotations/values.adoc[]
+.xref:{page-version}@reference::typeql/annotations/values.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/annotations/values.adoc[tags=overview]
+include::{page-version}@reference::typeql/annotations/values.adoc[tags=overview]
 ****
 
-.xref:{page-version}@new_reference::typeql/annotations/range.adoc[]
+.xref:{page-version}@reference::typeql/annotations/range.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/annotations/range.adoc[tags=overview]
+include::{page-version}@reference::typeql/annotations/range.adoc[tags=overview]
 ****
 
-.xref:{page-version}@new_reference::typeql/annotations/regex.adoc[]
+.xref:{page-version}@reference::typeql/annotations/regex.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/annotations/regex.adoc[tags=overview]
+include::{page-version}@reference::typeql/annotations/regex.adoc[tags=overview]
 ****
 
-.xref:{page-version}@new_reference::typeql/annotations/distinct.adoc[]
+.xref:{page-version}@reference::typeql/annotations/distinct.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/annotations/distinct.adoc[tags=overview]
+include::{page-version}@reference::typeql/annotations/distinct.adoc[tags=overview]
 ****
 --

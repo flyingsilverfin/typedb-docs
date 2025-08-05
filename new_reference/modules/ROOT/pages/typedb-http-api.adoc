@@ -14,7 +14,7 @@ This token must be used as `ACCESS_TOKEN` for other protected methods.
 | Token required           | No
 | Method                   | `POST`
 | URL                      | `/v1/signin`
-| Request body             | include::{page-version}@new_reference::partial$http-api/requests/signin.json.adoc[]
+| Request body             | include::{page-version}@reference::partial$http-api/requests/signin.json.adoc[]
 | Request headers          | None
 |===
 
@@ -23,7 +23,7 @@ This token must be used as `ACCESS_TOKEN` for other protected methods.
 .200: OK
 [%collapsible]
 ====
-include::{page-version}@new_reference::partial$http-api/responses/signin.json.adoc[]
+include::{page-version}@reference::partial$http-api/responses/signin.json.adoc[]
 ====
 
 .400: Bad Request
@@ -35,7 +35,7 @@ Possible causes:
 
 Response format:
 
-include::{page-version}@new_reference::partial$http-api/responses/error.json.adoc[]
+include::{page-version}@reference::partial$http-api/responses/error.json.adoc[]
 ====
 
 .401: Unauthorized
@@ -47,7 +47,7 @@ Possible causes:
 
 Response format:
 
-include::{page-version}@new_reference::partial$http-api/responses/error.json.adoc[]
+include::{page-version}@reference::partial$http-api/responses/error.json.adoc[]
 ====
 
 *Example request:*
@@ -135,7 +135,7 @@ Get the server's distribution and version information.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-version"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-version"]
 
 *Example request:*
 
@@ -204,7 +204,7 @@ Get all databases present on the server.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-databases,401"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-databases,401"]
 
 *Example request:*
 
@@ -268,7 +268,7 @@ Get a single database present on the server by name.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-database,401,404"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-database,401,404"]
 
 *Example request:*
 
@@ -332,7 +332,7 @@ Create a database on the server.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-empty,400,401"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-empty,400,401"]
 
 *Example request:*
 
@@ -396,7 +396,7 @@ Delete a database from the server by name.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-empty,400,401,404"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-empty,400,401,404"]
 
 *Example request:*
 
@@ -460,7 +460,7 @@ Retrieve a full schema text as a valid TypeQL define query string. This includes
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-database-schema,400,401,404"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-database-schema,400,401,404"]
 
 *Example request:*
 
@@ -524,7 +524,7 @@ Retrieve the types in the schema as a valid TypeQL define query string.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-database-schema,400,401,404"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-database-schema,400,401,404"]
 
 *Example request:*
 
@@ -590,7 +590,7 @@ Get all users present on the server.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-users,401,403"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-users,401,403"]
 
 *Example request:*
 
@@ -654,7 +654,7 @@ Get a single user present on the server by name.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-user,401,403,404"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-user,401,403,404"]
 
 *Example request:*
 
@@ -712,13 +712,13 @@ Create a new user on the server.
 | Token required           | Yes
 | Method                   | `POST`
 | URL                      | `/v1/users/USERNAME`
-| Request body             | include::{page-version}@new_reference::partial$http-api/requests/post-users.json.adoc[]
+| Request body             | include::{page-version}@reference::partial$http-api/requests/post-users.json.adoc[]
 | Request headers          | `Authorization: Bearer ACCESS_TOKEN`
 |===
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-empty,400,401,403"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-empty,400,401,403"]
 
 *Example request:*
 
@@ -790,13 +790,13 @@ Update credentials for a user present on the server.
 | Token required           | Yes
 | Method                   | `PUT`
 | URL                      | `/v1/users/USERNAME`
-| Request body             | include::{page-version}@new_reference::partial$http-api/requests/put-users.json.adoc[]
+| Request body             | include::{page-version}@reference::partial$http-api/requests/put-users.json.adoc[]
 | Request headers          | `Authorization: Bearer ACCESS_TOKEN`
 |===
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-empty,400,401,403,404"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-empty,400,401,403,404"]
 
 *Example request:*
 
@@ -874,7 +874,7 @@ Delete a user from the server by name.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-empty,400,401,403,404"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-empty,400,401,403,404"]
 
 *Example request:*
 
@@ -934,7 +934,7 @@ Open a new transaction and receive a unique transaction id.
 | Token required           | Yes
 | Method                   | `POST`
 | URL                      | `/v1/transactions/open`
-| Request body             | include::{page-version}@new_reference::partial$http-api/requests/transactions-open.json.adoc[]
+| Request body             | include::{page-version}@reference::partial$http-api/requests/transactions-open.json.adoc[]
 | Request headers          | `Authorization: Bearer ACCESS_TOKEN`
 |===
 
@@ -947,23 +947,23 @@ Open a new transaction and receive a unique transaction id.
 |===
 | Field | Description
 | `transactionTimeoutMillis` |
-include::{page-version}@new_reference::partial$options-descriptions/transaction.adoc[tag=transaction-timeout]
+include::{page-version}@reference::partial$options-descriptions/transaction.adoc[tag=transaction-timeout]
 
 Specified in milliseconds. **Default:**
-include::{page-version}@new_reference::partial$options-descriptions/transaction.adoc[tag=transaction-timeout-default]
+include::{page-version}@reference::partial$options-descriptions/transaction.adoc[tag=transaction-timeout-default]
 
 
 | `schemaLockAcquireTimeoutMillis` |
-include::{page-version}@new_reference::partial$options-descriptions/transaction.adoc[tag=schema-lock-acquire-timeout]
+include::{page-version}@reference::partial$options-descriptions/transaction.adoc[tag=schema-lock-acquire-timeout]
 
 Specified in milliseconds. **Default:**
-include::{page-version}@new_reference::partial$options-descriptions/transaction.adoc[tag=schema-lock-acquire-timeout-default]
+include::{page-version}@reference::partial$options-descriptions/transaction.adoc[tag=schema-lock-acquire-timeout-default]
 |===
 // end::transaction-options[]
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-transaction,400,404"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-transaction,400,404"]
 
 *Example request:*
 
@@ -1053,7 +1053,7 @@ Close a transaction without preserving its changes by transaction id.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-empty,400,403,404"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-empty,400,403,404"]
 
 *Example request:*
 
@@ -1117,7 +1117,7 @@ Commit and close a transaction, preserving it changes on the server.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-empty,400,403,404"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-empty,400,403,404"]
 
 *Example request:*
 
@@ -1181,7 +1181,7 @@ Rolls back the uncommitted changes made via a transaction.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-empty,400,403,404"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-empty,400,403,404"]
 
 *Example request:*
 
@@ -1240,7 +1240,7 @@ This endpoint allows running multiple sequential queries before committing.
 | Token required           | Yes
 | Method                   | `POST`
 | URL                      | `/v1/transactions/TRANSACTION_ID/query`
-| Request body             | include::{page-version}@new_reference::partial$http-api/requests/transactions-query.json.adoc[]
+| Request body             | include::{page-version}@reference::partial$http-api/requests/transactions-query.json.adoc[]
 | Request headers          | `Authorization: Bearer ACCESS_TOKEN`
 |===
 
@@ -1252,25 +1252,25 @@ This endpoint allows running multiple sequential queries before committing.
 |===
 | Field | Description
 | `includeInstanceTypes` |
-include::{page-version}@new_reference::partial$options-descriptions/query.adoc[tag=include-instance-types]
+include::{page-version}@reference::partial$options-descriptions/query.adoc[tag=include-instance-types]
 
 **Default:**
-include::{page-version}@new_reference::partial$options-descriptions/query.adoc[tag=include-instance-types-default]
+include::{page-version}@reference::partial$options-descriptions/query.adoc[tag=include-instance-types-default]
 
 
 | `answerCountLimit` |
-include::{page-version}@new_reference::partial$options-descriptions/query.adoc[tag=answer-count-limit]
+include::{page-version}@reference::partial$options-descriptions/query.adoc[tag=answer-count-limit]
 If there are more answers cut, a relevant `warning` will be provided in the response.
 
 **Default:**
-include::{page-version}@new_reference::partial$options-descriptions/query.adoc[tag=answer-count-limit-default]
+include::{page-version}@reference::partial$options-descriptions/query.adoc[tag=answer-count-limit-default]
 
 |===
 // end::query-options[]
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-query,400,403,404,408"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-query,400,403,404,408"]
 
 *Example request:*
 
@@ -1342,10 +1342,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 .Request body
 [%collapsible]
 =====
-include::{page-version}@new_reference::partial$http-api/requests/transactions-query-concept-rows-example.json.adoc[]
+include::{page-version}@reference::partial$http-api/requests/transactions-query-concept-rows-example.json.adoc[]
 =====
 
-include::{page-version}@new_reference::partial$http-api/responses/query-concept-rows-example.json.adoc[]
+include::{page-version}@reference::partial$http-api/responses/query-concept-rows-example.json.adoc[]
 ====
 
 .Concept documents
@@ -1354,10 +1354,10 @@ include::{page-version}@new_reference::partial$http-api/responses/query-concept-
 .Request body
 [%collapsible]
 =====
-include::{page-version}@new_reference::partial$http-api/requests/transactions-query-concept-documents-example.json.adoc[]
+include::{page-version}@reference::partial$http-api/requests/transactions-query-concept-documents-example.json.adoc[]
 =====
 
-include::{page-version}@new_reference::partial$http-api/responses/query-concept-documents-example.json.adoc[]
+include::{page-version}@reference::partial$http-api/responses/query-concept-documents-example.json.adoc[]
 ====
 
 == One-shot query
@@ -1370,15 +1370,15 @@ This endpoint executes a query within a temporary transaction that is opened and
 | Token required           | Yes
 | Method                   | `POST`
 | URL                      | `/v1/query`
-| Request body             | include::{page-version}@new_reference::partial$http-api/requests/query.json.adoc[]
+| Request body             | include::{page-version}@reference::partial$http-api/requests/query.json.adoc[]
 | Request headers          | `Authorization: Bearer ACCESS_TOKEN`
 |===
 
-include::{page-version}@new_reference::/typedb-http-api.adoc[tags="transaction-options,query-options"]
+include::{page-version}@reference::/typedb-http-api.adoc[tags="transaction-options,query-options"]
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="200-query,400,403,404,408"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="200-query,400,403,404,408"]
 
 *Example request:*
 
@@ -1465,10 +1465,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 .Request body
 [%collapsible]
 =====
-include::{page-version}@new_reference::partial$http-api/requests/query-concept-rows-example.json.adoc[]
+include::{page-version}@reference::partial$http-api/requests/query-concept-rows-example.json.adoc[]
 =====
 
-include::{page-version}@new_reference::partial$http-api/responses/query-concept-rows-example.json.adoc[]
+include::{page-version}@reference::partial$http-api/responses/query-concept-rows-example.json.adoc[]
 ====
 
 [#_query_example_responses_documents]
@@ -1478,10 +1478,10 @@ include::{page-version}@new_reference::partial$http-api/responses/query-concept-
 .Request body
 [%collapsible]
 =====
-include::{page-version}@new_reference::partial$http-api/requests/query-concept-documents-example.json.adoc[]
+include::{page-version}@reference::partial$http-api/requests/query-concept-documents-example.json.adoc[]
 =====
 
-include::{page-version}@new_reference::partial$http-api/responses/query-concept-documents-example.json.adoc[]
+include::{page-version}@reference::partial$http-api/responses/query-concept-documents-example.json.adoc[]
 ====
 
 == Health check
@@ -1499,7 +1499,7 @@ Check that the server is accessible and healthy.
 
 *Responses:*
 
-include::{page-version}@new_reference::partial$http-api/responses/details.adoc[tags="204-empty"]
+include::{page-version}@reference::partial$http-api/responses/details.adoc[tags="204-empty"]
 
 *Example request:*
 

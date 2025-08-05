@@ -4,37 +4,37 @@ Complete reference documentation.
 
 [cols-2]
 --
-.xref:{page-version}@new_reference::typedb-grpc-drivers/index.adoc[]
+.xref:{page-version}@reference::typedb-grpc-drivers/index.adoc[]
 [.clickable]
 ****
 GRPC drivers for TypeDB server.
 ****
 
-.xref:{page-version}@new_reference::typedb-http-api.adoc[]
+.xref:{page-version}@reference::typedb-http-api.adoc[]
 [.clickable]
 ****
 HTTP API reference for TypeDB server.
 ****
 
-.xref:{page-version}@new_reference::typedb-http-drivers/index.adoc[]
+.xref:{page-version}@reference::typedb-http-drivers/index.adoc[]
 [.clickable]
 ****
 Helpful HTTP driver libraries for TypeDB.
 ****
 
-.xref:{page-version}@new_reference::cloud-http-api.adoc[]
+.xref:{page-version}@reference::cloud-http-api.adoc[]
 [.clickable]
 ****
 HTTP API reference for TypeDB Cloud.
 ****
 
-.xref:{page-version}@new_reference::typeql/index.adoc[]
+.xref:{page-version}@reference::typeql/index.adoc[]
 [.clickable]
 ****
 Complete TypeQL language reference.
 ****
 
-.xref:{page-version}@new_reference::typedb-2-vs-3/index.adoc[]
+.xref:{page-version}@reference::typedb-2-vs-3/index.adoc[]
 [.clickable]
 ****
 Comparison and migration from TypeDB 2.x to 3.x.

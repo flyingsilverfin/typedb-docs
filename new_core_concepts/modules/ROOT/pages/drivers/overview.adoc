@@ -19,7 +19,7 @@ Key responsibilities of a TypeDB driver include:
 * **Database management**: Create and delete databases
 * **User management**: Create, delete, and manage users.
 
-Check out the available xref:{page-version}@new_reference::typedb-grpc-drivers/index.adoc[gRPC drivers] and xref:{page-version}@new_reference::typedb-http-drivers/index.adoc[HTTP helper libraries] to find a driver that works for you.
+Check out the available xref:{page-version}@reference::typedb-grpc-drivers/index.adoc[gRPC drivers] and xref:{page-version}@reference::typedb-http-drivers/index.adoc[HTTP helper libraries] to find a driver that works for you.
 
 == Communication endpoints
 
@@ -41,7 +41,7 @@ A more accessible RESTful API designed for:
 * **Language flexibility**: Use from any language with HTTP client capabilities
 * **Integration scenarios**: Easier integration with existing HTTP-based workflows
 
-The server's HTTP endpoint may also be abstracted away behind xref:{page-version}@new_reference::typedb-http-drivers/index.adoc[HTTP driver libraries] in your language. These libraries offer a similar interface to the gRPC driver libraries.
+The server's HTTP endpoint may also be abstracted away behind xref:{page-version}@reference::typedb-http-drivers/index.adoc[HTTP driver libraries] in your language. These libraries offer a similar interface to the gRPC driver libraries.
 
 [NOTE]
 ====
@@ -80,12 +80,12 @@ Applications using TypeDB drivers tend to follow a similar pattern:
 [source,python]
 ----
 #!test[reset, reset-after]
-include::{page-version}@new_core_concepts::example$driver/python_driver_setup.py[tag=import_and_constants]
+include::{page-version}@core_concepts::example$driver/python_driver_setup.py[tag=import_and_constants]
 
 # 1. Connect to TypeDB
-include::{page-version}@new_core_concepts::example$driver/python_driver_setup.py[tag=driver_create]
+include::{page-version}@core_concepts::example$driver/python_driver_setup.py[tag=driver_create]
     # 2. Initialize database with a schema  during application startup
-include::{page-version}@new_core_concepts::example$driver/python_driver_setup.py[tag=database_create]
+include::{page-version}@core_concepts::example$driver/python_driver_setup.py[tag=database_create]
         with driver.transaction(DB_NAME, TransactionType.SCHEMA) as tx:
             tx.query("define entity person;").resolve()
             tx.commit()
@@ -108,8 +108,8 @@ include::{page-version}@new_core_concepts::example$driver/python_driver_setup.py
 
 Now that you understand the overall driver model, explore the detailed concepts:
 
-* Start with **xref:{page-version}@new_core_concepts::drivers/connections.adoc[Connections]** to learn about establishing server connections
-* Learn about **xref:{page-version}@new_core_concepts::drivers/authentication.adoc[Authentication]** for secure access  
-* Understand **xref:{page-version}@new_core_concepts::drivers/transactions.adoc[Transactions]** for data consistency
-* Use **xref:{page-version}@new_core_concepts::drivers/queries.adoc[Queries]** for reading and writing schema and data
-* **xref:{page-version}@new_core_concepts::drivers/best-practices.adoc[Best Practices]** for ideal approaches and some tips and tricks
+* Start with **xref:{page-version}@core_concepts::drivers/connections.adoc[Connections]** to learn about establishing server connections
+* Learn about **xref:{page-version}@core_concepts::drivers/authentication.adoc[Authentication]** for secure access
+* Understand **xref:{page-version}@core_concepts::drivers/transactions.adoc[Transactions]** for data consistency
+* Use **xref:{page-version}@core_concepts::drivers/queries.adoc[Queries]** for reading and writing schema and data
+* **xref:{page-version}@core_concepts::drivers/best-practices.adoc[Best Practices]** for ideal approaches and some tips and tricks

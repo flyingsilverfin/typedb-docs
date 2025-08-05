@@ -5,7 +5,7 @@ Download the latest distribution of TypeDB CE from the table below.
 |===
 |Release notes |macOS |Linux |Windows
 
-include::{page-version}@new_home:resources:partial$typedb-all-latest-links.adoc[]
+include::{page-version}@home:resources:partial$typedb-all-latest-links.adoc[]
 |===
 
 For all versions,

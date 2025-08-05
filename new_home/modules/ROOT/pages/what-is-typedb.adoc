@@ -10,7 +10,7 @@ TypeDB is also excellent for cybersecurity, financial services, supply chain man
 TypeDB ships with its own query language, **TypeQL**, which allows you to define sophisticated data models and write simple yet highly expressive queries.
 TypeQL is designed to read and write like natural English, making it easy to discuss, model, and evolve data collaboratively.
 
-TypeDB integrates with pre-built tools: the web-based xref:{page-version}@new_home::install/studio.adoc[TypeDB Studio] and the command-line xref:{page-version}@new_home::install/console-cli.adoc[TypeDB Console].
+TypeDB integrates with pre-built tools: the web-based xref:{page-version}@home::install/studio.adoc[TypeDB Studio] and the command-line xref:{page-version}@home::install/console-cli.adoc[TypeDB Console].
 It can also be used programmatically with performant **gRPC-based drivers** in various languages, or directly via its **HTTP API**.
 
 TypeDB is **open-source** and available as a free Community Edition, or in https://cloud.typedb.com[TypeDB Cloud,window=_blank], where upgrades, backups, and security are fully managed.
@@ -79,11 +79,11 @@ TypeDB builds extensibility and reusability into your data models, reducing main
 
 === Transactional
 
-TypeDB is still built on tried-and-tested database ideas, such as xref:{page-version}@new_core_concepts::typedb/transactions.adoc[transactions] and snapshotting.
+TypeDB is still built on tried-and-tested database ideas, such as xref:{page-version}@core_concepts::typedb/transactions.adoc[transactions] and snapshotting.
 Transactions are used to both read and write data, or even make changes to your database schemas in a safe, atomic manner.
 
 == What's Next
 
-Read more about why developers xref:{page-version}@new_home::why-typedb.adoc[choose TypeDB] (and some more features!), or jump straight into our xref:{page-version}@new_home::get_started/setup.adoc[Get started guide].
+Read more about why developers xref:{page-version}@home::why-typedb.adoc[choose TypeDB] (and some more features!), or jump straight into our xref:{page-version}@home::get_started/setup.adoc[Get started guide].
 
-If you're trying to learn TypeDB from the ground up or figure out how to best navigate these docs, we recommend reading our xref:{page-version}@new_home::learning_journey.adoc[learning journey].
+If you're trying to learn TypeDB from the ground up or figure out how to best navigate these docs, we recommend reading our xref:{page-version}@home::learning_journey.adoc[learning journey].

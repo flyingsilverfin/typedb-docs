@@ -25,7 +25,7 @@ Browse the source code of TypeDB Studio.
 
 [NOTE]
 ====
-For installation instructions, see xref:{page-version}@new_home::install/studio-console.adoc[Studio & Console Installation].
+For installation instructions, see xref:{page-version}@home::install/studio-console.adoc[Studio & Console Installation].
 ====
 
 == Quickstart
@@ -34,7 +34,7 @@ For installation instructions, see xref:{page-version}@new_home::install/studio-
 
 Select TypeDB edition below, and follow the instructions:
 
-include::{page-version}@new_home::partial$studio_connect.adoc[tag=connect_studio]
+include::{page-version}@home::partial$studio_connect.adoc[tag=connect_studio]
 
 === Select a database
 

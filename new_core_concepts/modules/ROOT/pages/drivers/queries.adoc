@@ -18,9 +18,9 @@ All TypeDB queries follow the same execution pattern:
 ----
 #!test[reset-after]
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
 
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=data_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=data_create]
 #}}
 
 with driver.transaction(DB_NAME, TransactionType.READ) as tx:
@@ -50,9 +50,9 @@ Many parallel read queries can therefore be lazily executed on the server and in
 ----
 #!test[reset-after]
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
 
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=data_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=data_create]
 #}}
 
 with driver.transaction(DB_NAME, TransactionType.READ) as tx:
@@ -88,10 +88,10 @@ A successful query's response is a `QueryAnswer`, which expands to any of the fo
 
 Check out the full answer api in your language's reference page:
 
-- xref::{page-version}@new_reference$typedb-grpc-drivers/python.adoc#_QueryAnswer[Python gRPC driver]
-- xref::{page-version}@new_reference$typedb-grpc-drivers/java.adoc#_QueryAnswer[Java gRPC driver]
-- xref::{page-version}@new_reference$typedb-grpc-drivers/rust.adoc#_QueryAnswer#_enum_QueryAnswer[Rust gRPC driver]
-- xref::{page-version}@new_reference$typedb-http-drivers/typescript.adoc#_Answer[HTTP Typescript library]
+- xref::{page-version}@reference$typedb-grpc-drivers/python.adoc#_QueryAnswer[Python gRPC driver]
+- xref::{page-version}@reference$typedb-grpc-drivers/java.adoc#_QueryAnswer[Java gRPC driver]
+- xref::{page-version}@reference$typedb-grpc-drivers/rust.adoc#_QueryAnswer#_enum_QueryAnswer[Rust gRPC driver]
+- xref::{page-version}@reference$typedb-http-drivers/typescript.adoc#_Answer[HTTP Typescript library]
 
 === Concept rows
 
@@ -101,9 +101,9 @@ Concept rows represent results as a table rows, where each row is made up of col
 ----
 #!test[reset-after]
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
 
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=data_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=data_create]
 #}}
 
 with driver.transaction(DB_NAME, TransactionType.READ) as tx:
@@ -127,9 +127,9 @@ Fetch queries return concept documents with flexible JSON-like structure:
 ----
 #!test[reset-after]
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
 
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=data_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=data_create]
 #}}
 with driver.transaction(DB_NAME, TransactionType.READ) as tx:
     # Fetch queries return concept documents iterator
@@ -158,10 +158,10 @@ Schema queries modify the database schema and return status information:
 ----
 #!test[reset-after]
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=import_and_constants]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=import_and_constants]
 
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=driver_create]
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=database_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=driver_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=database_create]
 #}}
 def define_user_owns_phone(driver):
     with driver.transaction(DB_NAME, TransactionType.SCHEMA) as tx:
@@ -201,4 +201,4 @@ undefine_user_owns_phone(driver)
 
 == Next steps
 
-* **xref:{page-version}@new_core_concepts::drivers/best-practices.adoc[Best Practices]** - Advanced patterns for query optimization and error handling
+* **xref:{page-version}@core_concepts::drivers/best-practices.adoc[Best Practices]** - Advanced patterns for query optimization and error handling

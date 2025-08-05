@@ -21,7 +21,7 @@ the database, keeping them in sync. These nodes are only available to process re
 
 The leader is exclusively responsible for processing all schema and data writes. Centralizing writes on a single node simplifies consistency
 and ensures that all changes are applied in a strict order. Write throughput is therefore determined by the capacity of the single leader
-node and is scaled by increasing its resources (see xref:{page-version}@new_core_concepts::typedb/vertical_scaling.adoc[vertical scaling]).
+node and is scaled by increasing its resources (see xref:{page-version}@core_concepts::typedb/vertical_scaling.adoc[vertical scaling]).
 
 If a leader node fails, the cluster automatically elects a new leader from among the followers, ensuring that the database remains available
 for writes with minimal interruption.

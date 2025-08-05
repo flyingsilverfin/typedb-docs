@@ -67,7 +67,7 @@ insert
   $f isa friendship, links (friend: $a, friend: $b);
 ----
 
-For more detailed information on `insert` stages and pipelines, see the xref:{page-version}@new_core_concepts::typeql/query-clauses.adoc[] documentation in the TypeQL reference.
+For more detailed information on `insert` stages and pipelines, see the xref:{page-version}@core_concepts::typeql/query-clauses.adoc[] documentation in the TypeQL reference.
 
 === Idempotent creation using `put`
 
@@ -110,7 +110,7 @@ Queries are performed asynchronously: when a query request is sent from the driv
 This allows the driver to send multiple queries to the server to be executed concurrently. The suggested way to take advantage of this is to
 open a number of concurrent transactions and send a batch of queries to each of them.
 
-For further explanation, see the drivers xref:{page-version}@new_core_concepts::drivers/queries.adoc[Querying page].
+For further explanation, see the drivers xref:{page-version}@core_concepts::drivers/queries.adoc[Querying page].
 
 ==== Accidental duplication and ordering
 
@@ -124,7 +124,7 @@ put
 ----
 
 An issue may arise during parallel loading, however, where concurrent workers ensure the same user exists, inadvertently creating two
-``john_1``s. If `user` has a xref:{page-version}@new_core_concepts::typeql/constraining-data.adoc#unique_key[@key] attribute, this
+``john_1``s. If `user` has a xref:{page-version}@core_concepts::typeql/constraining-data.adoc#unique_key[@key] attribute, this
 is a minor issue: whichever transaction attempts to commit later will fail and need to be retried.
 
 It is recommended, if possible, to load entities first along with their attributes, followed by relations between entities, then relations
@@ -139,9 +139,9 @@ All queries must be performed within a transaction - transactions are isolated f
 A `match` stage is the fundamental command for retrieving data. They retrieve data by matching *patterns*. Patterns represent constraints the variables are expected to satisfy. Match stages return _all combinations_ of data for their variables that satisfy the pattern, though they will not rebind a variable already bound by previous stages.
 
 Patterns can be combined into larger patterns by conjunction with `;`, disjunction with `or`, and negation with `not`. Patterns can also be marked as optional by putting them in a `try` block, in which case any failure to match those patterns does not affect the rest of the stage. The variables that are newly introduced in the block are considered optionally bound (`$x?`). See the
-xref:{page-version}@new_core_concepts::typeql/query-variables-patterns.adoc[pattern reference] for more.
+xref:{page-version}@core_concepts::typeql/query-variables-patterns.adoc[pattern reference] for more.
 
-The stream of rows can then be processed using stream operators such as `sort`, `reduce`, and `limit`, or extended with more `match` clauses. To see all types of stream operations and clauses, check out the clause xref:{page-version}@new_reference::typeql/pipelines/index.adoc[reference pages].
+The stream of rows can then be processed using stream operators such as `sort`, `reduce`, and `limit`, or extended with more `match` clauses. To see all types of stream operations and clauses, check out the clause xref:{page-version}@reference::typeql/pipelines/index.adoc[reference pages].
 
 When retrieving data from the database there is a basic distinction to keep in mind:
 
@@ -150,7 +150,7 @@ When retrieving data from the database there is a basic distinction to keep in m
 * *attributes* are fully identified by their type and value.
 
 To read more about clauses, clause chaining, and pipelines, read the
-xref:{page-version}@new_core_concepts::typeql/query-clauses.adoc[pipelines] documentation.
+xref:{page-version}@core_concepts::typeql/query-clauses.adoc[pipelines] documentation.
 
 === Retrieving data in documents using `fetch`
 
@@ -190,7 +190,7 @@ friends.
 ...
 ----
 
-For more information on `fetch` stages, see the xref:{page-version}@new_reference::typeql/pipelines/fetch.adoc[fetch query stage] documentation in the TypeQL reference.
+For more information on `fetch` stages, see the xref:{page-version}@reference::typeql/pipelines/fetch.adoc[fetch query stage] documentation in the TypeQL reference.
 
 == Update
 

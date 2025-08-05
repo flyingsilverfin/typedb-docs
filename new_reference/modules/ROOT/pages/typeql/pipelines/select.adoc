@@ -1,5 +1,5 @@
 = Select operator
-:page-aliases: {page-version}@new_reference::typeql/queries/get.adoc
+:page-aliases: {page-version}@reference::typeql/queries/get.adoc
 
 The select operator restricts the stream of rows to only contain the variables specified.
 

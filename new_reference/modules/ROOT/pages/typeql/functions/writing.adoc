@@ -12,7 +12,7 @@ A function declaration consists of:
 * A function name.
 * Typed *input arguments* (optional).
 * A *return type*.
-- A xref:{page-version}@new_reference::typeql/pipelines/index.adoc#pipeline_kinds[read pipeline] as the *function body*.
+- A xref:{page-version}@reference::typeql/pipelines/index.adoc#pipeline_kinds[read pipeline] as the *function body*.
 - A *return statement* that produces results of the specified return type.
 
 .Function Declaration Syntax
@@ -23,22 +23,22 @@ fun <function-name> ( <optional-arguments> ) -> <return-types>:
 return <return-statement>
 ----
 
-- `<function-name>` is a valid label (i.e. a not reserved keyword or a TypeQL xref:{page-version}@new_reference::typeql/expressions/literals.adoc[literal]).
+- `<function-name>` is a valid label (i.e. a not reserved keyword or a TypeQL xref:{page-version}@reference::typeql/expressions/literals.adoc[literal]).
 - `<optional-arguments>` is a list of zero of more typed variables, written in the format `$a : A, $b : B, ...`
 - `<return-types>` consists of at least one `<return-type>` and can be:
-* a xref:{page-version}@new_reference::typeql/functions/stream.adoc[stream] tuple type, written in the format `{ A, B, ... }`.
-* a xref:{page-version}@new_reference::typeql/functions/scalar.adoc[tuple] type, written in the format `A, B, ...`.
+* a xref:{page-version}@reference::typeql/functions/stream.adoc[stream] tuple type, written in the format `{ A, B, ... }`.
+* a xref:{page-version}@reference::typeql/functions/scalar.adoc[tuple] type, written in the format `A, B, ...`.
 
 +
 [NOTE]
 ====
 The types `A, B, ...` above can be either user-defined types (e.g. an entity type `user`) or primitive value types (e.g. `boolean`).
 ====
-- `<read_pipeline>` includes any read xref:{page-version}@new_reference::typeql/pipelines/index.adoc[pipeline].
-- `<return-statement>` may consist of variables, xref:{page-version}@new_reference::typeql/expressions/function_calls.adoc[function calls], and built-in reductions:
+- `<read_pipeline>` includes any read xref:{page-version}@reference::typeql/pipelines/index.adoc[pipeline].
+- `<return-statement>` may consist of variables, xref:{page-version}@reference::typeql/expressions/function_calls.adoc[function calls], and built-in reductions:
 * Scalar return statements are of the form
 `$a;`.
-* Tuple return statements are of the form  `$a, $b, <built-in-reduction>, scalar_fun($c), ...;` (see xref:{page-version}@new_reference::typeql/pipelines/reduce.adoc[reduce] for available built-in reductions).
+* Tuple return statements are of the form  `$a, $b, <built-in-reduction>, scalar_fun($c), ...;` (see xref:{page-version}@reference::typeql/pipelines/reduce.adoc[reduce] for available built-in reductions).
 * Stream return statements are of the form `{ $a, $b, scalar_fun($c), ... };`.
 
 +
@@ -62,7 +62,7 @@ The types `A, B, ...` above can be either user-defined types (e.g. an entity typ
 
 Function can be called:
 
-1. as part of an xref:{page-version}@new_reference::typeql/expressions/index.adoc[expression]. For example:
+1. as part of an xref:{page-version}@reference::typeql/expressions/index.adoc[expression]. For example:
 +
 --
 [,typeql]
@@ -101,7 +101,7 @@ It's not allowed to declare two functions with the same name even if they have t
 [#query_level_functions]
 === Using Functions at Query-Level
 
-Functions can be defined temporarily at the query level using the `with` clause, becoming a xref:{page-version}@new_reference::typeql/pipelines/with.adoc[with pipeline stage].
+Functions can be defined temporarily at the query level using the `with` clause, becoming a xref:{page-version}@reference::typeql/pipelines/with.adoc[with pipeline stage].
 Such functions exist only for the duration of the query and are not persisted in the database.
 
 Multiple `with` clauses can be used, each defining a single function.
@@ -125,7 +125,7 @@ For example, the following read pipeline defines and uses a temporary function u
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/read_statements_functions.tql[tag=with-fun]
+include::{page-version}@reference::example$tql/read_statements_functions.tql[tag=with-fun]
 ----
 
 === Using Functions in definition queries
@@ -138,7 +138,7 @@ Replace the keyword `with` with `define` and execute the query in a schema trans
 // tag::define[]
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=define-keyword;with-fun-defined]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=define-keyword;with-fun-defined]
 ----
 // end::define[]
 
@@ -146,7 +146,7 @@ Once persisted, these functions can be called directly in read queries:
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/read_statements_functions.tql[tag=with-fun-match]
+include::{page-version}@reference::example$tql/read_statements_functions.tql[tag=with-fun-match]
 ----
 
 ==== Redefine
@@ -156,7 +156,7 @@ Everything except for the function name can be redefined using redefine queries.
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/redefine_statements_functions.tql[tags=redefine-keyword;with-fun-redefined]
+include::{page-version}@reference::example$tql/redefine_statements_functions.tql[tags=redefine-keyword;with-fun-redefined]
 ----
 // end::redefine[]
 
@@ -167,7 +167,7 @@ To undefine a function, specify the `fun` keyword and its name.
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/undefine_statements_functions.tql[tags=undefine-keyword;with-fun-undefined]
+include::{page-version}@reference::example$tql/undefine_statements_functions.tql[tags=undefine-keyword;with-fun-undefined]
 ----
 // end::undefine[]
 
@@ -175,19 +175,19 @@ include::{page-version}@new_reference::example$tql/undefine_statements_functions
 
 [cols=2]
 --
-.xref:{page-version}@new_reference::typeql/pipelines/index.adoc[]
+.xref:{page-version}@reference::typeql/pipelines/index.adoc[]
 [.clickable]
 ****
 Learn more about function bodies - pipelines.
 ****
 
-.xref:{page-version}@new_reference::typeql/functions/stream.adoc[]
+.xref:{page-version}@reference::typeql/functions/stream.adoc[]
 [.clickable]
 ****
 Understand how to work with stream functions.
 ****
 
-.xref:{page-version}@new_reference::typeql/functions/scalar.adoc[]
+.xref:{page-version}@reference::typeql/functions/scalar.adoc[]
 [.clickable]
 ****
 Explore single functions and their usage.

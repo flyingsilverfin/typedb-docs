@@ -1,12 +1,12 @@
 = Fetch stage
-:page-aliases: {page-version}@new_reference::typeql/queries/fetch.adoc
+:page-aliases: {page-version}@reference::typeql/queries/fetch.adoc
 
 Fetch is primarily used to convert row answers into document (JSON) answers.
 
 [#syntax]
 == Syntax
 
-A fetch stage can follow any other stage that produces rows (e.g., xref:{page-version}@new_reference::typeql/pipelines/match.adoc[match], xref:{page-version}@new_reference::typeql/pipelines/insert.adoc[insert]).
+A fetch stage can follow any other stage that produces rows (e.g., xref:{page-version}@reference::typeql/pipelines/match.adoc[match], xref:{page-version}@reference::typeql/pipelines/insert.adoc[insert]).
 It starts with the keyword `fetch` followed by curly braces `{}` with a fetch body inside of it.
 The `fetch` clause is **terminal**, meaning that it cannot be followed by any other pipeline stage.
 
@@ -136,7 +136,7 @@ fetch {
 The `<return statement>` can contain either a single or a stream function return statement.
 However, the parentheses `()` should be used only for scalar results.
 
-See xref:{page-version}@new_reference::typeql/functions/index.adoc[] for more information about function returns.
+See xref:{page-version}@reference::typeql/functions/index.adoc[] for more information about function returns.
 ====
 
 .Fetch an anonymous function returning aggregates

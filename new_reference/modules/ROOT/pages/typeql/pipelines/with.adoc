@@ -10,7 +10,7 @@ with <function-declaration>
 ... # continue pipeline, may call functions in patterns
 ----
 
-where `<function-declaration>` is a xref:{page-version}@new_reference::typeql/functions/writing.adoc#declaration[function declaration].
+where `<function-declaration>` is a xref:{page-version}@reference::typeql/functions/writing.adoc#declaration[function declaration].
 
 == Behavior
 

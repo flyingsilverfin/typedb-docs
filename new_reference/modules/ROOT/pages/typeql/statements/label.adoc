@@ -1,5 +1,5 @@
 = `label` statement
-:page-aliases: {page-version}@new_reference::typeql/statements/type.adoc
+:page-aliases: {page-version}@reference::typeql/statements/type.adoc
 
 The constraint `$t label <LABEL>` matches all types `$t` that have the label (name) `<LABEL>`.
 

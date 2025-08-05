@@ -3,7 +3,7 @@
 == Introduction
 
 // tag::description[]
-Functions provide powerful abstractions of query logic. They are a cornerstone of the functional xref:{page-version}@new_reference::typeql/data_model.adoc[query programming model], and generalize logic programs à la Datalog.
+Functions provide powerful abstractions of query logic. They are a cornerstone of the functional xref:{page-version}@reference::typeql/data_model.adoc[query programming model], and generalize logic programs à la Datalog.
 Functions calls can be nested, recursive, and negated. There syntax natively embeds into TypeQL’s declarative pattern language.
 // end::description[]
 
@@ -46,19 +46,19 @@ returns stream `{ $a, $b }`
 
 [cols-3]
 --
-.xref:{page-version}@new_reference::typeql/functions/writing.adoc[]
+.xref:{page-version}@reference::typeql/functions/writing.adoc[]
 [.clickable]
 ****
 Learn how to write functions.
 ****
 
-.xref:{page-version}@new_reference::typeql/functions/stream.adoc[]
+.xref:{page-version}@reference::typeql/functions/stream.adoc[]
 [.clickable]
 ****
 Learn how to work with stream-return functions.
 ****
 
-.xref:{page-version}@new_reference::typeql/functions/scalar.adoc[]
+.xref:{page-version}@reference::typeql/functions/scalar.adoc[]
 [.clickable]
 ****
 Learn how to work with scalar functions.

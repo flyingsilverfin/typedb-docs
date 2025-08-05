@@ -132,7 +132,7 @@ commit
 
 [NOTE]
 =====
-A quick *tip* if you are using Console for this course. Queries on this page can be turned into runnable *Console scripts* by clicking the "`hidden lines`" button (image:{page-version}@new_home::/svg/eye.svg[width=24]).
+A quick *tip* if you are using Console for this course. Queries on this page can be turned into runnable *Console scripts* by clicking the "`hidden lines`" button (image:{page-version}@home::/svg/eye.svg[width=24]).
 These scripts can then be *pasted* directly into the server-level interface of Console, and run end-to-end simply by pressing kbd[Enter].
 =====
 --
@@ -380,7 +380,7 @@ Don't forget to commit the transaction by typing `commit` and pressing kbd[Enter
 
 TypeDB's type system re-thinks data models from first principles: it modularizes schemas into their "atomic" components. For example, you can add or remove roles and ownerships at any point in time, or edit specific annotations.
 This makes it easy to migrate and combine data, and programmatically re-structure your database if necessary.
-There is much more to explore. You can check out the xref:{page-version}@new_core_concepts::typeql/index.adoc[TypeQL Concepts] section for specific details.
+There is much more to explore. You can check out the xref:{page-version}@core_concepts::typeql/index.adoc[TypeQL Concepts] section for specific details.
 
 Here's your entire schema so you can see it in one go:
 

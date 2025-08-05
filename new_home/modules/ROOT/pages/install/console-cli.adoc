@@ -22,10 +22,10 @@ See the Console's downloadable packages for macOS, Linux, and Windows.
 
 == Install
 
-include::{page-version}@new_home::partial$console_install.adoc[tag=install]
+include::{page-version}@home::partial$console_install.adoc[tag=install]
 
 == Getting Started
 
 After installation, you can connect to TypeDB servers. For detailed connection instructions and usage guides, see:
 
-* xref:{page-version}@new_tools::console.adoc[] - Complete Console documentation and connection guide
+* xref:{page-version}@tools::console.adoc[] - Complete Console documentation and connection guide

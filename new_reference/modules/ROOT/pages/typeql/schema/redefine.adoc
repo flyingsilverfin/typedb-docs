@@ -7,7 +7,7 @@ to modify existing types, type interfaces, or functions in the schema.
 
 == Syntax
 
-Redefine queries start with the `redefine` keyword following by a single xref:{page-version}@new_reference::typeql/schema/define.adoc[definition statement] of the define queries format.
+Redefine queries start with the `redefine` keyword following by a single xref:{page-version}@reference::typeql/schema/define.adoc[definition statement] of the define queries format.
 
 [,typeql]
 ----
@@ -31,11 +31,11 @@ An error is returned (on execution or on commit), and no changes are preserved, 
 [#_statements_behavior]
 === Statements
 
-* xref:{page-version}@new_reference::typeql/statements/relates.adoc[`relates` statements] redefine role types specialization using `relates ... as`.
-* xref:{page-version}@new_reference::typeql/statements/value.adoc[`value` statements] redefine value types of attribute types.
-* xref:{page-version}@new_reference::typeql/statements/sub.adoc[`sub` statements] redefine supertypes of types.
-* xref:{page-version}@new_reference::typeql/annotations/index.adoc[@annotations] redefine annotations with arguments, replacing their values.
-* xref:{page-version}@new_reference::typeql/statements/fun.adoc[`fun` statements] redefine functions, replacing their interfaces and bodies.
+* xref:{page-version}@reference::typeql/statements/relates.adoc[`relates` statements] redefine role types specialization using `relates ... as`.
+* xref:{page-version}@reference::typeql/statements/value.adoc[`value` statements] redefine value types of attribute types.
+* xref:{page-version}@reference::typeql/statements/sub.adoc[`sub` statements] redefine supertypes of types.
+* xref:{page-version}@reference::typeql/annotations/index.adoc[@annotations] redefine annotations with arguments, replacing their values.
+* xref:{page-version}@reference::typeql/statements/fun.adoc[`fun` statements] redefine functions, replacing their interfaces and bodies.
 
 == Examples
 
@@ -73,4 +73,4 @@ redefine fathership relates father as parent;
 
 === Redefining functions
 
-include::{page-version}@new_reference::typeql/functions/writing.adoc[tag=redefine]
+include::{page-version}@reference::typeql/functions/writing.adoc[tag=redefine]

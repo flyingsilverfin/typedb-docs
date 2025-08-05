@@ -34,7 +34,7 @@ We recommend using either disk snapshots or our import/export tool. Neither of t
 
 === Export/Import
 
-Use the xref:{page-version}@new_maintenance_operation::database-export-import.adoc[] tool for exporting and importing database state.
+Use the xref:{page-version}@maintenance_operation::database-export-import.adoc[] tool for exporting and importing database state.
 
 Doing an `export` will provide you with two files - one representing the schema, and the other representing the data. These can then be used with `import` to restore the database to the point when the export was taken.
 

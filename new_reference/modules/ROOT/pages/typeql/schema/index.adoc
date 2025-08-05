@@ -6,24 +6,24 @@ This reference covers the usage of schema queries in TypeQL. These queries can b
 
 [cols-3]
 --
-.xref:{page-version}@new_reference::typeql/schema/define.adoc[]
+.xref:{page-version}@reference::typeql/schema/define.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/schema/define.adoc[tags=overview]
+include::{page-version}@reference::typeql/schema/define.adoc[tags=overview]
 ****
 
-.xref:{page-version}@new_reference::typeql/schema/undefine.adoc[]
+.xref:{page-version}@reference::typeql/schema/undefine.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/schema/undefine.adoc[tags=overview]
+include::{page-version}@reference::typeql/schema/undefine.adoc[tags=overview]
 ****
 
-.xref:{page-version}@new_reference::typeql/schema/redefine.adoc[]
+.xref:{page-version}@reference::typeql/schema/redefine.adoc[]
 [.clickable]
 ****
 Used
-include::{page-version}@new_reference::typeql/schema/redefine.adoc[tags=overview]
+include::{page-version}@reference::typeql/schema/redefine.adoc[tags=overview]
 ****
 --

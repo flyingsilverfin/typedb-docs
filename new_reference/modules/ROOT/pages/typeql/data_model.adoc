@@ -88,7 +88,7 @@ Data instances (i.e., entities, relation, are attributes) are stored using datab
 
 == Definitions
 
-User-defined types, their interfaces, and their subtyping structure, are created and modified through xref:{page-version}@new_reference::typeql/index.adoc#statements[definition statements] in xref:{page-version}@new_reference::typeql/index.adoc#queries[schema queries].
+User-defined types, their interfaces, and their subtyping structure, are created and modified through xref:{page-version}@reference::typeql/index.adoc#statements[definition statements] in xref:{page-version}@reference::typeql/index.adoc#queries[schema queries].
 
 == Data pipelines
 
@@ -159,7 +159,7 @@ TypeQL's patterns provide an elegant way of producing yet more general composite
 [[variables]]
 == Variables categories
 
-Stages in TypeQL xref:{page-version}@new_reference::typeql/index.adoc#queries[data pipeline] will contain xref:{page-version}@new_reference::typeql/index.adoc#statements[statements] with variables. Any variable in a stage belongs to exactly one of four categories.
+Stages in TypeQL xref:{page-version}@reference::typeql/index.adoc#queries[data pipeline] will contain xref:{page-version}@reference::typeql/index.adoc#statements[statements] with variables. Any variable in a stage belongs to exactly one of four categories.
 
 1. *Instance variables*, represent data instances from your database. Instance variables are identified by their usage in statements. For example:
 +

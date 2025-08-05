@@ -39,7 +39,7 @@ a|* Execute read queries +
 
 === ACID guarantees
 
-TypeDB transactions provide ACID guarantees up to **snapshot isolation**. For more details, see the server xref:{page-version}@new_core_concepts::typedb/transactions.adoc[Transaction] documentation.
+TypeDB transactions provide ACID guarantees up to **snapshot isolation**. For more details, see the server xref:{page-version}@core_concepts::typedb/transactions.adoc[Transaction] documentation.
 
 == Transaction lifecycle
 
@@ -61,9 +61,9 @@ For example, in Python:
 ----
 #!test[reset-after]
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
 
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=data_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=data_create]
 #}}
 
 # READ transactions for data retrieval
@@ -88,7 +88,7 @@ For example, in Python:
 ----
 #!test[reset-after]
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
 #}}
 
 # WRITE transactions for data modifications
@@ -120,16 +120,16 @@ For example, in Python:
 ----
 #!test[reset-after]
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=import_and_constants]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=import_and_constants]
 
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=driver_create]
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=database_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=driver_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=database_create]
 #}}
 
 # SCHEMA transactions for schema changes
 with driver.transaction(DB_NAME, TransactionType.SCHEMA) as tx:
     # Define new schema elements
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=tx_define_query]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=tx_define_query]
 
     # Can also modify data in same transaction, but it will not be as efficient as using a WRITE transaction
     tx.query("insert $c isa company, has company-name 'TypeDB Inc';").resolve()
@@ -154,11 +154,11 @@ There is a configurable timeout to obtain the schema lock, as noted below.
 
 For the complete documentation, see your driver's reference page:
 
-* xref:{page-version}@new_reference::typedb-grpc-drivers/python.adoc#_TransactionOptions[Python gRPC transaction options]
-* xref:{page-version}@new_reference::typedb-grpc-drivers/java.adoc#_TransactionOptions[Java gRPC transaction options]
-* xref:{page-version}@new_reference::typedb-grpc-drivers/rust.adoc#_TransactionOptions[Rust gRPC transaction options]
-* xref:{page-version}@new_reference::typedb-http-drivers/typescript.adoc#_TransactionOptions[Typescript HTTP library]
-* xref:{page-version}@new_reference::typedb-http-api.adoc#_TransactionOptions[HTTP API transaction options]
+* xref:{page-version}@reference::typedb-grpc-drivers/python.adoc#_TransactionOptions[Python gRPC transaction options]
+* xref:{page-version}@reference::typedb-grpc-drivers/java.adoc#_TransactionOptions[Java gRPC transaction options]
+* xref:{page-version}@reference::typedb-grpc-drivers/rust.adoc#_TransactionOptions[Rust gRPC transaction options]
+* xref:{page-version}@reference::typedb-http-drivers/typescript.adoc#_TransactionOptions[Typescript HTTP library]
+* xref:{page-version}@reference::typedb-http-api.adoc#_TransactionOptions[HTTP API transaction options]
 
 === Transaction timeouts
 
@@ -171,10 +171,10 @@ For example, in Python:
 ----
 #!test[reset-after]
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=import_and_constants]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=import_and_constants]
 
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=driver_create]
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=database_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=driver_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=database_create]
 with driver.transaction(DB_NAME, TransactionType.SCHEMA) as tx:
     #tag::tx_define_query[]
     tx.query("""
@@ -209,10 +209,10 @@ For example, in Python:
 ----
 #!test[reset-after]
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=import_and_constants]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=import_and_constants]
 
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=driver_create]
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=database_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=driver_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=database_create]
 #}}
 
 from typedb.driver import TransactionOptions
@@ -242,7 +242,7 @@ Group related operations but avoid transactions that are too large. Optimal thro
 ----
 #!test[reset-after]
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
 #}}
 
 # Batch related operations
@@ -281,21 +281,21 @@ Implement retry logic for write transaction conflicts:
 ----
 #!test
 #{{
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=setup_and_schema]
 
-include::{page-version}@new_core_concepts::example$driver/python_driver_usage.py[tag=data_create]
+include::{page-version}@core_concepts::example$driver/python_driver_usage.py[tag=data_create]
 #}}
 import time
 import random
 
-def update_user_with_retry(driver, email, new_age, max_retries=3):
+def update_user_with_retry(driver, email, age, max_retries=3):
     for attempt in range(max_retries):
         try:
             with driver.transaction(DB_NAME, TransactionType.WRITE) as tx:
                 tx.query(f"""
                     match $u isa user, has age $old_age;
                     delete $u has $old_age; 
-                    insert $u has age {new_age};
+                    insert $u has age {age};
                 """)
                 tx.commit()
                 return  # Success!
@@ -314,5 +314,5 @@ update_user_with_retry(driver, "alice@example.com", 30)
 
 == Next steps
 
-* **xref:{page-version}@new_core_concepts::drivers/queries.adoc[Queries]** - Learn about query execution and result processing
-* **xref:{page-version}@new_core_concepts::drivers/best-practices.adoc[Best Practices]** - Transaction management and performance optimization patterns
+* **xref:{page-version}@core_concepts::drivers/queries.adoc[Queries]** - Learn about query execution and result processing
+* **xref:{page-version}@core_concepts::drivers/best-practices.adoc[Best Practices]** - Transaction management and performance optimization patterns

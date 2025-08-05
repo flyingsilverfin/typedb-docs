@@ -19,7 +19,7 @@ In the previous sections we've:
 [,typeql]
 ----
 #!test[schema]
-include::{page-version}@new_home::page$get_started/schema.adoc[tag=full_define]
+include::{page-version}@home::page$get_started/schema.adoc[tag=full_define]
 ----
 ====
 
@@ -443,18 +443,18 @@ Pure inserts are generally used to create new entities and attributes -
 all other operations require a `match` clause to find existing data to work with.
 This applies to clauses like `delete` and `update` as well.
 
-You can read more about other clause types in the applicable xref:{page-version}@new_core_concepts::typeql/query-clauses.adoc[Concepts page].
+You can read more about other clause types in the applicable xref:{page-version}@core_concepts::typeql/query-clauses.adoc[Concepts page].
 
 Here's the full set of queries you've used to successfully write data into TypeDB:
 [,typeql]
 ----
-include::{page-version}@new_home::page$get_started/data.adoc[tag=insert2]
+include::{page-version}@home::page$get_started/data.adoc[tag=insert2]
 
-include::{page-version}@new_home::page$get_started/data.adoc[tag=insert3]
+include::{page-version}@home::page$get_started/data.adoc[tag=insert3]
 
-include::{page-version}@new_home::page$get_started/data.adoc[tag=insert5]
+include::{page-version}@home::page$get_started/data.adoc[tag=insert5]
 
-include::{page-version}@new_home::page$get_started/data.adoc[tag=match-insert1]
+include::{page-version}@home::page$get_started/data.adoc[tag=match-insert1]
 ----
 
 

@@ -6,12 +6,12 @@ It serves as a lightweight and powerful CLI tool to manage and query TypeDB data
 Console is the default client distributed with TypeDB, but it can also be installed separately.
 [NOTE]
 ====
-For installation instructions, see the xref:{page-version}@new_home::install/studio.adoc[] install page.
+For installation instructions, see the xref:{page-version}@home::install/studio.adoc[] install page.
 ====
 
 == Connect to TypeDB
 
-include::{page-version}@new_tools::partial$console_connect.adoc[tag=connect]
+include::{page-version}@tools::partial$console_connect.adoc[tag=connect]
 
 == Interactive mode
 

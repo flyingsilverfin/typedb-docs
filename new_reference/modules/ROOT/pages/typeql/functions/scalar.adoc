@@ -1,6 +1,6 @@
 = Scalar and tuple functions
 
-Scalar and tuple functions are xref:{page-version}@new_reference::typeql/functions/index.adoc#fun_types[function types] which return at most one row of outputs.
+Scalar and tuple functions are xref:{page-version}@reference::typeql/functions/index.adoc#fun_types[function types] which return at most one row of outputs.
 
 == Syntax
 
@@ -21,7 +21,7 @@ Single functions can be identified by their return type not containing curly bra
 == Usage
 
 Single functions are defined and called like any other function.
-To retrieve the results of the called function, a simple assignment is enough (however, a general `in` used for xref:{page-version}@new_reference::typeql/functions/stream.adoc[streamed] results is also allowed).
+To retrieve the results of the called function, a simple assignment is enough (however, a general `in` used for xref:{page-version}@reference::typeql/functions/stream.adoc[streamed] results is also allowed).
 
 === Transforming stream outputs to single outputs
 
@@ -31,7 +31,7 @@ For example, the following example uses a query with a number of results based o
 [#_transforming_general_example]
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/read_statements_functions.tql[tags=match-users]
+include::{page-version}@reference::example$tql/read_statements_functions.tql[tags=match-users]
 ----
 
 There are two main ways of transforming streams into single results: aggregation and stream modification.
@@ -45,13 +45,13 @@ These aggregations are usually scalar single functions by themselves, so calling
 .Example of an aggregate function used in a scalar function
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=fun-aggregate-single-scalar-return]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=fun-aggregate-single-scalar-return]
 ----
 
 .Example of an aggregate function used in a tuple function
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=fun-aggregate-single-tuple-return]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=fun-aggregate-single-tuple-return]
 ----
 
 ==== Stream modification
@@ -61,7 +61,7 @@ As already discussed, this function should return a stream of answers.
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=fun-stream-users]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=fun-stream-users]
 ----
 
 To make sure that there is maximum one result for a function, an instruction for picking this one result in case of ambiguity is required.
@@ -78,7 +78,7 @@ With the `last` keyword, the whole stream is consumed, and only its last answer 
 .Example of a stream modification
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=fun-stream-users-with-first]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=fun-stream-users-with-first]
 ----
 
 [#scalar_functions]
@@ -89,28 +89,28 @@ The following example illustrate simple usages of functions for retrieving an `i
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=fun-single-scalar-return-value]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=fun-single-scalar-return-value]
 ----
 
 To retrieve the results of such functions calls, the following read query can be used:
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/read_statements_functions.tql[tags=fun-single-scalar-return-value]
+include::{page-version}@reference::example$tql/read_statements_functions.tql[tags=fun-single-scalar-return-value]
 ----
 
 === Tuple functions
 
-include::{page-version}@new_reference::typeql/functions/stream.adoc[tags=tuple-functions-description]
+include::{page-version}@reference::typeql/functions/stream.adoc[tags=tuple-functions-description]
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/schema_statements_functions.tql[tags=with-fun-defined]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=with-fun-defined]
 ----
 
 To retrieve the results of such functions calls, the following read query can be used:
 
 [,typeql]
 ----
-include::{page-version}@new_reference::example$tql/read_statements_functions.tql[tags=with-fun-match]
+include::{page-version}@reference::example$tql/read_statements_functions.tql[tags=with-fun-match]
 ----
