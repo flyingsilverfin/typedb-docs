@@ -86,7 +86,7 @@ Constructs an xref:{page-version}@new_reference::typeql/statements/attribute.ado
 Constructs a xref:{page-version}@new_reference::typeql/statements/struct.adoc[], used to define a new struct type.
 
 `fun`::
-Constructs a xref:{page-version}@new_reference::typeql/statements/fun.adoc[], used to to define a new function.
+Constructs a xref:{page-version}@new_reference::typeql/statements/fun.adoc[], used to define a new function.
 
 === Constraint definition statements
 
@@ -150,7 +150,7 @@ Constructs an xref:{page-version}@new_reference::typeql/statements/iid.adoc[], u
 Describes a xref:{page-version}@new_reference::typeql/annotations/card.adoc[], used to specify cardinality ranges for roles and ownerships.
 
 `@cascade`::
-Describes a xref:{page-version}@new_reference::typeql/annotations/cascade.adoc[], used to specify behaviour when deleting a relation's role players.
+Describes a xref:{page-version}@new_reference::typeql/annotations/cascade.adoc[], used to specify behavior when deleting a relation's role players.
 
 `@independent`::
 Describes an xref:{page-version}@new_reference::typeql/annotations/independent.adoc[], used to prevent attributes without owners from being deleted automatically.

@@ -14,5 +14,5 @@
 ** xref:{page-version}@new_maintenance_operation::troubleshooting/installation.adoc[]
 ** xref:{page-version}@new_maintenance_operation::troubleshooting/connection.adoc[]
 ** xref:{page-version}@new_maintenance_operation::troubleshooting/stopping-queries.adoc[]
-** xref:{page-version}@new_maintenance_operation::troubleshooting/optimising-queries.adoc[]
+** xref:{page-version}@new_maintenance_operation::troubleshooting/optimizing-queries.adoc[]
 ** xref:{page-version}@new_maintenance_operation::troubleshooting/debugging-queries.adoc[]

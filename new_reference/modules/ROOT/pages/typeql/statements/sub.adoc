@@ -87,7 +87,7 @@ match $t sub profile;
    --------
     $t | type user
    --------
-    $t | type organisation
+    $t | type organization
    --------
     $t | type company
    --------
@@ -119,9 +119,9 @@ match $t sub! profile;
 ====
 ----
    --------
-    $t | type user
+   $t | type user
    --------
-    $t | type organisation
+   $t | type organization
    --------
 ----
 ====

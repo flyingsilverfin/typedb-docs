@@ -25,7 +25,7 @@ Resolve connection issues.
 Query takes too long.
 ****
 
-.xref:{page-version}@new_maintenance_operation::troubleshooting/optimising-queries.adoc[]
+.xref:{page-version}@new_maintenance_operation::troubleshooting/optimizing-queries.adoc[]
 [.clickable]
 ****
 Optimize your queries for the best performance.

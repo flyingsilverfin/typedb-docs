@@ -40,4 +40,4 @@ Doing an `export` will provide you with two files - one representing the schema,
 
 === Disk Snapshots
 
-It's possible take snapshots using a cloud provider's disk snapshot utility, and create a new TypeDB server instance based on the snapshotted disk. This can be done while the server is running.
+It's possible to take snapshots using a cloud provider's disk snapshot utility, and create a new TypeDB server instance based on the snapshotted disk. This can be done while the server is running.

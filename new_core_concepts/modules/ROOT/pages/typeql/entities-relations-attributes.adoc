@@ -140,7 +140,7 @@ An attribute type also inherits and implicitly specialises the interface of its 
 
 == Polymorphism
 
-Polymorphism in TypeDB is realised in two ways:
+Polymorphism in TypeDB is realized in two ways:
 
 === Interfaces
 Multiple types may "implement" the same interface - i.e. play the same role, or own the same attribute.
@@ -155,10 +155,10 @@ define
     relates employer,
     relates employee;
 
-  entity organisation;
-  entity company sub organisation,
+  entity organization;
+  entity company sub organization,
     plays employment:employer;
-  entity charity sub organisation,
+  entity charity sub organization,
     plays employment:employer;
 ----
 
@@ -173,7 +173,7 @@ an instance of the subtype may be used at any interface (or function argument/re
 that expects an instance of its super-type.
 
 In the following schema snippet, entities of type `company` or `charity` can play the `employer` in an `employment`,
-although it is their supertype `organisation` which is defined to play the role.
+although it is their supertype `organization` which is defined to play the role.
 
 [,typeql]
 ----
@@ -182,10 +182,10 @@ define
     relates employer,
     relates employee;
 
-  entity organisation,
+  entity organization,
     plays employment:employer;
-  entity company sub organisation;
-  entity charity sub organisation;
+  entity company sub organization;
+  entity charity sub organization;
 ----
 
 //

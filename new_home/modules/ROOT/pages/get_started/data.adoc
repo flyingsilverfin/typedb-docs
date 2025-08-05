@@ -25,7 +25,7 @@ include::{page-version}@new_home::page$get_started/schema.adoc[tag=full_define]
 
 == Overview
 
-We are now ready to write data to our database. We'll see few examples of how we can create data,
+We are now ready to write data to our database. We'll see a few examples of how we can create data,
 and how TypeDB's type system enforces our data constraints when adding and modifying data.
 
 == Pure insert queries
@@ -328,7 +328,7 @@ include::./data.adoc[tag=match1_result]
 
 [NOTE]
 =====
-IIDs are "instance IDs". Though fixed in each database, These are auto-generated unique IDs for each entity and relation.
+IIDs are "instance IDs". These are auto-generated unique IDs for each entity and relation.
 Though fixed in each database, they are not necessarily deterministic across databases - your IIDs might be different!
 =====
 
@@ -445,7 +445,7 @@ This applies to clauses like `delete` and `update` as well.
 
 You can read more about other clause types in the applicable xref:{page-version}@new_core_concepts::typeql/query-clauses.adoc[Concepts page].
 
-Here's the full set of queries you've used to succesfully write data into TypeDB:
+Here's the full set of queries you've used to successfully write data into TypeDB:
 [,typeql]
 ----
 include::{page-version}@new_home::page$get_started/data.adoc[tag=insert2]

@@ -24,9 +24,9 @@ put
   friendship (friend: $person-1, friend: $person-2);
 ----
 
-== Behaviour
+== Behavior
 
-The behaviour of a `put` stage can be described in pseudo-code as:
+The behavior of a `put` stage can be described in pseudo-code as:
 [,python]
 ----
 def run_put(pattern, input_rows):
@@ -59,7 +59,7 @@ What happens in this case is:
 - If a person named Jane already exists: nothing is inserted.
 - Else: two new `person` instances with name "Jane" are inserted.
 
-This behaviour is currently under review.
+This behavior is currently under review.
 Please open a Github issue if it is blocking your progress!
 ====
 

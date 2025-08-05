@@ -21,7 +21,7 @@ Let's have a quick look at TypeDB's data model. In TypeDB, data is stored in *ty
 
 Stored data objects are called *instances* of types, and instances may connect to other instances. This simple mechanism of "`connecting`" underpins the distinction of entity, relation, and attribute types above.
 
-For example, to create a relation instance we must reference multiple other entities or relations, which we call the relation's *role players*. Similarly, to create attribute instance we will reference a single entity or relation instances, which we call the attribute's *owner*. Makes sense, right?
+For example, to create a relation instance we must reference multiple other entities or relations, which we call the relation's *role players*. Similarly, to create an attribute instance we will reference a single entity or relation instances, which we call the attribute's *owner*. Makes sense, right?
 
 TypeDB's data model is conceptually simple, but at the same time extremely systematic and flexible. This is what enables TypeDB's type system to unify concepts from relational, document, and graph DBMSs, and blend them with ideas from modern strongly typed programming languages.
 
@@ -205,7 +205,6 @@ Let us dissect the second query in a bit more detail.
 It's worth pointing out that roles are only one of two kinds of interfaces that types may implement, the other being *ownership*: for example, in our first query above we defined that the `user` type "`implements the username owner interface`". These interfaces make our life very easy as we'll see, especially when dealing with type hierarchies!
 
 Let's write a few more definition queries to get a feel of database schemas in TypeDB.
-
 
 [tabs]
 ====
