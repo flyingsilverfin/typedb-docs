@@ -1,0 +1,7 @@
+= Typescript HTTP Driver
+:Summary: API Reference of TypeDB HTTP driver for Typescript.
+:keywords: typedb, client, driver, typescript, http, api, refernce
+:pageTitle: Typescript HTTP driver API reference
+:page-toclevels: 2
+
+include::{page-version}@external-typedb-driver::partial$http-ts/api-reference.adoc[]

@@ -1,9 +1,11 @@
 include::{page-version}@home::partial$nav.adoc[]
 
-include::{page-version}@manual::partial$nav.adoc[]
+include::{page-version}@examples::partial$nav.adoc[]
 
-include::{page-version}@drivers::partial$nav.adoc[]
+include::{page-version}@core_concepts::partial$nav.adoc[]
 
-include::{page-version}@typeql::partial$nav.adoc[]
+include::{page-version}@tools::partial$nav.adoc[]
 
-include::{page-version}@academy::partial$nav.adoc[]
+include::{page-version}@maintenance_operation::partial$nav.adoc[]
+
+include::{page-version}@reference::partial$nav.adoc[]

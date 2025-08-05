@@ -1,0 +1,4 @@
+= TypeDB In-flight Encryption
+
+[placeholder]
+Configure in-flight encryption for TypeDB servers. 

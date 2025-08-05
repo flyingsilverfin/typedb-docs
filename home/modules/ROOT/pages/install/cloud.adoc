@@ -1,0 +1,31 @@
+= TypeDB Cloud
+
+You can run TypeDB in the cloud without installing anything, and get started for free!
+
+TypeDB Cloud is our platform for automatically deploying TypeDB onto the cloud provider of your choice.
+
+== Features
+
+TypeDB Cloud features a number of advanced features designed for safety and high availability, including:
+
+* Scheduled backups (see xref:{page-version}@maintenance_operation::typedb-backups.adoc[the dedicated page] for more details)
+* Managed deployment and upgrade processes
+* End-to-end in-flight encryption with managed TLS certificates
+* (Coming soon) High availability through replication
+
+== Deploying a cluster
+
+1. Sign up for TypeDB Cloud at https://cloud.typedb.com/sign-up[cloud.typedb.com].
+2. Navigate to the https://cloud.typedb.com?team_action=/clusters/deploy[cluster deployment page].
+3. Configure your cluster and click **Deploy**.
+
+== Cluster configuration
+
+Paid clusters can be configured during deployment to select different technical specifications.
+We offer a series of recommended configurations,
+or you can enable advanced configuration for more options.
+
+== After deploying
+
+Once your cluster is deployed, you will be able to set the password for the default `admin` user.
+Make sure to save this password somewhere safe, as you will need it to access your cluster.

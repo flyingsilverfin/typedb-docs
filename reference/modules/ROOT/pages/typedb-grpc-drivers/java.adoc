@@ -1,0 +1,7 @@
+= Java gRPC driver
+:pageTitle: Java gRPC driver
+:Summary: API Reference of TypeDB gRPC driver for Java.
+:keywords: typedb, client, driver, java, grpc, api, refernce
+:page-toclevels: 2
+
+include::{page-version}@external-typedb-driver::partial$java/api-reference.adoc[]

@@ -1,0 +1,18 @@
+= Examples
+
+Explore practical TypeDB examples and use cases.
+
+[cols-2]
+--
+.xref:{page-version}@examples::social-network.adoc[Social Network Example Application]
+[.clickable]
+****
+An example of a simple social network application using TypeDB.
+****
+
+.xref:{page-version}@examples::use-cases/index.adoc[Use Cases]
+[.clickable]
+****
+Explore real-world use cases for TypeDB.
+****
+-- 

@@ -1,0 +1,18 @@
+.Reference
+
+* xref:{page-version}@reference::typedb-grpc-drivers/index.adoc[]
+** xref:{page-version}@reference::typedb-grpc-drivers/python.adoc[]
+** xref:{page-version}@reference::typedb-grpc-drivers/java.adoc[]
+** xref:{page-version}@reference::typedb-grpc-drivers/rust.adoc[]
+
+* xref:{page-version}@reference::typedb-http-api.adoc[]
+
+* xref:{page-version}@reference::typedb-http-drivers/index.adoc[]
+
+* xref:{page-version}@reference::cloud-http-api.adoc[]
+
+include::{page-version}@reference::partial$typeql/nav.adoc[]
+
+* xref:{page-version}@reference::typedb-2-vs-3/index.adoc[]
+** xref:{page-version}@reference::typedb-2-vs-3/diff.adoc[]
+** xref:{page-version}@reference::typedb-2-vs-3/process.adoc[]

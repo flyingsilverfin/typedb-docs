@@ -1,0 +1,9 @@
+.Tools
+
+* xref:{page-version}@tools::studio.adoc[]
+
+* xref:{page-version}@tools::console.adoc[]
+
+* xref:{page-version}@tools::ide-plugins.adoc[]
+
+* xref:{page-version}@tools::typedb-cloud-api.adoc[]

@@ -1,0 +1,102 @@
+= Constraining Data
+
+TypeDB allows additional constraints to be defined on the types in the schema.
+These constraints can restrict the cardinality of an interface, or the domain of values of an attribute type.
+These constraints are written as [[definition-annotation]]*annotations* on the schema declarations they apply to. Annotations are prefixed with the `@` symbol.
+
+== Cardinality constraints
+Cardinality constraints restrict the number of interfaces of a specific type that may be attached to an instance.
+These are specified using the `@card` annotation. It can be written using either:
+
+* a range `@card(x..[y])`, where `x` is the minimum number permitted, and `y` is the maximum number (`y` may be omitted to not enforce an upper limit);
+* a scalar value `@card(x)`, where `x` is the required exact number of interfaces for each instance.
+
+E.g., we can restrict a `friendship` relation to relate exactly two `friends`.
+[,typeql]
+----
+friendship relates friend @card(2);
+----
+
+We can also restrict the number of roles of a specific type an instance plays, or the number of attributes of a specific type it owns.
+
+E.g., a person can be involved in at most one employment, but own any number of emails.
+[,typeql]
+----
+person plays employment:employee @card(0..1);
+person owns email @card(0..);
+----
+
+=== On specialisation of roles
+Cardinality constraints declared on a connection apply to all instances of that connection (including specialisations). For example:
+[,typeql]
+----
+relation sports-team,
+    relates player @card(11);
+relation football-team sub sports-team,
+    relates goal-keeper as player @card(1),
+    relates defender as player,
+    relates midfielder as player,
+    relates forward as player;
+----
+Here, a `sports-team` is constrained to have exactly 11 players.
+`football-team` is a subtype of sports-team, and the various positions are specialisations of the `player` role.
+Since all positions of are specialisations of `player`, it is enforced that a football team has 11 players across
+whatever may be the distribution across the positions.
+Additionally, the `@card(1)` ensures a team has exactly one `goal-keeper`.
+
+When an interface has multiple constraints (declared and/or inherited), all of them must be satisfied.
+For example, let's restrict our `football-team` to the more common distribution across positions.
+[,typeql]
+----
+relation football-team sub sports-team,
+    relates goal-keeper as player @card(1),
+    relates defender as player @card(3..5),
+    relates midfielder as player @card(3..5),
+    relates forward as player @card(1..3);
+----
+The cardinality restrictions on the individual positions do not rule out a "(1-)4-5-3" formation,
+but the `@card(11)` constraint on the `player` does.
+
+==== On specialisation of plays and owns
+Similarly, inherited cardinality constraints on `plays` & `owns` can be specialized. For instance:
+[,typeql]
+----
+  entity page owns name @card(1..3);
+  entity profile sub page;
+  entity user sub profile,
+    owns first-name @card(1),
+    owns surname @card(0..);
+  attribute name @abstract, value string;
+  attribute first-name sub name;
+  attribute surname sub name;
+----
+Here, a page must have between 1 & 3 names.
+A person must have exactly one first-name and up to two surnames.
+
+[_#unique_key]
+== `@unique` and `@key`
+These are special constraints which can be applied to ownerships.
+
+`owner owns attribute @unique` constrains a given `attribute` instance to be owned by at most one `owner` instance.
+
+`owner owns attribute @key` requires every `owner` instance to own exactly one instance of the `attribute` type.
+Additionally, the `@unique` constraint applies, requiring an `attribute` instance to be owned by at most one `owner` instance.
+
+== Attribute value constraints
+Attribute types may be annotated with constraints to restrict the values that an instance may hold. This allows an extra level of validation to be built into the schema.
+
+* `@values(<value1>, ...)`: requires values to be one of those specified;
+* `@range(<min>..<max>)`: requires values of numeric or time value types to lie within a range;
+* `@regex(<regex>)`: requires values of string types to match the regex.
+
+Value constraints are inherited by subtypes. A subtype may add its own value constraints to the inherited ones.
+An instance of the subtype must satisfy all such declared & inherited value constraints.
+
+Value constraints can also be placed on `owns` declarations to restrict values within the context of one ownership.
+
+== Other constraints
+* `@abstract` prevents the type from being instantiated.
+// Other?
+
+== Reference
+* xref:{page-version}@reference::typeql/annotations/index.adoc[Annotations]

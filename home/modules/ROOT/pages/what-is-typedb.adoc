@@ -1,0 +1,89 @@
+= What is TypeDB?
+
+Welcome to the world of TypeDB, a new kind of database designed to help you model and query data with clarity and confidence.
+
+TypeDB is a **strongly-typed, polymorphic, and general-purpose transactional database**. We'll explain what that means in a bit!
+
+It's well-suited for agentic AI systems and applications that require a deep understanding of rich, interconnected data and built-in guardrails.
+TypeDB is also excellent for cybersecurity, financial services, supply chain management, research, and other domains with complex data.
+
+TypeDB ships with its own query language, **TypeQL**, which allows you to define sophisticated data models and write simple yet highly expressive queries.
+TypeQL is designed to read and write like natural English, making it easy to discuss, model, and evolve data collaboratively.
+
+TypeDB integrates with pre-built tools: the web-based xref:{page-version}@home::install/studio.adoc[TypeDB Studio] and the command-line xref:{page-version}@home::install/console-cli.adoc[TypeDB Console].
+It can also be used programmatically with performant **gRPC-based drivers** in various languages, or directly via its **HTTP API**.
+
+TypeDB is **open-source** and available as a free Community Edition, or in https://cloud.typedb.com[TypeDB Cloud,window=_blank], where upgrades, backups, and security are fully managed.
+TypeDB Enterprise is also available for on-premise deployments.
+
+== Key Concepts
+
+TypeDB is a unique database that brings together ideas from programming languages and traditional database design:
+
+=== Strongly-Typed
+
+In TypeDB, you write your schema by creating **types** - a very familiar idea to programmers who regularly define classes or structs!
+
+Every piece of data inserted into the database has a specific type from the schema. 
+This isn't just about data types like "string" or "integer". 
+Instead, you use **entity types** (e.g., `person`, `company`), **relation types** (e.g., `friendship`, `employs`), and **attribute types** containing values (e.g., `name`, `age`, `address`).
+
+[,typeql]
+----
+define
+  entity person,
+    owns name,
+    owns age,
+    plays friendship:friend,
+    plays employment:employee;
+  entity company,
+    owns name,
+    owns address,
+    plays employment:employer;
+  relation friendship,
+    relates friend;
+  relation employment,
+    relates employee,
+    relates employer;
+  attribute name, value string;
+  attribute age, value integer;
+  attribute address, value string;
+----
+
+The system can now understand and validate queries more deeply,
+and even perform optimizations based on typing information - just like in a strongly typed programming language.
+
+In the end, the same requirements that lead to using TypeScript over JavaScript, or adding typing to a Python codebase,
+exist in the data layer as well: **correctness, performance, and maintainability**.
+With TypeDB, you get a database that is designed to tackle those problems in an intuitive, modern way.
+
+=== Polymorphic
+
+TypeDB types can do far more than you'd initially expect. Not only can you define simple entities, relations, and attributes, you can also define subtype hierarchies, additional interface-like role types, and reusable functions.
+
+These capabilities in turn compose with each other and interact polymorphically—for example, a user-defined function that can accept a `person` entity as an argument can also automatically take its subtype `child` entity as an argument!
+
+[,typeql]
+----
+define
+  entity child,
+    sub person;
+
+  # any person or subtype of person's friends can be counted with this re-usable function
+  fun count_friends($person: person) -> integer:
+    match friendship ($person);
+    return count;
+----
+
+TypeDB builds extensibility and reusability into your data models, reducing maintenance and development costs, while also allowing you to write less and do more.
+
+=== Transactional
+
+TypeDB is still built on tried-and-tested database ideas, such as xref:{page-version}@core_concepts::typedb/transactions.adoc[transactions] and snapshotting.
+Transactions are used to both read and write data, or even make changes to your database schemas in a safe, atomic manner.
+
+== What's Next
+
+Read more about why developers xref:{page-version}@home::why-typedb.adoc[choose TypeDB] (and some more features!), or jump straight into our xref:{page-version}@home::get_started/setup.adoc[Get started guide].
+
+If you're trying to learn TypeDB from the ground up or figure out how to best navigate these docs, we recommend reading our xref:{page-version}@home::learning_journey.adoc[learning journey].
