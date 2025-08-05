@@ -1,4 +1,0 @@
-= Schema vs Data
-
-[placeholder]
-TypeQL schema vs data concepts. 
