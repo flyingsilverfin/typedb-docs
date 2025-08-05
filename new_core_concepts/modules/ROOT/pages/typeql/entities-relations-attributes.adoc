@@ -2,13 +2,13 @@
 // TODO: Out links to manual / fundamentals articles
 
 TypeDB implements the Polymorphic Entity-Relation-Attribute (PERA) data model.
-A TypeDB schema defines a hierarchy of these types, and how they interact with each other through interface-types.
+A TypeDB schema defines a hierarchy of these types and how they interact with each other through interface types.
 
 == Entity
 
 Entities are standalone types, which exist independent of other types.
 
-E.g. A `person` exists, regardless of whether they are involved in friendships or have a name.
+E.g., a `person` exists, regardless of whether they are involved in friendships or have a name.
 [,typeql]
 ----
 entity person;
@@ -18,7 +18,7 @@ entity person;
 Relations are types which define one-or-more associated interface types called "role"s.
 The relation depends on other types in the schema to implement these interfaces by "playing" these roles.
 
-E.g. An `employment` relation exists to relate an `employer` to an `employee`.
+E.g., an `employment` relation exists to relate an `employer` to an `employee`.
 An `employment` instance cannot exist without the other instances which play these roles,
 hence the idea that `employment` "depends" on the participating player types.
 
@@ -46,10 +46,11 @@ relation insurance-obligation,
 You can refer to a role distinctly by scoping the role name with the relation name: `employment:employer`.
 
 == Attribute
-Attributes are types which hold a value. An attribute type must specify the primitive `value-type` of the values it will hold
+Attributes are types which hold a value. An attribute type must specify the primitive `value` type of the values it will hold.
+
 An instance of an attribute type is identified by its value.
 
-E.g. Any instance which has an age of 10 will refer to the same instance of the `age` attribute type.
+E.g., any instance which has an age of 10 will refer to the same instance of the `age` attribute type.
 
 [NOTE]
 ====
@@ -68,7 +69,7 @@ Entity & relation types may be defined to "own" attribute types.
 Unlike attributes, which are identified by their values, there is no direct way to reference an entity.
 Hence, entities (or relations) are referenced through their attributes.
 
-E.g. A `person` may own an attribute `birth-date`, or an `employment` may own a `start-date`;
+E.g., a `person` may own an attribute `birth-date`, or an `employment` may own a `start-date`.
 [,typeql]
 ----
 person owns age;
@@ -76,7 +77,7 @@ person owns age;
 
 Entity & relation types may be defined to "play" a role defined by a relation.
 
-E.g. The entity type `company` may play the  `employer` role of an `employment` relation.
+E.g., the entity type `company` may play the  `employer` role of an `employment` relation.
 
 [,typeql]
 ----
@@ -92,20 +93,20 @@ The subtype  inherits all declared interfaces & implementations from the superty
 # Some fields are left out for brevity
 # A page on a social network...
 entity page @abstract,
-    owns name,              # has some basic information
+    owns name,              # has some basic information,
     owns profile-picture,   #
     plays posting:page,     # can create posts
     plays viewing:viewed;   # for others to view
 
 # A profile has a page, but also the agency of a user:
 entity profile, sub page,
-    owns username,                   # a username
-    plays group-membership:member,   # Can participate in groups
-    plays viewing:viewer,            # View posts
-    plays content-engagement:author; # Create posts
+    owns username,                   # has a username,
+    plays group-membership:member,   # can participate in groups,
+    plays viewing:viewer,            # view posts,
+    plays content-engagement:author; # and create posts
 ----
 In this context, a page is a passive collection of posts for other users to view.
-Here, a profile retains all the aspects of being a page -
+A profile retains all the aspects of being a page -
 It has a name and a profile-picture, It can contain posts, and be viewed by others.
 It also has the agency of a being user - It has a username for logging in,
 It can create new posts, view them, and participate in groups.
@@ -162,8 +163,8 @@ define
 ----
 
 Here, the role `employer` is the interface declared by the `employment` type. The `company` and `charity` types implement the interface.
-The `relates` keyword is used to define the new role-type interface.
-The `plays` keyword is used to implement a role-type interface.
+The `relates` keyword is used to define the new role type interface.
+The `plays` keyword is used to implement a role type interface.
 Similarly, the `owns` keyword can be used to implement the implicit ownership interface of an attribute.
 
 === Subtyping
