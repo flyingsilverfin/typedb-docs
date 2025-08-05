@@ -4,7 +4,6 @@ This guide aims to develop an intuitive understanding of TypeQL.
 It provides an overview of the language, leaving the details to the TypeQL reference,
 with relevant sections linked at the end of each page.
 
-
 [cols-2]
 --
 .xref:{page-version}@new_core_concepts::typeql/overview.adoc[]
@@ -19,14 +18,13 @@ TypeQL overview.
 ****
 A gentle introduction to the PERA data model - Entities, relations, attributes
 // TODO: Or: Introduces the TypeQL data model - entities, relations, and attributes -
-and what it means to "own" attributes, and "play" roles in relations
+and what it means to "own" attributes, and "play" roles in relations.
 ****
 
 .xref:{page-version}@new_core_concepts::typeql/constraining-data.adoc[]
 [.clickable]
 ****
-Covers advanced typing constraints available in TypeQL
-Cardinality constraints & restrictions on the values of attribute value
+Covers advanced typing constraints available in TypeQL: cardinality & restrictions on the attribute values.
 ****
 
 .xref:{page-version}@new_core_concepts::typeql/schema-data.adoc[]
@@ -50,7 +48,7 @@ Shows how various TypeQL clauses can be chained to form complex query & data mod
 .xref:{page-version}@new_core_concepts::typeql/queries-as-functions.adoc[]
 [.clickable]
 ****
-TypeQL functions bring the familiar abstraction from programming languages to databases
+TypeQL functions bring the familiar abstraction from programming languages to databases.
 ****
 
 .xref:{page-version}@new_core_concepts::typeql/best-practices.adoc[]
