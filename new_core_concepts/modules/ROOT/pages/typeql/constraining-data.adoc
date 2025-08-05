@@ -73,6 +73,7 @@ Similarly, inherited cardinality constraints on `plays` & `owns` can be speciali
 Here, a page must have between 1 & 3 names.
 A person must have exactly one first-name and up to two surnames.
 
+[_#unique_key]
 == `@unique` and `@key`
 These are special constraints which can be applied to ownerships.
 

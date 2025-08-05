@@ -3,7 +3,9 @@
 When a single server can no longer handle the volume of read queries for your application, it becomes necessary to scale out horizontally.
 In TypeDB, this is achieved by creating a database cluster that distributes the read load across multiple nodes. This chapter explains how
 TypeDB's replication-based architecture enables horizontal scaling for read transactions while also providing high availability and fault
-tolerance. 
+tolerance.
+
+Clustering is available via TypeDB Cloud and TypeDB Enterprise. TypeDB CE only support single-node deployments.
 
 == Scaling read throughput with replication
 

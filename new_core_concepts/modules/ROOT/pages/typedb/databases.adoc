@@ -4,23 +4,25 @@ This section covers the management of databases and the definition of the schema
 
 == Managing databases
 
-In TypeDB, databases are high-level containers for your data and its corresponding schema. Database creation and deletion are administrative
-operations performed through tools like the TypeDB Console or programmatically via the client drivers, rather than through TypeQL queries.
+In TypeDB, databases are high-level containers for your data and its corresponding schema. A single TypeDB server can contain multiple databases, each of which are fully separated. No operations or data can cross between them.
 
-To create a new database, you can use the `database create` command in the Console (e.g., `database create my-database`) or call the appropriate
-method in a client driver, such as `driver.databases.create("my-database")` in Python.
+Database creation and deletion are administrative operations performed through tools like the TypeDB Console or programmatically via the drivers, rather than through TypeQL queries.
 
-Deleting a database, which permanently removes all of its contents, is handled similarly. The Console command is `database delete
-my-database`, and the equivalent in the Python driver is `client.databases.delete("my-database")`. This is an irreversible action and should
-be used with care.
+=== Database creation
 
-You can also perform administrative checks, such as verifying if a database exists or viewing all databases on the server. To see a complete
-list, you can use `database list` in the Console or `client.databases.all()` in the Python driver.
+To create a new database, you can use the `database create` command in the Console (e.g., `database create my-database`) or call the appropriate method in a client driver, such as `driver.databases.create("my-database")` in Python.
+
+=== Database deletion
+
+Deleting a database, which permanently removes all of its contents, is handled similarly. The Console command is `database delete my-database`, and the equivalent in the Python driver is `client.databases.delete("my-database")`. This is an irreversible action and should be used with care.
+
+=== Database administration
+
+You can also perform administrative checks, such as verifying if a database exists or viewing all databases on the server. To see a complete list, you can use `database list` in the Console or `client.databases.all()` in the Python driver.
 
 == Defining a schema
 
-The schema is a high-level specification of your application's data model. The schema must be defined before any data is inserted into the
-database.
+The schema is a high-level specification of your application's data model. The schema must be defined before any data is inserted into the database.
 
 The schema is composed of three main kinds of types:
 
@@ -34,13 +36,14 @@ You build your schema by defining these types and their interactions using sever
 
 - `entity`/`relation`/`attribute` creates a root type of specified kind (e.g., `entity person;`).
 
-- `sub` creates a type that inherits from a supertype (e.g., `employee sub person;`).
+- `sub` creates a type that inherits from a supertype (e.g., `entity employee sub person;`).
 
 - `owns` specifies that an entity or relation can have a certain attribute (e.g., `person owns name;`).
 
+- `relates` defines a role that is part of a relation (e.g., `employment relates employee;`).
+
 - `plays` specifies that an entity can play a role in a relation (e.g., `person plays employment:employee;`).
 
-- `relates` defines a role that is part of a relation (e.g., `employment relates employee;`).
 
 Here is an example of a simple schema definition:
 
@@ -50,7 +53,7 @@ define
   entity person,
     owns name,
     owns email,
-    plays friendship:friend;
+    plays employment:employee;
 
   attribute name, value string;
 
@@ -61,9 +64,9 @@ define
 
   attribute employee-id, value string;
 
-  relation friendship,
-    relates friend;
+  relation employment,
+    relates employee;
 ----
 
-For more information on defining a schema, refer to the xref:{page-version}@new_core_concepts::typeql/schema/define.adoc[`define` query]
+For more information on defining a schema and the TypeDB data model, refer to the xref:{page-version}@new_core_concepts::typeql/entities-relations-attributes.adoc[]
 documentation.
