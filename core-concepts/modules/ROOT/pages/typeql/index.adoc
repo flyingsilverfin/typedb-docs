@@ -1,4 +1,5 @@
 = TypeQL
+:page-aliases: {page-version}@typeql::index.adoc
 
 TypeQL is the declarative, strongly-typed, and intuitive query language used by TypeDB.
 
