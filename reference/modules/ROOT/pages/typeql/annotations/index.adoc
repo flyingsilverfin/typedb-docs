@@ -1,4 +1,5 @@
 = Annotations
+:page-aliases: {page-version}@typeql::annotations.adoc, {page-version}@manual::schema/annotations.adoc
 
 == Introduction
 

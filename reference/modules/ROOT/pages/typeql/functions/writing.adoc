@@ -1,4 +1,5 @@
 = Writing functions
+:page-aliases: {page-version}@typeql::functions/writing.adoc
 
 == Syntax
 

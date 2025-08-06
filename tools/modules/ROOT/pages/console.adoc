@@ -1,4 +1,5 @@
 = TypeDB Console
+:page-aliases: {page-version}@manual::tools/console.adoc
 
 TypeDB Console is a standalone TypeDB client with a command line interface (CLI).
 It serves as a lightweight and powerful CLI tool to manage and query TypeDB databases.

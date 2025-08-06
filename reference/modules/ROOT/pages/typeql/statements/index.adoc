@@ -1,5 +1,5 @@
 = Statements
-:page-aliases: {page-version}@reference::typeql/statements/overview.adoc
+:page-aliases: {page-version}@typeql::statements.adoc
 
 This reference covers the usage of statements in TypeQL.
 

@@ -1,4 +1,5 @@
 = Schema & Data
+:page-aliases: {page-version}@manual::schema/schema.adoc, {page-version}@manual::schema/schema-structure.adoc, {page-version}@manual::schema/types.adoc, {page-version}@typeql::schema.adoc
 
 As seen in the xref:{page-version}@core-concepts::typeql/entities-relations-attributes.adoc[] page, a TypeDB schema defines
 a hierarchy of types, their associated interfaces and interfaces they implement.

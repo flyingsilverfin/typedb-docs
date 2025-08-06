@@ -1,4 +1,5 @@
 = Expressions
+:page-aliases: {page-version}@typeql::expressions.adoc
 
 This reference covers the usage of expressions in TypeQL.
 

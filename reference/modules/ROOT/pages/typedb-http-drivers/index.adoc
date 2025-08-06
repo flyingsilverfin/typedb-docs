@@ -1,4 +1,5 @@
 = TypeDB HTTP Drivers
+:page-aliases: {page-version}@drivers::http.adoc
 
 HTTP drivers for TypeDB.
 

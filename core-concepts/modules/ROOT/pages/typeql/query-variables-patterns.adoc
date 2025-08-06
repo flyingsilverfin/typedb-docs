@@ -1,4 +1,5 @@
 = Query Variables and Patterns
+:page-aliases: {page-version}@manual::queries.adoc
 
 TypeQL is a declarative language: it focuses on **describing** the schema, data, or query through *patterns*, rather than specifying how to perform the query.
 

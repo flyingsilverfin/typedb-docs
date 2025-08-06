@@ -1,4 +1,5 @@
 = TypeDB Configuration
+:page-aliases: {page-version}@manual::configure.adoc
 
 [placeholder]
 Configure TypeDB servers. 

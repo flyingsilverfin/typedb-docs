@@ -1,5 +1,5 @@
 = Match stage
-:page-aliases: {page-version}@reference::typeql/patterns/matching.adoc
+:page-aliases: {page-version}@typeql::pipelines/match.adoc
 
 A match stage performs pattern-based data retrieval and filtering. It takes input data assigned variables and verifies that this data satisfies the patterns in the body of the stage, while producing new results for any additional variables that the pattern
 

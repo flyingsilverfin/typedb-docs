@@ -1,4 +1,5 @@
 = TypeDB
+:page-aliases: {page-version}@manual::index.adoc
 
 Explore the core server concepts of TypeDB Servers.
 

@@ -1,4 +1,5 @@
 = Tools
+:page-aliases: {page-version}@manual::tools.adoc
 
 Explore the tools available for working with TypeDB.
 

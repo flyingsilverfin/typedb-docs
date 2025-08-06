@@ -1,4 +1,5 @@
 = Connections
+:page-aliases: {page-version}@manual::connect.adoc,  {page-version}@manual::connect/CE.adoc
 
 == Overview
 

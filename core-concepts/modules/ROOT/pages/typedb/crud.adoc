@@ -1,4 +1,5 @@
 = CRUD
+:page-aliases: {page-version}@manual::CRUD.adoc, {page-version}@manual::CRUD/inserting.adoc,  {page-version}@manual::CRUD/reading.adoc
 
 CRUD operations create, read, update, and delete data in the TypeDB database.
 

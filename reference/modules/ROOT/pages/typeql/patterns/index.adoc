@@ -1,4 +1,5 @@
 = Patterns
+:page-aliases: {page-version}@typeql::patterns.adoc
 
 This reference covers the usage of patterns in TypeQL.
 

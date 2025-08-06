@@ -1,4 +1,5 @@
 = Functions
+:page-aliases: {page-version}@typeql::functions.adoc, {page-version}@manual::schema/functions.adoc
 
 == Introduction
 
