@@ -1,5 +1,5 @@
 = Data pipelines
-:page-aliases: {page-version}@reference::typeql/modifiers/overview.adoc, {page-version}@reference::typeql/queries/overview.adoc
+:page-aliases: {page-version}@typeql::pipelines.adoc
 
 // TODO: this page should say something about how stages combine
 // and give examples of how inputs and outputs are passed

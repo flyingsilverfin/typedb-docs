@@ -1,4 +1,5 @@
 = Install
+:page-aliases: {page-version}@home::install-tools.adoc, {page-version}@manual::install.adoc
 
 Choose the right TypeDB distribution for your needs, or get TypeDB tools.
 

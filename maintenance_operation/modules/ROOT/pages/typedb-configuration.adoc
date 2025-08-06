@@ -1,4 +1,0 @@
-= TypeDB Configuration
-
-[placeholder]
-Configure TypeDB servers. 

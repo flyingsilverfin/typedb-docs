@@ -1,4 +1,5 @@
 = Value types
+:page-aliases: {page-version}@typeql::values.adoc
 
 This reference gives an overview of the usage of values in TypeQL.
 

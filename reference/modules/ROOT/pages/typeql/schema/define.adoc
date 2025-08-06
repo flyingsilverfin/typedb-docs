@@ -1,5 +1,5 @@
 = Define query
-:page-aliases: {page-version}@reference::typeql/queries/define.adoc
+:page-aliases: {page-version}@typeql::schema/define.adoc
 
 Define queries are used
 // tag::overview[]

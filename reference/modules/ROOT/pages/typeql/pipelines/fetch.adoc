@@ -1,5 +1,5 @@
 = Fetch stage
-:page-aliases: {page-version}@reference::typeql/queries/fetch.adoc
+:page-aliases: {page-version}@typeql::pipelines/fetch.adoc
 
 Fetch is primarily used to convert row answers into document (JSON) answers.
 

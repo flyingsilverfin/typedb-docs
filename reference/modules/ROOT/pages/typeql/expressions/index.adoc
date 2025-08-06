@@ -1,4 +1,5 @@
 = Expressions
+:page-aliases: {page-version}@typeql::expressions.adoc
 
 This reference covers the usage of expressions in TypeQL.
 
@@ -16,7 +17,7 @@ Syntax for literal values in TypeQL.
 Arithmetic and other operators in TypeQL expressions.
 ****
 
-.xref:{page-version}@reference::typeql/expressions/function_calls.adoc[]
+.xref:{page-version}@reference::typeql/expressions/function-calls.adoc[]
 [.clickable]
 ****
 Calling functions in TypeQL expressions.

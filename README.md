@@ -29,7 +29,7 @@ The `master` branch contains the content for the published documentation, availa
 The `development` branch contains the content of the documentation to be published soon, 
 available at the [staging environment](https://development.typedb.com/docs).
 
-Main workflow is to merge changes to the `development` branch, test them in the staging environment, 
+The main workflow is to merge changes to the `development` branch, test them in the staging environment, 
 and publish to production by cherry-picking the changes to the `master` branch.
 
 Hot fixes can be merged directly to the `master` branch, and then cherry-picked into the `development` branch.
@@ -57,13 +57,13 @@ Use Asciidoc syntax with Antora to write content.
 
 **Headlines**
 
-- Headlines should be phrased in a way that when read the user can determine the question that the text is meant to 
+- Headlines should be phrased in a way that when read, the user can determine the question that the text is meant to 
   answer. They should describe a use-case.
 - Use primitive verbs (eg: _Manage Databases_ as opposed to _Managing Databases_) or _Database Management_.
 
 ### Using Images
 
-- The name of directories placed under `images/`, corresponds to the name of the section as displayed in the sidebar.
+- The name of directories placed under `images/` corresponds to the name of the section as displayed in the sidebar.
 - Name of images, while remaining concise, should be to some level descriptive of their content.
   For example: `compute_path.png` and `compute_path_subgraph.png` as opposed to `compute_0.png` and `compute_1.png`.
 - When an image is used across multiple pages, the **same** image file should be referenced, rather than duplicating 
@@ -80,10 +80,10 @@ Use Asciidoc syntax with Antora to write content.
 
 **Spelling**
 
-Use American.
+Use American English.
 
 **Headings**
-- There are multiple levels of headings used across all markdown files:
+- There are multiple levels of headings used across all AsciiDoc files:
   - h1 (`=`) — page title. Only one per page at the very beginning.
   - h2 (`==`)
   - h3 (`===`)
@@ -107,7 +107,7 @@ Use American.
   punctuation, elements format, etc.
 - When the list item completes the unfinished sentence before the list, end the list item with a period and start each
   item in lowercase.
-- When the concatenation of list items construct one long sentence, end each list items with a comma or a semicolon 
+- When the concatenation of list items constructs one long sentence, end each list item with a comma or a semicolon 
   with the last one ending with a period and start each item in lowercase.
 - If the item consists of a single word, don't add end punctuation.
 - If the item is a short phrase that doesn't include a verb, don't add end punctuation.
@@ -121,8 +121,8 @@ Use American.
 - Use serial (aka Oxford) comma.
 
 **Footer Notes and Captions**
-- When using a phrase, do not end the line with a period (eg: `Computation of shortest path in Studio`).
-- When using a sentence, end the line with a period. `Click on the plus icon to add a new tab.`.
+- When using a phrase, do not end the line with a period (e.g., `Computation of shortest path in Studio`).
+- When using a sentence, end the line with a period: `Click on the plus icon to add a new tab.`
 
 **Formulations**
 - Use paragraphs to provide clarity and flow.
@@ -131,7 +131,7 @@ Use American.
 - Keep paragraphs short (up to 4 lines), when possible.
 - Prefer short sentences to long ones. Only use complex sentence structures (multiple sentences divided by `,`, `;` 
   or `-`), as last resort.
-- Keep sentences concise. If a part of a sentence is adding no value to the point that the sentence is meant to deliver, 
+- Keep sentences concise. If a part of a sentence adds no value to the point that the sentence is meant to deliver, 
   remove it.
 - Avoid the assumption that a sentence is self-explanatory. Even if explained in an earlier sentence, repeat yourself 
   to ensure the sentence can be well-understood, without requiring reference to an earlier text.
@@ -152,8 +152,8 @@ Every heading is turned into an anchor, which in turn:
   different platforms.
 
 ### Keywords
-All terminologies used within a page almost always need to be included as the keywords in the front matter of the 
-markdown file.
+All terminologies used within a page almost always need to be included as keywords in the front matter of the 
+AsciiDoc file.
 The `keywords` attribute contains a comma-separated list of single-word keywords and/or multiple words that are 
 expected to be searched in combination.
 The `longTailKeywords` attribute contains a comma-separated list of keywords that form sensible combinations of the 
