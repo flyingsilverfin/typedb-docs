@@ -1,4 +1,4 @@
-= Authentication
+= Users & Authentication
 :pageTitle: Authentication
 :Summary: Understanding authentication with TypeDB drivers.
 :keywords: typedb, driver, authentication, credentials, security

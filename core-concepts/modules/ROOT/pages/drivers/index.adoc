@@ -20,7 +20,7 @@ TypeDB driver connections.
 .xref:{page-version}@core-concepts::drivers/authentication.adoc[]
 [.clickable]
 ****
-TypeDB driver authentication.
+TypeDB driver users and authentication.
 ****
 
 .xref:{page-version}@core-concepts::drivers/transactions.adoc[]

@@ -14,14 +14,15 @@ In this tutorial, we'll build a sample application capable of basic interaction 
 * Send different types of queries.
 
 Follow the steps below or see the
-https://github.com/typedb/typedb-examples[full source code,window=_blank].
+https://github.com/typedb/typedb-examples/full-stack[full-stack full source code,window=_blank] or the
+https://github.com/typedb/typedb-examples/webapp[equivalent webapp source code,window=_blank].
 
 This example can communicate with TypeDB using one of the following service layers:
 
 * Rust backend (using Axum)
 * Java backend (using Spring Boot)
 * Python backend (using Flask)
-* Directly from the Typescript frontend
+* Directly from the Typescript webapp
 
 == Running the application
 
