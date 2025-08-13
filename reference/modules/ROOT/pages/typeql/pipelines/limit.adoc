@@ -22,6 +22,6 @@ match
   friendship (friend: $friend, friend: $possible-friend);
   not { friendship (friend: $person, friend: $possible-friend); };
 reduce $num-mutuals = count($friend) within $possible-friend;
-sort $num-mutuals;
+sort $num-mutuals desc;
 limit 10;
 ----
