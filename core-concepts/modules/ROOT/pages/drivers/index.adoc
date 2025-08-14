@@ -1,5 +1,5 @@
 = Drivers
-:page-aliases: {page-version}@drivers::index.adoc, {page-version}@manual::tools/drivers.adoc
+:page-aliases: {page-version}@manual::tools/drivers.adoc
 
 Explore the core concepts of TypeDB drivers.
 
@@ -20,7 +20,7 @@ TypeDB driver connections.
 .xref:{page-version}@core-concepts::drivers/authentication.adoc[]
 [.clickable]
 ****
-TypeDB driver authentication.
+TypeDB driver users and authentication.
 ****
 
 .xref:{page-version}@core-concepts::drivers/transactions.adoc[]

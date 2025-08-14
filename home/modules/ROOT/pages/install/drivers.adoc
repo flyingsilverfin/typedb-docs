@@ -1,0 +1,193 @@
+= TypeDB Drivers
+:page-aliases: {page-version}@drivers::index.adoc, {page-version}@drivers::python.adoc, {page-version}@drivers::python/tutorial.adoc, {page-version}@drivers::java.adoc, {page-version}@drivers::java/tutorial.adoc, {page-version}@drivers::rust.adoc, {page-version}@drivers::rust/tutorial.adoc, {page-version}@drivers::nodejs.adoc, {page-version}@drivers::nodejs/tutorial.adoc, {page-version}@drivers::csharp.adoc, {page-version}@drivers::csharp/tutorial.adoc, {page-version}@drivers::cpp.adoc, {page-version}@drivers::cpp/tutorial.adoc, {page-version}@drivers::c.adoc, {page-version}@drivers::c/tutorial.adoc,
+
+TypeDB drivers are client libraries that enable applications to communicate with TypeDB servers. They provide a programming language-specific interface for all server operations, from connection management to query execution.
+
+== Install
+
+[cols-3]
+--
+.xref:#_python[]
+[.clickable]
+****
+****
+
+.xref:#_typescript_http[]
+[.clickable]
+****
+****
+
+.xref:#_rust[]
+[.clickable]
+****
+****
+
+.xref:#_java[]
+[.clickable]
+****
+****
+
+.xref:#_other_languages[]
+[.clickable]
+****
+****
+--
+
+== Python
+
+=== Install TypeDB Python Driver through Pip
+
+. Install `typedb-driver` using `pip`:
++
+[source,bash]
+----
+pip install typedb-driver
+----
+
+. In your Python program, import from `typedb.driver`:
++
+[source,python]
+----
+from typedb.driver import *
+
+driver = TypeDB.driver(address=TypeDB.DEFAULT_ADDRESS, ...)
+----
+
+=== Python driver tutorial
+
+* https://github.com/typedb/typedb-driver/python[typedb-driver/python on GitHub] - Read the TypeDB Python driver tutorial
+
+
+== TypeScript (HTTP)
+
+=== Install TypeDB HTTP TypeScript Driver from NPM
+
+. Install `typedb-driver-http` using `npm`:
++
+[source,bash]
+----
+npm install typedb-driver-http
+----
+
+. In your Node.js or Web application, import from `typedb-driver-http`:
++
+[source,typescript]
+----
+import { TypeDBHttpDriver, isApiErrorResponse } from "typedb-driver-http";
+
+const driver = new TypeDBHttpDriver({
+    username: "...",
+    password: "...",
+    addresses: [ "..." ],
+});
+----
+
+=== TypeScript HTTP driver example
+
+* https://github.com/typedb/typedb-examples/tree/master/webapp[TypeSpace: Social Network Webapp Example] - Explore the TypeScript HTTP driver example on GitHub
+
+
+== Rust
+
+=== Install TypeDB Rust Driver through Cargo
+
+. Install `typedb-driver` using `cargo`:
++
+[source,bash]
+----
+cargo add typedb-driver
+----
+
+. Use TypeDB Driver in your program:
++
+[source,rust]
+----
+use typedb_driver::TypeDBDriver;
+
+let driver = TypeDBDriver::new_core(TypeDBDriver::DEFAULT_ADDRESS).await.unwrap();
+----
+
+=== Rust driver tutorial
+
+* https://github.com/typedb/typedb-driver/rust[typedb-driver/rust on GitHub] - Read the TypeDB Rust driver tutorial
+
+
+== Java
+
+=== Install TypeDB Java Driver using Maven
+
+. Import `typedb-driver` using Maven:
++
+[source,xml]
+----
+<repositories>
+    <repository>
+        <id>repo.typedb.com</id>
+        <url>https://repo.typedb.com/public/public-release/maven/</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>com.typedb</groupId>
+        <artifactId>typedb-driver</artifactId>
+        <version>{version}</version>
+    </dependency>
+</dependencies>
+----
+
+. Use TypeDB Driver in your program:
++
+[source,java]
+----
+import com.typedb.driver.TypeDB;
+import com.typedb.driver.api.Driver;
+import com.typedb.driver.api.Credentials;
+import com.typedb.driver.api.DriverOptions;
+
+try (Driver driver = TypeDB.driver(TypeDB.DEFAULT_ADDRESS, new Credentials("admin", "password"), new DriverOptions(false, null))) {
+    ...
+}
+----
+
+=== Java driver tutorial
+
+* https://github.com/typedb/typedb-driver/java[typedb-driver/java on GitHub] - Read the TypeDB Java driver tutorial
+
+
+== Other languages
+
+If TypeDB doesn't yet have a driver for the language your application is using, get in touch with the team. Or for applications where performance isn't critical, you can interface directly with TypeDB's HTTP API.
+
+* xref:{page-version}@reference::typedb-http-api.adoc[TypeDB HTTP API] - Read the TypeDB HTTP API reference
+* https://typedb.com/discord[Discord chat server] - Collaborate with the TypeDB community
+
+
+== After installation
+
+[cols-2]
+--
+.xref:{page-version}@home::install/cloud.adoc[]
+[.clickable]
+****
+Get started using TypeDB Cloud without installing anything.
+****
+
+.xref:{page-version}@home::install/ce.adoc[]
+[.clickable]
+****
+Install and run TypeDB Community Edition (CE).
+****
+
+.xref:{page-version}@core-concepts::drivers.adoc[Core Concepts]
+[.clickable]
+****
+Explore the core concepts of TypeDB drivers.
+****
+
+.xref:{page-version}@reference::typedb-grpc-drivers[Reference]
+[.clickable]
+****
+Browse the TypeDB Driver API reference.
+****
+--

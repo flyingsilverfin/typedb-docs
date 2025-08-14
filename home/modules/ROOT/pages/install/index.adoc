@@ -34,4 +34,10 @@ Use the installation-free TypeDB Studio in Web or install its Desktop version.
 ****
 Install the TypeDB Console CLI tool.
 ****
+
+.xref:{page-version}@home::install/drivers.adoc[]
+[.clickable]
+****
+Install client libraries to connect your application to TypeDB.
+****
 --

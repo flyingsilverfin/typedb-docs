@@ -16,5 +16,6 @@
 ** xref:{page-version}@home::install/ce.adoc[]
 ** xref:{page-version}@home::install/studio.adoc[Studio]
 ** xref:{page-version}@home::install/console-cli.adoc[Console CLI]
+** xref:{page-version}@home::install/drivers.adoc[]
 
 * xref:{page-version}@home::learning-journey.adoc[]

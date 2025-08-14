@@ -8,6 +8,7 @@
 * xref:{page-version}@reference::typedb-http-api.adoc[]
 
 * xref:{page-version}@reference::typedb-http-drivers/index.adoc[]
+** xref:{page-version}@reference::typedb-http-drivers/typescript.adoc[]
 
 * xref:{page-version}@reference::cloud-http-api.adoc[]
 

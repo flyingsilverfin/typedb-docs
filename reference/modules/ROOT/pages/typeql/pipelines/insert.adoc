@@ -35,7 +35,6 @@ The output is then a stream of input rows extended with the newly inserted value
 
 [#_validation]
 == Validation
-
 Attempting to insert the following fail immediately and terminate the transaction:
 
 * an instance of an xref:{page-version}@reference::typeql/annotations/abstract.adoc[abstract] type,
