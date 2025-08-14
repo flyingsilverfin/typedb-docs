@@ -1,5 +1,5 @@
 = Drivers
-:page-aliases: {page-version}@drivers::index.adoc, {page-version}@manual::tools/drivers.adoc
+:page-aliases: {page-version}@manual::tools/drivers.adoc
 
 Explore the core concepts of TypeDB drivers.
 
