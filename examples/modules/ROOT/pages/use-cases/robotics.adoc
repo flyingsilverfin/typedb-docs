@@ -1,4 +1,9 @@
 = Robotics
 
+[NOTE]
+====
+Coming soon.
+====
+
 [placeholder]
 TypeDB in robotics applications. 

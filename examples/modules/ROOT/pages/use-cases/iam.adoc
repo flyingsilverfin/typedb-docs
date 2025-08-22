@@ -1,4 +1,9 @@
 = IAM
 
+[NOTE]
+====
+Coming soon.
+====
+
 [placeholder]
 Identity and Access Management (IAM) with TypeDB. 
