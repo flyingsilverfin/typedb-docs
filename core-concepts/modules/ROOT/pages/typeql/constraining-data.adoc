@@ -1,8 +1,22 @@
 = Constraining Data
+:test-typeql: linear
 
 TypeDB allows additional constraints to be defined on the types in the schema.
 These constraints can restrict the cardinality of an interface, or the domain of values of an attribute type.
 These constraints are written as [[definition-annotation]]*annotations* on the schema declarations they apply to. Annotations are prefixed with the `@` symbol.
+
+////
+[,typeql]
+----
+#!test[schema, commit]
+#{{
+define
+  entity person;
+  relation employment relates employee;
+  attribute email, value string;
+#}}
+----
+////
 
 == Cardinality constraints
 Cardinality constraints restrict the number of interfaces of a specific type that may be attached to an instance.
@@ -14,7 +28,9 @@ These are specified using the `@card` annotation. It can be written using either
 E.g., we can restrict a `friendship` relation to relate exactly two `friends`.
 [,typeql]
 ----
-friendship relates friend @card(2);
+#!test[schema]
+define
+relation friendship relates friend @card(2);
 ----
 
 We can also restrict the number of roles of a specific type an instance plays, or the number of attributes of a specific type it owns.
@@ -22,6 +38,8 @@ We can also restrict the number of roles of a specific type an instance plays, o
 E.g., a person can be involved in at most one employment, but own any number of emails.
 [,typeql]
 ----
+#!test[schema]
+define
 person plays employment:employee @card(0..1);
 person owns email @card(0..);
 ----
@@ -30,6 +48,8 @@ person owns email @card(0..);
 Cardinality constraints declared on a connection apply to all instances of that connection (including specialisations). For example:
 [,typeql]
 ----
+#!test[schema]
+define
 relation sports-team,
     relates player @card(11);
 relation football-team sub sports-team,
@@ -48,6 +68,8 @@ When an interface has multiple constraints (declared and/or inherited), all of t
 For example, let's restrict our `football-team` to the more common distribution across positions.
 [,typeql]
 ----
+#!test[schema]
+define
 relation football-team sub sports-team,
     relates goal-keeper as player @card(1),
     relates defender as player @card(3..5),
@@ -61,6 +83,8 @@ but the `@card(11)` constraint on the `player` does.
 Similarly, inherited cardinality constraints on `plays` & `owns` can be specialized. For instance:
 [,typeql]
 ----
+#!test[schema]
+define
   entity page owns name @card(1..3);
   entity profile sub page;
   entity user sub profile,

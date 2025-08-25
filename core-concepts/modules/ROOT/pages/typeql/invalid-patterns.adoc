@@ -1,8 +1,24 @@
 = Advanced: Invalid Patterns
+:test-typeql: linear
 
 This section dives into the semantics of TypeQL,
 using the <<_disjunctive_normal_form>> to explain why <<_disjoint_variable_reuse>> makes a pattern invalid.
 
+.Schema for the examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema, commit]
+define
+attribute name, value string;
+relation employment, relates employee, relates employer;
+relation education, relates institute, relates attendee;
+entity person owns name, plays employment:employee, plays education:attendee;
+entity company, owns name, plays employment:employer;
+entity school, owns name, plays education:institute;
+----
+====
 
 == Disjoint variable reuse
 This section demonstrates some of the cases which can arise due to
@@ -14,6 +30,7 @@ Notice we can write a pattern where the input variable to a negation is not boun
 For example:
 [,typeql]
 ----
+#!test[read, fail_at=runtime]
 match
 $p1 isa person; $p2 isa person;
 {
@@ -40,6 +57,7 @@ by rewriting the pattern using "distributivity" and examining each branch:
 In this case, we get the pattern:
 [,typeql]
 ----
+#!test[read, fail_at=runtime]
 match
 {
   $p1 isa person; $p2 isa person;
@@ -64,6 +82,7 @@ There is, of course, a way to express the intended query:
 [,typeql]
 .The correct query
 ----
+#!test[read, fail_at=runtime]
 $p1 isa person; $p2 isa person;
 not {
   $emp1 isa employment, links (employer: $company, employee: $p1);
@@ -81,6 +100,7 @@ not {
 Consider another case of questionable query composition:
 [,typeql]
 ----
+#!test[read, fail_at=runtime]
 match
 $p1 isa person; $p2 isa person;
 {
@@ -100,6 +120,7 @@ were either employed by the same company, or attended the same institute.
 The DNF quickly reveals the mistake:
 [,typeql]
 ----
+#!test[read, fail_at=runtime]
 match
 {
   $p1 isa person; $p2 isa person;
@@ -124,6 +145,7 @@ match
 You can see the query we meant to write in two of those branches:
 [,typeql]
 ----
+#!test[read]
 match
 $p1 isa person; $p2 isa person;
 {
@@ -138,6 +160,7 @@ $p1 isa person; $p2 isa person;
 The problem lies in the other two branches.
 [,typeql]
 ----
+#!test[read]
 match
 {
   $p1 isa person; $p2 isa person;
@@ -160,6 +183,7 @@ TypeQL throws a "disjoint variable re-use" error for such cases.
 Optional variables can only be used in only one `try` block in a given match clause. Consider:
 [,typeql]
 ----
+#!test[read, fail_at=runtime]
 match
   try { $x isa person, has name "John"; };
   try { $x isa person, has name "James"; };
@@ -179,8 +203,10 @@ The semantics of try blocks dictate the equivalence of
 
 where, `P'` is the pattern obtained by renaming all the 'optional' variables in `P` with fresh ones.
 Rewriting the above query with this equivalence (assuming `$x` to be 'optional' and renaming it, although this is ambiguous)
-[,tyepql]
+[,typeql]
 ----
+#!test[read, fail_at=runtime]
+match
 { $x "John"; } or not { $x_1 "John"; };
 { $x "James"; } or not { $x_2 "James"; };
 ----
@@ -188,6 +214,8 @@ Rewriting the above query with this equivalence (assuming `$x` to be 'optional' 
 Taking the DNF gives us 4 cases, and some very unintuitive behaviour:
 [,typeql]
 ----
+#!test[read, fail_at=runtime]
+match
 { $x "John"; $x "James"; } or               # persons named both James and John.
 { $x "John"; not { $x_2 "James"; }; } or    # If nobody is named James, then persons named John
 { not { $x_1 "John"; };  $x "James"; } or   # If nobody is named John, then persons named James

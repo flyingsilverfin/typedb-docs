@@ -1,5 +1,5 @@
 from typedb.driver import TypeDB, Driver, TransactionType, Credentials, DriverOptions
-from test.runners.base_runner import BaseRunner
+from test.runners.base_runner import BaseRunner, TEST_CONFIG_KEY_RESET
 from enum import Enum
 from typing import List, Dict, Tuple, Union
 from test.parser.parser import ParsedTest
@@ -77,14 +77,11 @@ class TypeqlRunner(BaseRunner):
             return False
         return True
 
-    def run_failing_queries(self, queries: List[str], type: TransactionType) -> str:
+    def run_failing_queries(self, parsed_test: ParsedTest, type: TransactionType) -> str:
+        query = "\n".join(parsed_test.segments)
         with self.driver.transaction(self.db, type) as tx:
             try:
-                promises = []
-                for q in queries:
-                    promises += [tx.query(q)]
-                for p in promises:
-                    p.resolve()
+                tx.query(query).resolve()
             except:
                 return FailureMode.Runtime
             try:
@@ -93,27 +90,22 @@ class TypeqlRunner(BaseRunner):
                 return FailureMode.Commit
         return FailureMode.NoFailure
 
-    def run_transaction(self, queries: List[str], type: TransactionType, counted=False, rollback=False, documents=False) -> Union[int, None]:
+    def run_transaction(self, parsed_test: ParsedTest, type: TransactionType, counted=False, rollback=False, documents=False) -> Union[int, None]:
         count_var_name = "automatic_test_count"
+        query = "\n".join(parsed_test.segments)
         if counted:
-            queries[-1] = queries[-1] + f"\nreduce ${count_var_name} = count;"
+            query += f"\nreduce ${count_var_name} = count;"
         with self.driver.transaction(self.db, type) as tx:
             try:
-                promises = []
-                results = []
-                for q in queries:
-                    promises.append(tx.query(q))
-                for p in promises:
-                    results.append(p.resolve())
+                result = tx.query(query).resolve()
                 if rollback:
                     tx.rollback()
                     tx.close()
                 elif type == TransactionType.READ:
-                    for r in results:
-                        if documents:
-                            consumed_iterator = list(r.as_concept_documents())
-                        else:
-                            consumed_iterator = list(r.as_concept_rows())
+                    if documents:
+                        consumed_iterator = list(result.as_concept_documents())
+                    else:
+                        consumed_iterator = list(result.as_concept_rows())
                     tx.close()
                 else:
                     tx.commit()
@@ -123,11 +115,20 @@ class TypeqlRunner(BaseRunner):
                     if type == TransactionType.READ:
                         count = consumed_iterator[0].get(count_var_name).get_integer()
                     else:
-                        last_result = list(results[-1].as_concept_rows())
-                        count = last_result[0].get(count_var_name).get_integer()
+                        rows = list(result.as_concept_rows())
+                        count = rows[0].get(count_var_name).get_integer()
                     return count
             except Exception as e:
                 raise Exception(f"{e}") from e
+
+    def before_run_test(self, parsed_test):
+        if TEST_CONFIG_KEY_RESET in parsed_test.config:
+            self.setup_db(True)
+
+
+    def after_run_test(self, parsed_test):
+        if TEST_CONFIG_KEY_RESET in parsed_test.config:
+            self.setup_db(True)
 
     def run_test(self, parsed_test: ParsedTest, adoc_path: str):
         self.before_run_test(parsed_test)
@@ -164,15 +165,15 @@ class TypeqlRunner(BaseRunner):
                     ref_failure_mode = FailureMode.Runtime
                 case x if x == TEST_FAIL_COMMIT_VAL:
                     ref_failure_mode = FailureMode.Commit
-            failure_mode = self.run_failing_queries(parsed_test.segments, type)
+            failure_mode = self.run_failing_queries(parsed_test, type)
             if failure_mode != ref_failure_mode:
                 raise RuntimeError(f"[{adoc_path}]: Failure mode: expected {ref_failure_mode} but got {failure_mode}")
         elif counted == True:
-            count = self.run_transaction(parsed_test.segments, type, counted, rollback, documents)
+            count = self.run_transaction(parsed_test, type, counted, rollback, documents)
             if count != reference_count:
                 raise RuntimeError(f"[{adoc_path}]: Query count: expected {reference_count} but got {count}")
         else:
-            self.run_transaction(parsed_test.segments, type, counted, rollback, documents)
+            self.run_transaction(parsed_test, type, counted, rollback, documents)
 
         self.after_run_test(parsed_test)
 
