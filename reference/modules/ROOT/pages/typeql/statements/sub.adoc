@@ -1,6 +1,17 @@
 = `sub` statement
+:test-typeql: linear
 
 The statement `<LABEL> sub <SUPERTYPE LABEL>` is used to identify the `<LABEL>` type as a subtype of `<SUPERTYPE LABEL>`.
+
+.Schema for the following examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema]
+define entity profile; entity user;
+----
+====
 
 == Defining subtyping
 
@@ -8,6 +19,7 @@ The `sub` keyword can be used to define a type as a subtype of another type.
 
 [,typeql]
 ----
+#!test[schema]
 define user sub profile;
 ----
 
@@ -17,6 +29,7 @@ The `sub` keyword can be used to undefine a type's subtyping of a type.
 
 [,typeql]
 ----
+#!test[schema]
 undefine sub profile from user;
 ----
 
@@ -29,6 +42,7 @@ This will result in all the transitive supertypes, including supertypes of its s
 
 [,typeql]
 ----
+#!test[read]
 match user sub $t;
 ----
 
@@ -55,6 +69,7 @@ This will result in only the types with defined `sub` statements, excluding the 
 
 [,typeql]
 ----
+#!test[read]
 match user sub! $t;
 ----
 
@@ -75,6 +90,7 @@ This will result in all the transitive subtypes, including subtypes of its subty
 
 [,typeql]
 ----
+#!test[read]
 match $t sub profile;
 ----
 
@@ -111,6 +127,7 @@ This will result in only the types with defined `sub` statements, excluding the 
 
 [,typeql]
 ----
+#!test[read]
 match $t sub! profile;
 ----
 

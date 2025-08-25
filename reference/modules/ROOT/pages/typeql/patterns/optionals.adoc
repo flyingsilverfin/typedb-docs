@@ -1,7 +1,18 @@
 = Optionals
+:test-typeql: linear
 
 Optional patterns can be used in `match` stages to optionally match a pattern,
 or in `insert` stages to insert a pattern *if* all the variables involved are bound.
+
+.Schema for the following examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema, commit]
+include::{page-version}@reference::example$tql/conjunction.tql[tags=patterns-schema]
+----
+====
 
 == Syntax & Basic behavior
 [,typeql]
@@ -16,6 +27,7 @@ If it has no matches, it produces a single answer with all optional variables bo
 
 [,typeql]
 ----
+#!test[read]
 match
     $person isa person;
     try {
@@ -26,8 +38,12 @@ Here, `$spouse` will be bound to the spouse if `$person` is in a `marriage`.
 Else, `$spouse` will be bound to `None`
 
 === insert & delete
+[NOTE]
+====
+Coming soon!
+====
 Optional patterns in insert or delete stages will execute only if ALL the variables present in them are bound.
-
+// Re-enable the tests when we do implement it
 [,typeql]
 ----
 match
@@ -53,6 +69,7 @@ Optional patterns are banned in `put` stages.
 In the stage that it first occurs, An optional variable may only occur in a single try-block.
 [,typeql]
 ----
+#!test[read, fail_at=runtime]
 match
     $person isa person;
     try {
@@ -70,6 +87,7 @@ An unbound optional variable will cause the pattern to fail.
 The following is a valid way to express the intent of the example above:
 [,typeql]
 ----
+#!test[read]
 match
     $person isa person;
     try {
@@ -86,6 +104,7 @@ match
 Optional patterns can be nested. This is also an option for the previous example
 [,typeql]
 ----
+#!test[read]
 match
     $person isa person;
     try {

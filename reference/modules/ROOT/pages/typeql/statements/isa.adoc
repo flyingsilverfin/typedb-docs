@@ -1,6 +1,19 @@
 = `isa` statement
+:test-typeql: linear
 
 The statement `<VAR> isa <TYPE>` is used to identify the `<VAR>` as an instance of `<TYPE>`.
+
+.Schema for the following examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema]
+define
+attribute name, value string;
+entity person, owns name;
+----
+====
 
 == Inserting instance of type
 
@@ -8,15 +21,21 @@ The `isa` keyword can be used to create a new instance of a given type.
 
 [,typeql]
 ----
+#!test[write]
 insert $person isa person;
 ----
 
 == Deleting instance of type
 
-The `isa` keyword is not used to delete an instance of type. Simply delete the variable that is bound to the instance.
+Unlike in TypeDB 2, the `isa` keyword is no longer used to delete an instance of type.
+Simply delete the variable that is bound to the instance.
 
 [,typeql]
 ----
+#!test[write]
+#{{
+match $person isa person;
+#}}
 delete $person;
 ----
 
@@ -28,6 +47,7 @@ The `isa` keyword can be used to match all instances of a given type and its sub
 
 [,typeql]
 ----
+#!test[read]
 match $person isa person;
 ----
 
@@ -35,6 +55,7 @@ The `isa!` keyword can be used to match all instances of a type _excluding subty
 
 [,typeql]
 ----
+#!test[read]
 match $person isa! person;
 ----
 
@@ -44,6 +65,7 @@ The `isa` keyword can be used to match all types of an instance.
 
 [,typeql]
 ----
+#!test[read]
 match $person isa $type;
 ----
 
@@ -51,5 +73,6 @@ The `isa!` keyword can be used to match the exact type of an instance.
 
 [,typeql]
 ----
+#!test[read]
 match $person isa! $type;
 ----

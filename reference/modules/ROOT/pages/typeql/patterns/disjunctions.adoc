@@ -1,5 +1,6 @@
 = Disjunctions
 :page-aliases: {page-version}@reference::typeql/patterns/disjunction.adoc
+:test-typeql: linear
 
 Disjunctive patterns can be used in `match` stages. They allow queries to match several cases (or "`branches`") of patterns in parallel.
 
@@ -33,14 +34,25 @@ or {
 == Behavior
 A disjunction pattern is satisfied if one of its branches is satisfied.
 
+.Schema for the following examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema, commit]
+include::{page-version}@reference::example$tql/conjunction.tql[tags=patterns-schema]
+----
+====
+
 ===  Variable scopes
 A variable that appears in every branch will appear in the answers to the disjunction,
 and is considered to be in the scope of the parent pattern.
 Results to the following query will contain answers for `$x` and `$id`:
 [,typeql]
 ----
+#!test[read]
 match
-  $x isa $user;
+  $x isa user;
   { $x has email $id; } or { $x has phone $id; };
 ----
 
@@ -48,8 +60,9 @@ A variable that occurs in only one branch AND not outside the disjunction is con
 Results to the following query will only contain answers for `$x`:
 [,typeql]
 ----
+#!test[read]
 match
-  $x isa $user;
+  $x isa user;
   { $x has email $e; } or { $x has phone $p; };
 ----
 
@@ -57,8 +70,9 @@ In line with the unique scope principle, a variable that is local to more than o
 The following query is invalid as `$e` has multiple scopes.
 [,typeql]
 ----
+#!test[read, fail_at=runtime]
 match
-  $x isa $user;
+  $x isa user;
   { $x has email $e; } or { $x has phone $p; };
   not { $e contains "@typedb.com"; };
 ----
@@ -72,6 +86,7 @@ match
 +
 [,typeql]
 ----
+#!test[read]
 match
   $x isa user, has username "john_1";
   $y isa user;

@@ -1,5 +1,6 @@
 = Negations
 :page-aliases: {page-version}@reference::typeql/patterns/negation.adoc
+:test-typeql: linear
 
 Negations can be used to exclude certain subpatterns from your query results -
  an answer is excluded if it matches the subpattern.
@@ -43,11 +44,22 @@ Negations may appear in `match` stages of data pipelines or functions, where the
 
 == Examples
 
+.Schema for the following examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema, commit]
+include::{page-version}@reference::example$tql/conjunction.tql[tags=patterns-schema]
+----
+====
+
 . Retrieve users without friends
 +
 --
 [,typeql]
 ----
+#!test[read]
 match
   $x isa user, has username $name;
   not { friendship($x, $y); };
@@ -59,6 +71,7 @@ match
 --
 [,typeql]
 ----
+#!test[read]
 match
   $x isa user, has username $name;
   not { friendship($x, $y);
