@@ -1,4 +1,9 @@
 = Cybersecurity
 
+[NOTE]
+====
+Coming soon.
+====
+
 [placeholder]
 Cybersecurity solutions using TypeDB. 

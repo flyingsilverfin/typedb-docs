@@ -1,5 +1,6 @@
 = Entities, Relations, Attributes
 :page-aliases: {page-version}@typeql::data_model.adoc
+:test-typeql: linear
 
 TypeDB implements the Polymorphic Entity-Relation-Attribute (PERA) data model.
 A TypeDB schema defines a hierarchy of these types and how they interact with each other through interface types.
@@ -11,7 +12,10 @@ Entities are standalone types, which exist independent of other types.
 E.g., a `person` exists, regardless of whether they are involved in friendships or have a name.
 [,typeql]
 ----
+#!test[schema]
+define
 entity person;
+entity company;
 ----
 
 == Relation
@@ -24,6 +28,8 @@ hence the idea that `employment` "depends" on the participating player types.
 
 [,typeql]
 ----
+#!test[schema]
+define
 relation employment,
   relates employer,
   relates employee;
@@ -33,6 +39,8 @@ Role type names exist scoped within their relation types, allowing you to re-use
 
 [,typeql]
 ----
+#!test[schema]
+define
 relation employment,
   relates employer,
   relates employee;
@@ -60,6 +68,8 @@ A type can be defined to implement this interface using the `owns` keyword.
 
 [,typeql]
 ----
+#!test[schema]
+define
 attribute age, value integer;
 ----
 
@@ -72,6 +82,8 @@ Hence, entities (or relations) are referenced through their attributes.
 E.g., a `person` may own an attribute `birth-date`, or an `employment` may own a `start-date`.
 [,typeql]
 ----
+#!test[schema]
+define
 person owns age;
 ----
 
@@ -81,6 +93,8 @@ E.g., the entity type `company` may play the  `employer` role of an `employment`
 
 [,typeql]
 ----
+#!test[schema, rollback]
+define
 company plays employment:employer;
 ----
 
@@ -90,8 +104,21 @@ The subtype  inherits all declared interfaces & implementations from the superty
 [,typeql]
 .Inheritance in the social network
 ----
+#!test[schema, commit]
+#{{
+define
+attribute name, value string;
+attribute username, value string;
+attribute profile-picture, value string;
+relation posting, relates page, relates post;
+relation viewing, relates viewer, relates viewed;
+relation content-engagement, relates author;
+relation group-membership, relates group, relates member;
+#}}
 # Some fields are left out for brevity
 # A page on a social network...
+#!test[schema]
+define
 entity page @abstract,
     owns name,              # has some basic information,
     owns profile-picture,   #
@@ -122,6 +149,7 @@ and "specializes" the inherited `subject` role into the `author` role.
 
 [,typeql]
 ----
+#!test[schema, rollback]
 define
 relation interaction @abstract,
     relates subject,
@@ -150,6 +178,7 @@ In the following schema snippet, the `employer` role in the `employment` relatio
 
 [,typeql]
 ----
+#!test[schema, rollback]
 define
   relation employment,
     relates employer,
@@ -177,6 +206,8 @@ although it is their supertype `organization` which is defined to play the role.
 
 [,typeql]
 ----
+#!test[schema, rollback]
+
 define
   relation employment,
     relates employer,

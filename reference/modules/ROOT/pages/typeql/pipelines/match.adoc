@@ -1,5 +1,6 @@
 = Match stage
 :page-aliases: {page-version}@typeql::pipelines/match.adoc
+:test-typeql: linear
 
 A match stage performs pattern-based data retrieval and filtering. It takes input data assigned variables and verifies that this data satisfies the patterns in the body of the stage, while producing new results for any additional variables that the pattern
 
@@ -45,10 +46,21 @@ If no valid combinations of types can be inferred for the variables in body patt
 
 == Examples
 
+.Schema for the following examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema, commit]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entities;attributes;relation-friendship]
+----
+====
+
 1. Retrieve usernames of user who have more than 400 friends:
 +
 [,typeql]
 ----
+#!test[read]
 match
   $x isa user;
   friendship($x, $y);
@@ -63,6 +75,7 @@ select $name;
 +
 [,typeql]
 ----
+#!test[read]
 match
   $x isa user;
   not { friendship($x, $y); };
@@ -73,6 +86,14 @@ match
 +
 [,typeql]
 ----
+#!test[schema, commit]
+#{{
+define
+  attribute access-level, value integer;
+  entity VIP sub user;
+  entity admin sub user, owns access-level;
+#}}
+#!test[read]
 match
   $x isa user;
   { $x isa VIP; } or { $x isa admin, has access-level > 9000; };
@@ -82,6 +103,7 @@ match
 +
 [,typeql]
 ----
+#!test[read]
 match
   $x isa user, has username "specific_user";
   $x has $type $value;

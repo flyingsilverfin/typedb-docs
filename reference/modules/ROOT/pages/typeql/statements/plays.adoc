@@ -1,6 +1,19 @@
 = `plays` statement
+:test-typeql: linear
 
 The statement `<LABEL> plays <SCOPED ROLE LABEL>` is used to identify the `<LABEL>` type as a role player of `<SCOPED ROLE LABEL>`.
+
+.Schema for the following examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema, commit]
+define
+relation parentship, relates parent, relates child;
+entity user, plays parentship:child;
+----
+====
 
 == Defining role players
 
@@ -9,6 +22,7 @@ Note that a scope is required to resolve role type names ambiguity.
 
 [,typeql]
 ----
+#!test[schema]
 define user plays parentship:parent;
 ----
 
@@ -18,6 +32,7 @@ The `plays` keyword can be used to undefine a type's role.
 
 [,typeql]
 ----
+#!test[schema]
 undefine plays parentship:parent from user;
 ----
 
@@ -29,6 +44,7 @@ The `plays` keyword can be used to match all role types a type plays.
 
 [,typeql]
 ----
+#!test[schema]
 match user plays $r;
 ----
 
@@ -38,6 +54,7 @@ The `plays` keyword can be used to match all role player types for a role type w
 
 [,typeql]
 ----
+#!test[schema]
 match $rp plays parent;
 ----
 
@@ -46,5 +63,6 @@ The previous query can return results for different role types with the same `<L
 
 [,typeql]
 ----
+#!test[schema]
 match $rp plays parentship:parent;
 ----

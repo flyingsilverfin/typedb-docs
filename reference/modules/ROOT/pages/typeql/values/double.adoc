@@ -1,4 +1,5 @@
 = Double
+:test-typeql: linear
 
 A finite double precision IEEE 754 floating point number.
 
@@ -6,6 +7,7 @@ A finite double precision IEEE 754 floating point number.
 
 [,typeql]
 ----
+#!test[schema]
 define
 attribute latitude @independent, value double;
 attribute longitude @independent, value double;
@@ -15,6 +17,7 @@ attribute longitude @independent, value double;
 
 [,typeql]
 ----
+#!test[write]
 insert
   $_ isa latitude 11.373333;
   $_ isa longitude 142.591667;

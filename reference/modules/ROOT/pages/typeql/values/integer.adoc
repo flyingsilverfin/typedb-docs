@@ -1,4 +1,5 @@
 = Integer
+:test-typeql: linear
 
 A 64-bit signed integer.
 
@@ -6,6 +7,7 @@ A 64-bit signed integer.
 
 [,typeql]
 ----
+#!test[schema]
 define
   attribute total-likes value integer;
 ----
@@ -14,6 +16,7 @@ define
 
 [,typeql]
 ----
+#!test[write]
 insert
   $_ isa total-likes 42;
 ----

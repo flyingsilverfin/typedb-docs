@@ -1,4 +1,5 @@
 = Query Clauses & Pipelining
+:test-typeql: linear
 
 In addition to the `match` clause for pattern matching and
 the `insert, delete, put, update` clauses for modifying data,
@@ -10,12 +11,37 @@ Each query clause accepts a stream of answers and outputs a stream of answers.
 This page provides an overview of the available clauses and
 how they can be chained to form complex query & data modification pipelines.
 
+.Schema for the examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema]
+define
+  attribute name, value string;
+  attribute email, value string;
+  relation friendship, relates friend @card(0..2);
+  relation viewing relates viewer, relates viewed;
+  relation posting, relates page, relates post;
+  entity person, owns name, owns email, plays friendship:friend,
+  plays viewing:viewer;
+  entity post, plays posting:post, plays viewing:viewed;
+  entity page plays posting:page;
+#!test[write, commit]
+insert
+  $james isa person, has name "James";
+  $john isa person, has name "John";
+  $jane isa person, has name "Jane";
+----
+====
+
 == Query clauses
 === match
 xref:{page-version}@core-concepts::typeql/query-variables-patterns.adoc#definition-match[Match clauses] read data by pattern-matching.
 They return a stream mapping variables to matching concepts.
 [,typeql]
 ----
+#!test[read, count=1]
 match $x isa person, has name "John";
 ----
 
@@ -25,6 +51,7 @@ This stream is either returned as the result of the query, or becomes the input 
 Consider the two stage query:
 [,typeql]
 ----
+#!test[read, count=0]
 match $x isa person, has name "John";
 match $x isa person, has name "James";
 ----
@@ -39,6 +66,7 @@ An insert clause will execute & insert the specified pattern for *every* input r
 It extends the row with the newly inserted concepts (if any).
 [,typeql]
 ----
+#!test[write, count=1]
 match $x isa person, has name "John";   # Matches $x to person instance with name "John"
 insert $x has email "john@example.com"; # Inserts the email "john@example.com" for that instance
 ----
@@ -50,6 +78,7 @@ are typically used with a match-clause to bind the concepts.
 The concepts themselves can be deleted...
 [,typeql]
 ----
+#!test[write, count=1, rollback]
 match $x isa person, has name "John";
 delete $x; # Delete the person instance
 ----
@@ -57,6 +86,7 @@ delete $x; # Delete the person instance
 or just their connections
 [,typeql]
 ----
+#!test[write, rollback, count=1]
 match $p isa person, has name $n; $n == "John";
 delete has $n of $p; # Delete the person instance's ownership of the name "John"
 ----
@@ -72,6 +102,7 @@ Update clauses are used to conveniently delete such a connection and replace it 
 
 [,typeql]
 ----
+#!test[write, count=1]
 match $x isa person, has name "John";
 update $x has email "john@example.net"; # Update John's email whether or not one existed.
 ----
@@ -90,6 +121,7 @@ If the pattern has matches, all of them will be returned.
 
 [,typeql]
 ----
+#!test[write, commit, count=1]
 match
   $p isa person, has name "John";
   $q isa person, has name "Jane";
@@ -105,6 +137,7 @@ An answer contains the variables in the group, and the output variables of the r
 
 [,typeql]
 ----
+#!test[read, count=0]
 match
   $john isa person, has name "John";
   $v isa viewing, links (viewer: $john, viewed: $post);
@@ -117,6 +150,7 @@ Removes duplicate answers in the stream.
 
 [,typeql]
 ----
+#!test[read, count=3]
 match
   { $p isa person; } or { $p has name "John"; };
 distinct; # Make sure that the person with name John is returned at most once.
@@ -127,6 +161,7 @@ Reshapes the stream to only include the specified variables.
 
 [,typeql]
 ----
+#!test[read, count=1]
 match
   $p isa person, has name "John";
   $f isa friendship, links (friend: $p, friend: $q);
@@ -139,6 +174,7 @@ select $name; # Only return the names of the friend
 
 [,typeql]
 ----
+#!test[read, count=3]
 match $x isa person, has name $n;
 sort $n; # Return results sorted by $n
 ----
@@ -147,6 +183,7 @@ sort $n; # Return results sorted by $n
 `limit <n>` Restricts the stream to the first _n_ answers.
 [,typeql]
 ----
+#!test[read, count=1]
 match $p isa person, has name "John";
 limit 1; # Return at most one person named John
 ----
@@ -157,6 +194,7 @@ limit 1; # Return at most one person named John
 [,typeql]
 ----
 # Pagination of friends of John
+#!test[read, count=0]
 match
   $p isa person, has name "John";
   $f isa friendship, links (friend: $p, friend: $q);

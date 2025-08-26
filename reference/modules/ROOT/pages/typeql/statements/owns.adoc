@@ -1,6 +1,19 @@
 = `owns` statement
+:test-typeql: linear
 
 The statement `<LABEL> owns <ATTRIBUTE LABEL>` is used to identify the `<LABEL>` type as an owner of `<ATTRIBUTE LABEL>`.
+
+.Schema for the following examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema, commit]
+define
+entity user;
+attribute email value string;
+----
+====
 
 == Defining ownership
 
@@ -8,6 +21,7 @@ The `owns` keyword can be used to define a type as an owner of an attribute type
 
 [,typeql]
 ----
+#!test[schema]
 define user owns email;
 ----
 
@@ -19,6 +33,7 @@ The `owns` keyword can be used to undefine a type's ownership of an attribute ty
 
 [,typeql]
 ----
+#!test[schema]
 undefine owns email from user;
 ----
 
@@ -30,6 +45,7 @@ The `owns` keyword can be used to match all attribute types a type owns.
 
 [,typeql]
 ----
+#!test[read]
 match user owns $a;
 ----
 
@@ -39,5 +55,6 @@ The `owns` keyword can be used to match all owner types for an attribute type.
 
 [,typeql]
 ----
+#!test[read]
 match $o owns email;
 ----

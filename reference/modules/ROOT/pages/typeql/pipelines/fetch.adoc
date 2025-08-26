@@ -1,5 +1,6 @@
 = Fetch stage
 :page-aliases: {page-version}@typeql::pipelines/fetch.adoc
+:test-typeql: linear
 
 Fetch is primarily used to convert row answers into document (JSON) answers.
 The `fetch` clause is **terminal**, meaning that it cannot be followed by any other pipeline stage.
@@ -202,9 +203,20 @@ The following example demonstrates a single `fetch` stage containing different v
 ====
 Every sub statement inside this `fetch` stage can be written as separate `fetch` es and can be considered as separate examples.
 ====
+.Schema for the following examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema, commit]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entities;attributes;relation-group;fun-aggregate-single-scalar-return]
+----
+====
+
 
 [,typeql]
 ----
+#!test[read, documents]
 match
   $group isa group;
 fetch {
