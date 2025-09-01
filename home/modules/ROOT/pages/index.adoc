@@ -16,6 +16,12 @@ Learn about TypeDB and its core features.
 Discover the benefits and use cases for TypeDB.
 ****
 
+.xref:{page-version}@home::learning-journey.adoc[]
+[.clickable]
+****
+Our guide on how to learn TypeDB and use these docs.
+****
+
 .xref:{page-version}@home::get-started/index.adoc[]
 [.clickable]
 ****
@@ -26,11 +32,5 @@ Get up and running with TypeDB, from setup to queries, without installing a thin
 [.clickable]
 ****
 Choose and install the right TypeDB distribution and applications for your needs.
-****
-
-.xref:{page-version}@home::learning-journey.adoc[]
-[.clickable]
-****
-Our guide on how to learn TypeDB and use these docs.
 ****
 --
