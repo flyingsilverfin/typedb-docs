@@ -4,6 +4,8 @@
 
 * xref:{page-version}@home::why-typedb.adoc[]
 
+* xref:{page-version}@home::learning-journey.adoc[]
+
 * xref:{page-version}@home::get-started/index.adoc[]
 ** xref:{page-version}@home::get-started/overview.adoc[]
 ** xref:{page-version}@home::get-started/setup.adoc[]
@@ -18,5 +20,3 @@
 ** xref:{page-version}@home::install/studio.adoc[Studio]
 ** xref:{page-version}@home::install/console-cli.adoc[Console CLI]
 ** xref:{page-version}@home::install/drivers.adoc[]
-
-* xref:{page-version}@home::learning-journey.adoc[]
