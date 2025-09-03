@@ -22,7 +22,7 @@ entity school, owns name, plays education:institute;
 
 == Disjoint variable reuse
 This section demonstrates some of the cases which can arise due to
-xref:new_core_concepts::typeql/query-variables-patterns.adoc#_disjoint_variable_usage_errors[disjoint variable reuse]
+xref:{page-version}@core-concepts::typeql/query-variables-patterns.adoc#_disjoint_variable_usage_errors[disjoint variable reuse]
 
 [unbound negations]
 === Unbound negation inputs

@@ -361,6 +361,7 @@ Notice that a variable that is "bound" in a conjunction is guaranteed to be boun
 in ALL execution paths - i.e., regardless of which branch is taken in each disjunction.
 An answer to a pattern contains only those variables bound in the root conjunction.
 
+[#_disjoint_variable_usage_errors]
 === Disjoint variable usage errors
 Since variable names are scoped to a pipeline, it's possible to write a query in which
 a certain variable is internal to several different patterns. For example:

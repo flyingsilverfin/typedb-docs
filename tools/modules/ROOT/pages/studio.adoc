@@ -7,14 +7,23 @@ TypeDB Studio is an interactive visual environment for managing and querying Typ
 
 With Studio, developers can efficiently manage databases, execute queries, and explore query results,
 all within a unified environment.
+
+This page provides a quick introduction to TypeDB Studio and an overview of its features. All features of TypeDB Studio
+are available on both web and desktop.
 --
 
 [cols-2]
 --
-.https://studio.typedb.com[Open TypeDB Studio,window=_blank]
+.https://studio.typedb.com[Visit studio.typedb.com]
 [.clickable]
 ****
-Launch TypeDB Studio directly from your web browser.
+Launch TypeDB Studio in your web browser.
+****
+
+.https://cloudsmith.io/~typedb/repos/public-release/packages/?q=name:%5Etypedb-studio[Install TypeDB Studio Desktop,window=_blank]
+[.clickable]
+****
+Download TypeDB Studio for desktop.
 ****
 
 .link:https://github.com/typedb/typedb-studio/[GitHub,window=_blank]
@@ -23,11 +32,6 @@ Launch TypeDB Studio directly from your web browser.
 Browse the source code of TypeDB Studio.
 ****
 --
-
-[NOTE]
-====
-For installation instructions, see xref:{page-version}@home::install/studio-console.adoc[Studio & Console Installation].
-====
 
 == Quickstart
 
@@ -43,7 +47,8 @@ To select a database to work with, use the dropdown menu on the right of the dat
 
 TypeDB Studio will automatically select a *default* database if there are no others present.
 
-== Querying
+
+== Query tool
 
 You can run queries against the connected TypeDB server using TypeDB Studio's https://studio.typedb.com/query[query tool,window=_blank].
 
@@ -75,6 +80,12 @@ The Schema pane lists your schema objects and their capabilities - e.g. owned at
 
 It acts as a reference panel indicating what you can query.
 
+You can configure its view mode (flat or hierarchical) by clicking the options button in its top bar. Flat layout is
+typically better for simple schemas, while the hierarchical view is better for more complex schemas with subtyping.
+
+The options pane also allows you to filter what capabilities are displayed. For example, you can set it to only display
+owned attributes, or to only display roleplayers of relations.
+
 === History pane
 
 All queries and transaction operations are timestamped and logged to the History pane. Any errors that occur can be retrieved from this pane.
@@ -98,4 +109,31 @@ Query-level errors are printed to Log Output. These are typically errors returne
 
 Transaction-level errors will trigger an error popup notification.
 
-Both types of errors can be viewed and copied to the clipboard by visiting the History pane on the Query page. 
+Both types of errors can be viewed and copied to the clipboard by visiting the History pane on the Query page.
+
+
+== Schema tool
+
+TypeDB Studio's https://studio.typedb.com/schema[Schema tool,window=_blank] allows you to visualise your TypeDB schema.
+
+It renders the entire schema as a graph visualisation, with nodes representing entities, relations, attributes, etc.,
+and edges representing capabilities such as owned attributes and played roles.
+
+
+== User manager
+
+You can manage database users in TypeDB Studio's https://studio.typedb.com/users[User Manager,window=_blank].
+
+The User Manager allows you to view, create, update, and delete users. It lists all users in a table view.
+
+=== Create a new user
+
+To create a new user, click the "Create user" button in the User Manager.
+
+=== Change a user's password
+
+To change a user's password, click the "Change password" button in the row corresponding to that user.
+
+=== Delete a user
+
+To delete a user, click the "Delete user" button in the row corresponding to that user.

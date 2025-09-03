@@ -71,7 +71,7 @@ match
 select $name;
 ----
 
-1. Retrieve users with no friends:
+2. Retrieve users with no friends:
 +
 [,typeql]
 ----
@@ -82,7 +82,7 @@ match
 ----
 
 
-1. Find users that are either VIP, or are admins with access level > 9000.
+3. Find users that are either VIP, or are admins with access level > 9000.
 +
 [,typeql]
 ----
@@ -99,7 +99,7 @@ match
   { $x isa VIP; } or { $x isa admin, has access-level > 9000; };
 ----
 
-1. Find all attributes that are set for a specific user, return them together with their type;
+4. Find all attributes that are set for a specific user, return them together with their type;
 +
 [,typeql]
 ----

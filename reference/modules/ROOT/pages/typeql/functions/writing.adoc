@@ -117,7 +117,7 @@ match let $a = 0 ; let $b = 1;
 let $x = scalar_fun($a, $b) / 2;
 ----
 --
-1. as part of a tuple or stream assignment, for example:
+2. as part of a tuple or stream assignment, for example:
 +
 --
 [,typeql]

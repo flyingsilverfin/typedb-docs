@@ -179,13 +179,13 @@ Get started using TypeDB Cloud without installing anything.
 Install and run TypeDB Community Edition (CE).
 ****
 
-.xref:{page-version}@core-concepts::drivers.adoc[Core Concepts]
+.xref:{page-version}@core-concepts::drivers/index.adoc[Core Concepts]
 [.clickable]
 ****
 Explore the core concepts of TypeDB drivers.
 ****
 
-.xref:{page-version}@reference::typedb-grpc-drivers[Reference]
+.xref:{page-version}@reference::typedb-grpc-drivers/index.adoc[Reference]
 [.clickable]
 ****
 Browse the TypeDB Driver API reference.
