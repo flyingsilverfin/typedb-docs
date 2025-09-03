@@ -43,4 +43,5 @@ This reference gives an overview of the usage of values in TypeQL.
 
 |xref:{page-version}@reference::typeql/values/duration.adoc[Duration]
 |`duration`
-|An ISO 8601 compliant duration type. 
+|An ISO 8601 compliant duration type.
+|===

@@ -29,7 +29,7 @@ Annotations are applied to the latest statement before their declaration:
 <type label> plays <role type label> @annotation;
 ----
 
-==== Arguments
+=== Arguments
 
 Some annotations accept arguments of different types:
 
@@ -55,7 +55,7 @@ Some annotations accept arguments of different types:
 @annotation(1..)
 ----
 
-==== Combining with other statements
+=== Combining with other statements
 
 Annotation definition is a regular statement and can be followed by other statements after a comma:
 
