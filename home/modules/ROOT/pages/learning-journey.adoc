@@ -81,6 +81,15 @@ In addition, it could be useful to learn about automating TypeDB Cloud operation
 For example, you might want to integrate TypeDB Cloud into your deployment pipelines to spin up and down instances of TypeDB automatically.
 
 
+== llms.txt
+
+We maintain an llms.txt file at https://typedb.com/docs/llms.txt.
+
+Instruct your AI agent / LLM to read this file to help it understand TypeDB and be able to give accurate responses to prompts.
+
+It is a registry of links to all of our documentation in Markdown format, so it will require the LLM to have internet access.
+
+
 == Tips
 
 * **Start Small**: Begin with the get-started guide to see immediate results
