@@ -1,0 +1,74 @@
+// tag::install[]
+If you have TypeDB Console installed, you may already have TypeDB CE included and can skip this step!
+To verify, just run `typedb --help`.
+
+Follow the steps below for your OS:
+
+[tabs]
+====
+macOS::
++
+--
+. Download the latest package for your system architecture:
+include::{page-component-version}@home:resources:partial$typedb-all-latest-links.adoc[tag=mac]
++
+For other versions, see the
+https://cloudsmith.io/~typedb/repos/public-release/packages/?q=format%3Araw+name%3A%5Etypedb-all-mac&sort=-version[Downloads repository] page.
+. Extract the archive into a new directory:
++
+[source,bash]
+----
+$ sudo mkdir /opt/typedb
+$ unzip ~/Downloads/<filename>.zip -d /opt/typedb
+----
++
+Where `<filename>` is the name of the archive.
+. Add a symlink to the TypeDB executable in the `/usr/local/bin` directory:
++
+[source,bash]
+----
+$ ln -s /opt/typedb/<filename>/typedb /usr/local/bin/typedb
+----
+--
+
+Linux::
++
+--
+. Download the latest package for your system architecture:
+include::{page-component-version}@home:resources:partial$typedb-all-latest-links.adoc[tag=linux]
++
+For other versions, see the
+https://cloudsmith.io/~typedb/repos/public-release/packages/?q=format%3Araw+name%3A%5Etypedb-all-linux&sort=-version[Downloads repository] page.
+. Extract the archive into a new directory:
++
+[source,bash]
+----
+$ mkdir /opt/typedb
+$ tar -xzf ~/Downloads/<filename>.tar.gz -C /opt/typedb
+----
++
+Where `<filename>` is the name of the archive.
+. Add a symlink to the TypeDB executable in the `/usr/local/bin` directory:
++
+[source,bash]
+----
+$ ln -s /opt/typedb/<filename>/typedb /usr/local/bin/typedb
+----
+--
+
+Windows::
++
+--
+**Install using the install script**
+
+To get started, you can use the TypeDB https://typedb.com/install-typedb-windows.ps1[install script]. This script
+securely downloads the latest version of TypeDB and installs it to `%LOCALAPPDATA%\typedb-all-windows-x86_64-<version>`.
+
+[source,powershell]
+----
+iwr https://typedb.com/install-typedb-windows.ps1 -useb | iex
+----
+
+--
+====
+// end::install[] 
