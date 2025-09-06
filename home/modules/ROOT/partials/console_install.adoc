@@ -1,59 +1,43 @@
 // tag::install[]
-If you are using a distribution of TypeDB CE (TypeDB server), you may already have TypeDB Console included and can skip this step!
-To verify, just run `typedb --help`.
-
-For installation instructions of only the Console distribution, follow the steps below for your OS:
-
 [tabs]
 ====
 macOS::
 +
 --
-. Download the latest package for your system architecture:
-include::{page-component-version}@home:resources:partial$typedb-console-latest-links.adoc[tag=mac]
-+
-For other versions, see the
-https://cloudsmith.io/~typedb/repos/public-release/packages/?q=format%3Araw+name%3A%5Etypedb-console-mac&sort=-version[Downloads repository] page.
-. Extract the archive into a new directory:
-+
-[source,bash]
+**Install using the install script**
+
+Use the TypeDB https://typedb.com/install.sh[install script]. This script
+securely downloads the latest version of TypeDB and installs it to `$HOME/.typedb/typedb-all-mac-<arch>-<version>`.
+
+[source,shell]
 ----
-$ sudo mkdir /opt/typedb-console
-$ unzip ~/Downloads/<filename>.zip -d /opt/typedb-console
+curl -sSf https://typedb.com/install.sh | sh
 ----
-+
-Where `<filename>` is the name of the archive.
-. Add a symlink to the TypeDB Console executable in the `/usr/local/bin` directory:
-+
-[source,bash]
+
+**Or install using Homebrew**
+
+Install the TypeDB Homebrew package using the command:
+
+[source,shell]
 ----
-$ ln -s /opt/typedb-console/<filename>/typedb /usr/local/bin/typedb
+brew install typedb/tap/typedb
 ----
+
 --
 
 Linux::
 +
 --
-. Download the latest package for your system architecture:
-include::{page-component-version}@home:resources:partial$typedb-console-latest-links.adoc[tag=linux]
-+
-For other versions, see the
-https://cloudsmith.io/~typedb/repos/public-release/packages/?q=format%3Araw+name%3A%5Etypedb-console-linux&sort=-version[Downloads repository] page.
-. Extract the archive into a new directory:
-+
-[source,bash]
+**Install using the install script**
+
+Use the TypeDB https://typedb.com/install.sh[install script]. This script
+securely downloads the latest version of TypeDB and installs it to `$HOME/.typedb/typedb-all-linux-<arch>-<version>`.
+
+[source,shell]
 ----
-$ mkdir /opt/typedb-console
-$ tar -xzf ~/Downloads/<filename>.tar.gz -C /opt/typedb-console
+curl -sSf https://typedb.com/install.sh | sh
 ----
-+
-Where `<filename>` is the name of the archive.
-. Add a symlink to the TypeDB Console executable in the `/usr/local/bin` directory:
-+
-[source,bash]
-----
-$ ln -s /opt/typedb-console/<filename>/typedb /usr/local/bin/typedb
-----
+
 --
 
 Windows::
@@ -61,12 +45,12 @@ Windows::
 --
 **Install using the install script**
 
-To get started, you can use the TypeDB https://typedb.com/install-typedb-windows.ps1[install script]. This script
+Use the TypeDB https://typedb.com/install.ps1[install script]. This script
 securely downloads the latest version of TypeDB and installs it to `%LOCALAPPDATA%\typedb-all-windows-x86_64-<version>`.
 
 [source,powershell]
 ----
-iwr https://typedb.com/install-typedb-windows.ps1 -useb | iex
+iwr https://typedb.com/install.ps1 -useb | iex
 ----
 
 --
