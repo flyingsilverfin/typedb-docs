@@ -22,7 +22,6 @@ Install the TypeDB Homebrew package using the command:
 ----
 brew install typedb/tap/typedb
 ----
-
 --
 
 Linux::
@@ -37,7 +36,6 @@ securely downloads the latest version of TypeDB and installs it to `$HOME/.typed
 ----
 curl -sSf https://typedb.com/install.sh | sh
 ----
-
 --
 
 Windows::
@@ -45,7 +43,7 @@ Windows::
 --
 **Install using the install script**
 
-Use the TypeDB https://typedb.com/install.ps1[install script]. This script
+To get started, you can use the TypeDB https://typedb.com/install.ps1[install script]. This script
 securely downloads the latest version of TypeDB and installs it to `%LOCALAPPDATA%\TypeDB`.
 
 [source,powershell]
