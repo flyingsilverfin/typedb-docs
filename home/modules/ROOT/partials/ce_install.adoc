@@ -7,7 +7,7 @@ macOS::
 **Install using the install script**
 
 Use the TypeDB https://typedb.com/install.sh[install script]. This script
-securely downloads the latest version of TypeDB and installs it to `$HOME/.typedb/typedb-all-mac-<arch>-<version>`.
+securely downloads the latest version of TypeDB and installs it to `$HOME/.typedb`.
 
 [source,shell]
 ----
@@ -30,7 +30,7 @@ Linux::
 **Install using the install script**
 
 Use the TypeDB https://typedb.com/install.sh[install script]. This script
-securely downloads the latest version of TypeDB and installs it to `$HOME/.typedb/typedb-all-linux-<arch>-<version>`.
+securely downloads the latest version of TypeDB and installs it to `$HOME/.typedb`.
 
 [source,shell]
 ----
@@ -44,7 +44,7 @@ Windows::
 **Install using the install script**
 
 To get started, you can use the TypeDB https://typedb.com/install.ps1[install script]. This script
-securely downloads the latest version of TypeDB and installs it to `%LOCALAPPDATA%\typedb-all-windows-x86_64-<version>`.
+securely downloads the latest version of TypeDB and installs it to `%LOCALAPPDATA%\TypeDB`.
 
 [source,powershell]
 ----
