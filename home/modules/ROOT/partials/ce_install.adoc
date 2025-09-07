@@ -57,7 +57,7 @@ Windows::
 --
 **Install using the install script**
 
-To get started, you can use the TypeDB https://typedb.com/install.ps1[install script]. This script
+Use the TypeDB https://typedb.com/install.ps1[install script]. This script
 securely downloads the latest version of TypeDB and installs it to `%LOCALAPPDATA%\TypeDB`.
 
 [source,powershell]
