@@ -11,7 +11,7 @@ securely downloads the latest version of TypeDB and installs it to `$HOME/.typed
 
 [source,shell]
 ----
-curl -sSf https://typedb.com/install.sh | sh
+curl -sSL https://typedb.com/install.sh | sh && export PATH="$HOME/.typedb:$PATH"
 ----
 
 **Or install using Homebrew**
@@ -34,7 +34,21 @@ securely downloads the latest version of TypeDB and installs it to `$HOME/.typed
 
 [source,shell]
 ----
-curl -sSf https://typedb.com/install.sh | sh
+curl -sSL https://typedb.com/install.sh | sh && export PATH="$HOME/.typedb:$PATH"
+----
+
+**Or install using apt**
+
+Install the TypeDB apt package using the following commands.
+
+[source,shell]
+----
+sudo apt install software-properties-common apt-transport-https gpg
+gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-key 17507562824cfdcc
+gpg --export 17507562824cfdcc | sudo tee /etc/apt/trusted.gpg.d/typedb.gpg > /dev/null
+echo "deb https://repo.typedb.com/public/public-release/deb/ubuntu trusty main" | sudo tee /etc/apt/sources.list.d/typedb.list > /dev/null
+sudo apt update
+sudo apt install typedb
 ----
 --
 
