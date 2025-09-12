@@ -107,8 +107,7 @@ While the first query needs to consider data whose size is quadratic in the numb
 
 == Optimizing recursive functions
 TypeDB uses tabling to break cycles when computing recursive functions.
-When computing a recursive function, a new table will be created for each combination of arguments the function is called with.
-Certain formulations of functions are more efficient than others under tabling:
+When computing a recursive function, a new table will be created for each combination of arguments the function is called with. Certain formulations of functions are more efficient than others under tabling:
 
 [,typeql]
 ----
@@ -119,6 +118,7 @@ relation edge, relates from_, relates to;
 entity node, plays edge:from_, plays edge:to;
 #}}
 
+# intuitive, but actually inefficient
 fun recurse_on_to($from: node) -> { node }:
 match
   {
@@ -129,6 +129,7 @@ match
   };
 return { $to };
 
+# counter-intuitive, but efficient!
 fun recurse_on_from($from: node) -> { node }:
 match
   {
@@ -142,10 +143,9 @@ return { $to };
 
 `recurse_on_to` is an intuitive recursive formulation that works in most programming languages.
 For untabled execution, this would be the standard formulation.
-`recurse_on_from` is almost unintuitive as most programmers would expect it to suffer from infinite recursion.
+`recurse_on_from` is almost unintuitive as most programmers would expect it to suffer from infinite recursion. **However it is the more efficient formulation!**.
 
-Although both formulations return the same set of answers,
-the difference in efficiency comes down to the number of tables we create & answers we store.
+Although both formulations return the same set of answers, the difference in efficiency comes down to the number of tables we create & answers we store.
 
 `recurse_on_to` is called once for each node reachable from the source node.
 Each call creates a table, holding one row per node reachable from that node.
