@@ -2,7 +2,7 @@
 :page-aliases: {page-version}@academy::5-defining-schemas/overview.adoc
 :page-preamble-card: 1
 
-In this lesson, we'll learn how to define entity, relation, and attribute types using *Define queries*. We'll start by defining individual *types* and their interfaces, namely *ownership interfaces* for attributes and *role interfaces* for relations. We'll then see how we can define *type hierarchies* for entities, relations, and attributes. We'll also see how we can apply different kinds of *value constraints* to attributes and define *rules* to infer new data. Finally, we'll see how TypeDB validates changes to the schema to ensure it stays in a consistent state.
+In this lesson, we'll learn how to define entity, relation, and attribute types using *Define queries*. We'll start by defining individual *types* and their interfaces, namely *ownership interfaces* for attributes and *role interfaces* for relations. We'll then see how we can define *type hierarchies* for entities, relations, and attributes. We'll also see how we can apply different kinds of *value constraints* to attributes and define *functions* to compute results. Finally, we'll see how TypeDB validates changes to the schema to ensure it stays in a consistent state.
 
 == Recommended prerequisites
 
@@ -39,7 +39,7 @@ Learn how to define functions to capture modular logic and abstract away complex
 .xref:{page-version}@academy::5-defining-schemas/5.5-schema-validation.adoc[]
 [.clickable]
 ****
-Learn about how types and rules are validated against the schema.
+Learn about how types and functions are validated against the schema.
 ****
 --
 
@@ -65,6 +65,6 @@ For information on how to control sessions, transactions, and queries using Type
 * `@key`
 * `@unique`
 * `regex`
-* `rule`
+* `fun`
 * `when`
 * `then`

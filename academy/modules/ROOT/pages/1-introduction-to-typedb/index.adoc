@@ -60,8 +60,6 @@ In order to allow users to craft fully programmable database applications, TypeD
 
 === Modular logic
 
-// Pre-computing data is a core feature of many database applications. TypeDB takes this one step further, by providing a powerful rule-inference engine that dynamically computes data only as needed. Conditions for inference are declaratively defined by *rules*, which naturally fit into TypeDBs type system. For example, the following rule states that any media file (whether an image, video, or something else) with a file size greater than 1GB will be marked as unavailable to download.
-
 Many databases offer only clunky ability to modularize common or important database operations. TypeDB exposes re-use through a familiar programming-language construct: functions.
 
 [,typeql]

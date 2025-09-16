@@ -44,7 +44,7 @@ Material covering the basics of working with TypeDB, sufficient to start prototy
 .xref:{page-version}@academy::3-reading-data/index.adoc[]
 [.clickable]
 ****
-Learn how to read data from TypeDB, including declarative polymorphic querying, rule inference, and retrieving types from the schema.
+Learn how to read data from TypeDB, including declarative polymorphic querying, invoking functions, and retrieving types from the schema.
 ****
 
 .xref:{page-version}@academy::4-writing-data/index.adoc[]
@@ -56,7 +56,7 @@ Learn how to write data to TypeDB, covering insert, delete, and update operation
 .xref:{page-version}@academy::5-defining-schemas/index.adoc[]
 [.clickable]
 ****
-Learn how to define schemas for TypeDB, including type hierarchies, interfaces between types, value constraints, and inference rules.
+Learn how to define schemas for TypeDB, including type hierarchies, interfaces between types, value constraints, and function.
 ****
 
 .xref:{page-version}@academy::6-building-applications/index.adoc[]
@@ -68,7 +68,7 @@ Learn how to build applications on TypeDB, covering database management, transac
 
 == Intermediate
 
-Material covering querying and modeling in depth, sufficient to take applications to production. Learn how to write more complex queries using the full range of TypeQL's syntax, and how to use types and rules to build more powerful and expressive schemas.
+Material covering querying and modeling in depth, sufficient to take applications to production. Learn how to write more complex queries using the full range of TypeQL's syntax, and how to use types and fucntions to build more powerful and expressive schemas.
 
 [cols-2]
 --
@@ -90,10 +90,10 @@ Learn how to structure query results in the optimal manner, covering result grou
 Learn how to design schemas for TypeDB using the conceptual PERA model, including common design patterns and pitfalls.
 ****
 
-.xref:{page-version}@academy::10-  using-functions/index.adoc[]
+.xref:{page-version}@academy::10-using-functions/index.adoc[]
 [.clickable]
 ****
-Learn how to use rule inference to abstract complex patterns into simple forms, and capture complex logic with combinations of rules.
+Learn how to use functions to abstract complex patterns into simple forms, and capture complex logic.
 ****
 --
 

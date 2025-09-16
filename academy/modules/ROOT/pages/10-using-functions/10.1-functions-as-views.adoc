@@ -82,7 +82,7 @@ Using functions to abstract a complex query pattern into a more easily queried f
 .Exercise
 [caption=""]
 ====
-Write a Fetch query that lists users. For each user, retrieve their user ID and the number of validated reviews they have written. Write the query once without making use of functions, and again using the above rule. Other than the ordering of results, the queries should give identical outputs.
+Write a Fetch query that lists users. For each user, retrieve their user ID and the number of validated reviews they have written. Write the query once without making use of functions, and again writing a function similar to the above. Other than the ordering of results, the queries should give identical outputs.
 
 You may find it useful to refer to the bookstore's schema.
 

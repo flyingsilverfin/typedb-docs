@@ -2,7 +2,7 @@
 
 == Function structure
 
-In xref:{page-version}@academy::3-reading-data/3.3-using-functions.adoc[Lesson 3.3], we saw how we could use functions to modularize and re-use computation. In this lesson, we'll see how we can go about defining these functions. Functions are defined using the same define syntax used to define types, as types and functions together form the schema. The syntactic structure used to define a rule has three parts: a *function signature*, a *body*, and a *return*, as demonstrated in the following template.
+In xref:{page-version}@academy::3-reading-data/3.3-using-functions.adoc[Lesson 3.3], we saw how we could use functions to modularize and re-use computation. In this lesson, we'll see how we can go about defining these functions. Functions are defined using the same define syntax used to define types, as types and functions together form the schema. The syntactic structure used to define a function has three parts: a *function signature*, a *body*, and a *return*, as demonstrated in the following template.
 
 [,typeql]
 ----

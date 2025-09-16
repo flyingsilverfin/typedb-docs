@@ -71,7 +71,7 @@
 * xref:{page-version}@academy::10-using-functions/index.adoc[10. Using inference]
 ** xref:{page-version}@academy::10-using-functions/10.1-functions-as-views.adoc[Functions as views]
 ** xref:{page-version}@academy::10-using-functions/10.2-function-chaining.adoc[Function chaining]
-** xref:{page-version}@academy::10-  using-functions/summary.adoc[Summary]
+** xref:{page-version}@academy::10-using-functions/summary.adoc[Summary]
 
 * xref:{page-version}@academy::11-advanced-modeling/index.adoc[11. Advanced modeling]
 ** xref:{page-version}@academy::11-advanced-modeling/11.1-using-dependent-types.adoc[Using dependent types]

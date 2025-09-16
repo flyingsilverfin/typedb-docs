@@ -81,7 +81,7 @@ insert
 .xref:{page-version}@academy::5-defining-schemas/index.adoc[]
 [.clickable]
 ****
-Learn how to define schemas for TypeDB, including type hierarchies, interfaces between types, value constraints, and inference rules.
+Learn how to define schemas for TypeDB, including type hierarchies, interfaces between types, value constraints, and functions.
 ****
 
 .xref:{page-version}@manual::writing/index.adoc[Manual: Writing data]
