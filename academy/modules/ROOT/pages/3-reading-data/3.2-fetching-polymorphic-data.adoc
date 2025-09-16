@@ -313,8 +313,6 @@ fetch {
 };
 ----
 
-TODO: OUTPUT
-
 [,json]
 ----
 

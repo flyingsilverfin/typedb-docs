@@ -1,32 +1,22 @@
 = Lesson 2.1: Sample deployment
 
 == Deploy sample database
-TODO
-//
-// Throughout this course, we will be using a sample database for an online bookstore. Follow these instructions to deploy a *TypeDB Community Edition server* preloaded with the sample database.
-//
-// . Install and run https://docs.docker.com/get-docker/[Docker].
-// . Pull the Docker image for the sample database:
-// +
-// [source,console]
-// ----
-// docker image pull vaticle/typedb-sample-data:1.0.0
-// ----
-// . Start the Docker image:
-// +
-// [source,console]
-// ----
-// docker run -p 1730:1729 vaticle/typedb-sample-data:1.0.0
-// ----
-//
-// The server can be connected to using port `1730`.
-//
-// [NOTE]
-// ====
-// The default port used by TypeDB servers is `1729`. We use `1730` for this course so as not to conflict with any other local deployments.
-// ====
 
-**TODO GET SAMPLE DATA**
+There are two simple ways to get the `bookstore` sample dataset that is used throughout this academy.
+
+=== Preinitialized TypeDB Cloud server
+TypeDB Cloud deployments let you deploy the latest version of the bookstore sample dataset preloaded during server creation.
+
+=== Using TypeDB Console
+You can use xref:{page-version}@home::install/console-cli.adoc[TypeDB Console] (minimum version 3.5.0) to load the bookstore dataset from the `typedb-example` repository, published at https://github.com/typedb/typedb-examples/releases.
+
+TypeDB Console ships with a 1-liner to create a database, and load a schema and data file from URL. To create and initialize a new database with the latest bookstore dataset, you can use:
+
+```bash
+typedb console --address=<ADDRESS> --username=<USER> --command="database create-init bookstore http://github.com/typedb/typedb-examples/releases/latest/download/bookstore-schema.tql http://github.com/typedb/typedb-examples/releases/latest/download/bookstore-data.tql"                                
+```
+
+You can use this to load the dataset into a TypeDB CE, TypeDB Cloud, or your own on-premise TypeDB Enterprise server. 
 
 == Get TypeDB Studio
 

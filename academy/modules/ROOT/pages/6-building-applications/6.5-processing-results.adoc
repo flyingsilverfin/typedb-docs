@@ -43,14 +43,33 @@ Note that since they're standard Python iterators, you can do the usual operatio
 
 If we run this code snippet, then we get the following output.
 
-
-TODO: output
-
 [,json]
 ----
-{ "title": "The Complete Calvin and Hobbes", "genre": ["comics", "fiction"], "page-count": 1451 }
-{ "title": "Under the Black Flag: The Romance and the Reality of Life Among the Pirates", "genre": ["history", "nonfiction"], "page-count": 296 }
-{ "title": "Electron Backscatter Diffraction in Materials Science", "genre": ["nonfiction", "technology"], "page-count": 425 }
+{
+  "genre": [
+    "history",
+    "nonfiction"
+  ],
+  "title": "Under the Black Flag: The Romance and the Reality of Life Among the Pirates",
+  "page-count": 296
+}
+{
+
+  "genre": [
+    "nonfiction",
+    "technology"
+  ]
+  "title": "Electron Backscatter Diffraction in Materials Science",
+  "page-count": 425,
+}
+{
+  "genre": [
+    "comics",
+    "fiction"
+  ],
+  "title": "The Complete Calvin and Hobbes"
+  "page-count": 1451,
+}
 ----
 
 Each output line is a concept document (JSON). Keys correspond to the fetch body.
