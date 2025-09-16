@@ -1,0 +1,105 @@
+= Lesson 4.4: Updating data
+
+== Building update queries
+
+To update the values of attributes, we use chain Delete and Insert clauses. In effect, these queries delete an existing attribute of an entity (or relation) and then inserts a new one in its place. Consider the following two queries.
+
+[,typeql]
+----
+match
+$order-38 isa order, has id "o0038";
+$dispatched isa status "dispatched";
+delete
+has $dispatched of $order-38;
+----
+**-> Run but don't commit**
+
+[,typeql]
+----
+match
+$order-38 isa order, has id "o0038";
+insert
+$order-38 has status "delivered";
+----
+**-> Run but close the transaction!**
+
+When run one after the other, they replace the existing order status "dispatched" with "delivered". We can do this more efficiently using a simple 3-stage query pipeline (just another name for a query that contains multiple clauses):
+
+[,typeql]
+----
+match
+$order-38 isa order, has id "o0038";
+$dispatched isa status "dispatched";
+delete
+has $dispatched of $order-38;
+insert
+$order-38 has status "delivered";
+----
+__-> Commit__
+
+In addition to being more efficient and easier for readers to interpret, these queries are sometimes a necessity if we're replacing the attribute we're matching on. In the following query, we match every book that has the genre "art", and replace it with the genre "art and design". Functionally, this represents a rename of the genre without changing the books in it. If we were to try this with a Delete query followed by an Insert query, then the Insert query would have nothing to match on!
+
+[,typeql]
+----
+match
+$book isa book, has $art;
+$art "art" isa genre;
+delete
+has $art of $book;
+insert
+$book has genre "art and design";
+----
+__-> Commit!__
+
+== Update shorthand
+
+When updating an attribute ownership (or indeed, a role player in an existing relation) that exists exactly 0 or 1 times, you can use the `update` clause shorthand:
+
+[,typeq]
+----
+match
+$book isa paperback, has isbn-10 "0060929790";
+update $book has stock 20;
+----
+
+The `update` clause will, for each statement written, set the new attribute to be the only attribute owned by the owner. In this example, for the specific paperback book, it sets the stock to 25, replacing any existing stock value.
+
+
+.Exercise
+[caption=""]
+====
+Use a match-delete-insert query pipeline to decrease the `stock` attribute of paperback _Pride and Prejudice_ by one. In order to do so, you will need to first retrieve its current value.
+
+.Hint
+[%collapsible]
+=====
+To get the correct ISBN and current stock, you can use the following query.
+[,typeql]
+----
+match
+$pride-prejudice isa paperback, has title "Pride and Prejudice";
+fetch {
+  "isbn": [ $pride-prejudice.isbn ],
+  "stock": $pride-prejudice.stock,
+};
+----
+=====
+
+.Sample solution
+[%collapsible]
+=====
+[,typeql]
+----
+match
+$pride-prejudice isa paperback, has isbn "9780553212150";
+$stock isa stock 15;
+delete
+has $stock of $pride-prejudice;
+insert
+$pride-prejudice has stock 14;
+----
+__-> Commit__
+=====
+
+Of course, having to retrieve the current stock value before updating it is a bit inconvenient. We'll learn how to use *arithmetic operations* to automatically decrement it in a single query in xref:{page-version}@academy::7-understanding-query-patterns/7.5-value-expressions.adoc[Lesson 7.5].
+====

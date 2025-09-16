@@ -1,0 +1,28 @@
+= Lesson 10: Using inference
+
+== xref:{page-version}@academy::10-  using-functions/10.1-functions-as-views.adoc[Function as views]
+
+* Functions are can be treated like SQL views - they abstract away queries into a different format
+* Functions can be used to abstract away query complexity and piece together modular logic into new behaviours
+
+== xref:{page-version}@academy::10-  using-functions/10.2-function-chaining.adoc[Function chaining]
+
+* Functions can invoke other functions
+* Functions can invoke themselves recursively
+
+== Further learning
+
+[cols-3]
+--
+.xref:{page-version}@manual::reading/infer.adoc[Manual: Inference]
+[.clickable]
+****
+Learn more about inferring data with TypeDB, covering defining rules and querying inferred data.
+****
+
+.https://typedb.com/blog/inference-in-typedb[Blog: Inference in TypeDB]
+[.clickable]
+****
+Learn more about rule inference and type inference, and the benefits they bring to database engineering.
+****
+--

@@ -1,0 +1,74 @@
+= Lesson 3.5: Query validation
+:page-no-toc: 1
+
+[#_blank_heading]
+== {blank}
+
+TypeQL's composability provides a natural syntax for building queries, but not all queries are valid. Try running the following queries. Only the first one will be successfully executed.
+
+[,typeql]
+----
+match
+$user isa user;
+$country isa country;
+locating (location: $country, located: $user);
+fetch {
+  "name": $user.name,
+  "country": $country.name,
+};
+----
+
+[,typeql]
+----
+match
+$user isa user;
+$country isa country;
+locating (location: $country, located: $user);
+fetch {
+  "isbn": $user.isbn-13,
+  "country": $country.name,
+};
+----
+
+[,typeql]
+----
+match
+$book isa book;
+$country isa country;
+locating (location: $country, located: $book);
+fetch {
+  "isbn": $book.isbn-13,
+  "country": $country.name,
+};
+----
+
+The second query is invalid because users do not have ISBN attributes. The third is invalid because books do not have locations. TypeDB validates queries against the *schema*, which sets out which types are able to own each attribute and play each role in relations. This enables the database to determine which queries are semantically sound, and extends to queries of arbitrary complexity, for instance the following query. Try running it to see if it is valid.
+
+[,typeql]
+----
+match
+locating (located: $user, location: $user-city);
+action-execution (action: $order, executor: $user);
+delivery (delivered: $order, destination: $destination);
+locating (located: $destination, location: $destination-city);
+$user-city isa city;
+$destination-city isa city;
+not { $destination-city is $user-city; };
+fetch {
+  "order": $order.id,
+};
+----
+
+We will explore exactly how TypeDB validates queries in xref:{page-version}@academy::7-understanding-query-patterns/7.1-patterns-as-constraints.adoc[Lesson 7.1].
+
+.Exercise
+[caption=""]
+====
+Determine what the above query is asking for.
+
+.Answer
+[%collapsible]
+=====
+It retrieves the IDs of orders being sent to a city other than the city of the user that placed the order. Perhaps these orders are gifts! This query uses two keywords we haven't introduced yet: `not` and `is`. We will learn about these keywords in xref:{page-version}@academy::7-understanding-query-patterns/7.3-logical-operators.adoc[Lesson 7.3].
+=====
+====

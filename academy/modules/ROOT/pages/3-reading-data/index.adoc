@@ -1,0 +1,60 @@
+= Lesson 3: Reading data
+:page-aliases: {page-version}@academy::3-reading-data/overview.adoc
+:page-preamble-card: 1
+
+In this lesson, we'll learn how to read pre-inserted data in the sample database using *Fetch queries*. We'll begin by seeing how we can retrieve *entities* and *relations* in a similar way to how we do with relational databases. We'll then see how we can retrieve data in unique ways using TypeDB: by writing declarative *polymorphic* queries, by leveraging *functions*, and by retrieving *types* from the schema. Finally, we'll look at a few examples of *type inference* at work by seeing how TypeDB validates queries.
+
+== Recommended prerequisites
+
+* You should complete xref:{page-version}@academy::2-environment-setup/index.adoc[Lesson 2] before starting this lesson.
+
+== Lesson contents
+
+[cols-2]
+--
+.xref:{page-version}@academy::3-reading-data/3.1-fetching-simple-data.adoc[]
+[.clickable]
+****
+Learn how to retrieve the attributes of entities and relations.
+****
+
+.xref:{page-version}@academy::3-reading-data/3.2-fetching-polymorphic-data.adoc[]
+[.clickable]
+****
+Learn how to retrieve data with polymorphic queries.
+****
+
+.xref:{page-version}@academy::3-reading-data/3.3-using-functions.adoc[]
+[.clickable]
+****
+Learn how to invoke functions for modularization and recursion.
+****
+
+.xref:{page-version}@academy::3-reading-data/3.4-fetching-schema-types.adoc[]
+[.clickable]
+****
+Learn how to retrieve typing information from the schema.
+****
+
+.xref:{page-version}@academy::3-reading-data/3.5-query-validation.adoc[]
+[.clickable]
+****
+Learn about how queries are validated against the schema.
+****
+--
+
+== TypeQL keywords introduced
+
+* `match`
+* `fetch`
+* `attribute`
+* `isa`
+* `has`
+* `entity`
+* `relation`
+* `isa!`
+* `sub`
+* `sub!`
+* `owns`
+* `relates`
+* `plays`
