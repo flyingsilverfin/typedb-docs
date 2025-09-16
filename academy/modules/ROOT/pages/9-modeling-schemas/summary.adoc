@@ -58,7 +58,7 @@ image::academy::typeql-terminology.png[role=framed, width = 75%, link=self]
 
 [cols-3]
 --
-.xref:{page-version}@academy::10-  using-functions/index.adoc[]
+.xref:{page-version}@academy::10-using-functions/index.adoc[]
 [.clickable]
 ****
 Learn how to use functions to abstract complex patterns into simple forms, and capture complex logic with combinations of functions.

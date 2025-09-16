@@ -69,12 +69,12 @@ This outputs:
   }
 }
 {
+  "tax": 23.037000000000003,
   "title": "Electron Backscatter Diffraction in Materials Science",
   "book-type": {
     "kind": "entity",
     "label": "hardback"
   },
-  "tax": 23.037000000000003
 }
 ----
 
