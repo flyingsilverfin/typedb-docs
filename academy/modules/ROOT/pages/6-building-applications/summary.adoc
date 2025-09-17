@@ -1,0 +1,103 @@
+= Lesson 6: Building applications
+
+== xref:{page-version}@academy::6-building-applications/6.1-driver-overview.adoc[Driver setup]
+
+* The official TypeDB Python driver package can be installed with:
++
+[source,console]
+----
+pip install typedb-driver
+----
+* The following classes must be imported in order to use the Python driver in any codebase:
++
+[,python]
+----
+from typedb.driver import TypeDB, Credentials, DriverOptions
+----
+
+== xref:{page-version}@academy::6-building-applications/6.2-managing-users-and-databases.adoc[Managing databases]
+
+* The `TypeDB.driver` method is used to instantiate a new *driver object*.
++
+[,python]
+----
+driver: TypeDBDriver = TypeDB.driver(ADDRESS, credentials, options)
+----
+* The `TypeDBDriver.databases.create` method is used to create a new database.
++
+[,python]
+----
+driver.databases.create(DB)
+----
+
+== xref:{page-version}@academy::6-building-applications/6.3-transactions.adoc[Transactions]
+
+* The `TypeDBSession.transaction` method is used to instantiate a new *transaction*. The *transaction type* is specified using the `READ`, `WRITE`, or `SCHEMA` value of the `TransactionType` enum.
++
+[,python]
+----
+transaction: TypeDBTransaction = driver.transaction(DB, TransactionType.READ)
+----
+* Drivers and transaction objects are ideally always be instantiated using a https://peps.python.org/pep-0343/[context manager] so that their destructors are called automatically, otherwise call `.close() manually on them
++
+[,python]
+----
+with TypeDB.driver(ADDRESS, credentials, options) as driver:
+    with session.transaction(DB, TransactionType.READ) as transaction:
+        # code goes here
+----
+* The `TypeDBTransaction.commit` method is used to commit a transaction.
++
+[,python]
+----
+transaction.commit()
+----
+
+== xref:{page-version}@academy::6-building-applications/6.4-executing-queries.adoc[Executing queries]
+
+* The `TypeDBTransaction.query()` method is used to *submit queries*.
++
+[,python]
+----
+results: Promise[QueryAnswer] = transaction.query(QUERY)
+----
+* Typically you submit and resolve the promise catch any errors that are thrown
++
+[,python]
+----
+transaction.query(QUERY).resolve()
+----
+
+== xref:{page-version}@academy::6-building-applications/6.5-processing-results.adoc[Processing results]
+
+* Each result of a query that ends in `fetch` returns Documents. The top-level dictionary has fields corresponding to the `fetch` clause structure.
+* If you know you aren't catching errors at query time and don't care about the returned values (such as when doing straight inserts), you can submit without resolving or reading answers to boost performance
+
+== Further learning
+
+[cols-3]
+--
+.xref:{page-version}@academy::7-understanding-query-patterns/index.adoc[]
+[.clickable]
+****
+Learn how to build query patterns utilising advanced elements of TypeQL syntax, and how queries are resolved by TypeDB.
+****
+
+.xref:{page-version}@reference::typedb-grpc-drivers/index.adoc[GRPC Drivers Reference]
+[.clickable]
+****
+Explore the comprehensive API reference for the official TypeDB GRPC drivers.
+****
+
+.xref:{page-version}@reference::typedb-http-drivers/index.adoc[HTTP Drivers Reference]
+[.clickable]
+****
+Explore the comprehensive API reference for the official TypeDB HTTP drivers.
+****
+
+.xref:{page-version}@core-concepts::drivers/index.adoc[Drivers concepts]
+[.clickable]
+****
+Explore the docs for all the official TypeDB drivers, including installation guides, tutorials, and API references.
+****
+--

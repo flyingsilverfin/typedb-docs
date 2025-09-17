@@ -1,0 +1,47 @@
+= Lesson 6: Building applications
+:page-aliases: {page-version}@academy::6-building-applications/overview.adoc
+:page-preamble-card: 1
+
+In this lesson, we'll learn how to use the TypeDB native language drivers to build applications on TypeDB. We'll start by seeing how to *manage databases*, then learn to *use transactions*. We'll see how we use different transaction types to *execute queries*, and how we can *process results* that are returned.
+
+The examples and exercises in this lesson feature the official *TypeDB Python driver*, though other language drivers feature extremely similar APIs.
+
+== Recommended prerequisites
+
+* You should complete xref:{page-version}@academy::5-defining-schemas/index.adoc[Lesson 5] before starting this lesson.
+
+== Lesson contents
+
+[cols-2]
+--
+.xref:{page-version}@academy::6-building-applications/6.1-driver-overview.adoc[]
+[.clickable]
+****
+Driver overview and installation.
+****
+
+.xref:{page-version}@academy::6-building-applications/6.2-managing-users-and-databases.adoc[]
+[.clickable]
+****
+Learn how to connect to a server and manage databases.
+****
+
+.xref:{page-version}@academy::6-building-applications/6.3-transactions.adoc[]
+[.clickable]
+****
+Learn how to open sessions and control transactions.
+****
+
+.xref:{page-version}@academy::6-building-applications/6.4-executing-queries.adoc[]
+[.clickable]
+****
+Learn how to execute read, write, and schema queries.
+****
+
+.xref:{page-version}@academy::6-building-applications/6.5-processing-results.adoc[]
+[.clickable]
+****
+Learn how to efficiently process the results of read queries.
+****
+--
+

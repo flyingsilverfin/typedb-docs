@@ -1,0 +1,103 @@
+= Lesson 5.5: Schema validation
+
+== Type validation
+
+In order to maintain integrity, the schema is validated to ensure internal consistency upon each change. Some of the checks that take place during validation are:
+
+* When a new type is defined:
+** The type has a single supertype.
+** If the type is a relation type: it has at least one role, or is abstract.
+** If the type is an attribute type: it has a value type defined or inherited, or is abstract.
+* When a new role is defined:
+** The relation type does not already inherit the role from a supertype.
+* When a new role player is defined:
+** The role player does not already inherit the role playing capability from a supertype.
+* When a new attribute owner is defined:
+** The owner does not already inherit the ownership capability from a supertype.
+
+.Exercise
+[caption=""]
+====
+For the following schema, identify any errors that would cause validation checks to fail. You can assume the Define query contains the entire schema and there are no existing types already defined.
+
+[,typeql]
+----
+define
+entity person,
+  owns first-name,
+  owns last-name,
+  plays employment:employee;
+entity company,
+  owns name,
+  plays employment:employer;
+relation employment @abstract,
+  relates employee,
+  relates employer,
+  owns start-date,
+  owns end-date;
+relation full-time-employment,
+  sub employment,
+  relates employee,
+  relates employer,
+  owns salary;
+relation part-time-employment,
+  sub employment,
+  relates employee,
+  relates employer,
+  owns hourly-rate;
+attribute name @abstract, value string;
+attribute first-name, sub name;
+attribute last-name, sub name;
+attribute start-date, value datetime;
+attribute end-date, value datetime;
+attribute pay, value integer;
+attribute salary, sub pay;
+attribute hourly-rate, sub pay;
+----
+
+.Answers
+[%collapsible]
+=====
+* The relation types `full-time-employment` and `part-time-employement` inherit the roles `employee` and `employer` from their supertype `employment` and so cannot redeclare them.
+=====
+
+Modify the schema to correct these errors.
+
+.Sample solution
+[%collapsible]
+=====
+[,typeql]
+----
+define
+entity person,
+  owns first-name,
+  owns last-name,
+  plays employment:employee;
+entity company,
+  owns company-name,
+  plays employment:employer;
+relation employment @abstract,
+  relates employee,
+  relates employer,
+  owns start-date,
+  owns end-date;
+relation full-time-employment sub employment,
+  owns salary;
+relation part-time-employment sub employment,
+  owns hourly-rate;
+attribute name @abstract, value string;
+attribute first-name sub name;
+attribute last-name sub name;
+attribute company-name sub name;
+attribute start-date, value datetime;
+attribute end-date, value datetime;
+attribute pay, value integer;
+attribute salary sub pay;
+attribute hourly-rate sub pay;
+----
+=====
+====
+
+== Function validation
+
+Functions contain read queries, plus a signature and the return statement. They are validated just like any other read query, using type inference. However, the function signature must match the `return` statement definition as well.

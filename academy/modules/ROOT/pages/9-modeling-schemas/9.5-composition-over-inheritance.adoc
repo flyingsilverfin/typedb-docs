@@ -1,0 +1,106 @@
+= Lesson 9.5: Composition over inheritance
+:page-no-toc: 1
+
+[#_blank_heading]
+== {blank}
+
+In the previous lesson, we introduced type hierarchies into the data model for our book data. In this lesson, we'll examine a case where composition is a better approach than inheritance.
+
+.Lesson 9.4 schema
+[%collapsible]
+====
+[,typeql]
+----
+define
+entity book @abstract,
+  owns isbn, # abstract, but instantiated using isbn-10 or isbn-13
+  owns isbn-13,
+  owns isbn-10,
+  owns title,
+  owns page-count,
+  owns genre,
+  owns price,
+  plays contribution:work,
+  plays publishing:published;
+entity paperback sub book,
+  owns stock;
+entity hardback sub book,
+  owns stock;
+entity ebook sub book;
+entity contributor,
+  owns name,
+  plays contribution:contributor;
+entity author sub contributor;
+entity editor sub contributor;
+entity illustrator sub contributor;
+entity publisher,
+  owns name,
+  plays publishing:publisher;
+entity place @abstract,
+  owns name,
+  plays locating:location,
+  plays locating:located;
+entity city sub place,
+  plays publishing:location;
+entity state sub place;
+entity country sub place;
+relation contribution,
+  relates contributor,
+  relates work;
+relation publishing,
+  relates publisher,
+  relates published,
+  relates location,
+  owns year;
+relation locating,
+  relates located,
+  relates location;
+attribute isbn-13, value string;
+attribute isbn-10, value string;
+attribute title, value string;
+attribute page-count, value integer;
+attribute genre, value string;
+attribute price, value double;
+attribute stock, value integer;
+attribute name, value string;
+attribute year, value integer;
+----
+====
+
+Currently, the entity type `contributor` has three specialized subtypes: `author`, `editor`, and `illustrator`. But what happens if a single person carries out more than one of these functions, either for the same book or different books? For example, in the dataset, the edition of _The Hobbit_ is both written and illustrated by J.R.R. Tolkien. We could create separate instances of `author` and `illustrator`, but then these two objects would have different identities, despite representing the same concept.
+
+The problem here lies in that the subtypes of contributor are not mutually exclusive. As a data instance can only have a single type, using an inheritance hierarchy to model the types of contributor was a poor choice. In fact, if we consider the different ways the people can contribute to books, these are better described as *behaviours* of those people rather than inherent properties of them. As such, they are best implemented with *interfaces*. More specifically, these behaviours are _roles_ that contributors fulfil, so we will use roles in relations to model them.
+
+To implement this change, we will create three subtypes of `contribution`: `authoring`, `editing`, and `illustrating`, and then remove the subtypes of `contributor`: `author`, `editor`, and `illustrator`.
+
+[,typeql]
+----
+define
+entity contributor,
+  plays contribution:contributor;
+relation contribution,
+  relates contributor,
+  relates work;
+relation authoring sub contribution;
+relation editing sub contribution;
+relation illustrating sub contribution;
+----
+
+As we saw in xref:{page-version}@academy::5-defining-schemas/5.2-defining-type-hierarchies.adoc[Lesson 5.2], the role interface `contribution:contributor` is inherited by the subtypes of `contribution`, so they expose it as well. Because `contributor` implements this interface, this allows instances of `contributor` to play the role in instances of all three subtypes (or the supertype).
+
+[,typeql]
+----
+match
+$hobbit isa book, has isbn-13 "9780008627843";
+$tolkien isa contributor, has name "J.R.R. Tolkien";
+insert
+authoring ($hobbit, $tolkien);
+illustrating ($hobbit, $tolkien);
+----
+
+Now we can easily record contributors in different roles.
+
+[IMPORTANT]
+====
+A data instance can only have a single type. If a concept displays multiple simultaneous capabilities, for example a person being an author and an editor, then this indicates that the concept should be modeled as a single type implementing multiple interfaces, rather than as multiple types. This is in line with the OOP principle of https://en.wikipedia.org/wiki/Composition_over_inheritance[composition over inheritance].
+====
