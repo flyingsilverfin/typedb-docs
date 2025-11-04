@@ -765,6 +765,6 @@ Follow the TypeDB Academy for an extended course diving deeper into TypeDB
 .link:https://typedb.com/discord[Join the TypeDB Discord]
 [.clickable]
 ****
-Join our discord server to talk to
+Join our discord server to talk to TypeDB developers and community members
 ****
 --
