@@ -25,7 +25,7 @@ fun mutual_friends($p1: person, $p2: person) -> { person }:
 match
     $f1 isa friendship, links (friend: $p1, friend: $pm);
     $f2 isa friendship, links (friend: $p2, friend: $pm);
-return { $p2 };
+return { $pm };
 ----
 
 == Arguments & returns
