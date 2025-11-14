@@ -6,7 +6,7 @@ This guide helps SQL users understand TypeQL by mapping familiar SQL constructs 
 [NOTE]
 ====
 TypeQL operates on a data model using entity, relation, and attribute types (and their instances), instead of tables and rows.
-This difference means that some SQL concepts map directly, while others require a different approach.
+This difference means that some SQL concepts map directly and others have different formulations in TypeQL.
 ====
 
 == Schema setup
