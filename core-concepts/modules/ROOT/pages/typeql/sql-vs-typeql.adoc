@@ -37,8 +37,6 @@ insert
   $e1 isa employment, links (employee: $alice, employer: $acme);
 ----
 
-====
-
 == Data retrieval
 
 === SELECT → match + fetch/select
@@ -742,7 +740,7 @@ define
 | `LIMIT` | `limit` | Identical
 | `OFFSET` | `offset` | Identical
 | `DISTINCT` | `distinct` | Identical
-| `COUNT`/`SUM`/`AVG`/`etc. | `reduce` with `count`/`sum`/`mean`/etc. | Similar, assigned to a variable| 
+| `COUNT`/`SUM`/`AVG`/`etc.` | `reduce` with `count`/`sum`/`mean`/etc. | Similar, assigned to a variable| 
 | `UNION` | `or` patterns | Pattern disjunction
 | `EXISTS` | `not { not { ... } }` | Double negation pattern
 | `IN` | `or` with multiple `==` | Pattern disjunction
