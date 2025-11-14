@@ -711,10 +711,10 @@ CREATE TABLE employment (
 [,typeql]
 ----
 define
+  entity person plays employment:employee;
+  entity company plays employment:employer;
   relation employment, relates employee, relates employer, owns start-date;
   attribute start-date, value datetime;
-  person plays employment:employee;
-  company plays employment:employer;
 ----
 
 == Summary table
