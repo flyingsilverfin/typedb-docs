@@ -11,7 +11,36 @@ This difference means that some SQL concepts map directly and others have differ
 
 == Schema setup
 
-For the examples here, we can use a simple TypeQL schema:
+Let's use a small schema for people, companies, and employments.
+
+If this schema were implemented in a typical SQL database, you'd define two main tables (`person` and `company`) with attributes for each, and a join table (`employment`) to represent the relationship between people and companies.
+
+Each `person` has a name, email, and age. Each `company` has a name. The `employment` table links people to companies using foreign keys.
+
+Example SQL table definitions:
+
+[sql]
+----
+CREATE TABLE person (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR,
+  email VARCHAR,
+  age INTEGER
+);
+
+CREATE TABLE company (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR
+);
+
+CREATE TABLE employment (
+  id SERIAL PRIMARY KEY,
+  employee_id INTEGER REFERENCES person(id),
+  employer_id INTEGER REFERENCES company(id)
+);
+----
+
+Here's the equivalent TypeQL schema:
 
 [,typeql]
 ----
@@ -25,7 +54,7 @@ define
   entity company, owns name, plays employment:employer;
 ----
 
-With the following data:
+If you're testing as you go - here's some sample data you can use to populate your TypeDB database!
 [,typeql]
 ----
 #!test[write, commit]
