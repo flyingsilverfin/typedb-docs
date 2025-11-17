@@ -19,7 +19,7 @@ Each `person` has a name, email, and age. Each `company` has a name. The `employ
 
 Example SQL table definitions:
 
-[sql]
+[,sql]
 ----
 CREATE TABLE person (
   id SERIAL PRIMARY KEY,
@@ -73,7 +73,7 @@ insert
 In SQL, `SELECT` retrieves data from tables. In TypeQL, `match` finds data by pattern, and `fetch` or `select` projects the results.
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT name, email FROM person;
 ----
@@ -108,7 +108,7 @@ fetch {
 SQL's `WHERE` clause filters rows. In TypeQL, constraints are part of the `match` pattern.
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT name FROM person WHERE age > 25;
 ----
@@ -140,7 +140,7 @@ SQL uses `AND` (conjunction) and `OR` (disjunction) in `WHERE` clauses.
 In TypeQL, statements and composite patterns are combined an implicit `and` by default: `;` and `,` both are implicit conjunctions. An `or` pattern is used to explicitly represent a disjunction.
 
 **SQL with AND:**
-[sql]
+[,sql]
 ----
 SELECT name FROM person WHERE age > 25 AND email LIKE '%@example.com';
 ----
@@ -157,7 +157,7 @@ select $name;
 ----
 
 **SQL with OR:**
-[sql]
+[,sql]
 ----
 SELECT name FROM person WHERE age < 20 OR age > 30;
 ----
@@ -182,7 +182,7 @@ The type of JOIN determines which entities are included in the results when rela
 An INNER JOIN returns only rows where there is a match in both tables. In TypeQL, this is the default behavior when matching relations.
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT p.name, e.id
 FROM person p
@@ -207,7 +207,7 @@ A LEFT JOIN returns all rows from the left table (person), and matching rows fro
 If there's no match, NULL values are returned for the right table columns. In TypeQL, use the `try` construct for optional matching.
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT p.name, e.id
 FROM person p
@@ -235,7 +235,7 @@ A RIGHT JOIN returns all rows from the right table (employment), and matching ro
 If there's no match, NULL values are returned for the left table columns. In TypeQL, reverse the pattern to start from the right side.
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT p.name, e.id
 FROM person p
@@ -264,7 +264,7 @@ A CROSS JOIN returns the Cartesian product of two tables - every row from the fi
 In TypeQL, match entities from both types independently without requiring any relation between them.
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT p.name, e.id
 FROM person p
@@ -294,7 +294,7 @@ Full outer joins do not translate well to TypeQL. If your application requires a
 === INSERT → insert
 
 **SQL:**
-[sql]
+[,sql]
 ----
 INSERT INTO person (name, email, age) VALUES ('David', 'david@example.com', 28);
 ----
@@ -308,7 +308,7 @@ insert
 ----
 
 **SQL INSERT with SELECT:**
-[sql]
+[,sql]
 ----
 INSERT INTO employment (employee_id, employer_id)
 SELECT p.id, c.id
@@ -330,7 +330,7 @@ insert
 === UPDATE → update
 
 **SQL:**
-[sql]
+[,sql]
 ----
 UPDATE person SET email = 'newemail@example.com' WHERE name = 'Alice';
 ----
@@ -353,7 +353,7 @@ It automatically deletes the old value and inserts the new one.
 === DELETE → delete
 
 **SQL:**
-[sql]
+[,sql]
 ----
 DELETE FROM person WHERE name = 'Charlie';
 ----
@@ -368,7 +368,7 @@ delete $p;
 ----
 
 **SQL DELETE with JOIN:**
-[sql]
+[,sql]
 ----
 DELETE e FROM employment e
 INNER JOIN person p ON e.employee_id = p.id
@@ -390,7 +390,7 @@ delete $e;
 === GROUP BY → reduce with groupby
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT age, COUNT(*) as count
 FROM person
@@ -409,7 +409,7 @@ reduce $count = count groupby $age;
 === Aggregate Functions
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT 
   COUNT(*) as total,
@@ -437,7 +437,7 @@ reduce
 === HAVING → reduce + match
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT age, COUNT(*) as count
 FROM person
@@ -460,7 +460,7 @@ match $count > 1;
 === ORDER BY → sort
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT name, age FROM person ORDER BY age DESC, name ASC;
 ----
@@ -478,7 +478,7 @@ select $name, $age;
 === LIMIT and OFFSET
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT name FROM person ORDER BY name LIMIT 10 OFFSET 20;
 ----
@@ -507,7 +507,7 @@ If we did `limit`, then `order`, we would `limit` the sorted answers to the firs
 === DISTINCT → distinct
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT DISTINCT age FROM person;
 ----
@@ -525,7 +525,7 @@ distinct;
 === Subqueries → functions
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT name FROM person
 WHERE age > (SELECT AVG(age) FROM person);
@@ -548,7 +548,7 @@ select $avg, $name, $age;
 === UNION → or patterns
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT name FROM person WHERE age < 25
 UNION
@@ -585,7 +585,7 @@ Both are valid!
 === EXISTS → not { not { ... } }
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT name FROM person p
 WHERE EXISTS (
@@ -611,7 +611,7 @@ _This will be improved in future versions of TypeQL!_
 === IN → multiple value constraints
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT name FROM person WHERE age IN (25, 30, 35);
 ----
@@ -639,7 +639,7 @@ select $name;
 === LIKE → like (regex)
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT name FROM person WHERE email LIKE '%@example.com';
 ----
@@ -657,7 +657,7 @@ select $name;
 === NULL checks → not { ... }
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT name FROM person WHERE email IS NULL;
 ----
@@ -676,7 +676,7 @@ select $name;
 ----
 
 **SQL:**
-[sql]
+[,sql]
 ----
 SELECT name FROM person WHERE email IS NOT NULL;
 ----
@@ -726,7 +726,7 @@ match $avg_age > 29;
 In SQL, relationships are represented through foreign keys. In TypeQL, relationships are explicit relations that can have their own attributes and connect multiple entities.
 
 **SQL (with foreign keys):**
-[sql]
+[,sql]
 ----
 CREATE TABLE employment (
   id INT PRIMARY KEY,
