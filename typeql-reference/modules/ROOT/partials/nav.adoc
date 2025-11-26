@@ -14,6 +14,7 @@
 ** xref:{page-version}@typeql-reference::pipelines/put.adoc[Put]
 ** xref:{page-version}@typeql-reference::pipelines/select.adoc[Select]
 ** xref:{page-version}@typeql-reference::pipelines/require.adoc[Require]
+** xref:{page-version}@typeql-reference::pipelines/distinct.adoc[Distinct]
 ** xref:{page-version}@typeql-reference::pipelines/sort.adoc[Sort]
 ** xref:{page-version}@typeql-reference::pipelines/limit.adoc[Limit]
 ** xref:{page-version}@typeql-reference::pipelines/offset.adoc[Offset]
