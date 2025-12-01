@@ -26,3 +26,49 @@ Parentheses (`()`) may be used to override the precedence. The sub-expressions i
 ----
 (1 + 2) * 3 == 9
 ----
+
+== Built-in functions
+
+TypeQL provides several built-in functions for common mathematical and list operations:
+
+=== Mathematical functions
+
+`round(x)`::
+Returns the provided numeric argument rounded to the nearest integer.
+
+[,typeql]
+----
+round(3.7) == 4
+round(3.2) == 3
+round(-3.7) == -4
+----
+
+`ceil(x)`::
+Returns the provided numeric argument rounded to the nearest greater integer (ceiling).
+
+[,typeql]
+----
+ceil(3.2) == 4
+ceil(3.7) == 4
+ceil(-3.2) == -3
+----
+
+`floor(x)`::
+Returns the provided numeric argument rounded to the nearest lesser integer (floor).
+
+[,typeql]
+----
+floor(3.2) == 3
+floor(3.7) == 3
+floor(-3.2) == -4
+----
+
+`abs(x)`::
+Returns the absolute value of the provided numeric argument.
+
+[,typeql]
+----
+abs(5) == 5
+abs(-5) == 5
+abs(0) == 0
+----
