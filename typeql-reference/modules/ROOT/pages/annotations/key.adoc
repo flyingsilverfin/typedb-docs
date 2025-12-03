@@ -1,5 +1,5 @@
 = `@key` annotation
-:page-aliases: {page-version}@reference::typeql/statements/key.adoc
+:page-aliases: {page-version}@typeql-reference::statements/key.adoc
 :test-typeql: linear
 
 The `@key` annotation is used
@@ -29,7 +29,7 @@ For example, the following statement declares that any `content` should have exa
 [,typeql]
 ----
 #!test[schema]
-include::{page-version}@reference::example$tql/schema_annotations.tql[tags=define-keyword;key;key-attribute]
+include::{page-version}@typeql-reference::example$tql/schema_annotations.tql[tags=define-keyword;key;key-attribute]
 ----
 
 === Subtyping

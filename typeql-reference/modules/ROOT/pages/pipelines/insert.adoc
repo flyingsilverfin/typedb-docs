@@ -1,5 +1,5 @@
 = Insert stage
-:page-aliases: {page-version}@reference::typeql/queries/insert.adoc
+:page-aliases: {page-version}@typeql-reference::queries/insert.adoc
 :test-typeql: linear
 
 An insert stage inserts new data into the database.
@@ -55,7 +55,7 @@ NOTE: xref:{page-version}@typeql-reference::annotations/card.adoc[Cardinality an
 [,typeql]
 ----
 #!test[schema, commit]
-include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entities;attributes;extended-attributes;relation-group]
+include::{page-version}@typeql-reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entities;attributes;extended-attributes;relation-group]
 ----
 ====
 

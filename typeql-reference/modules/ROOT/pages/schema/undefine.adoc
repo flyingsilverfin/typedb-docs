@@ -1,5 +1,5 @@
 = Undefine query
-:page-aliases: {page-version}@reference::typeql/queries/undefine.adoc
+:page-aliases: {page-version}@typeql-reference::queries/undefine.adoc
 :test-typeql: linear
 
 Undefine queries are used
@@ -78,7 +78,7 @@ Only the type of the annotation is required, so annotations with arguments can b
 [,typeql]
 ----
 #!test[schema, commit]
-include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entities;attributes;extended-attributes]
+include::{page-version}@typeql-reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entities;attributes;extended-attributes]
 attribute tag value string;
 entity post owns tag @card(0..);
 relation parentship @abstract, relates parent, relates child;
@@ -176,4 +176,4 @@ undefine
 
 === Undefining functions
 
-include::{page-version}@reference::typeql/functions/writing.adoc[tag=undefine]
+include::{page-version}@typeql-reference::functions/writing.adoc[tag=undefine]

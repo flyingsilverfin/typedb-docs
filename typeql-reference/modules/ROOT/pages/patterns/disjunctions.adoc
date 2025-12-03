@@ -1,5 +1,5 @@
 = Disjunctions
-:page-aliases: {page-version}@reference::typeql/patterns/disjunction.adoc
+:page-aliases: {page-version}@typeql-reference::patterns/disjunction.adoc
 :test-typeql: linear
 
 Disjunctive patterns can be used in `match` stages. They allow queries to match several cases (or "`branches`") of patterns in parallel.
@@ -40,7 +40,7 @@ A disjunction pattern is satisfied if one of its branches is satisfied.
 [,typeql]
 ----
 #!test[schema, commit]
-include::{page-version}@reference::example$tql/conjunction.tql[tags=patterns-schema]
+include::{page-version}@typeql-reference::example$tql/conjunction.tql[tags=patterns-schema]
 ----
 ====
 
