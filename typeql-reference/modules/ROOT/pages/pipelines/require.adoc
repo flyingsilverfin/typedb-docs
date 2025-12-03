@@ -1,1 +1,37 @@
-= Require stage
+= Require operator
+:test-typeql: linear
+
+The require operator filters the data stream to only include elements that contain the specified variables. Elements where any of the specified variables are unbound (empty) are removed from the stream.
+
+== Syntax
+
+[,typeql]
+----
+require <var> [ , <var> ... ];
+----
+
+== Example
+
+.Schema for the following examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema, commit]
+include::{page-version}@reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entities;attributes;relation-friendship]
+----
+====
+
+Find users who have both a username and an email address:
+
+[,typeql]
+----
+#!test[read]
+match
+  $user isa user;
+  try { $user has username $username; };
+  try { $user has email $email; };
+require $username, $email;
+----
+
+In this example, the `try` clauses make `$username` and `$email` optional. The `require` operator then filters the stream to only include users who have both attributes bound (note: in this example, it would have been equivalent to not use `try` clauses and skip the `require` clause!)

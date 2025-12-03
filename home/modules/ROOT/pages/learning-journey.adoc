@@ -59,8 +59,8 @@ Start at the xref:{page-version}@core-concepts::typedb/overview.adoc[TypeDB Over
 
 Understanding how to "think in TypeQL" is the key part of using TypeDB effectively and at full power.
 
-The xref:{page-version}@core-concepts::typeql/overview.adoc[TypeQL Overview],
-shows the building blocks of the language and how they interact, from types to queries to functions.
+The xref:{page-version}@core-concepts::typeql/index.adoc[TypeQL Concepts],
+show the building blocks of the language and how they interact, from types to queries to functions.
 
 === TypeDB drivers
 

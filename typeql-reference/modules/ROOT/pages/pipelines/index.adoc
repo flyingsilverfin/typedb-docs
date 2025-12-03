@@ -69,6 +69,12 @@ Used to keep specified variables for each element of the data stream and remove 
 Used to remove elements from the data stream that do not contain specified optional variables.
 ****
 
+.xref:{page-version}@typeql-reference::pipelines/distinct.adoc[]
+[.clickable]
+****
+Used to remove duplicate elements from the data stream.
+****
+
 .xref:{page-version}@typeql-reference::pipelines/sort.adoc[]
 [.clickable]
 ****

@@ -13,7 +13,6 @@
 ** xref:{page-version}@core-concepts::typedb/horizontal-scaling.adoc[]
 
 * xref:{page-version}@core-concepts::typeql/index.adoc[]
-// ** xref:{page-version}@core-concepts::typeql/overview.adoc[]
 ** xref:{page-version}@core-concepts::typeql/entities-relations-attributes.adoc[]
 ** xref:{page-version}@core-concepts::typeql/constraining-data.adoc[]
 ** xref:{page-version}@core-concepts::typeql/schema-data.adoc[]
@@ -23,6 +22,8 @@
 ** xref:{page-version}@core-concepts::typeql/invalid-patterns.adoc[]
 // ** xref:{page-version}@core-concepts::typeql/best-practices.adoc[]
 ** xref:{page-version}@core-concepts::typeql/glossary.adoc[]
+** xref:{page-version}@core-concepts::typeql/sql-vs-typeql.adoc[]
+
 
 * xref:{page-version}@core-concepts::drivers/index.adoc[]
 ** xref:{page-version}@core-concepts::drivers/overview.adoc[]

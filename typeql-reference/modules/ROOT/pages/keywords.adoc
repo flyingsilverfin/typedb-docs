@@ -39,7 +39,10 @@ Denotes the beginning of a xref:{page-version}@typeql-reference::pipelines/put.a
 Denotes the beginning of a xref:{page-version}@typeql-reference::pipelines/select.adoc[] in a data pipeline, used to keep specified variables for each element of the data stream and remove the rest.
 
 `require`::
-Denotes the beginning of a xref:{page-version}@typeql-reference::pipelines/require.adoc[] in a data pipeline, used to remove elements from the data stream that do not contain specified optional variables.
+Denotes the beginning of a xref:{page-version}@typeql-reference::pipelines/require.adoc[Require operator] in a data pipeline, used to remove elements from the data stream that do not contain specified optional variables.
+
+`distinct`::
+Denotes the beginning of a xref:{page-version}@typeql-reference::pipelines/distinct.adoc[Distinct operator] in a data pipeline, used to remove duplicate elements from the data stream.
 
 `sort`::
 Denotes the beginning of a xref:{page-version}@typeql-reference::pipelines/sort.adoc[] in a data pipeline, used to order the elements of the data stream based on the value of specified variables.
@@ -184,12 +187,6 @@ Describes a xref:{page-version}@typeql-reference::annotations/regex.adoc[], used
 Describes a xref:{page-version}@typeql-reference::annotations/distinct.adoc[], used to restrict an owned list of attributes to distinct values.
 
 == Reductions
-
-`check`::
-Reduces the stream to a boolean value, indicating whether it contains any elements. See xref:{page-version}@typeql-reference::pipelines/reduce.adoc[] for more information.
-
-`first`::
-Reduces the stream to the first occurrence of a specified variable. See xref:{page-version}@typeql-reference::pipelines/reduce.adoc[] for more information.
 
 `count`::
 Reduces the stream to the number of occurrences of a specified variable. See xref:{page-version}@typeql-reference::pipelines/reduce.adoc[] for more information.
