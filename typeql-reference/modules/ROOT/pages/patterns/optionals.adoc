@@ -122,6 +122,7 @@ In this example the `$policy` is bound only if `$person` plays a role in it, but
 === Single origin
 In the stage that it first occurs, An optional variable may only occur in a single try-block.
 
+[,typeql]
 ----
 #!test[read, fail_at=runtime]
 match
