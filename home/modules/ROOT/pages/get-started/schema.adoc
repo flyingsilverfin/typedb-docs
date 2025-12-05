@@ -9,7 +9,9 @@
 
 In the previous section we've created our TypeDB server instance and connected TypeDB Studio (or Console).
 
-Now we'll use the server to create a database and initialize the schema. A TypeDB schema defines what data is permitted to be written to your database. Schemas are one of the key aspects of TypeDB: they allow the database to validate inserted data, check queries for validity, and perform query optimization. TypeDB's schemas are intuitive and built with higher-level building blocks compared to relational, document, or graph databases.
+Now we'll use the server to create a database and initialize the schema. A TypeDB schema defines what data is permitted to be written to your database. Think of schemas as your _blueprints_ for your data (or custom _dna_ from biology, or _classes_ in OOP).
+
+Schemas are one of the key aspects of TypeDB: they allow the database to validate inserted data, check queries for validity, and perform query optimization. TypeDB's schemas are intuitive and built with higher-level building blocks compared to relational, document, or graph databases.
 
 == TypeDB's data model at a glance
 

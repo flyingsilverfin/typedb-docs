@@ -61,7 +61,7 @@ With TypeDB, you get a database that is designed to tackle those problems in an 
 
 TypeDB types can do far more than you'd initially expect. Not only can you define simple entities, relations, and attributes, you can also define subtype hierarchies, additional interface-like role types, and reusable functions.
 
-These capabilities in turn compose with each other and interact polymorphically—for example, a user-defined function that can accept a `person` entity as an argument can also automatically take its subtype `child` entity as an argument!
+These capabilities in turn compose with each other and interact polymorphically — for example, a user-defined function that can accept a `person` entity as an argument can also automatically take its subtype `child` entity as an argument!
 
 [,typeql]
 ----
