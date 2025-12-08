@@ -34,7 +34,7 @@ match
 [,typeql]
 .Example datetime-tz literal (non-4-digit year)
 ----
-+20000-01-01T10:30:00.000
++20000-01-01T10:30:00.000+0100
 
 #!test[read]
 #{{
