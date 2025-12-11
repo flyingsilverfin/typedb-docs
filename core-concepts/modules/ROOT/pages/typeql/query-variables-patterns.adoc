@@ -206,7 +206,7 @@ Here, `$emp`, `$company`, `$edu`, `$institute` are internal to their patterns.
 `$p` occurs outside the disjunction.
 `$org-name` is present in every-branch and returned by the disjunction.
 
-The query returns:
+The query returns the following rows:
 [,]
 ----
     ---------------
@@ -250,7 +250,7 @@ match
   };
 ----
 
-Here, `$p` is an input to the negation. `$e, $c` are internal. The query returns:
+Here, `$p` is an input to the negation. `$e, $c` are internal. The query returns the following rows:
 ----
    -------------
     $p-name | isa name "Jeff"
@@ -326,7 +326,7 @@ match
 Here, `$e, $c, $c-name` are optional variables.
 `$p` is input to the optional pattern.
 
-The query returns:
+The query returns the following rows:
 [,typeql]
 ----
    -------------
