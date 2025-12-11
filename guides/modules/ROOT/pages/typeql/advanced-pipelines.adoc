@@ -167,13 +167,13 @@ Learn more about chaining TypeQL clauses into pipelines
 `or` documentation in TypeQL reference
 ****
 
-.xref:{page-version}@typeql-reference::pipelines/reduce.adoc
+.xref:{page-version}@typeql-reference::pipelines/reduce.adoc[]
 [.clickable]
 ****
 `reduce` documentation in TypeQL reference
 ****
 
-.xref:{page-version}@typeql-reference::patterns/optionals.adoc
+.xref:{page-version}@typeql-reference::patterns/optionals.adoc[]
 [.clickable]
 ****
 `try` documentation in TypeQL reference
