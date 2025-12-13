@@ -132,10 +132,10 @@ Constructs a xref:{page-version}@typeql-reference::statements/let-eq.adoc[], use
 Constructs a xref:{page-version}@typeql-reference::statements/let-in.adoc[], used to assign a stream or list element to a variable.
 
 `contains`::
-Constructs a xref:{page-version}@typeql-reference::statements/comparisons.adoc#_string_comparison[], used to specify that a string contains a specified substring.
+Constructs a xref:{page-version}@typeql-reference::statements/comparisons.adoc#_string_comparison[comparison], used to specify that a string contains a specified substring.
 
 `like`::
-Constructs a xref:{page-version}@typeql-reference::statements/comparisons.adoc#_string_comparison[], used to specify that a string matches a specified regex pattern.
+Constructs a xref:{page-version}@typeql-reference::statements/comparisons.adoc#_string_comparison[comparison], used to specify that a string matches a specified regex pattern.
 
 === Identity statements
 
@@ -256,13 +256,13 @@ Floor function, returns the provided numeric argument rounded to the nearest les
 Modulus function, returns the absolute value of the provided numeric argument. See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for more information.
 
 `length(...)`::
-Length function, returns the length of the provided list argument. See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for more information.
+Length function (coming soon), will return the length of the provided list argument. See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for more information.
 
 `min(...)`::
-Minimum function, returns the minimum value of the provided list argument. See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for more information.
+Minimum function, returns the minimum value of two provided numeric arguments. See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for more information.
 
 `max(...)`::
-Maximum function, returns the maximum value of the provided list argument. See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for more information.
+Maximum function, returns the maximum value of two provided numeric arguments. See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for more information.
 
 == Literals
 

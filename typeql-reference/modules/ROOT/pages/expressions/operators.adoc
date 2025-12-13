@@ -72,3 +72,33 @@ abs(5) == 5
 abs(-5) == 5
 abs(0) == 0
 ----
+
+=== Comparison functions
+
+`min(x, y)`::
+Returns the minimum value of the two provided numeric arguments.
+
+[,typeql]
+----
+min(10, 12) == 10
+min(3.5, 2.1) == 2.1
+min(-5, -3) == -5
+----
+
+`max(x, y)`::
+Returns the maximum value of the two provided numeric arguments.
+
+[,typeql]
+----
+max(10, 12) == 12
+max(3.5, 2.1) == 3.5
+max(-5, -3) == -3
+----
+
+=== List functions
+
+`length(x)`::
+[NOTE]
+====
+Coming with lists: This function will return the length of the provided list argument.
+====

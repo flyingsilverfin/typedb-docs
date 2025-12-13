@@ -19,7 +19,8 @@ TypeQL supports the following reduce operators:
 * `mean` -- the *arithmetic mean* of the values of the variable,
 * `median` -- the *median* value of the variable,
 * `std` -- the *sample standard deviation* of the values of the variable,
-* `sum` -- the sum of the values of the variable.
+* `sum` -- the sum of the values of the variable,
+* `list` -- Coming with lists: reduces the stream to a list of occurrences of a specified variable.
 
 === Examples
 
