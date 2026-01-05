@@ -32,6 +32,9 @@ content:
     - url: .
       start_path: guides
       branches: HEAD
+    - url: https://github.com/typedb/typedb-driver
+      start_path: docs
+      branches: ["master"]
 urls:
   latest_version_segment: ""
 antora:
