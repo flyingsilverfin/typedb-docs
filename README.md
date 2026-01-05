@@ -19,6 +19,20 @@ This repository contains all content that powers the TypeDB Documentation Portal
 
 ---
 
+## Develop
+
+You can build typedb-docs locally as follows:
+
+```bash
+git submodule update --init
+pnpm i
+pnpm run build
+```
+
+This will build a single version of Docs containing the content of your locally checked out branch.
+
+---
+
 ## Branches
 
 At any given time, this repository has at least two branches, i.e. `master` and `development`.
