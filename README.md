@@ -21,9 +21,23 @@ This repository contains all content that powers the TypeDB Documentation Portal
 
 ## Develop
 
-You can build typedb-docs locally as follows:
+You can build typedb-docs locally as follows.
 
-```bash
+You'll need `pnpm` installed. If you don't have it, we suggest the following process:
+
+First, install [nvm](https://github.com/nvm-sh/nvm) on MacOS or Linux, [nvm-windows](https://github.com/coreybutler/nvm-windows) on Windows. Then:
+
+```shell
+nvm install 22.16.0
+nvm use 22.16.0
+npm install --global corepack@0.17.0
+corepack enable
+corepack prepare pnpm@10.12.1 --activate
+```
+
+Then, you can build Docs as follows:
+
+```shell
 git submodule update --init
 pnpm i
 pnpm run build
