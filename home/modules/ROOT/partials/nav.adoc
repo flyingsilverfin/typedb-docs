@@ -7,12 +7,12 @@
 * xref:{page-version}@home::learning-journey.adoc[]
 
 * xref:{page-version}@home::install/index.adoc[]
-** xref:{page-version}@home::install/cloud.adoc[]
-** xref:{page-version}@home::install/enterprise.adoc[]
-** xref:{page-version}@home::install/ce.adoc[]
+** xref:{page-version}@home::install/cloud.adoc[TypeDB Cloud]
+** xref:{page-version}@home::install/enterprise.adoc[TypeDB Enterprise]
+** xref:{page-version}@home::install/ce.adoc[TypeDB Community Edition]
 ** xref:{page-version}@home::install/studio.adoc[Studio]
 ** xref:{page-version}@home::install/console-cli.adoc[Console CLI]
-** xref:{page-version}@home::install/drivers.adoc[]
+** xref:{page-version}@home::install/drivers.adoc[TypeDB Drivers]
 
 * xref:{page-version}@home::get-started/index.adoc[]
 ** xref:{page-version}@home::get-started/overview.adoc[]

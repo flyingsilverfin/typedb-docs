@@ -37,6 +37,6 @@ Refer to xref:{page-version}@typeql-reference::annotations/unique.adoc#subtyping
 
 == Limitations
 
-Cannot be used with the xref:{page-version}@typeql-reference::annotations/unique.adoc[`@unique` annotation] the xref:{page-version}@typeql-reference::annotations/card.adoc[`@card` annotation] as it produces same constraints.
+Cannot be used with the xref:{page-version}@typeql-reference::annotations/unique.adoc[`@unique` annotation] and the xref:{page-version}@typeql-reference::annotations/card.adoc[`@card` annotation] as it produces same constraints.
 
 See xref:{page-version}@typeql-reference::annotations/unique.adoc#_value_types[`unique` annotation supported value types] for the list of supported value types.

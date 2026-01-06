@@ -1,0 +1,55 @@
+site:
+  title: TypeDB Documentation portal
+  start_page: home:ROOT:index.adoc
+  robots: allow
+content:
+  edit_url: 'https://github.com/typedb/typedb-docs/edit/development/{path}'
+  sources:
+    - url: .
+      start_path: home
+      branches: HEAD
+    - url: .
+      start_path: examples
+      branches: HEAD
+    - url: .
+      start_path: core-concepts
+      branches: HEAD
+    - url: .
+      start_path: tools
+      branches: HEAD
+    - url: .
+      start_path: maintenance-operation
+      branches: HEAD
+    - url: .
+      start_path: reference
+      branches: HEAD
+    - url: .
+      start_path: typeql-reference
+      branches: HEAD
+    - url: .
+      start_path: academy
+      branches: HEAD
+    - url: .
+      start_path: guides
+      branches: HEAD
+    - url: https://github.com/typedb/typedb-driver
+      start_path: docs
+      branches: ["master"]
+urls:
+  latest_version_segment: ""
+antora:
+  extensions:
+    - "@antora/lunr-extension"
+asciidoc:
+  attributes:
+    page-pagination: "@"
+    source-highlighter: ~
+  extensions:
+    - "@asciidoctor/tabs"
+ui:
+  bundle:
+    url: https://github.com/typedb/typedb-docs-web/raw/refs/heads/master/ui/build/ui-bundle.zip
+    snapshot: true
+output:
+  clean: true
+  dir: ./dist

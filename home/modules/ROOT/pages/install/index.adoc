@@ -5,19 +5,19 @@ Choose the right TypeDB distribution for your needs, or get TypeDB tools.
 
 [cols-2]
 --
-.xref:{page-version}@home::install/cloud.adoc[]
+.xref:{page-version}@home::install/cloud.adoc[TypeDB Cloud]
 [.clickable]
 ****
 Get started using TypeDB Cloud without installing anything.
 ****
 
-.xref:{page-version}@home::install/enterprise.adoc[]
+.xref:{page-version}@home::install/enterprise.adoc[TypeDB Enterprise]
 [.clickable]
 ****
 Install TypeDB Enterprise.
 ****
 
-.xref:{page-version}@home::install/ce.adoc[]
+.xref:{page-version}@home::install/ce.adoc[TypeDB Community Edition]
 [.clickable]
 ****
 Install TypeDB Community Edition (CE).
@@ -35,7 +35,7 @@ Use the installation-free TypeDB Studio in Web or install its Desktop version.
 Install the TypeDB Console CLI tool.
 ****
 
-.xref:{page-version}@home::install/drivers.adoc[]
+.xref:{page-version}@home::install/drivers.adoc[TypeDB Drivers]
 [.clickable]
 ****
 Install client libraries to connect your application to TypeDB.

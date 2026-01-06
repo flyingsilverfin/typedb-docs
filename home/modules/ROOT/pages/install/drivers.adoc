@@ -1,4 +1,4 @@
-= TypeDB Drivers
+= Install TypeDB Drivers
 :page-aliases: {page-version}@drivers::index.adoc, {page-version}@drivers::python/index.adoc, {page-version}@drivers::python/tutorial.adoc, {page-version}@drivers::java/index.adoc, {page-version}@drivers::java/tutorial.adoc, {page-version}@drivers::rust/index.adoc, {page-version}@drivers::rust/tutorial.adoc, {page-version}@drivers::nodejs/index.adoc, {page-version}@drivers::nodejs/tutorial.adoc, {page-version}@drivers::csharp/index.adoc, {page-version}@drivers::csharp/tutorial.adoc, {page-version}@drivers::cpp/index.adoc, {page-version}@drivers::cpp/tutorial.adoc, {page-version}@drivers::c/index.adoc, {page-version}@drivers::c/tutorial.adoc,
 
 TypeDB drivers are client libraries that enable applications to communicate with TypeDB servers. They provide a programming language-specific interface for all server operations, from connection management to query execution.
@@ -33,6 +33,7 @@ TypeDB drivers are client libraries that enable applications to communicate with
 ****
 --
 
+[#_python]
 == Python
 
 === Install TypeDB Python Driver through Pip
@@ -53,27 +54,28 @@ from typedb.driver import *
 driver = TypeDB.driver(address=TypeDB.DEFAULT_ADDRESS, ...)
 ----
 
-=== Python driver tutorial
+=== Links
 
-* https://github.com/typedb/typedb-driver/tree/master/python[typedb-driver/python on GitHub] - Read the TypeDB Python driver tutorial
+* https://github.com/typedb/typedb-driver/tree/master/python[Python driver tutorial]
+* https://pypi.org/project/typedb-driver/[PyPI]
 
 
 == TypeScript (HTTP)
 
 === Install TypeDB HTTP TypeScript Driver from NPM
 
-. Install `typedb-driver-http` using `npm`:
+. Install `@typedb/driver-http` using `npm`:
 +
 [source,bash]
 ----
-npm install typedb-driver-http
+npm install @typedb/driver-http
 ----
 
-. In your Node.js or Web application, import from `typedb-driver-http`:
+. In your Node.js or Web application, import from `@typedb/driver-http`:
 +
 [source,typescript]
 ----
-import { TypeDBHttpDriver, isApiErrorResponse } from "typedb-driver-http";
+import { TypeDBHttpDriver, isApiErrorResponse } from "@typedb/driver-http";
 
 const driver = new TypeDBHttpDriver({
     username: "...",
@@ -82,10 +84,10 @@ const driver = new TypeDBHttpDriver({
 });
 ----
 
-=== TypeScript HTTP driver example
+=== Links
 
-* https://github.com/typedb/typedb-examples/tree/master/webapp[TypeSpace: Social Network Webapp Example] - Explore the TypeScript HTTP driver example on GitHub
-
+- https://github.com/typedb/typedb-examples/tree/master/webapp[TypeScript HTTP driver example]
+- https://www.npmjs.com/package/@typedb/driver-http[NPM registry]
 
 == Rust
 
@@ -107,9 +109,10 @@ use typedb_driver::TypeDBDriver;
 let driver = TypeDBDriver::new_core(TypeDBDriver::DEFAULT_ADDRESS).await.unwrap();
 ----
 
-=== Rust driver tutorial
+=== Links
 
-* https://github.com/typedb/typedb-driver/tree/master/rust[typedb-driver/rust on GitHub] - Read the TypeDB Rust driver tutorial
+* https://github.com/typedb/typedb-driver/tree/master/rust[Rust driver tutorial]
+* https://crates.io/crates/typedb-driver[Crates.io]
 
 
 == Java
@@ -150,10 +153,10 @@ try (Driver driver = TypeDB.driver(TypeDB.DEFAULT_ADDRESS, new Credentials("admi
 }
 ----
 
-=== Java driver tutorial
+=== Links
 
-* https://github.com/typedb/typedb-driver/tree/master/java[typedb-driver/java on GitHub] - Read the TypeDB Java driver tutorial
-
+- https://github.com/typedb/typedb-driver/tree/master/java[TypeDB Java driver tutorial]
+- https://cloudsmith.io/~typedb/repos/public-release/packages/detail/maven/typedb-driver/[Maven repo]
 
 == Other languages
 

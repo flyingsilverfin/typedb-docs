@@ -725,17 +725,17 @@ class MyTutorialBuilder(TypeDBAnswerConverter[MultiDiGraph]):
     # We leave the remaining unimplemented for brevity. Check the NetworkXConverter
     def add_comparison(c): pass
     def add_expression(c): pass
-    def  add_function_call(c): pass
-    def  add_iid(c): pass
-    def  add_is(c): pass
-    def  add_kind(c): pass
-    def  add_label(c): pass
-    def  add_links(c): pass
-    def  add_owns(c): pass
-    def  add_plays(c): pass
-    def  add_relates(c): pass
-    def  add_sub(c): pass
-    def  add_value(c): pass
+    def add_function_call(c): pass
+    def add_iid(c): pass
+    def add_is(c): pass
+    def add_kind(c): pass
+    def add_label(c): pass
+    def add_links(c): pass
+    def add_owns(c): pass
+    def add_plays(c): pass
+    def add_relates(c): pass
+    def add_sub(c): pass
+    def add_value(c): pass
 
 with driver.transaction(DB_NAME, TransactionType.READ) as tx:
     answers = list(tx.query(BRANCHED_QUERY, QUERY_OPTIONS).resolve())

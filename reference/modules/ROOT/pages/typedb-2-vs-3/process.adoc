@@ -49,7 +49,7 @@ Invalid migration item received: attributes cannot own attributes in this versio
 
 In this situation, an additional step is required before proceeding, and it will require modifications of the original 2.x's database.
 
-==== Move attributed owned by attributes
+==== Move attributes owned by attributes
 
 This is an example of migration of attributes owned by attributes for the <<_schema_reference, referenced schema>>.
 

@@ -1,4 +1,4 @@
-= TypeDB Studio
+= Get started with TypeDB Studio
 
 TypeDB Studio is an interactive visual environment for managing and querying TypeDB databases.
 

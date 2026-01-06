@@ -2,9 +2,6 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e8d3d72a-dcb6-4e31-bfc5-deb4e665d083/deploy-status)](https://app.netlify.com/sites/typedb-docs/deploys)
 [![Discord](https://img.shields.io/discord/665254494820368395?color=7389D8&label=chat&logo=discord&logoColor=ffffff)](https://typedb.com/discord)
-[![Discussion Forum](https://img.shields.io/badge/discourse-forum-blue.svg)](https://forum.typedb.com)
-[![Stack Overflow](https://img.shields.io/badge/stackoverflow-typedb-796de3.svg)](https://stackoverflow.com/questions/tagged/typedb)
-[![Stack Overflow](https://img.shields.io/badge/stackoverflow-typeql-3dce8c.svg)](https://stackoverflow.com/questions/tagged/typeql)
 
 This repository contains all content that powers the TypeDB Documentation Portal, accessible at [https://typedb.com/docs](https://typedb.com/docs).
 
@@ -19,20 +16,48 @@ This repository contains all content that powers the TypeDB Documentation Portal
 
 ---
 
+## Develop
+
+You can build typedb-docs locally as follows.
+
+You'll need `pnpm` installed. If you don't have it, we suggest the following process:
+
+First, install [nvm](https://github.com/nvm-sh/nvm) on MacOS or Linux, [nvm-windows](https://github.com/coreybutler/nvm-windows) on Windows. Then:
+
+```shell
+nvm install 22.16.0
+nvm use 22.16.0
+npm install --global corepack@0.17.0
+corepack enable
+corepack prepare pnpm@10.12.1 --activate
+```
+
+Then, you can build Docs as follows:
+
+```shell
+git submodule update --init
+pnpm i
+pnpm run build
+```
+
+This will build a single version of Docs containing the content of your locally checked out branch.
+
+---
+
 ## Branches
 
-At any given time, this repository has at least two branches, i.e. `master` and `development`.
+At any given time, this repository has at least two branches, i.e. `3.x-master` and `3.x-development`.
 
-The `master` branch contains the content for the published documentation, available at the
+The `3.x-master` branch contains the content for the published documentation, available at the
 [Documentation portal](https://typedb.com/docs).
 
-The `development` branch contains the content of the documentation to be published soon, 
+The `3.x-development` branch contains the content of the documentation to be published soon, 
 available at the [staging environment](https://development.typedb.com/docs).
 
-The main workflow is to merge changes to the `development` branch, test them in the staging environment, 
-and publish to production by cherry-picking the changes to the `master` branch.
+The main workflow is to merge changes to the `3.x-development` branch and test them in the staging environment. 
+The TypeDB team will publish to production by merging to the `3.x-master` branch.
 
-Hot fixes can be merged directly to the `master` branch, and then cherry-picked into the `development` branch.
+Hot fixes can be merged directly to the `3.x-master` branch, and then back into the `3.x-development` branch.
 
 ---
 
@@ -51,8 +76,6 @@ Use Asciidoc syntax with Antora to write content.
 - Separate words with hyphens (`-`).
 - Keep file and directory names compact: in most cases, one or two words that best describe the contained content. 
   Never use more than three words unless the file is a tutorial page or a Studio screenshot.
-- Choosing the same name for different files located in different directories is acceptable. 
-  For example: `files/social-network/schema.tql` and `files/phone-calls/schema.tql`.
 - For naming images, refer to the [Images Guidelines](#using-images).
 
 **Headlines**
@@ -68,12 +91,9 @@ Use Asciidoc syntax with Antora to write content.
   For example: `compute_path.png` and `compute_path_subgraph.png` as opposed to `compute_0.png` and `compute_1.png`.
 - When an image is used across multiple pages, the **same** image file should be referenced, rather than duplicating 
   the image.
-- The source file used to generate an image is to be located under `images/source/<section-name>`.
 - The source file must always contain the latest changes present in its corresponding image.
 - Screenshots of Studio should be:
   - named after the UI/UX components of the software itself. (eg: `typeql-editor_clear-query.png`).
-  - taken at the screen resolution of 1280 x 720 pixels.
-  - of size, 1147 x 671 pixels.
   - consistent in their paddings (position of Studio's layout within the screenshot).
 
 ### Writing Style
