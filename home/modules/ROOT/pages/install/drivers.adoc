@@ -1,4 +1,4 @@
-= TypeDB Drivers
+= Install TypeDB Drivers
 :page-aliases: {page-version}@drivers::index.adoc, {page-version}@drivers::python/index.adoc, {page-version}@drivers::python/tutorial.adoc, {page-version}@drivers::java/index.adoc, {page-version}@drivers::java/tutorial.adoc, {page-version}@drivers::rust/index.adoc, {page-version}@drivers::rust/tutorial.adoc, {page-version}@drivers::nodejs/index.adoc, {page-version}@drivers::nodejs/tutorial.adoc, {page-version}@drivers::csharp/index.adoc, {page-version}@drivers::csharp/tutorial.adoc, {page-version}@drivers::cpp/index.adoc, {page-version}@drivers::cpp/tutorial.adoc, {page-version}@drivers::c/index.adoc, {page-version}@drivers::c/tutorial.adoc,
 
 TypeDB drivers are client libraries that enable applications to communicate with TypeDB servers. They provide a programming language-specific interface for all server operations, from connection management to query execution.
@@ -33,6 +33,7 @@ TypeDB drivers are client libraries that enable applications to communicate with
 ****
 --
 
+[#_python]
 == Python
 
 === Install TypeDB Python Driver through Pip
