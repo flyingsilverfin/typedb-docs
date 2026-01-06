@@ -54,9 +54,10 @@ from typedb.driver import *
 driver = TypeDB.driver(address=TypeDB.DEFAULT_ADDRESS, ...)
 ----
 
-=== Python driver tutorial
+=== Links
 
-* https://github.com/typedb/typedb-driver/tree/master/python[typedb-driver/python on GitHub] - Read the TypeDB Python driver tutorial
+* https://github.com/typedb/typedb-driver/tree/master/python[Python driver tutorial]
+* https://pypi.org/project/typedb-driver/[PyPI]
 
 
 == TypeScript (HTTP)
@@ -83,10 +84,10 @@ const driver = new TypeDBHttpDriver({
 });
 ----
 
-=== TypeScript HTTP driver example
+=== Links
 
-* https://github.com/typedb/typedb-examples/tree/master/webapp[TypeSpace: Social Network Webapp Example] - Explore the TypeScript HTTP driver example on GitHub
-
+- https://github.com/typedb/typedb-examples/tree/master/webapp[TypeScript HTTP driver example]
+- https://www.npmjs.com/package/@typedb/driver-http[NPM registry]
 
 == Rust
 
@@ -108,9 +109,10 @@ use typedb_driver::TypeDBDriver;
 let driver = TypeDBDriver::new_core(TypeDBDriver::DEFAULT_ADDRESS).await.unwrap();
 ----
 
-=== Rust driver tutorial
+=== Links
 
-* https://github.com/typedb/typedb-driver/tree/master/rust[typedb-driver/rust on GitHub] - Read the TypeDB Rust driver tutorial
+* https://github.com/typedb/typedb-driver/tree/master/rust[Rust driver tutorial]
+* https://crates.io/crates/typedb-driver[Crates.io]
 
 
 == Java
@@ -151,10 +153,10 @@ try (Driver driver = TypeDB.driver(TypeDB.DEFAULT_ADDRESS, new Credentials("admi
 }
 ----
 
-=== Java driver tutorial
+=== Links
 
-* https://github.com/typedb/typedb-driver/tree/master/java[typedb-driver/java on GitHub] - Read the TypeDB Java driver tutorial
-
+- https://github.com/typedb/typedb-driver/tree/master/java[TypeDB Java driver tutorial]
+- https://cloudsmith.io/~typedb/repos/public-release/packages/detail/maven/typedb-driver/[Maven repo]
 
 == Other languages
 
