@@ -63,18 +63,18 @@ driver = TypeDB.driver(address=TypeDB.DEFAULT_ADDRESS, ...)
 
 === Install TypeDB HTTP TypeScript Driver from NPM
 
-. Install `typedb-driver-http` using `npm`:
+. Install `@typedb/driver-http` using `npm`:
 +
 [source,bash]
 ----
-npm install typedb-driver-http
+npm install @typedb/driver-http
 ----
 
-. In your Node.js or Web application, import from `typedb-driver-http`:
+. In your Node.js or Web application, import from `@typedb/driver-http`:
 +
 [source,typescript]
 ----
-import { TypeDBHttpDriver, isApiErrorResponse } from "typedb-driver-http";
+import { TypeDBHttpDriver, isApiErrorResponse } from "@typedb/driver-http";
 
 const driver = new TypeDBHttpDriver({
     username: "...",
