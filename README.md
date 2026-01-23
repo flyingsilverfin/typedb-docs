@@ -162,3 +162,69 @@ keyword items. They may also be any phrase that the user may search which relate
 <!-- **TypeDB Terminology**
 
 **Common Terms** -->
+
+---
+
+## Hello World
+
+This section demonstrates basic TypeQL usage with a simple example.
+
+### Quick Start with TypeQL
+
+Once you have TypeDB running (see the [TypeDB repository](https://github.com/typedb/typedb) for installation), you can try these basic operations using TypeDB Console.
+
+**1. Create a database and open a schema transaction:**
+
+```
+> database create hello_world
+> transaction hello_world schema write
+```
+
+**2. Define a simple schema:**
+
+```typeql
+define
+attribute name, value string;
+attribute message, value string;
+entity greeting,
+    owns name,
+    owns message;
+```
+
+Then commit the transaction:
+```
+> commit
+```
+
+**3. Insert data in a write transaction:**
+
+```
+> transaction hello_world data write
+```
+
+```typeql
+insert
+$g isa greeting,
+    has name "Hello World",
+    has message "Welcome to TypeDB!";
+```
+
+Commit the transaction:
+```
+> commit
+```
+
+**4. Query the data in a read transaction:**
+
+```
+> transaction hello_world data read
+```
+
+```typeql
+match
+$g isa greeting,
+    has name $n,
+    has message $m;
+```
+
+You should see the greeting entity with its attributes returned. Congratulations, you have completed your first TypeDB Hello World!
