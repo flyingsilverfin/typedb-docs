@@ -1,0 +1,424 @@
+= Lesson 3.1: Fetching simple data
+
+== The Fetch query
+
+To begin with, we'll use the following *Fetch query* to retrieve all data relating to paperback book entities in the database.
+
+[,typeql]
+----
+match $book isa paperback;
+fetch { $book.* };
+----
+
+This is equivalent to the following SQL query.
+
+[,sql]
+----
+SELECT *
+FROM paperback;
+----
+
+This TypeQL query comprises two *clauses*: a `match` clause and a `fetch` clause.
+
+The `match` clause is equivalent to a *selection* in SQL. It identifies what entity types (tables) we wish to retrieve data from. It can also specify further constraints that the retrieved data must meet, as we'll see shortly. The `fetch` clause is equivalent to a *projection* in SQL. It specifies what attributes (columns) we would like to retrieve for the entities (rows) identified. In this case, we've chosen to retrieve _all_ attributes using the `attribute` keyword.
+
+Using *read* transaction, *run* this query. You should see the following result.
+
+[,json]
+----
+{ "title": "Classical Mythology", "page-count": 820 }
+{ "title": "The Mummies of Urumchi", "page-count": 240 }
+{ "title": "Business Secrets of The Pharoahs", "page-count": 260 }
+{ "title": "To Kill a Mockingbird", "page-count": 281 }
+{ "title": "Pride and Prejudice", "page-count": 295 }
+{ "title": "Interpretation of Electron Diffraction Patterns", "page-count": 199 }
+{ "title": "Hokusai's Fuji", "page-count": 416 }
+{ "title": "Great Discoveries in Medicine", "page-count": 352 }
+{ "title": "The Motorcycle Diaries: A Journey Around South America", "page-count": 160 }
+{ "title": "The Hitchhiker's Guide to the Galaxy", "page-count": 215 }
+{ "title": "One Hundred Years of Solitude", "page-count": 458 }
+{ "title": "Pet Sematary", "page-count": 374 }
+----
+
+All Fetch queries return results in JSON format, where the output format matches the structure you write in the fetch clause syntax.
+
+In the `match` clause of the query, we declared a single *variable*: `$book`. In TypeQL, variables are declared using a `$` prefix. We also specified the *type* of `$book` to be `paperback` using the `isa` keyword. We can see that each JSON object returned represents an instance of `paperback` and contains a list of all that book's attributes.
+
+.Exercise
+[caption=""]
+====
+Write a query to retrieve all the attributes of `user` entities. It should be equivalent to the following SQL query.
+
+[,sql]
+----
+SELECT *
+FROM users;
+----
+
+N.b. in the SQL query we need to use `users` rather than `user` as the latter is a reserved keyword in SQL. In general, _singular_ nouns are preferred for entity type names.
+
+.Sample solution
+[%collapsible]
+=====
+[,typeql]
+----
+match
+$user isa user;
+fetch { $user.* };
+----
+=====
+====
+
+== Projections
+
+Looking at the list of each book's attributes in the previous result, we can see that we've retrieved attributes of six types: `isbn-13`, `isbn-10`, `title`, `genre`, `page-count`, `price`, and `stock`. By modifying the `fetch` clause, we can choose to retrieve only specific attributes.
+
+[,typeql]
+----
+match
+$book isa paperback;
+fetch {
+  "title": $book.title,
+  "page-count": $book.page-count
+};
+----
+
+If we run this query, we see the following result.
+
+[,json]
+----
+{
+  "page-count": 820,
+  "title": "Classical Mythology"
+}
+{
+  "title": "The Mummies of Urumchi",
+  "page-count": 240
+}
+{
+  "title": "Business Secrets of The Pharoahs",
+  "page-count": 260
+}
+{
+  "page-count": 281,
+  "title": "To Kill a Mockingbird"
+}
+{
+  "title": "Pride and Prejudice",
+  "page-count": 295
+}
+{
+  "title": "Interpretation of Electron Diffraction Patterns",
+  "page-count": 199
+}
+{
+  "title": "Hokusai's Fuji",
+  "page-count": 416
+}
+{
+  "page-count": 352,
+  "title": "Great Discoveries in Medicine"
+}
+{
+  "page-count": 160,
+  "title": "The Motorcycle Diaries: A Journey Around South America"
+}
+{
+  "title": "The Hitchhiker's Guide to the Galaxy",
+  "page-count": 215
+}
+{
+  "title": "One Hundred Years of Solitude",
+  "page-count": 458
+}
+{
+  "title": "Pet Sematary",
+  "page-count": 374
+}
+----
+
+This time, only the titles and page counts of each book have been retrieved. Now this TypeQL query is equivalent to the following SQL query.
+
+[,sql]
+----
+SELECT title, page_count
+FROM paperback;
+----
+
+.Exercise
+[caption=""]
+====
+Write a query to instead retrieve the `isbn-13`, `price`, and `stock` attributes of paperbacks.
+
+.Sample solution
+[%collapsible]
+=====
+[,typeql]
+----
+match
+$book isa paperback;
+fetch {
+  "isbn-13": $book.isbn-13
+  "price": $book.price,
+  "stock": $book.stock;
+};
+----
+
+=====
+====
+
+== Selections
+
+In the next query, we'll add a *constraint* to the `match` clause, specifying that we want the details for a specific book with ISBN-13 `"9780446310789"`.
+
+[,typeql]
+----
+match
+$book isa paperback, has isbn-13 "9780446310789";
+fetch {
+  "title": $book.title,
+  "page-count": $book.page-count
+};
+----
+
+
+[,json]
+----
+{
+  "page-count": 281,
+  "title": "To Kill a Mockingbird"
+}
+----
+
+We can see from the result that we now only retrieve the data for the specific book we're interested in. To do so we've used the `has` keyword, which is used to specify the value of an entity's attribute, in this case the `$book` entity. In SQL, this query would be expressed in the following way.
+
+[,sql]
+----
+SELECT title, page_count
+FROM paperback
+WHERE isbn_13 = '9780446310789';
+----
+
+Because TypeQL is *composable*, we could alternatively construct this query in the following equivalent way.
+
+[,typeql]
+----
+match
+$book isa paperback;
+$book has isbn-13 "9780446310789";
+fetch {
+  "title": $book.title,
+  "page-count": $book.page-count
+};
+----
+
+
+Try running these two queries. You should get the same results.
+
+In the first version, we used a single composite *statement* in the `match` clause, whereas in the second version, we instead used two simple statements. If simple statements concern the same variable (in this case `$book`), we can always concatenate them using commas to form a composite statement, and vice versa.
+
+.Exercise
+[caption=""]
+====
+Write a query to retrieve the `page-count` and `price` attributes of the paperback with title `"Great Discoveries in Medicine"`. Write the query once using a composite statement, and again using simple statements.
+
+.Sample solution
+[%collapsible]
+=====
+With a composite statement:
+
+[,typeql]
+----
+match
+$book isa paperback, has title "Great Discoveries in Medicine";
+fetch {
+  "title": $book.title,
+  "page-count": $book.page-count
+};
+----
+
+
+With simple statements:
+
+[,typeql]
+----
+match
+$book isa paperback;
+$book has title "Great Discoveries in Medicine";
+fetch {
+  "title": $book.title,
+  "page-count": $book.page-count
+};
+----
+
+=====
+====
+
+== Entities and relations
+
+There are two types of data objects in TypeDB: *entities* and *relations*. Entity types like `book` are used to represent application classes, while relation types are used to represent references between them. Relations must be instantiated with links to one or more *role players*, which play defined *roles*.
+
+In order to represent a relation in TypeQL, we use tuple syntax of the following form.
+
+[,typeql]
+----
+$line isa order-line (order: $order, item: $book);
+----
+
+This statement signifies that:
+
+* `$line` is a relation of type `order-line`.
+* `$order` plays the role of `order` in `$line`.
+* `$book` plays the role of `item` in `$line`.
+
+Here we are using `order-line` relations to represent the references that `order` entities make to `book` entities. In the following Fetch query, we retrieve the IDs of orders that include _To Kill a Mockingbird_ and the quantity ordered.
+
+[,typeql]
+----
+match
+$book isa paperback, has isbn-13 "9780446310789";
+$line isa order-line (order: $order, item: $book);
+fetch {
+  "id": $order.id;
+  "quantity": $line.quantity;
+};
+----
+
+[,json]
+----
+{
+  "id": "o0016",
+  "quantity": 1
+}
+{
+  "quantity": 1,
+  "id": "o0032"
+}
+{
+  "id": "o0036",
+  "quantity": 2
+}
+----
+
+This is equivalent to the following SQL query.
+
+[,sql]
+----
+SELECT orders.id, order_line.quantity
+FROM orders
+INNER JOIN order_line ON order_line.order_id = orders.id
+INNER JOIN paperback ON paperback.isbn_13 = order_line.item_id
+WHERE paperback.isbn_13 = '9780446310789';
+----
+
+In a relational database, the relation type `order-line` would be represented by an https://en.wikipedia.org/wiki/Associative_entity[associative table] with foreign keys to the tables representing the entity types `order` and [#_footnote_1]#`paperback`#^<<_footnotes,1>>^. As a general rule, associative tables in relational databases can be mapped onto relation types in TypeDB.
+
+A key difference here is that the TypeQL query uses roles to connect the `order-line` relation and its role players `$order` and `$book`, whereas the SQL query connects different rows based on literal value equalities. Simply sharing a variable between multiple statements is sufficient to describe the connections between data instances in TypeQL, without having to identify attribute values to join on (like the order ID and book ISBN).
+
+.Exercise
+[caption=""]
+====
+Modify the above query to also retrieve the `status` attribute of the order and the `price` attribute of the book.
+
+.Sample solution
+[%collapsible]
+=====
+[,typeql]
+----
+match
+$book isa paperback, has isbn-13 "9780446310789";
+$line isa order-line (order: $order, item: $book);
+fetch {
+  "id": $order.id,
+  "status": $order.status",
+  "quantity": $line.quantity,
+  "price": $book.price
+};
+----
+
+=====
+====
+
+== Ternary relations
+
+In the previous query, `$line` was a binary relation between the two role players `$order` and `$book`. However, the tuple syntax of relations is extremely flexible and allows us to use a tuple with a different number of elements to represent a relation with a different number of role players. In the next query, we extend the previous query by also retrieving the name of the courier that is delivering the order and the street address of the order's destination.
+
+This is an example of a *ternary relation*, and is written using a *relation shorthand syntax*, in which the relation variable and `isa` can be dropped when the variable is not needed. Compare this to the order line, which has the variable name `$line`, as we need to refer it in the `fetch` clause to retrieve the associated quantity. Under the hood, the system generates an _anonymous variable_ which may be made visible during logging or debugging queries.
+
+[,typeql]
+----
+match
+$book isa paperback, has isbn-13 "9780446310789";
+$line isa order-line (order: $order, item: $book);
+delivery (deliverer: $courier, delivered: $order, destination: $address);
+fetch {
+  "id": $order.id;
+  "quantity": $line.quantity,
+  "name": $courier.name,
+  "street": $address.street
+};
+----
+
+
+[,json]
+----
+{
+  "name": "FedEx",
+  "street": "464 Pilgrim Lane",
+  "quantity": 1,
+  "id": "o0016"
+}
+{
+  "name": "FedEx",
+  "id": "o0032",
+  "quantity": 1,
+  "street": "984 Williams Street"
+}
+{
+  "quantity": 2,
+  "name": "DHL",
+  "id": "o0036",
+  "street": "20 Ridge Lane"
+}
+----
+
+This ternary relation exists between three role players: `$courier`, `$order`, and `$address`. Higher order relations are used to represent rich references between multiple classes.
+
+.Exercise
+[caption=""]
+====
+In a relational database, a ternary relation would be represented by an associative table between three foreign key columns. Write a SQL query that is equivalent to the above TypeQL query.
+
+.Sample solution
+[%collapsible]
+=====
+[,sql]
+----
+SELECT orders.id, order_line.quantity, courier.name, address.street
+FROM orders
+INNER JOIN order_line ON order_line.order_id = orders.id
+INNER JOIN paperback ON paperback.isbn_13 = order_line.item_id
+INNER JOIN delivery ON delivery.delivered_id = orders.id
+INNER JOIN courier ON courier.id = delivery.courier_id
+INNER JOIN address ON address.id = delivery.address_id
+WHERE paperback.isbn_13 = '9780446310789';
+----
+=====
+====
+
+[NOTE]
+====
+In the same way that we can use a tuple with two or three elements respectively to represent a binary or ternary relation, we can likewise use a tuple with n elements for an *n-ary relation*!
+
+[,typeql]
+----
+$rel isa n-ary-relation (role-1: $a, role-2: $b, role-3: $c, role-4: $d, ...);
+----
+
+This way, we can represent relations with any number of role players.
+====
+
+[#_footnotes]
+== Footnotes
+
+1. <<_footnote_1,^>> The seasoned SQL engineer will notice that, if paperbacks are not the only item that can be ordered, then we could not use a foreign key to reference them. We'd need a proper strategy for modeling the polymorphism in the model, likely one of Martin Fowler's https://search.worldcat.org/title/1381298808[inheritance design patterns]. If we go with the https://typedb.com/fundamentals/why-polymorphic-database#pattern-3:-class-table-inheritance-17[class-table inheritance] pattern, then the foreign key would instead be to a `product` table. Conveniently, using this pattern means the `isbn_13` column of the `paperback` table would reference the `id` column of the `product` table, so the SQL query shown would remain the same. As a polymorphic database, TypeDB is not affected by these architectural challenges! We'll see how polymorphism is modeled in TypeDB in xref:{page-version}@academy::5-defining-schemas/index.adoc[Lesson 5].

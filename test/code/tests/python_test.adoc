@@ -1,0 +1,20 @@
+= Crash course
+:title: Crash Course
+:test-python: yes
+
+[,python]
+----
+#!test
+print("hello")
+----
+
+The next query is the same as the first but uses snippets to hide code from the user.
+
+[,python]
+----
+#!test
+#{{
+if 1 == 1:
+#}}
+    print("1 == 1")
+----

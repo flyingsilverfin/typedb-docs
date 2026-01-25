@@ -1,2 +1,19 @@
-# Mac files #
-**/.DS_Store
+## misc
+.DS_Store
+dist/
+
+## bazel directories
+bazel-*
+.bazelbsp
+.ijwb
+.idea
+*.iml
+.vscode/settings.json
+.vscode/extensions.json
+
+target/
+Cargo.lock
+/.pyBAZEL
+*.pyc
+
+temp_rust_project

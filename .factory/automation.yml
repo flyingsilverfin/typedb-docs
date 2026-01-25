@@ -1,0 +1,88 @@
+config:
+  version-candidate: VERSION
+  dependencies:
+    dependencies: [build]
+
+build:
+  correctness:
+
+    test-docs-content:
+      image: typedb-ubuntu-22.04
+      type: foreground
+      command: |
+        npx antora generate test/content/antora-playbook-mock-for-ci.yml
+
+    test-code-testing-framework:
+      image: typedb-ubuntu-22.04
+      type: foreground
+      command: |
+        curl https://sh.rustup.rs -sSf | sh -s -- -y
+        . "$HOME/.cargo/env" 
+        
+        # Note: Rust runners install their own dependencies
+        sudo apt-get update
+        sudo apt-get install -y python3-pip
+        python3 -m pip install -r test/code/runners/python_requirements.txt
+        
+        test/start-community-server.sh
+        
+        FAILED=false
+        python3 -m test.code.main python test/code/tests/python_test.adoc || FAILED=true
+        python3 -m test.code.main rust test/code/tests/rust_test.adoc || FAILED=true
+        python3 -m test.code.main typeql test/code/tests/tql_test_linear.adoc || FAILED=true
+        # python3 -m test.code.main typeql test/code/tests/tql_test_custom.adoc || FAILED=true
+        test/stop-community-server.sh 
+        $FAILED && exit 1
+        
+
+    test-code-snippets:
+      image: typedb-ubuntu-22.04
+      type: foreground
+      command: |
+        curl https://sh.rustup.rs -sSf | sh -s -- -y
+        . "$HOME/.cargo/env"         
+        
+        # Note: Rust runners install their own dependencies
+        sudo apt-get update
+        sudo apt-get install -y python3-pip
+        python3 -m pip install -r test/code/runners/python_requirements.txt
+        
+        test/start-community-server.sh
+        
+        # TODO: test node and java
+        
+        TEST_DIRS=("home" "core-concepts" "typeql-reference/modules/ROOT/pages/" "maintenance-operation/modules/ROOT/pages/troubleshooting/")
+        TEST_LANGS=("typeql" "python" "rust")
+        
+        FAILED=false
+        for TEST_LANG in "${TEST_LANGS[@]}"; do
+          for TEST_DIR in "${TEST_DIRS[@]}"; do
+            python3 -m test.code.main "$TEST_LANG" "$TEST_DIR" || FAILED=true
+          done
+        done
+        test/stop-community-server.sh
+        $FAILED && exit 1
+
+    # TODO: deployments shouldn't be 'correctness' jobs?
+    deploy-3.x-development:
+      filter:
+        owner: typedb
+        branch: 3.x-development
+      image: typedb-ubuntu-22.04
+      type: foreground
+      command: |
+        export RELEASE_DOCS_USERNAME=$REPO_GITHUB_USERNAME
+        export RELEASE_DOCS_EMAIL=$REPO_GITHUB_EMAIL
+        export RELEASE_DOCS_TOKEN=$REPO_GITHUB_TOKEN
+        bazel run @typedb_dependencies//tool/release:docs -- $FACTORY_OWNER typedb-docs-web development $FACTORY_REPO content/3.x $FACTORY_COMMIT
+    deploy-3.x-production:
+      filter:
+        owner: typedb
+        branch: 3.x-master
+      image: typedb-ubuntu-22.04
+      type: foreground
+      command: |
+        export RELEASE_DOCS_USERNAME=$REPO_GITHUB_USERNAME
+        export RELEASE_DOCS_EMAIL=$REPO_GITHUB_EMAIL
+        export RELEASE_DOCS_TOKEN=$REPO_GITHUB_TOKEN
+        bazel run @typedb_dependencies//tool/release:docs -- $FACTORY_OWNER typedb-docs-web master $FACTORY_REPO content/3.x $FACTORY_COMMIT

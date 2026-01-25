@@ -1,0 +1,29 @@
+= Lesson 2.1: Sample deployment
+
+== Deploy sample database
+
+There are two simple ways to get the `bookstore` sample dataset that is used throughout this academy.
+
+=== Preinitialized TypeDB Cloud server
+TypeDB Cloud deployments let you deploy the latest version of the bookstore sample dataset preloaded during server creation.
+
+=== Using TypeDB Console
+You can use xref:{page-version}@home::install/console-cli.adoc[TypeDB Console] (minimum version 3.5.0) to load the bookstore dataset from the `typedb-example` repository, published at https://github.com/typedb/typedb-examples/releases.
+
+TypeDB Console ships with a 1-liner to create a database, and load a schema and data file from URL. To create and initialize a new database with the latest bookstore dataset, you can use:
+
+[,bash]
+----
+typedb console --address=<ADDRESS> --username=<USER> --command="database create-init bookstore http://github.com/typedb/typedb-examples/releases/latest/download/bookstore-schema.tql http://github.com/typedb/typedb-examples/releases/latest/download/bookstore-data.tql"                                
+----
+
+You can use this to load the dataset into a TypeDB CE, TypeDB Cloud, or your own on-premise TypeDB Enterprise server. 
+
+== Get TypeDB Studio
+
+To connect to a TypeDB server and run queries, we need to use a *TypeDB client*. This course uses *TypeDB Studio*, an IDE for managing and developing with TypeDB. You can either use it on the web at https://studio.typedb.com[], or install it following the instructions on the xref:{page-version}@home::install/studio.adoc[Studio installation page].
+
+[NOTE]
+====
+This course uses TypeDB Studio, but you may alternatively complete it using xref:{page-version}@home::install/console-cli.adoc[TypeDB Console] or any xref:{page-version}@home::install/drivers.adoc[native language driver] instead.
+====

@@ -1,0 +1,16 @@
+= TypeDB Console CLI
+
+TypeDB Console is a standalone TypeDB client with a command line interface (CLI).
+It serves as a lightweight and powerful CLI tool to manage and query TypeDB databases.
+
+The TypeDB Console CLI is packaged and distributed together with the TypeDB CE database server.
+
+== Install
+
+include::{page-version}@home::partial$console_install.adoc[tag=install]
+
+== Getting Started
+
+After installation, you can connect to TypeDB servers. For detailed connection instructions and usage guides, see:
+
+* xref:{page-version}@tools::console.adoc[] - Complete Console documentation and connection guide

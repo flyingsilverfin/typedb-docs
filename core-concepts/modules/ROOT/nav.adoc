@@ -1,0 +1,3 @@
+// Core Concepts
+
+include::{page-version}@home::partial$nav-main.adoc[]

@@ -1,0 +1,45 @@
+= Distinct operator
+:test-typeql: linear
+
+The distinct operator removes duplicate elements from the data stream. Elements are considered duplicates if all their variables have the same values.
+
+== Syntax
+
+[,typeql]
+----
+distinct;
+----
+
+== Example
+
+.Schema for the following examples
+[%collapsible]
+====
+[,typeql]
+----
+#!test[schema, commit]
+include::{page-version}@typeql-reference::example$tql/schema_statements_functions.tql[tags=define-keyword;entities;attributes]
+----
+====
+
+Find all unique names of users:
+
+[,typeql]
+----
+#!test[read]
+match
+  $user isa user, has name $name;
+select $name;
+distinct;
+----
+
+Remove duplicate answers that may result from using `or` patterns:
+
+[,typeql]
+----
+#!test[read]
+match
+  { $p isa user; } or { $p has name "John"; };
+distinct; # Make sure that the person with name John is returned at most once.
+----
+

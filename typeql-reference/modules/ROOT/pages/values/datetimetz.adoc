@@ -1,0 +1,62 @@
+= DatetimeTZ
+:test-typeql: linear
+
+An https://www.iso.org/iso-8601-date-and-time-format.html[ISO 8601,window=_blank] compliant date and time type with time zone information.
+
+== Syntax
+
+A datetime-tz literal consists of a xref:{page-version}@typeql-reference::values/datetime.adoc[datetime] followed by
+a time zone specification.
+
+A time zone may be specified in two formats:
+
+* the ISO 8601 time offset from UTC: `±HH`, `±HH:MM`, `±HHMM`, or `Z`;
+* the IANA time zone database TZ identifier (usually `<Area>/<Location>`, e.g. `Europe/London`).
+
+The IANA TZ identifier is separated from the datetime by a space character.
+
+[,typeql]
+.Example datetime-tz literals
+----
+2024-03-30T12:00:00Z
+1987-12-22T17:29 Asia/Kolkata
+1920-04-26T16:30-09:30
+
+#!test[read]
+#{{
+match
+  let $w = 2024-03-30T12:00:00Z;
+  let $y = 1887-12-22T17:29 Asia/Kolkata;
+  let $z = 1920-04-26T16:30-09:30;
+#}}
+----
+
+[,typeql]
+.Example datetime-tz literal (non-4-digit year)
+----
++20000-01-01T10:30:00.000+0100
+
+#!test[read]
+#{{
+match
+    let $x = +20000-01-01T10:30:00.000+0100;
+#}}
+----
+
+== Defining a datetime-tz valued attribute
+
+[,typeql]
+----
+#!test[schema]
+define
+  attribute scheduled-meeting-time value datetime-tz;
+----
+
+== Inserting a datetime-tz valued attribute
+
+[,typeql]
+----
+#!test[write]
+insert
+  $_ isa scheduled-meeting-time 2025-01-10T12:30:00 Europe/London;
+----

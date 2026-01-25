@@ -1,0 +1,28 @@
+= Use Cases
+
+Explore real-world use cases for TypeDB.
+
+[cols-2]
+--
+.xref:{page-version}@examples::use-cases/robotics.adoc[Robotics]
+[.clickable]
+****
+TypeDB in robotics applications.
+****
+
+.xref:{page-version}@examples::use-cases/iam.adoc[IAM]
+[.clickable]
+****
+Identity and Access Management (IAM) with TypeDB.
+****
+
+.xref:{page-version}@examples::use-cases/cybersecurity.adoc[Cybersecurity]
+[.clickable]
+****
+Cybersecurity solutions using TypeDB.
+****
+--
+
+Got other use cases you'd like to see?
+Get in touch at link:mailto:community@typedb.com?subject=Request%20new%20use%20case[community@typedb.com]
+or link:https://typedb.com/discord[join our discord server].
