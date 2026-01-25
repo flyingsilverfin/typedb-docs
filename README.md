@@ -162,3 +162,26 @@ keyword items. They may also be any phrase that the user may search which relate
 <!-- **TypeDB Terminology**
 
 **Common Terms** -->
+
+---
+
+## Hello World
+
+A quick example to get you started with TypeDB:
+
+```typeql
+# Define a simple schema
+define
+  entity greeting,
+    owns message;
+  attribute message, value string;
+
+# Insert a hello world greeting
+insert $hello isa greeting, has message "Hello, World!";
+
+# Query it back
+match $x isa greeting, has message $m;
+get $m;
+```
+
+For comprehensive tutorials and documentation, visit [https://typedb.com/docs](https://typedb.com/docs).
