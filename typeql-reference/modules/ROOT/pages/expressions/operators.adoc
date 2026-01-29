@@ -1,8 +1,7 @@
 = Operators
 :page-aliases: {page-version}@typeql-reference::values/arithmetic.adoc, {page-version}@typeql-reference::values/functions.adoc
 
-Arithmetic operator expressions allow computation of new values. Attributes are treated as pure values when used in an arithmetic operator
-expression.
+Operator expressions allow computation of new values from arithmetic, date/time, and string operations. Attributes are treated as pure values when used in an operator expression.
 
 == Quick reference
 
@@ -27,9 +26,73 @@ Parentheses (`()`) may be used to override the precedence. The sub-expressions i
 (1 + 2) * 3 == 9
 ----
 
+== String operators
+
+The `+` operator concatenates two strings.
+
+[,typeql]
+----
+let $a = "Hello, " + "world!";
+----
+
+== Date and time operators
+
+TypeQL supports arithmetic on temporal value types. The result type depends on the operand types:
+
+[%header,cols="^1,^2,^2,^2"]
+|===
+|Operator |Left |Right |Result
+
+|`-` |`date` |`date` |`duration`
+|`-` |`datetime` |`date` |`duration`
+|`-` |`datetime` |`datetime` |`duration`
+|`+` |`datetime` |`duration` |`datetime`
+|`-` |`datetime` |`duration` |`datetime`
+|`-` |`datetime-tz` |`datetime-tz` |`duration`
+|`+` |`datetime-tz` |`duration` |`datetime-tz`
+|`-` |`datetime-tz` |`duration` |`datetime-tz`
+|`+` |`duration` |`duration` |`duration`
+|`-` |`duration` |`duration` |`duration`
+|===
+
+=== Subtracting temporal values
+
+Subtracting two temporal values produces a `duration`. The left operand must be greater than or equal to the right (the result cannot be negative).
+
+[,typeql]
+----
+let $a = 2027-03-30 - 2026-01-27;
+# $a == P1Y2M3D
+
+let $b = 2027-03-30T16:05:06.789 - 2026-01-27T12:00:00;
+# $b == P1Y2M3DT4H5M6.789S
+----
+
+=== Adding or subtracting a duration
+
+Adding or subtracting a `duration` to/from a `datetime` or `datetime-tz` value produces a value of the same temporal type.
+
+[,typeql]
+----
+let $a = 2026-01-27T12:00:00 + P1Y2M3DT4H5M6.789S;
+# $a == 2027-03-30T16:05:06.789
+----
+
+See xref:{page-version}@typeql-reference::values/duration.adoc[] for details on how months, days, and nanoseconds are applied, including DST handling, month overflow, and non-commutativity.
+
+=== Duration arithmetic
+
+Adding or subtracting two `duration` values produces a new `duration`. Each component (months, days, nanoseconds) is added or subtracted independently. Subtraction cannot produce negative results.
+
+[,typeql]
+----
+let $a = P9Y8M7DT6H5M3.210S + P1Y2M3DT4H5M6.789S;
+# $a == P10Y10M10DT10H10M9.999S
+----
+
 == Built-in functions
 
-TypeQL provides several built-in functions for common mathematical and list operations:
+TypeQL provides several built-in functions for common operations:
 
 === Mathematical functions
 
@@ -98,10 +161,40 @@ max(3.5, 2.1) == 3.5
 max(-5, -3) == -3
 ----
 
-=== List functions
+=== String functions
 
-`length(x)`::
-[NOTE]
-====
-Coming with lists: This function will return the length of the provided list argument.
-====
+`len(x)`::
+Returns the number of Unicode characters in a string.
+
+[,typeql]
+----
+len("Hello, world!") == 13
+len("") == 0
+----
+
+=== Concept functions
+
+`iid(x)`::
+Returns the internal ID of a concept as a string.
+
+[,typeql]
+----
+match $p isa person;
+let $id = iid($p);
+----
+
+See also xref:{page-version}@typeql-reference::statements/iid.adoc[].
+
+`label(x)`::
+Returns the label of a type or role as a string.
+
+[,typeql]
+----
+match
+  $_ isa $t;
+  let $label = label($t);
+----
+
+NOTE: For roles, the label includes the relation namespace (e.g. `"rel:rolename"`).
+
+See also xref:{page-version}@typeql-reference::statements/label.adoc[].

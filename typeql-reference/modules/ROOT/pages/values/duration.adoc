@@ -64,6 +64,8 @@ without having a date as a frame of reference.
 
 == In expressions
 
+Duration values are produced by subtracting temporal values (dates, datetimes, or datetime-tz values). See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for the full operator table.
+
 When adding to or subtracting from a datetime or a datetime-tz value, first the months part is added, then the days, and finally the
 nanoseconds. These operations respect daylight saving changes, and other timezone changes where relevant.
 
@@ -128,7 +130,17 @@ is increased by the length of the gap.
 
 The nanosecond part of the duration is added directly to the underlying UTC timestamp, and as such requires no special handling.
 
-=== Defining a duration valued attribute
+=== Duration arithmetic
+
+Two `duration` values can be added or subtracted. Each component (months, days, nanoseconds) is added or subtracted independently. Subtraction cannot produce negative results.
+
+[,typeql]
+----
+let $a = P9Y8M7DT6H5M3.210S + P1Y2M3DT4H5M6.789S;
+# $a == P10Y10M10DT10H10M9.999S
+----
+
+== Defining a duration valued attribute
 
 [,typeql]
 ----

@@ -51,30 +51,46 @@ module-name/
 
 ```bash
 # Install dependencies
+git submodule update --init
 pnpm install
 
 # Build documentation locally
 pnpm run build
-
-# Initialize submodules (for external content)
-git submodule update --init
 ```
+
+**Note:** The build requires `pnpm`. See `README.md` for full setup instructions including `nvm` and `corepack` installation.
 
 ## Writing Guidelines
 
+Read `README.md` for the full contribution and writing guidelines. Key points:
+
 ### AsciiDoc Conventions
 
-- Use sentence case for headings
-- Maximum one h1 (`=`) per page at the top
-- Heading hierarchy: `==` → `===` → `====`
-- Use American English spelling
+- Use sentence case for headings.
+- Maximum one h1 (`=`) per page at the top.
+- Heading hierarchy: `==` → `===` → `====` (never skip levels).
+- Use American English spelling.
+
+### Writing Style
+
+- Use present tense ("it returns", not "it will return").
+- Preferred pronoun is "we"; use "you" sparingly; never "I".
+- Use serial (Oxford) comma.
+- Keep paragraphs short (up to 4 lines) and sentences concise.
+- First sentence of a paragraph should describe its content at a high level.
+- Use primitive verbs in headlines ("Manage Databases", not "Managing Databases").
+
+### Naming Conventions
+
+- File and directory names: separate words with hyphens (`-`), keep compact (1-2 words).
+- Image names should be descriptive of their content.
 
 ### Code Examples
 
 Code examples can be:
-1. Inline in AsciiDoc files
-2. Included from `examples/` directories using `include::` directive
-3. Tagged for partial inclusion: `include::file.py[tag=example_name]`
+1. Inline in AsciiDoc files.
+2. Included from `examples/` directories using `include::` directive.
+3. Tagged for partial inclusion: `include::file.py[tag=example_name]`.
 
 ### Cross-References
 
@@ -102,15 +118,15 @@ python3 -m test.code.main <language> <directory>
 
 ### Adding a New Page
 
-1. Create `.adoc` file in appropriate `pages/` directory
-2. **Update `partials/nav.adoc`** to include the new page in navigation
-3. Include required front matter (title, summary, keywords)
+1. Create `.adoc` file in appropriate `pages/` directory.
+2. **Update `partials/nav.adoc`** to include the new page in navigation.
+3. Include required front matter (title, summary, keywords).
 
 ### Moving or Renaming Pages
 
-1. Move/rename the `.adoc` file
-2. **Update `partials/nav.adoc`** to reflect the new path
-3. Update any cross-references (`xref:`) in other pages that link to it
+1. Move/rename the `.adoc` file.
+2. **Update `partials/nav.adoc`** to reflect the new path.
+3. Update any cross-references (`xref:`) in other pages that link to it.
 
 > **Important**: Navigation files (`partials/nav.adoc`) must always be updated when pages are created, moved, or deleted. Pages not listed in nav files won't appear in the documentation sidebar.
 

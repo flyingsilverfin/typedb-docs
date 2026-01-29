@@ -43,6 +43,18 @@ The minimum supported date is January 1, 262144 BCE,
 and the maximum supported date is December 31, 262142 CE.
 ====
 
+== In expressions
+
+Subtracting two `date` values produces a `duration`:
+
+[,typeql]
+----
+let $gap = 2027-03-30 - 2026-01-27;
+# $gap == P1Y2M3D
+----
+
+See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for the full reference.
+
 == Defining a date valued attribute
 
 [,typeql]

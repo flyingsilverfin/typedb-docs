@@ -43,6 +43,21 @@ match
 #}}
 ----
 
+== In expressions
+
+Datetime-tz values support the following operators:
+
+[%header,cols="^1,^2,^2,^2"]
+|===
+|Operator |Left |Right |Result
+
+|`-` |`datetime-tz` |`datetime-tz` |`duration`
+|`+` |`datetime-tz` |`duration` |`datetime-tz`
+|`-` |`datetime-tz` |`duration` |`datetime-tz`
+|===
+
+See xref:{page-version}@typeql-reference::values/duration.adoc[] for details on DST handling and timezone semantics. See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for the full reference.
+
 == Defining a datetime-tz valued attribute
 
 [,typeql]

@@ -21,3 +21,18 @@ define entity user;
 #!test[schema]
 match $t label user;
 ----
+
+== The label() function
+
+The `label()` function returns the label of a type or role as a string in an expression context.
+
+[,typeql]
+----
+match
+  $_ isa $t;
+  let $label = label($t);
+----
+
+NOTE: For roles, the label includes the relation namespace (e.g. `"rel:rolename"`).
+
+See xref:{page-version}@typeql-reference::expressions/operators.adoc#_concept_functions[] for more details.

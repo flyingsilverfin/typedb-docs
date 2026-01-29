@@ -47,6 +47,31 @@ match
 #}}
 ----
 
+== In expressions
+
+Datetime values support the following operators:
+
+[%header,cols="^1,^2,^2,^2"]
+|===
+|Operator |Left |Right |Result
+
+|`-` |`datetime` |`datetime` |`duration`
+|`-` |`datetime` |`date` |`duration`
+|`+` |`datetime` |`duration` |`datetime`
+|`-` |`datetime` |`duration` |`datetime`
+|===
+
+[,typeql]
+----
+let $diff = 2027-03-30T16:05:06.789 - 2026-01-27T12:00:00;
+# $diff == P1Y2M3DT4H5M6.789S
+
+let $future = 2026-01-27T12:00:00 + P1Y2M3DT4H5M6.789S;
+# $future == 2027-03-30T16:05:06.789
+----
+
+See xref:{page-version}@typeql-reference::values/duration.adoc[] for details on DST handling, non-commutativity, and month overflow. See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for the full reference.
+
 == Defining a datetime valued attribute
 
 [,typeql]

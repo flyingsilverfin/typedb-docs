@@ -3,6 +3,19 @@
 
 A UTF-8 character string type.
 
+== In expressions
+
+Strings can be concatenated with the `+` operator, and the `len()` function returns the number of Unicode characters in a string.
+
+[,typeql]
+----
+let $greeting = "Hello, " + "world!";
+let $length = len($greeting);
+# $length == 13
+----
+
+See xref:{page-version}@typeql-reference::expressions/operators.adoc[] for the full reference.
+
 == Defining a string valued attribute
 
 [,typeql]

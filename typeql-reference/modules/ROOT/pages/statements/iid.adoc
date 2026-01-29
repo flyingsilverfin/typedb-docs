@@ -42,3 +42,15 @@ insert $user isa person;
 #!test[read]
 match $x iid 0x1f0005000000000000012f;
 ----
+
+== The iid() function
+
+The `iid()` function returns the internal ID of a concept as a string in an expression context.
+
+[,typeql]
+----
+match $p isa person;
+let $id = iid($p);
+----
+
+See xref:{page-version}@typeql-reference::expressions/operators.adoc#_concept_functions[] for more details.
