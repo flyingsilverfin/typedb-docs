@@ -9,7 +9,7 @@ With Studio, developers can efficiently manage databases, execute queries, and e
 all within a unified environment.
 
 This page provides a quick introduction to TypeDB Studio and an overview of its features. All features of TypeDB Studio
-are available on both web and desktop.
+are available on both web and desktop. Be aware that the web app may not be able to connect to non-HTTPS endpoints (e.g. localhost, 127.0.0.1) on certain browsers; at the time of writing, Chrome works, but Safari does not.
 --
 
 [cols-2]
