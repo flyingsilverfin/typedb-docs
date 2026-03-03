@@ -30,8 +30,13 @@ Query takes too long.
 ****
 Optimize your queries for the best performance.
 ****
+--
 
-.xref:{page-version}@guides::typeql/debugging-typeql.adoc[]
+== Other links
+
+[cols-2]
+--
+.xref:{page-version}@guides::typeql/debugging-typeql.adoc[Guide for debugging TypeQL]
 [.clickable]
 ****
 Debug queries using TypeQL's composability.
