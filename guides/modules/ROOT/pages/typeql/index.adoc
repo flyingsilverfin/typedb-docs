@@ -28,6 +28,12 @@ Advanced TypeDB pipelines and patterns
 Debug TypeQL queries and pipelines using composable techniques
 ****
 
+.xref:{page-version}@guides::typeql/optimizing-typeql.adoc[]
+[.clickable]
+****
+Write efficient TypeQL queries using optimization techniques
+****
+
 .xref:{page-version}@guides::typeql/sql-vs-typeql.adoc[]
 [.clickable]
 ****

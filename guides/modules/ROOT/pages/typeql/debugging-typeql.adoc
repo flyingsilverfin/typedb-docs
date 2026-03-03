@@ -436,7 +436,7 @@ Advanced TypeDB pipelines and patterns
 `match` documentation in TypeQL reference
 ****
 
-.xref:{page-version}@maintenance-operation::troubleshooting/optimizing-queries.adoc[]
+.xref:{page-version}@guides::typeql/optimizing-typeql.adoc[]
 [.clickable]
 ****
 Optimize your queries for the best performance

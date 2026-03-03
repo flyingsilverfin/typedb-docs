@@ -25,11 +25,6 @@ Resolving connection issues.
 Query takes too long.
 ****
 
-.xref:{page-version}@maintenance-operation::troubleshooting/optimizing-queries.adoc[]
-[.clickable]
-****
-Optimize your queries for the best performance.
-****
 --
 
 == Other links
@@ -40,5 +35,11 @@ Optimize your queries for the best performance.
 [.clickable]
 ****
 Debug queries using TypeQL's composability.
+****
+
+.xref:{page-version}@guides::typeql/optimizing-typeql.adoc[Guide for optimizing TypeQL]
+[.clickable]
+****
+Write efficient queries using optimization techniques.
 ****
 --
