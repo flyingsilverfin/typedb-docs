@@ -15,4 +15,3 @@
 ** xref:{page-version}@maintenance-operation::troubleshooting/connection.adoc[]
 ** xref:{page-version}@maintenance-operation::troubleshooting/stopping-queries.adoc[]
 ** xref:{page-version}@maintenance-operation::troubleshooting/optimizing-queries.adoc[]
-** xref:{page-version}@maintenance-operation::troubleshooting/debugging-queries.adoc[]

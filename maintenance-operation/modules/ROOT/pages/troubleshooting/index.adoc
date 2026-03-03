@@ -31,9 +31,9 @@ Query takes too long.
 Optimize your queries for the best performance.
 ****
 
-.xref:{page-version}@maintenance-operation::troubleshooting/debugging-queries.adoc[]
+.xref:{page-version}@guides::typeql/debugging-typeql.adoc[]
 [.clickable]
 ****
-Tips for query debugging.
+Debug queries using TypeQL's composability.
 ****
 --
